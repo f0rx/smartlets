@@ -1,0 +1,34 @@
+name: Test and Debug apk
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+jobs:
+  build:
+    name: Build debug APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Java Environment
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Set up Flutter Environment
+        uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: 'beta'
+
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi
+
+      - name: Create a Debug APK
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/apk/debug/*.apk"
+          token: ${{ secrets.ACCESS_TOKEN }}
