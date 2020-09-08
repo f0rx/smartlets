@@ -25,7 +25,7 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi
+      - run: flutter build apk --debug --target-platform android-arm --split-per-abi
 
       - name: Create a Debug APK
         uses: ncipollo/release-action@v1
