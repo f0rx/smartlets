@@ -7,6 +7,9 @@ on:
     branches:
       - dev
       - master
+    types:
+      - opened
+      - reopened
 jobs:
   build:
     name: Build a debug APK
@@ -58,4 +61,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           commit: dev
-          tag: ${APP_VERSION}${GITHUB_RUN_NUMBER}
+          tag: env.APP_VERSION
