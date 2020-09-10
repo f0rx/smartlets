@@ -1,0 +1,8 @@
+name: Release Production apk
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
