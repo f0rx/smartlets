@@ -20,8 +20,8 @@ jobs:
         id: tag_and_prepare_release
         uses: K-Phoen/semver-release-action@master
         with:
-          tag: $APP_VERSION
-          release_branch: master
+          tag: ${{ env.APP_VERSION }}
+          release_branch: dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
