@@ -35,7 +35,7 @@ jobs:
       - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=dev
 
       - name: Tag and prepare release
-        id: ${APP_VERSION}
+        id: env.APP_VERSION
         uses: K-Phoen/semver-release-action@master
         with:
           release_branch: dev
