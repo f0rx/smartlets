@@ -32,7 +32,7 @@ jobs:
       - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=dev
 
       - name: Tag and prepare release
-        id: v1.0.0-debug-${GITHUB_RUN_NUMBER}
+        id: prepare_dev_release
         uses: K-Phoen/semver-release-action@master
         with:
           release_branch: master
@@ -40,10 +40,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload release notes
-        if: steps.v1.0.0-debug-${GITHUB_RUN_NUMBER}.outputs.tag
+        if: steps.prepare_dev_release.outputs.tag
         uses: Roang-zero1/github-create-release-action@master
         with:
-          created_tag: ${{ steps.v1.0.0-debug-${GITHUB_RUN_NUMBER}.outputs.tag }}
+          created_tag: ${{ steps.prepare_dev_release.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,4 +52,4 @@ jobs:
         with:
           artifacts: "build/app/outputs/apk/debug/*.apk"
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: v1.0.0-debug-${GITHUB_RUN_NUMBER}
+          tag: prepare_dev_release
