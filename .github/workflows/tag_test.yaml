@@ -20,6 +20,7 @@ jobs:
         id: tag_and_prepare_release
         uses: K-Phoen/semver-release-action@master
         with:
+          tag: "v1.0.0"
           release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
