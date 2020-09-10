@@ -6,7 +6,6 @@ on:
   pull_request:
     branches:
       - dev
-      - master
 jobs:
   build:
     name: Build a debug APK
@@ -33,11 +32,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /usr/local/lib/android/sdk/ndk
-          key: ndk-cache-21.0.6113669
+          key: ${{ runner.os }}-ndk-cache-21.0.6113669
 
       - name: Install NDK
         if: steps.ndk-cache.outputs.cache-hit != 'true'
-        run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
+        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
 
       - name: Set up Flutter Environment
         uses: subosito/flutter-action@v1.3.2
@@ -49,20 +48,18 @@ jobs:
       - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=dev
 
       - name: Tag and prepare release
-        id: tag__debug
+        id: tag_and_prepare_release
         uses: K-Phoen/semver-release-action@master
         with:
-          release_branch: dev
-#          tag: "some-release-tag"
-#          release_strategy: tag
+          release_branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload release notes
-        if: steps.tag__debug.outputs.tag
+        if: steps.tag_and_prepare_release.outputs.tag
         uses: Roang-zero1/github-create-release-action@master
         with:
-          created_tag: ${{ steps.tag__debug.outputs.tag }}
+          created_tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -73,4 +70,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           commit: debug
-          tag: ${{ steps.tag__debug.outputs.tag }}
+          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}

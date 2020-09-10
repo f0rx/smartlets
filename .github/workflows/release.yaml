@@ -14,7 +14,7 @@ jobs:
     name: Build a debug APK
     env:
       APP_NAME: "Smartlets"
-      APP_VERSION: "v1.0.0-debug"
+      APP_VERSION: "v1.0.0-prod"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
