@@ -1,0 +1,38 @@
+name: Release Production apk
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - reopened
+jobs:
+  build:
+    name: Build a debug APK
+    env:
+      APP_NAME: "Smartlets"
+      APP_VERSION: "v1.0.0-prod"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Java Environment
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Install NDK
+        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
+
+      - name: Set up Flutter Environment
+        uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: 'beta'
+
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk --release --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm,android-arm64 --split-per-abi --flavor=prod
