@@ -39,7 +39,7 @@ jobs:
         uses: K-Phoen/semver-release-action@master
         with:
           release_branch: dev
-          tag: ${APP_VERSION}${GITHUB_RUN_NUMBER}
+          tag: env.APP_VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
