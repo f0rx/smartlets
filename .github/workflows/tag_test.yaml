@@ -36,7 +36,7 @@ jobs:
       - name: Create a Debug APK
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ env.APP_VERSION }}
+          tag: ${{ env.APP_VERSION }}${{ GITHUB_RUN_NUMBER }}
           artifacts: "build/app/outputs/apk/debug/*.apk"
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
