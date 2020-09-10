@@ -23,7 +23,7 @@ jobs:
         with:
           release_branch: dev
           release_strategy: "release"
-          tag: ${{ env.APP_VERSION }}
+          tag: "v1.0.0"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
