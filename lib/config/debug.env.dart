@@ -1,5 +1,6 @@
-// import 'package:eazox/services/locator/serviceInjector.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:smartlets/manager/locator/locator.dart';
 
 enum BuildFlavor { prod, dev }
 
@@ -17,8 +18,8 @@ class BuildEnvironment {
       flavor: flavor,
     );
 
-    // if (flavor == BuildFlavor.dev)
-    //   await injector(Environment.dev);
-    // else if (flavor == BuildFlavor.prod) await injector(Environment.prod);
+    if (flavor == BuildFlavor.dev)
+      await locator(Environment.dev);
+    else if (flavor == BuildFlavor.prod) await locator(Environment.prod);
   }
 }
