@@ -43,10 +43,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload release notes
-        if: steps.$APP_VERSION.outputs.tag
+        if: steps.$APP_VERSION${GITHUB_RUN_NUMBER}.outputs.tag
         uses: Roang-zero1/github-create-release-action@master
         with:
-          created_tag: ${{ steps.$APP_VERSION.outputs.tag }}
+#          created_tag: ${{ steps.APP_VERSION.outputs.tag }}
+          created_tag: $APP_VERSION${GITHUB_RUN_NUMBER}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
