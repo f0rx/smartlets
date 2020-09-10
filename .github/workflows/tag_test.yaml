@@ -11,7 +11,8 @@ jobs:
     name: Tag creation
     env:
       APP_NAME: "Smartlets"
-      APP_VERSION: "v1.0.0-debug"
+      APP_VERSION: "v1.0.0-beta"
+      RUN_NUMBER: ${{ github.run_number }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,8 +21,9 @@ jobs:
         id: tag_and_prepare_release
         uses: K-Phoen/semver-release-action@master
         with:
-          tag: ${{ env.APP_VERSION }}
           release_branch: dev
+          release_strategy: "release"
+          tag: ${{ env.APP_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -36,7 +38,8 @@ jobs:
       - name: Create a Debug APK
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ env.APP_VERSION }}${GITHUB_RUN_NUMBER}
+          tag: ${{ env.APP_VERSION }}-${{ env.RUN_NUMBER }}
+          commit: dev
           artifacts: "build/app/outputs/apk/debug/*.apk"
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
