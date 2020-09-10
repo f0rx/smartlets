@@ -2,10 +2,10 @@ name: Test and Debug apk
 on:
   push:
     branches:
-      - dev
+      - master
   pull_request:
     branches:
-      - dev
+      - master
 jobs:
   build:
     name: Build a debug APK
@@ -31,7 +31,7 @@ jobs:
         id: ndk-cache
         uses: actions/cache@v2
         with:
-          path: /usr/local/lib/android/sdk/ndk
+          path: ${ANDROID_HOME}/tools/bin/sdkmanager
           key: ${{ runner.os }}-ndk-cache-21.0.6113669
 
       - name: Install NDK
@@ -66,8 +66,7 @@ jobs:
       - name: Create a Debug APK
         uses: ncipollo/release-action@v1
         with:
+          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
           artifacts: "build/app/outputs/apk/debug/*.apk"
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
-          commit: debug
-          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
