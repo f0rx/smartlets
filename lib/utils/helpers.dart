@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
+import 'package:smartlets/manager/theme/theme.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
 // ignore: non_constant_identifier_names
@@ -33,8 +35,6 @@ class Helpers {
 
   static Helpers get I => Helpers._();
   static double buttonRadius = 12.0;
-  static double buttonHighlightElevation = 1.5;
-  static double buttonWidth = App.mediaQuery.size.width * 0.1;
   static double buttonVerticalPadding = App.mediaQuery.size.width * 0.04;
   static double horizontalSpacing = App.mediaQuery.size.width * 0.04;
 
@@ -47,10 +47,16 @@ class Helpers {
 
   static DateTime getDate(DateTime d) => DateTime(d.year, d.month, d.day, d.hour, d.minute, d.second);
 
+  static void hideKeyboard([BuildContext context]) {
+    FocusNode currentFocus = FocusScope.of(context ?? App.context);
+    if (!currentFocus.hasPrimaryFocus && !currentFocus.hasFocus && currentFocus.children.isEmpty)
+      FocusManager.instance.primaryFocus.unfocus();
+  }
+
   static T optionOf<T>(dynamic _default, dynamic other) {
     assert(_default != null);
     assert(other != null);
-    // return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
+    return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
   }
 
   static void precache(BuildContext context) {
