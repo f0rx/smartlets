@@ -1,20 +1,23 @@
 name: Test and Debug apk
+
 on:
   push:
     branches:
-      - master
+      - dev
   pull_request:
     branches:
-      - master
+      - dev
 jobs:
   build:
     name: Build a debug APK
-    env:
-      APP_NAME: "Smartlets"
-      APP_VERSION: "v1.0.0-debug"
     runs-on: ubuntu-latest
+    env:
+      RUN_NUMBER: ${{ github.run_number }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Fetch HEAD
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
 
       - name: Set up Java Environment
         uses: actions/setup-java@v1
@@ -28,14 +31,14 @@ jobs:
           sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
 
       - name: NDK Cache
-        id: ndk-cache
+        id: ndk_cache
         uses: actions/cache@v2
         with:
-          path: ${ANDROID_HOME}/tools/bin/sdkmanager
-          key: ${{ runner.os }}-ndk-cache-21.0.6113669
+          path: /usr/local/lib/android/sdk/ndk
+          key: ${{ runner.os }}-ndk_cache-21.0.6113669
 
       - name: Install NDK
-        if: steps.ndk-cache.outputs.cache-hit != 'true'
+        if: steps.ndk_cache.outputs.cache-hit != 'true'
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
 
       - name: Set up Flutter Environment
@@ -47,26 +50,53 @@ jobs:
       - run: flutter test
       - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=dev
 
-      - name: Tag and prepare release
-        id: tag_and_prepare_release
-        uses: K-Phoen/semver-release-action@master
-        with:
-          release_branch: master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Copy APK To Parent Directory
+        run: mv "build/app/outputs/apk/debug/*.apk" "./app.apk"
 
-      - name: Upload release notes
-        if: steps.tag_and_prepare_release.outputs.tag
-        uses: Roang-zero1/github-create-release-action@master
+#  vcs:
+#    name: Perform GitHub repo actions
+#    runs-on: ub
+#    steps:
+#      - name: Configure Github
+#        run: |
+#          git config --local user.email "ejike.br@gmail.com"
+#          git config --local user.name "Brendan Ejike"
+#      - name: Create TAG
+#        run: |
+#          git tag sample-tag
+#          git commit -m "Generated APK" -a
+
+  release:
+    name: Deploy release APK
+    runs-on: ubuntu-latest
+    needs: [build]
+    env:
+      APP_NAME: "Smartlets"
+      APP_VERSION: "v1.0.0"
+      RUN_NUMBER: ${{ github.run_number }}
+    steps:
+      - name: Bump version and push tag
+        id: bump_tag
+        uses: mathieudutour/github-tag-action@v4.5
         with:
-          created_tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          release_branches: .*
+#          create_annotated_tag: true
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.ACCESS_TOKEN }}
+          file: ./app.apk
+          tag: ${{ steps.bump_tag.outputs.new_tag }}
+          overwrite: true
+          body: "Smartlets debug release"
 
       - name: Create a Debug APK
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.tag_and_prepare_release.outputs.tag }}
           artifacts: "build/app/outputs/apk/debug/*.apk"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
+          tag: ${{ steps.bump_tag.outputs.new_tag }}
+#          tag: ${{ env.APP_VERSION }}-${{ env.RUN_NUMBER }}
           allowUpdates: true
