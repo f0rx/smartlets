@@ -1,3 +1,4 @@
+export 'package:smartlets/config/.env.dart';
 export 'package:smartlets/manager/router/export.dart';
 
 export 'app_icons_icons.dart';
