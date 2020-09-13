@@ -84,7 +84,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.ACCESS_TOKEN }}
-          file: ./app.apk
+          file: ./build/app/outputs/flutter-apk/
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           overwrite: true
           body: "Smartlets debug release"
@@ -92,7 +92,7 @@ jobs:
       - name: Create a Debug APK
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/debug/*.apk"
+          artifacts: "./build/app/outputs/flutter-apk/*.apk"
           token: ${{ secrets.ACCESS_TOKEN }}
           tag: ${{ steps.bump_tag.outputs.new_tag }}
 #          tag: ${{ env.APP_VERSION }}-${{ env.RUN_NUMBER }}
