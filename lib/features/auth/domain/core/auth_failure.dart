@@ -24,7 +24,7 @@ abstract class AuthFailure with _$AuthFailure {
 
   factory AuthFailure.invalidCredentials({String message}) => AuthFailure(
         code: INVALID_CREDENTIAL,
-        message: message ?? "Invalid email or password.",
+        message: message ?? "These credentials do not match our records.",
       );
 
   factory AuthFailure.weakPassword({String message}) => AuthFailure(
@@ -39,7 +39,7 @@ abstract class AuthFailure with _$AuthFailure {
 
   factory AuthFailure.userAccountNotFound({String message}) => AuthFailure(
         code: USER_NOT_FOUND,
-        message: message ?? "These credentials do not match our records.",
+        message: message ?? "E-mail address not found!",
       );
 
   factory AuthFailure.userAccountDisabled({String message}) => AuthFailure(

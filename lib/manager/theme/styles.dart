@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:smartlets/utils/colors.dart';
 
@@ -74,14 +75,16 @@ class AppTheme extends HiveObject {
         alignLabelWithHint: true,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         isDense: true,
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.accentColor, width: 1.5),
-        ),
         hintStyle: TextStyle(color: Colors.grey),
         labelStyle: TextStyle(color: Colors.grey),
         fillColor: Colors.transparent,
-        border: UnderlineInputBorder(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.accentColor),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        border: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 1.5),
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
       textTheme: TextTheme()
@@ -110,14 +113,16 @@ class AppTheme extends HiveObject {
         alignLabelWithHint: true,
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         isDense: true,
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.accentColor, width: 1.5),
-        ),
         hintStyle: TextStyle(color: Colors.grey),
         labelStyle: TextStyle(color: Colors.grey),
         fillColor: Colors.transparent,
-        border: UnderlineInputBorder(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.accentColor),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        border: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.grey, width: 1.5),
+          borderRadius: BorderRadius.circular(8.0),
         ),
       ),
       textTheme: TextTheme()
@@ -143,7 +148,7 @@ class AppTheme extends HiveObject {
       splashColor: this._splashColor,
       splashFactory: this._splashFactory,
       visualDensity: this._visualDensity,
-      textTheme: this._textTheme,
+      textTheme: GoogleFonts.montserratTextTheme(this._textTheme),
     );
   }
 

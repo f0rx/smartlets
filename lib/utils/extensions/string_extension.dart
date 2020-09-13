@@ -70,6 +70,23 @@ extension StringX on String {
     return join.erase([glue], recursive: false, position: Direction.right);
   }
 
+  /// Checks if string consist only numeric.
+  /// Numeric only doesn't accepting "." which double data type have
+  static bool isNumericOnly(String s) => RegExp(r'^\d+$').hasMatch(s);
+
+  /// Extract numeric value of string
+  /// Example: OTP 12312 27/04/2020 => 1231227042020ß
+  /// If firstword only is true, then the example return is "12312"
+  /// (first found numeric word)
+  static String numericOnly(String s, {bool firstWordOnly = false}) {
+    var numericOnlyStr = '';
+    for (var i = 0; i < s.length; i++) {
+      if (isNumericOnly(s[i])) numericOnlyStr += s[i];
+      if (firstWordOnly && numericOnlyStr.isNotEmpty && s[i] == " ") break;
+    }
+    return numericOnlyStr;
+  }
+
   String get first => "${this[0]}";
 }
 

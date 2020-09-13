@@ -1,4 +1,4 @@
-mixin MkStrings {
+mixin AppStrings {
   static const String appName = "Smartlets";
   static const String appSummary = "Shop easily anywhere..";
   static const String stableInternet = "Unstable Internet connection!";
