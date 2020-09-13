@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Setup Environmental variables & Service provider
-  await BuildEnvironment.init(flavor: BuildFlavor.prod);
+  await BuildEnvironment.init(flavor: BuildFlavor.dev);
   assert(env != null);
 
   // Add Google Fonts Licensing
