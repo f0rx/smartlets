@@ -50,19 +50,6 @@ jobs:
       - run: flutter test
       - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=dev
 
-#  vcs:
-#    name: Perform GitHub repo actions
-#    runs-on: ub
-#    steps:
-#      - name: Configure Github
-#        run: |
-#          git config --local user.email "ejike.br@gmail.com"
-#          git config --local user.name "Brendan Ejike"
-#      - name: Create TAG
-#        run: |
-#          git tag sample-tag
-#          git commit -m "Generated APK" -a
-
   release:
     name: Deploy release APK
     runs-on: ubuntu-latest
@@ -72,28 +59,50 @@ jobs:
       APP_VERSION: "v1.0.0"
       RUN_NUMBER: ${{ github.run_number }}
     steps:
-      - name: Bump version and push tag
-        id: bump_tag
-        uses: mathieudutour/github-tag-action@v4.5
-        with:
-          release_branches: .*
-#          create_annotated_tag: true
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+#      - name: Bump version and push tag
+#        id: bump_tag
+#        uses: mathieudutour/github-tag-action@v4.5
+#        with:
+#          release_branches: .*
+##          create_annotated_tag: true
+#          github_token: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Create GitHub Release
-        uses: svenstaro/upload-release-action@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          repo_token: ${{ secrets.ACCESS_TOKEN }}
-          file: build/app/outputs/flutter-apk/
-          tag: ${{ steps.bump_tag.outputs.new_tag }}
-          overwrite: true
-          body: "Smartlets debug release"
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
-      - name: Create a Debug APK
-        uses: ncipollo/release-action@v1
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          artifacts: "./build/app/outputs/flutter-apk/*.apk"
-          token: ${{ secrets.ACCESS_TOKEN }}
-          tag: ${{ steps.bump_tag.outputs.new_tag }}
-#          tag: ${{ env.APP_VERSION }}-${{ env.RUN_NUMBER }}
-          allowUpdates: true
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/apk/dev/debug/*.apk
+          asset_name: dev-debug.apk
+          asset_content_type: application/vnd.android.package-archive
+
+#      - name: Create GitHub Release
+#        uses: svenstaro/upload-release-action@v2
+#        with:
+#          repo_token: ${{ secrets.ACCESS_TOKEN }}
+#          file: build/app/outputs/apk/release
+#          tag: ${{ steps.bump_tag.outputs.new_tag }}
+#          overwrite: true
+#          body: "Smartlets debug release"
+#
+#      - name: Create a Debug APK
+#        uses: ncipollo/release-action@v1
+#        with:
+#          artifacts: "./build/app/outputs/flutter-apk/*.apk"
+#          token: ${{ secrets.ACCESS_TOKEN }}
+#          tag: ${{ steps.bump_tag.outputs.new_tag }}
+##          tag: ${{ env.APP_VERSION }}-${{ env.RUN_NUMBER }}
+#          allowUpdates: true
