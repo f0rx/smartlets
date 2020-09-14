@@ -54,14 +54,14 @@ jobs:
         id: bump_tag
         uses: mathieudutour/github-tag-action@v4.5
         with:
-          release_branches: .*
+          release_branches: dev,ft-*
           tag_prefix: "prod-debug-"
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/prod/debug/*.apk,build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
+          artifacts: "build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true

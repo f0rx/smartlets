@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - master
-      - dev
+#      - dev
   pull_request:
     branches:
       - master
-      - dev
+#      - dev
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     env:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
-      SLACK_WEBHOOK: "https://hooks.slack.com/services/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"
+      SLACK_WEBHOOK: ${{ secret.SLACK_WEBHOOK }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,7 +42,7 @@ jobs:
         id: bump_tag
         uses: mathieudutour/github-tag-action@v4.5
         with:
-          release_branches: .*
+          release_branches: master,dev
           tag_prefix: ${{ env.TAG_PREFIX }}
           github_token: ${{ secrets.ACCESS_TOKEN }}
 
