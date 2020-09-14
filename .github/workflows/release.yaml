@@ -56,17 +56,18 @@ jobs:
 
       - name: Bump version and push Release tag
         id: bump_tag
-        uses: anothrNick/github-tag-action@1.26.0
-        env:
-          RELEASE_BRANCHES: .*
-          TAG_CONTEXT: branch
-          WITH_V: true
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        uses: phish108/autotag-action@1.1.25
+        with:
+          bump: minor
+          branch: dev
+          release-branch: dev
+          issue-labels: enhancement
+          github-token: ${{ secrets.ACCESS_TOKEN}}
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk,build/app/outputs/apk/*"
-          tag: ${{ steps.bump_tag.outputs.new_tag }}
+          tag: ${{ steps.bump_tag.outputs.new-tag }}
           token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true
