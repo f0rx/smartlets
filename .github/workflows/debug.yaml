@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RUN_NUMBER: ${{ github.run_number }}
-      TAG_PREFIX: "prod-debug-"
+      TAG_PREFIX: "debug"
     steps:
       - name: Fetch HEAD
         uses: actions/checkout@master
@@ -55,14 +55,14 @@ jobs:
         id: bump_tag
         uses: mathieudutour/github-tag-action@v4.5
         with:
-          release_branches: master,dev
-          tag_prefix: ${{ env.TAG_PREFIX }}
+          release_branches: .*
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ env.TAG_PREFIX }}-${{ github.run_number }}
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
+          artifacts: "build/app/outputs/apk/debug/*.apk"
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true
