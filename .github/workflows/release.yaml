@@ -64,12 +64,12 @@ jobs:
 
       - name: Print Tag / Release Parameters
         run: |
-          echo "Got tag name ${{ steps.bump_tag.outputs.tag_name }}"
+          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/prod/release/*.apk,build/app/outputs/apk/release/*.apk,build/app/outputs/apk/*"
-          tag: ${{ steps.bump_tag.outputs.tag_name }}
+          tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ env.GITHUB_TOKEN }}
           allowUpdates: true

@@ -58,6 +58,10 @@ jobs:
           release_branches: .*
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Print Tag / Release Parameters
+        run: |
+          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
+
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
