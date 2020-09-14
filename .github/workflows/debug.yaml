@@ -61,6 +61,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/dev/debug/*.apk,build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
-#          tag: ${{ steps.bump_tag.outputs.new_tag }}
+          tag: "v1.0"
           token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true
