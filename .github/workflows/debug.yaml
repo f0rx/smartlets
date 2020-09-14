@@ -55,7 +55,6 @@ jobs:
         uses: mathieudutour/github-tag-action@v4.5
         with:
           release_branches: .*
-#          default_bump: minor
           github_token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Push APK to Releases
