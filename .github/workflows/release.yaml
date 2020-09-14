@@ -47,8 +47,8 @@ jobs:
         env:
           TAG_CONTEXT: branch
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          WITH_V: true
-          RELEASE_BRANCHES: .*
+          WITH_V: false
+          RELEASE_BRANCHES: release.*,hotfix.*,master,dev.*,dev
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
