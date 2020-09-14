@@ -56,13 +56,14 @@ jobs:
 
       - name: Bump version and push Release tag
         id: bump_tag
-        uses: jaliborc/action-general-autotag@1.0.0
+        uses: rymndhng/release-on-push-action@master
         with:
-          source_file: "pubspec.yaml"
-          extraction_regex: "(version: )(\d|x|\*)+\.(\d|x|\*)+\.(\d|x|\*)+\+(\d|x|\*)+"
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          tag_format: "v{version} (alpha)"
-          tag_message: "Smartlets Production Release APK"
+          bump_version_scheme: minor
+
+      - name: Check Output Parameters
+        run: |
+          echo "Got tag name ${{ steps.bump_tag.outputs.tag_name }}"
+          echo "Got release version ${{ steps.bump_tag.outputs.version }}"
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
