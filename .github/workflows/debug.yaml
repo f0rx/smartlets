@@ -9,15 +9,16 @@ on:
       - dev
 jobs:
   build:
-    name: Build & Deploy (Prod Flavor)
+    name: Build & Deploy Debug APK (Flavor => Prod)
     runs-on: ubuntu-latest
     env:
       RUN_NUMBER: ${{ github.run_number }}
+      TAG_PREFIX: "debug"
     steps:
       - name: Fetch HEAD
         uses: actions/checkout@master
-#        with:
-#          fetch-depth: 0
+        with:
+          fetch-depth: 0
 
       - name: Set up Java Environment
         uses: actions/setup-java@v1
@@ -55,16 +56,14 @@ jobs:
         uses: mathieudutour/github-tag-action@v4.5
         with:
           release_branches: .*
-          tag_prefix: "prod-debug-"
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ env.TAG_PREFIX }}-${{ github.run_number }}
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/prod/debug/*.apk,build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
+          artifacts: "build/app/outputs/apk/debug/*.apk"
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true
           prerelease: true
-          # draft: true
-          # commit: Smartlets prod-debug build
