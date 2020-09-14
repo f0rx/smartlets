@@ -58,10 +58,10 @@ jobs:
         id: bump_tag
         uses: anothrNick/github-tag-action@1.26.0
         env:
+          RELEASE_BRANCHES: .*
           TAG_CONTEXT: branch
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           WITH_V: false
-#          RELEASE_BRANCHES: release.*,hotfix.*,master,dev.*,dev
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
