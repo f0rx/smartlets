@@ -65,6 +65,6 @@ jobs:
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true
-          # prerelease: true
+          prerelease: true
           # draft: true
-          commit: "Smartlets prod-debug build"
+          commit: Smartlets prod-debug build
