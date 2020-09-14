@@ -1,4 +1,4 @@
-name: Test and Debug apk
+name: Release Debug apk
 
 on:
   push:
@@ -9,15 +9,15 @@ on:
       - dev
 jobs:
   build:
-    name: Build a debug APK
+    name: Build & Deploy (Prod Flavor)
     runs-on: ubuntu-latest
     env:
       RUN_NUMBER: ${{ github.run_number }}
     steps:
       - name: Fetch HEAD
         uses: actions/checkout@master
-        with:
-          fetch-depth: 0
+#        with:
+#          fetch-depth: 0
 
       - name: Set up Java Environment
         uses: actions/setup-java@v1
@@ -48,52 +48,23 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=dev
+      - run: flutter build apk --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=prod
 
-#  vcs:
-#    name: Perform GitHub repo actions
-#    runs-on: ub
-#    steps:
-#      - name: Configure Github
-#        run: |
-#          git config --local user.email "ejike.br@gmail.com"
-#          git config --local user.name "Brendan Ejike"
-#      - name: Create TAG
-#        run: |
-#          git tag sample-tag
-#          git commit -m "Generated APK" -a
-
-  release:
-    name: Deploy release APK
-    runs-on: ubuntu-latest
-    needs: [build]
-    env:
-      APP_NAME: "Smartlets"
-      APP_VERSION: "v1.0.0"
-      RUN_NUMBER: ${{ github.run_number }}
-    steps:
       - name: Bump version and push tag
         id: bump_tag
         uses: mathieudutour/github-tag-action@v4.5
         with:
           release_branches: .*
-#          create_annotated_tag: true
+          tag_prefix: "prod-debug-"
           github_token: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Create GitHub Release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.ACCESS_TOKEN }}
-          file: ./app.apk
-          tag: ${{ steps.bump_tag.outputs.new_tag }}
-          overwrite: true
-          body: "Smartlets debug release"
-
-      - name: Create a Debug APK
+      - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/debug/*.apk"
-          token: ${{ secrets.ACCESS_TOKEN }}
+          artifacts: "build/app/outputs/apk/prod/debug/*.apk,build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
           tag: ${{ steps.bump_tag.outputs.new_tag }}
-#          tag: ${{ env.APP_VERSION }}-${{ env.RUN_NUMBER }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           allowUpdates: true
+          prerelease: true
+          # draft: true
+          # commit: Smartlets prod-debug build

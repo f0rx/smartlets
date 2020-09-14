@@ -4,6 +4,7 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/features/_404.dart';
+import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/router/export.dart';
 import 'package:smartlets/manager/theme/theme.dart';
@@ -15,22 +16,18 @@ class SmartletsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(() => null, (user) {
-    //   if (App.currentRoute != Routes.signUpScreen && App.currentRoute != Routes.PhoneVerification)
-    //     navigator.pushAndRemoveUntil(Routes.rootScreen, (_) => false);
-    // }));
-
     // Precache dependencies & images
     Helpers.precache(context);
-    // getIt<AuthFacade>().signOut();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (_) => getIt<ThemeCubit>()),
+        BlocProvider<OnBoardingCubit>(create: (_) => getIt<OnBoardingCubit>()..getSubscription()),
         // BlocProvider<RootBloc>(create: (_) => getIt<RootBloc>(), lazy: true),
       ],
       child: BlocBuilder<ThemeCubit, AppTheme>(
         builder: (context, state) => MaterialApp(
-          title: MkStrings.appName.capitalizeFirst(),
+          title: AppStrings.appName.capitalizeFirst(),
           debugShowCheckedModeBanner: false,
           theme: state?.themeData() ?? AppTheme.light().themeData(),
           darkTheme: AppTheme.dark().themeData(),

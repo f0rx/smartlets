@@ -5,7 +5,7 @@ import 'package:smartlets/utils/strings.dart';
 
 @Injectable()
 class ThemeCubit extends HydratedCubit<AppTheme> {
-  static const String _THEME_KEY = "${MkStrings.appName}-style";
+  static const String _THEME_KEY = "${AppStrings.appName}-style";
 
   ThemeCubit() : super(AppTheme.light());
 

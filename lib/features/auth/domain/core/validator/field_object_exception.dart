@@ -7,10 +7,10 @@ part 'field_object_exception.freezed.dart';
 // Validation messages
 const String REQUIRED_FIELD_MESSAGE = "Field is required!";
 const String INVALID_FIELD_MESSAGE = "Provide a valid input!";
-const String INVALID_EMAIL_MESSAGE = "Enter a valid email";
+const String INVALID_EMAIL_MESSAGE = "Provide a valid e-mail";
 const String SHORT_PASSWORD_MESSAGE = "Password must be at least $MIN_PASSWORD_LENGTH characters.";
 const String SHORT_USERNAME_MESSAGE = "Username must be at least $MIN_USERNAME_LENGTH characters.";
-const String UPPERCASE_CHAR_MESSAGE = "Must contain uppercase.";
+const String UPPERCASE_CHAR_MESSAGE = "Must contain uppercase character.";
 const String NUMBER_CHAR_MESSAGE = "Password must contain a number!";
 const String SYMBOL_MESSAGE = "Password must contain a symbol! (e.g: @#)";
 const INVALID_PHONE_NUMBER = "Invalid phone number!";

@@ -228,7 +228,6 @@ class FirebaseAuthImpl implements AuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> googleAuthentication([Object pendingCredentials]) async {
-    // Log.d();
     try {
       // First we'll check for stable Internet connection
       await _checkForStableInternet();
