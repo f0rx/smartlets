@@ -16,6 +16,7 @@ jobs:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Repo HEAD
@@ -25,12 +26,11 @@ jobs:
 
       - name: Bump version and push Release tag
         id: bump_tag
-        uses: ChloePlanet/github-tag-action@master
+        uses: rymndhng/release-on-push-action@master
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
+          bump_version_scheme: minor
 
       - name: Check Output Parameters
         run: |
-          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
-          echo "Got release version ${{ steps.bump_tag.outputs.last_tag }}"
+          echo "Got tag name ${{ steps.bump_tag.outputs.tag_name }}"
+          echo "Got release version ${{ steps.bump_tag.outputs.version }}"
