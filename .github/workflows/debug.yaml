@@ -17,8 +17,8 @@ jobs:
     steps:
       - name: Fetch HEAD
         uses: actions/checkout@master
-#        with:
-#          fetch-depth: 0
+        with:
+          fetch-depth: 0
 
       - name: Set up Java Environment
         uses: actions/setup-java@v1
@@ -55,7 +55,7 @@ jobs:
         id: bump_tag
         uses: mathieudutour/github-tag-action@v4.5
         with:
-          release_branches: ".*"
+          release_branches: master,dev
           tag_prefix: ${{ env.TAG_PREFIX }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 

@@ -18,7 +18,10 @@ jobs:
       SLACK_WEBHOOK: ${{ secret.SLACK_WEBHOOK }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Fetch Repo HEAD
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Set up Java Environment
         uses: actions/setup-java@v1
