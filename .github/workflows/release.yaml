@@ -15,7 +15,7 @@ jobs:
     env:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
-      SLACK_WEBHOOK: ${{ secret.SLACK_WEBHOOK }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Repo HEAD
