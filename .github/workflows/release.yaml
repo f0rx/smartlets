@@ -25,11 +25,12 @@ jobs:
 
       - name: Bump version and push Release tag
         id: bump_tag
-        uses: rymndhng/release-on-push-action@master
+        uses: ChloePlanet/github-tag-action@master
         with:
-          bump_version_scheme: minor
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
 
       - name: Check Output Parameters
         run: |
-          echo "Got tag name ${{ steps.bump_tag.outputs.tag_name }}"
-          echo "Got release version ${{ steps.bump_tag.outputs.version }}"
+          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
+          echo "Got release version ${{ steps.bump_tag.outputs.last_tag }}"
