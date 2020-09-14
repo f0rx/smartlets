@@ -9,7 +9,7 @@ on:
       - dev
 jobs:
   build:
-    name: Build & Deploy (Prod Flavor)
+    name: Build & Deploy Debug APK (Flavor => Prod)
     runs-on: ubuntu-latest
     env:
       RUN_NUMBER: ${{ github.run_number }}
