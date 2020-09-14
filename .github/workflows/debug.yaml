@@ -54,7 +54,7 @@ jobs:
         id: bump_tag
         uses: mathieudutour/github-tag-action@v4.5
         with:
-          release_branches: dev,ft-*
+          release_branches: "dev,ft-*"
           tag_prefix: "prod-debug-"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
