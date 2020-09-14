@@ -16,7 +16,7 @@ jobs:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Repo HEAD
