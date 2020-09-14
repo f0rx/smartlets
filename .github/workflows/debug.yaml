@@ -67,4 +67,4 @@ jobs:
           allowUpdates: true
           prerelease: true
           # draft: true
-          commit: Smartlets prod-debug build
+          # commit: Smartlets prod-debug build
