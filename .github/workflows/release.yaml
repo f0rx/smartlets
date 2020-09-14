@@ -11,7 +11,7 @@ on:
       - reopened
 jobs:
   build:
-    name: Build a debug APK
+    name: Build a release APK
     env:
       APP_NAME: "Smartlets"
       APP_VERSION: "v1.0.0-prod"
