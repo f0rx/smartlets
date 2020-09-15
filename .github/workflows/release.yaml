@@ -30,7 +30,7 @@ jobs:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
-          SLACK_CHANNEL: patch
+          SLACK_CHANNEL: app-development
           SLACK_COLOR: '#FF8845'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ env.FAKE_VERSION }}
