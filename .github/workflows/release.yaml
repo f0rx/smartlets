@@ -37,15 +37,17 @@ jobs:
 #          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
 #          SLACK_FOOTER: Powered By rtCamp's Library
 
+#      patch webhook - https://hooks.slack.com/services/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
+
       - name: Send message to Slack API
         id: notify
         uses: archive/github-actions-slack@v1.0.3
         with:
-          slack-bot-user-oauth-access-token: ${{ env.SLACK_WEBHOOK }}
-          slack-channel: app-development-
+          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+          slack-channel: patch
           slack-text: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
           slack-optional-icon_emoji: ":fire:"
-          slack-optional-as_user: true
+          slack-optional-as_user: false
 
       - name: Result from "Send Message"
         run: echo "The result was ${{ steps.notify.outputs.slack-result }}"
