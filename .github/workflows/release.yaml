@@ -14,8 +14,6 @@ jobs:
     name: Build & Deploy a release APK
     env:
       APP_NAME: "Smartlets"
-      TAG_PREFIX: "prod-release-"
-#      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       RELEASE_TYPE: patch
     runs-on: ubuntu-latest
@@ -64,7 +62,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v4.5
         with:
           release_branches: .*
-          github_token: ${{ env.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Print Tag / Release Parameters
         run: |
@@ -86,7 +84,6 @@ jobs:
     needs: build
     env:
       APP_NAME: "Smartlets"
-      TAG_PREFIX: "prod-release-"
       SLACK_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
     steps:
       - name: Send Slack Notification
@@ -94,7 +91,7 @@ jobs:
         env:
           SLACK_COLOR: '#FF8845'
           SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ needs.build.outputs.bump_tag_version }}
-          SLACK_MESSAGE: Version ${{ needs.build.outputs.bump_tag_version }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag_output }}
+          SLACK_MESSAGE: Version ${{ needs.build.outputs.bump_tag_version }} of ${{ env.APP_NAME }} mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_FOOTER: Powered by f0rx
 
