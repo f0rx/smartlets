@@ -30,4 +30,9 @@ jobs:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
+          SLACK_COLOR: '#FF8845'
+          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ env.FAKE_VERSION }}
+          SLACK_MESSAGE: 'Version built'
+          SLACK_USERNAME: smartletsBot
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
+          SLACK_FOOTER: Powered By rtCamp's Library
