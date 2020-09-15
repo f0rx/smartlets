@@ -88,14 +88,14 @@ jobs:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
       SLACK_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
-      BUMP_TAG: ${{ needs.build.outputs.bump_tag_output }}
+      BUMP_TAG: ${{ needs.build.outputs.bump_tag_version }}
     steps:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_COLOR: '#FF8845'
-          SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ env.BUMP_OUTPUTS.new_version }}
-          SLACK_MESSAGE: Version ${{ env.BUMP_OUTPUTS.new_version }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.BUMP_OUTPUTS.new_tag }}
+          SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ env.BUMP_OUTPUTS }}
+          SLACK_MESSAGE: Version ${{ env.BUMP_OUTPUTS }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag_output }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_FOOTER: Powered By f0rx
 
