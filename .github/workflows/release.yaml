@@ -86,7 +86,7 @@ jobs:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
       SLACK_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
-      BUMP_OUTPUTS: ${{ jobs.build.steps.bump_tag.outputs }}
+      BUMP_OUTPUTS: ${{ job.build.steps.bump_tag.outputs }}
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
