@@ -70,6 +70,21 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/prod/release/*.apk,build/app/outputs/apk/release/*.apk,build/app/outputs/apk/*"
+          name: ${{ env.APP_NAME }}-${{ steps.bump_tag.outputs.new_version }}
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ env.GITHUB_TOKEN }}
           allowUpdates: true
+          omitName: false
+          omitBody: false
+
+#      - name: Slack Notification
+#        uses: rtCamp/action-slack-notify@master
+#        env:
+#          SLACK_CHANNEL: app-development
+#          SLACK_COLOR: '#FF8845'
+#          SLACK_ICON: https://github.com/rtCamp.png?size=48
+#          SLACK_MESSAGE: Version ${{ steps.bump_tag.outputs.new_version }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ steps.bump_tag.outputs.new_version }}
+#          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ steps.bump_tag.outputs.new_version }}
+#          SLACK_USERNAME: smartlets-bot
+#          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
+#          SLACK_FOOTER: Powered By rtCamp's Library
