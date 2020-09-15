@@ -30,11 +30,4 @@ jobs:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
-          SLACK_CHANNEL: app-development-
-          SLACK_COLOR: '#FF8845'
-          SLACK_ICON: https://github.com/rtCamp.png?size=48
-          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ env.FAKE_VERSION }}
-          SLACK_MESSAGE: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
-          SLACK_USERNAME: smartlets-bot
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
-          SLACK_FOOTER: Powered By rtCamp's Library
