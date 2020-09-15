@@ -27,12 +27,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Send Slack Notification
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_COLOR: '#FF8845'
-          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ env.FAKE_VERSION }}
-          SLACK_MESSAGE: 'Version built'
-          SLACK_USERNAME: smartletsBot
-          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
-          SLACK_FOOTER: Powered By rtCamp's Library
+#      - name: Send Slack Notification
+#        uses: rtCamp/action-slack-notify@master
+#        env:
+#          SLACK_COLOR: '#FF8845'
+#          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ env.FAKE_VERSION }}
+#          SLACK_MESSAGE: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
+#          SLACK_USERNAME: smartlets-bot
+#          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
+#          SLACK_FOOTER: Powered By rtCamp's Library
+
+      - name: Send message to Slack API
+        id: notify
+        uses: archive/github-actions-slack@v1.0.3
+        with:
+          slack-bot-user-oauth-access-token: ${{ env.GITHUB_TOKEN }}
+          slack-channel: app-development-
+          slack-text: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
+          slack-optional-icon_emoji: ":fire:"
+          slack-optional-as_user: true
+
+      - name: Result from "Send Message"
+        run: echo "The result was ${{ steps.notify.outputs.slack-result }}"
+
