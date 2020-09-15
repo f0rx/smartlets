@@ -18,6 +18,8 @@ jobs:
       SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       RELEASE_TYPE: patch
+      FAKE_TAG: v0.0.6
+      FAKE_VERSION: 0.0.6
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Repo HEAD
@@ -25,66 +27,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Java Environment
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-
-      - name: Prepare NDK dir for caching
-        run: |
-          sudo mkdir -p /usr/local/lib/android/sdk/ndk
-          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
-          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
-      - name: NDK Cache
-        id: ndk_cache
-        uses: actions/cache@v2
-        with:
-          path: /usr/local/lib/android/sdk/ndk
-          key: ${{ runner.os }}-ndk_cache-21.0.6113669
-
-      - name: Install NDK
-        if: steps.ndk_cache.outputs.cache-hit != 'true'
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
-
-      - name: Set up Flutter Environment
-        uses: subosito/flutter-action@v1.3.2
-        with:
-          channel: 'beta'
-
-      - run: flutter pub get
-      - run: flutter test
-      - run: flutter build apk --release --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm,android-arm64 --split-per-abi --flavor=prod
-
-      - name: Bump version and push tag
-        id: bump_tag
-        uses: mathieudutour/github-tag-action@v4.5
-        with:
-          release_branches: .*
-          github_token: ${{ env.GITHUB_TOKEN }}
-
-      - name: Print Tag / Release Parameters
-        run: |
-          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
-
-      - name: Push APK to Release Tags
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/apk/prod/release/*.apk,build/app/outputs/apk/release/*.apk,build/app/outputs/apk/*"
-          name: ${{ env.APP_NAME }}-${{ steps.bump_tag.outputs.new_version }}
-          tag: ${{ steps.bump_tag.outputs.new_tag }}
-          token: ${{ env.GITHUB_TOKEN }}
-          allowUpdates: true
-          omitName: false
-          omitBody: false
-
-#      - name: Slack Notification
-#        uses: rtCamp/action-slack-notify@master
-#        env:
-#          SLACK_CHANNEL: app-development
-#          SLACK_COLOR: '#FF8845'
-#          SLACK_ICON: https://github.com/rtCamp.png?size=48
-#          SLACK_MESSAGE: Version ${{ steps.bump_tag.outputs.new_version }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ steps.bump_tag.outputs.new_version }}
-#          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ steps.bump_tag.outputs.new_version }}
-#          SLACK_USERNAME: smartlets-bot
-#          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
-#          SLACK_FOOTER: Powered By rtCamp's Library
+      - name: Send Slack Notification
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_CHANNEL: patch
+          SLACK_COLOR: '#FF8845'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_TITLE: ${{ env.APP_NAME }} release APK ${{ env.FAKE_VERSION }}
+          SLACK_MESSAGE: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
+          SLACK_USERNAME: smartlets-bot
+          SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
+          SLACK_FOOTER: Powered By rtCamp's Library
