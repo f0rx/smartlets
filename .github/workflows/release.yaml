@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - master
-#      - dev
+      - dev
   pull_request:
     branches:
       - master
-#      - dev
+      - dev
 
 jobs:
   build:
@@ -85,17 +85,16 @@ jobs:
     env:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
-      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      FAKE_TAG: v0.0.6
-      FAKE_VERSION: 0.0.6
+      SLACK_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
+      BUMP_OUTPUTS: ${{ jobs.build.steps.bump_tag.outputs }}
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_COLOR: '#FF8845'
-          SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ env.FAKE_VERSION }}
-          SLACK_MESSAGE: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
+          SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ env.BUMP_OUTPUTS.new_version }}
+          SLACK_MESSAGE: Version ${{ env.BUMP_OUTPUTS.new_version }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.BUMP_OUTPUTS.new_tag }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_FOOTER: Powered By f0rx
 
