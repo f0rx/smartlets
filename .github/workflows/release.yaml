@@ -20,7 +20,7 @@ jobs:
       RELEASE_TYPE: patch
     runs-on: ubuntu-latest
     outputs:
-      bump_tag_output: ${{ steps.bump_tag.outputs.new_tag }}
+      bump_tag: ${{ steps.bump_tag.outputs.new_tag }}
       bump_tag_version: ${{ steps.bump_tag.outputs.new_version }}
     steps:
       - name: Fetch Repo HEAD
@@ -88,14 +88,15 @@ jobs:
       APP_NAME: "Smartlets"
       TAG_PREFIX: "prod-release-"
       SLACK_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
-      BUMP_TAG: ${{ needs.build.outputs.bump_tag_version }}
+      BUMP_TAG: ${{ needs.build.outputs.bump_tag_output }}
+      BUMP_VERSION: ${{ needs.build.outputs.bump_tag_version }}
     steps:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_COLOR: '#FF8845'
-          SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ env.BUMP_OUTPUTS }}
-          SLACK_MESSAGE: Version ${{ env.BUMP_OUTPUTS }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag_output }}
+          SLACK_TITLE: ${{ env.APP_NAME }} APK release version ${{ env.BUMP_TAG }}
+          SLACK_MESSAGE: Version ${{ env.BUMP_TAG }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.BUMP_VERSION }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_FOOTER: Powered By f0rx
 
