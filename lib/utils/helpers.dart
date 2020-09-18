@@ -15,9 +15,9 @@ final log = Log;
 
 ExtendedNavigatorState<RouterBase> get navigator => App.context.navigator;
 
-NavigationHistoryObserver get observer => NavigationHistoryObserver();
+ExtendedNavigatorState<RouterBase> inner(BuildContext context) => ExtendedNavigator.of(context);
 
-typedef WidgetBuilder = Widget Function(BuildContext context);
+NavigationHistoryObserver get observer => NavigationHistoryObserver();
 
 // ignore: avoid_positional_boolean_parameters
 void throwIf(bool condition, Object error) {
@@ -37,6 +37,7 @@ class Helpers {
   static double buttonRadius = 12.0;
   static double buttonVerticalPadding = App.mediaQuery.size.width * 0.04;
   static double horizontalSpacing = App.mediaQuery.size.width * 0.04;
+  static Duration willPopTimeout = const Duration(seconds: 3);
 
   static String writeNotNull(String other) {
     if (other.trim() != null || other.trim().isNotEmpty) {
@@ -184,13 +185,36 @@ class Helpers {
     return global(id).currentState.removeRoute(route);
   }
 
-  E buildFor<E>({
-    BuildContext context,
-    E Function(BuildContext context) ios,
-    E Function(BuildContext context) android,
+  void forceAppUpdate() {
+    void rebuild(Element el) {
+      el.markNeedsBuild();
+      el.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
+  }
+
+  PageRoute<T> adaptivePageRoute<T>({
+    String title,
+    @required WidgetBuilder builder,
+    RouteSettings settings,
+    bool maintainState = true,
+    bool fullscreenDialog = false,
   }) {
-    if (Platform.isIOS) return ios(context ?? App.context);
-    return android(context ?? App.context);
+    return Platform.isIOS
+        ? CupertinoPageRoute(
+            title: title,
+            builder: builder,
+            settings: settings,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+          )
+        : MaterialPageRoute(
+            builder: builder,
+            settings: settings,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+          );
   }
 
   Future<U> showAlertDialog<U>({
