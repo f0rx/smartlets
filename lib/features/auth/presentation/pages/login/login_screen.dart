@@ -35,89 +35,101 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          scrollDirection: Axis.vertical,
-          controller: ScrollController(),
-          physics: BouncingScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
-          child: Column(
-            children: [
-              AutoSizeText(
-                "Welcome Back!",
-                style: TextStyle(fontWeight: FontWeight.w600),
-                minFontSize: 24,
-              ),
-              //
-              VerticalSpace(height: App.height * 0.015),
-              //
-              GestureDetector(
-                onTap: () => navigator.pop(),
-                child: AutoSizeText.rich(
-                  TextSpan(children: [
-                    TextSpan(text: "Don't have an account?"),
-                    TextSpan(text: " "),
-                    TextSpan(text: "Sign Up.", style: TextStyle(color: Theme.of(context).accentColor)),
-                  ]),
-                  minFontSize: 16,
-                ),
-              ),
-              //
-              VerticalSpace(height: App.height * 0.04),
-              //
-              OAuthWidget(),
-              //
-              VerticalSpace(height: App.height * 0.02),
-              //
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: App.width * 0.12),
-                child: Row(
-                  children: [
-                    Expanded(child: Divider(thickness: 1.2)),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                      child: AutoSizeText("OR", minFontSize: 13.0),
-                    ),
-                    Expanded(child: Divider(thickness: 1.2)),
-                  ],
-                ),
-              ),
-              //
-              VerticalSpace(height: App.height * 0.04),
-              //
-              LoginForm(),
-              //
-              VerticalSpace(height: App.height * 0.05),
-              //
-              RaisedButton(
-                onPressed: () => BlocProvider.of<AuthBloc>(context).add(AuthEvent.signInWithEmailAndPassword()),
-                child: HorizontalSpace(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12.0),
-                      child: AutoSizeText(
-                        "Login",
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-                        minFontSize: 15.0,
-                      ),
+      body: Stack(
+        children: [
+          AppAssets.doodle,
+          //
+          Positioned(
+            child: Container(color: App.backgroundOverlayColor),
+          ),
+          //
+          Center(
+            child: SingleChildScrollView(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              scrollDirection: Axis.vertical,
+              controller: ScrollController(),
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
+              child: Column(
+                children: [
+                  VerticalSpace(height: App.height * 0.1),
+                  //
+                  AutoSizeText(
+                    "Welcome Back!",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                    minFontSize: 24,
+                  ),
+                  //
+                  VerticalSpace(height: App.height * 0.015),
+                  //
+                  GestureDetector(
+                    onTap: () => navigator.pop(),
+                    child: AutoSizeText.rich(
+                      TextSpan(children: [
+                        TextSpan(text: "Don't have an account?"),
+                        TextSpan(text: " "),
+                        TextSpan(text: "Sign Up.", style: TextStyle(color: Theme.of(context).accentColor)),
+                      ]),
+                      minFontSize: 16,
                     ),
                   ),
-                  width: double.infinity,
-                ),
-                elevation: 0.8,
-                highlightElevation: 1.0,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                color: Theme.of(context).accentColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
+                  //
+                  VerticalSpace(height: App.height * 0.04),
+                  //
+                  OAuthWidget(),
+                  //
+                  VerticalSpace(height: App.height * 0.02),
+                  //
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: App.width * 0.12),
+                    child: Row(
+                      children: [
+                        Expanded(child: Divider(thickness: 1.2)),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                          child: AutoSizeText("OR", minFontSize: 13.0),
+                        ),
+                        Expanded(child: Divider(thickness: 1.2)),
+                      ],
+                    ),
+                  ),
+                  //
+                  VerticalSpace(height: App.height * 0.04),
+                  //
+                  LoginForm(),
+                  //
+                  VerticalSpace(height: App.height * 0.05),
+                  //
+                  RaisedButton(
+                    onPressed: () => BlocProvider.of<AuthBloc>(context).add(AuthEvent.signInWithEmailAndPassword()),
+                    child: HorizontalSpace(
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 12.0),
+                          child: AutoSizeText(
+                            "Login",
+                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                            minFontSize: 15.0,
+                          ),
+                        ),
+                      ),
+                      width: double.infinity,
+                    ),
+                    elevation: 0.8,
+                    highlightElevation: 1.0,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    color: Theme.of(context).accentColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                  ),
+                  //
+                  VerticalSpace(height: App.height * 0.15),
+                ],
               ),
-              //
-              VerticalSpace(height: App.height * 0.02),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

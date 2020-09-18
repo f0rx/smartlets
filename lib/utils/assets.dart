@@ -20,6 +20,11 @@ mixin AppAssets {
     fit: BoxFit.contain,
   );
 
+  static SvgPicture doodle = SvgPicture.asset(
+    '$SVG_DIR/doodle.svg',
+    fit: BoxFit.cover,
+  );
+
   static SvgPicture unlockPassword = SvgPicture.asset(
     '$AUTH_SVG_DIR/unlock_password.svg',
     height: App.height * 0.35,

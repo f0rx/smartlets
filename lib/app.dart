@@ -15,9 +15,6 @@ class SmartletsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Precache dependencies & images
-    Helpers.precache(context);
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (_) => getIt<ThemeCubit>()),

@@ -4,8 +4,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/manager/theme/theme.dart';
+import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
 // ignore: non_constant_identifier_names
@@ -60,11 +63,14 @@ class Helpers {
     return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
   }
 
-  static void precache(BuildContext context) {
+  static Future<void> precache(BuildContext context) async {
     // precacheImage(AssetImage("${AppAssets.ON_BOARDING_SVG_DIR}/connect.png"), context);
+    await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder, "${AppAssets.SVG_DIR}/doodle.svg"), context);
   }
 
   final DateTime today = DateTime.now();
+
+  Color get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.88);
 
   /// Current BuildContext
   BuildContext _ctx;
@@ -72,7 +78,7 @@ class Helpers {
   Helpers._();
 
   Widget get circularLoadingOverlay => Container(
-        color: App.theme.primaryColor.withOpacity(0.7),
+        color: App.theme.primaryColor.withOpacity(0.88),
         child: Center(
             child: AdaptiveCircularIndicator(
           width: width * 0.08,

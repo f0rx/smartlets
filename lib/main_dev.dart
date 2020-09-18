@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:smartlets/app.dart';
 import 'package:smartlets/config/.env.dart';
+import 'package:smartlets/utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,9 @@ void main() async {
 
   // Initialize Hydrated storage
   HydratedBloc.storage = await HydratedStorage.build();
+
+  // Precache dependencies & images
+  await Helpers.precache(null);
 
   runApp(SmartletsApp());
 }
