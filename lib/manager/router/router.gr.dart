@@ -452,7 +452,7 @@ class ProfileScreenRouter extends RouterBase {
   final _pagesMap = <Type, AutoRouteFactory>{
     ParentProfileIndex: (data) {
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => ParentProfileIndex(),
+        builder: (context) => ParentProfileIndex().wrappedRoute(context),
         settings: data,
         cupertinoTitle: 'Your Profile',
         maintainState: true,

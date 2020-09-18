@@ -1,7 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
+import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/features/shared/shared.dart';
 import 'package:smartlets/manager/locator/locator.dart';
@@ -9,8 +13,23 @@ import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/vertical_spacer.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
-class ParentProfileIndex extends StatelessWidget {
+class ParentProfileIndex extends StatelessWidget with AutoRouteWrapper {
   final List<ProfileTile> tiles = ProfileTile.list;
+
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<AuthBloc>(),
+      child: BlocBuilder<AuthBloc, AuthState>(
+        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
+        builder: (context, _) => PortalEntry(
+          visible: context.bloc<AuthBloc>().state.isLoading,
+          portal: App.circularLoadingOverlay,
+          child: this,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
