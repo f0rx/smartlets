@@ -31,7 +31,8 @@ const String INVALID_ACTION_CODE = "invalid-action-code";
 /// Thrown if email/password accounts are not enabled. Enable email/password accounts in the Firebase Console, under the Auth tab.
 const String OPERATION_NOT_ALLOWED = "operation-not-allowed";
 
-/// The user must reauthenticate before this operation can be executed.
+/// Thrown if the user's last sign-in time does not meet the security threshold.
+/// Use User.reauthenticateWithCredential to resolve. This does not apply if the user is anonymous.
 const String REQUIRES_RECENT_LOGIN = "requires-recent-login";
 
 /// Thrown when invalid credential is supplied for Authentication
