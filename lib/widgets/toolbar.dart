@@ -2,23 +2,34 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:smartlets/utils/utils.dart';
 
-class AuthAppBar extends AppBar {
+class Toolbar extends AppBar {
   final double height;
 
-  AuthAppBar({
+  Toolbar({
     Key key,
     String title,
     Widget leading,
-    TextStyle titleStyle = const TextStyle(fontWeight: FontWeight.w600),
+    TextStyle titleStyle,
     bool centerTitle = true,
     bool implyLeading = true,
     double elevation = 0.0,
+    double fontSize,
     double height,
     Color backgroundColor = Colors.transparent,
     List<Widget> actions = const [],
   })  : height = height,
         super(
-          title: !title.isNullOrBlank ? AutoSizeText(title, style: titleStyle, wrapWords: false, softWrap: false, maxLines: 1) : null,
+          title: !title.isNullOrBlank
+              ? AutoSizeText(
+                  title,
+                  style: titleStyle ?? !fontSize.isNull && fontSize >= 0.0
+                      ? TextStyle(fontWeight: FontWeight.w600, fontSize: fontSize)
+                      : const TextStyle(fontWeight: FontWeight.w600),
+                  wrapWords: false,
+                  softWrap: false,
+                  maxLines: 1,
+                )
+              : null,
           automaticallyImplyLeading: implyLeading,
           centerTitle: centerTitle,
           elevation: elevation,
@@ -28,7 +39,7 @@ class AuthAppBar extends AppBar {
               ? Tooltip(
                   message: "Back",
                   child: IconButton(
-                    icon: leading ?? Icon(Icons.keyboard_backspace),
+                    icon: leading ?? Icon(Icons.keyboard_backspace_rounded),
                     onPressed: () => navigator.pop(),
                   ),
                 )
