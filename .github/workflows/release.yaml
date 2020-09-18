@@ -84,7 +84,7 @@ jobs:
     needs: build
     env:
       APP_NAME: "Smartlets"
-      SLACK_WEBHOOK: ${{ secrets.TEST_WEBHOOK }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
     steps:
       - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@master
