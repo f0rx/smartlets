@@ -9,6 +9,8 @@ abstract class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.passwordChanged(String password, {FIELD_VALIDATION mode}) = _PasswordChanged;
 
+  const factory AuthEvent.newPasswordChanged(String newPassword, {FIELD_VALIDATION mode}) = _NewPasswordChanged;
+
   const factory AuthEvent.toggledPasswordVisibility() = _ToggledPasswordVisibility;
 
   const factory AuthEvent.toggledSnackBarVisibility([bool value]) = _ToggledSnackBarVisibility;
@@ -17,7 +19,11 @@ abstract class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.createAccountWithEmailAndPassword() = _CreateAccountWithEmailAndPassword;
 
+  const factory AuthEvent.updateProfile() = _UpdateProfile;
+
   const factory AuthEvent.emailPasswordReset() = _EmailPasswordReset;
+
+  const factory AuthEvent.updatePassword() = _UpdatePassword;
 
   const factory AuthEvent.signInWithGoogle([@nullable Object incoming]) = _SignInWithGoogle;
 

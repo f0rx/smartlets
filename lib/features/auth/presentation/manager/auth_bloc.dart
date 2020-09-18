@@ -35,6 +35,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       passwordChanged: (e) async* {
         yield state.copyWith(password: Password(e.password, mode: e.mode));
       },
+      newPasswordChanged: (e) async* {
+        yield state.copyWith(newPassword: Password(e.newPassword, mode: e.mode));
+      },
       toggledPasswordVisibility: (e) async* {
         yield state.copyWith(passwordHidden: !state.passwordHidden);
       },
@@ -46,10 +49,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       createAccountWithEmailAndPassword: (_) async* {
         yield* _mapCreateAccountWithEmailAndPassword(_);
-        await _auth.updateProfileInfo(displayName: state.displayName);
+        await _auth.updateProfile(name: state.displayName);
+      },
+      updateProfile: (_) async* {
+        yield* _mapUpdateProfile(_);
       },
       emailPasswordReset: (e) async* {
         yield* _mapSendPasswordResetEmail(e);
+      },
+      updatePassword: (_) async* {
+        yield* _mapUpdatePassword(_);
       },
       signInWithGoogle: (e) async* {
         final result = await _auth.googleAuthentication(e.incoming);
@@ -151,6 +160,39 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Either<AuthFailure, Unit> failureOrUnit;
 
     if (email.isValid) failureOrUnit = await _auth.sendPasswordResetEmail(email);
+
+    yield state.copyWith(
+      validate: true,
+      authStatus: optionOf(failureOrUnit),
+      snackbarDismissed: false,
+    );
+  }
+
+  Stream<AuthState> _mapUpdateProfile(_UpdateProfile e) async* {
+    DisplayName name = state.displayName;
+    EmailAddress email = state.emailAddress;
+    Either<AuthFailure, Unit> failureOrUnit;
+
+    if (name.isValid && email.isValid)
+      failureOrUnit = await _auth.updateProfile(
+        name: name,
+        email: email,
+        photoURL: null,
+      );
+
+    yield state.copyWith(
+      validate: true,
+      authStatus: optionOf(failureOrUnit),
+      snackbarDismissed: false,
+    );
+  }
+
+  Stream<AuthState> _mapUpdatePassword(_UpdatePassword e) async* {
+    Password _oldPass = state.password;
+    Password _newPass = state.newPassword;
+    Either<AuthFailure, Unit> failureOrUnit;
+
+    if (_oldPass.isValid && _newPass.isValid) failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
 
     yield state.copyWith(
       validate: true,

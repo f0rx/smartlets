@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  Color hexToColor(String hex) => Color(int.parse(hex.substring(1, 7), radix: 16) + 0xFF000000);
+  static Color fromHex(String hex) => Color(int.parse(hex.substring(1, 7), radix: 16) + 0xFF000000);
 
   // App Colors
   static const _primaryPrivate = 0xffE5E5E5;

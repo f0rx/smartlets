@@ -7,6 +7,7 @@ import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/router/export.dart';
 import 'package:smartlets/utils/utils.dart';
+import 'package:smartlets/widgets/widgets.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -14,10 +15,11 @@ class SplashScreen extends StatelessWidget {
     return FutureBuilder<Option<User>>(
       future: Future.delayed(env.splashDuration, () => getIt<AuthFacade>().currentUser),
       builder: (_, snapshot) {
-        getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(
-              () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
-              (_) => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
-            ));
+        if (snapshot.hasData)
+          getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(
+                () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
+                (_) => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
+              ));
 
         return Scaffold(
           backgroundColor: Theme.of(context).accentColor,
@@ -40,8 +42,11 @@ class SplashScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: App.height * 0.02,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation(Colors.white),
+                child: AdaptiveCircularIndicator(
+                  width: App.width * 0.09,
+                  height: App.width * 0.09,
+                  bgColor: Colors.white,
+                  strokeWidth: 2.5,
                 ),
               ),
             ],

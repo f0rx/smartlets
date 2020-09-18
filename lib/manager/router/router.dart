@@ -3,18 +3,113 @@ import 'package:smartlets/features/_404.dart';
 import 'package:smartlets/features/auth/presentation/pages/auth_screens.dart';
 import 'package:smartlets/features/on_boarding/presentation/on_boarding_screen.dart';
 import 'package:smartlets/features/on_boarding/presentation/splash_screen.dart';
-import 'package:smartlets/features/parent/presentation/pages/root_screen.dart';
+import 'package:smartlets/features/parent/presentation/pages/pages.dart';
+import 'package:smartlets/features/parent/presentation/screens/export.dart';
 
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
     AdaptiveRoute(page: SplashScreen, initial: true, maintainState: true),
     AdaptiveRoute(page: OnBoardingScreen, maintainState: true),
-    AdaptiveRoute(page: LoginScreen, maintainState: true),
-    AdaptiveRoute(page: SignupScreen, maintainState: true),
-    AdaptiveRoute(page: ForgotPasswordScreen, maintainState: true),
-    AdaptiveRoute(page: EmailSentScreen, maintainState: true, fullscreenDialog: true),
+
+    /// AUTH SCREENS START ///
+    AdaptiveRoute(path: "/login", page: LoginScreen, cupertinoPageTitle: "Login", maintainState: true),
+    AdaptiveRoute(path: "/register", page: SignupScreen, cupertinoPageTitle: "Sign Up", maintainState: true),
+    AdaptiveRoute(path: "/forgot-password", page: ForgotPasswordScreen, cupertinoPageTitle: "Forgot Password", maintainState: true),
+    AdaptiveRoute(page: EmailSentScreen, cupertinoPageTitle: "Success", maintainState: true, fullscreenDialog: true),
+
+    /// AUTH SCREENS END ///
+    //
+    /// PARENT SCREENS START ////////
     AdaptiveRoute(page: ParentRootScreen, maintainState: true),
-    AdaptiveRoute(path: "*", page: UnknownRoute, maintainState: true),
+    AdaptiveRoute(path: "/payment", page: PaymentScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        cupertinoPageTitle: "Upgrade to PRO",
+        page: PaymentIndexPage,
+        maintainState: true,
+        initial: true,
+      ),
+      AdaptiveRoute(
+        path: "/upgrade",
+        cupertinoPageTitle: "Payment Method",
+        page: PaymentMethodPage,
+        maintainState: true,
+        fullscreenDialog: true,
+      ),
+    ]),
+    //
+    AdaptiveRoute(path: "/child", page: ChildScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: ChildIndexPage,
+        cupertinoPageTitle: "Your Kids",
+        maintainState: true,
+        initial: true,
+      ),
+      AdaptiveRoute(
+        path: "/add-child-page",
+        page: CreateChildAccountPage,
+        cupertinoPageTitle: "Create Child Account",
+        maintainState: true,
+        fullscreenDialog: true,
+      ),
+      AdaptiveRoute(
+        path: "/show",
+        page: ShowChildPage,
+        maintainState: true,
+      ),
+      AdaptiveRoute(
+        path: "/child-courses",
+        page: ChildCoursesPage,
+        cupertinoPageTitle: "Courses",
+        maintainState: true,
+      ),
+      AdaptiveRoute(
+        path: "/child-rewards",
+        page: ChildAwardsPage,
+        cupertinoPageTitle: "Rewards",
+        maintainState: true,
+      ),
+      AdaptiveRoute(
+        path: "/child-projects",
+        page: ChildProjectsPage,
+        cupertinoPageTitle: "Projects",
+        maintainState: true,
+      ),
+      AdaptiveRoute(
+        path: "/child-projects-details",
+        page: ChildProjectDetailsPage,
+        maintainState: true,
+      ),
+    ]),
+    AdaptiveRoute(path: "/notifications", page: NotificationScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: NotificationIndexPage,
+        cupertinoPageTitle: "Notifications",
+        maintainState: true,
+        initial: true,
+      ),
+    ]),
+    AdaptiveRoute(path: "/profile", page: ProfileScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: ParentProfileIndex,
+        cupertinoPageTitle: "Your Profile",
+        maintainState: true,
+        initial: true,
+      ),
+      AdaptiveRoute(
+        path: "/update",
+        page: UpdateParentProfilePage,
+        cupertinoPageTitle: "Update Profile",
+        maintainState: true,
+      ),
+    ]),
+
+    /// PARENT SCREENS END ////////
+    //
+    AdaptiveRoute(path: "*", cupertinoPageTitle: "Error 404", page: UnknownRoute, maintainState: true),
   ],
   generateNavigationHelperExtension: true,
   preferRelativeImports: false,

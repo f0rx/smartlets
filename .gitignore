@@ -32,7 +32,7 @@
 .pub-cache/
 .pub/
 /build/
-/playground/
+/lib/playground/
 
 # Web related
 lib/generated_plugin_registrant.dart

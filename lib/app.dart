@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart' hide Router;
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
-import 'package:smartlets/features/_404.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/router/export.dart';
@@ -16,9 +15,6 @@ class SmartletsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Precache dependencies & images
-    Helpers.precache(context);
-
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (_) => getIt<ThemeCubit>()),
@@ -42,9 +38,6 @@ class SmartletsApp extends StatelessWidget {
                 onTap: () => Helpers.hideKeyboard(context),
                 child: descendant,
               ),
-            ),
-            onUnknownRoute: (settings) => MaterialPageRoute(
-              builder: (_) => UnknownRoute(),
             ),
           ),
         ),
