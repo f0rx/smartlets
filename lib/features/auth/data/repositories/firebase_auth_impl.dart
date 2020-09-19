@@ -10,6 +10,7 @@ import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
+import 'package:smartlets/utils/utils.dart';
 
 import 'auth_repo.dart';
 
@@ -114,6 +115,8 @@ class FirebaseAuthImpl implements AuthFacade {
         return left(AuthFailure.expiredOrInvalidToken(message: "Invalid verification code, please try again."));
       case EMAIL_ALREADY_IN_USE:
         return left(AuthFailure.emailAlreadyInUse());
+      case REQUIRES_RECENT_LOGIN:
+        return left(AuthFailure.expiredOrInvalidToken(message: "Re-authenticate to continue"));
       case TOO_MANY_REQUESTS:
         return left(AuthFailure.tooManyRequests());
       case PROVIDER_ALREADY_LINKED:
@@ -174,12 +177,48 @@ class FirebaseAuthImpl implements AuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> updateProfileInfo({@required DisplayName displayName, String photoUrl}) async {
-    final fullName = displayName.value.getOrElse(() => "");
-    final photo = photoUrl;
+  Future<Either<AuthFailure, Unit>> updateProfile({DisplayName name, EmailAddress email, String photoURL}) async {
+    try {
+      await name?.value?.fold(
+        (_) => throw AuthFailure.unExpectedFailure(message: "Name Field is invalid"),
+        (name) async => await _firebaseAuth.currentUser?.updateProfile(displayName: name),
+      );
+
+      await email?.value?.fold(
+        (_) => throw AuthFailure.unExpectedFailure(message: "Email Field is invalid"),
+        (email) async {
+          // await _firebaseAuth.currentUser?.reauthenticateWithCredential(credential);
+          // TODO: FIX THIS, IT DOESN'T WORK
+          return await _firebaseAuth.currentUser?.updateEmail(email);
+        },
+      );
+
+      if (!photoURL.isNull && photoURL.isNotEmpty) await _firebaseAuth.currentUser?.updateProfile(photoURL: photoURL);
+
+      return right(unit);
+    } on AuthFailure catch (e) {
+      return left(e);
+    } on FirebaseAuthException catch (e) {
+      print("Firebase EX caught  ===> $e");
+      return _handleAuthException(e);
+    } catch (e) {
+      return left(AuthFailure.unknownFailure(message: (e is Exception || e is Error) ? e?.message : null));
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> changePassword({Password oldPassword, Password newPassword}) async {
+    String _oldPassword = oldPassword.getOrCrash;
+    String _newPassword = newPassword.getOrCrash;
 
     try {
-      await _firebaseAuth.currentUser?.updateProfile(displayName: fullName, photoURL: photo);
+      await _firebaseAuth.currentUser?.reauthenticateWithCredential(EmailAuthProvider.credential(
+        email: _firebaseAuth.currentUser?.email,
+        password: _oldPassword,
+      ));
+
+      await _firebaseAuth.currentUser?.updatePassword(_newPassword);
+
       return right(unit);
     } on AuthFailure catch (e) {
       return left(e);

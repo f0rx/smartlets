@@ -7,6 +7,7 @@ abstract class AuthState with _$AuthState {
     @required DisplayName displayName,
     @required EmailAddress emailAddress,
     @required Password password,
+    @required Password newPassword,
     @Default(false) bool isLoading,
     @Default(false) bool validate,
     @Default(true) bool passwordHidden,
@@ -18,5 +19,6 @@ abstract class AuthState with _$AuthState {
         displayName: DisplayName(""),
         emailAddress: EmailAddress(""),
         password: Password(""),
+        newPassword: Password(""),
       );
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
-import 'package:smartlets/features/auth/presentation/widgets/auth_app_bar.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
@@ -51,7 +50,7 @@ class EmailSentScreen extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AuthAppBar(leading: Icon(Icons.close_rounded)),
+      appBar: Toolbar(leading: Icon(Icons.close_rounded)),
       body: Center(
         child: SingleChildScrollView(
           clipBehavior: Clip.antiAliasWithSaveLayer,

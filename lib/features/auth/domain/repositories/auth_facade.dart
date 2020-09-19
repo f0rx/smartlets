@@ -10,11 +10,20 @@ abstract class AuthFacade with FirebaseDepMixin {
 
   Stream<Option<User>> get onAuthStateChanged;
 
-  Future<Either<AuthFailure, Unit>> updateProfileInfo({DisplayName displayName, String photoUrl});
-
   Future<Either<AuthFailure, Unit>> login({@required EmailAddress emailAddress, @required Password password});
 
   Future<Either<AuthFailure, Unit>> createAccount({@required EmailAddress emailAddress, @required Password password});
+
+  Future<Either<AuthFailure, Unit>> updateProfile({
+    DisplayName name,
+    EmailAddress email,
+    String photoURL,
+  });
+
+  Future<Either<AuthFailure, Unit>> changePassword({
+    Password oldPassword,
+    Password newPassword,
+  });
 
   Future<Either<AuthFailure, Unit>> googleAuthentication([Object pendingCredentials]);
 

@@ -4,8 +4,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/manager/theme/theme.dart';
+import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
 // ignore: non_constant_identifier_names
@@ -15,9 +18,9 @@ final log = Log;
 
 ExtendedNavigatorState<RouterBase> get navigator => App.context.navigator;
 
-NavigationHistoryObserver get observer => NavigationHistoryObserver();
+ExtendedNavigatorState<RouterBase> inner(BuildContext context) => ExtendedNavigator.of(context);
 
-typedef WidgetBuilder = Widget Function(BuildContext context);
+NavigationHistoryObserver get observer => NavigationHistoryObserver();
 
 // ignore: avoid_positional_boolean_parameters
 void throwIf(bool condition, Object error) {
@@ -37,6 +40,7 @@ class Helpers {
   static double buttonRadius = 12.0;
   static double buttonVerticalPadding = App.mediaQuery.size.width * 0.04;
   static double horizontalSpacing = App.mediaQuery.size.width * 0.04;
+  static Duration willPopTimeout = const Duration(seconds: 3);
 
   static String writeNotNull(String other) {
     if (other.trim() != null || other.trim().isNotEmpty) {
@@ -59,11 +63,14 @@ class Helpers {
     return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
   }
 
-  static void precache(BuildContext context) {
+  static Future<void> precache(BuildContext context) async {
     // precacheImage(AssetImage("${AppAssets.ON_BOARDING_SVG_DIR}/connect.png"), context);
+    await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder, "${AppAssets.SVG_DIR}/doodle.svg"), context);
   }
 
   final DateTime today = DateTime.now();
+
+  Color get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.88);
 
   /// Current BuildContext
   BuildContext _ctx;
@@ -71,7 +78,7 @@ class Helpers {
   Helpers._();
 
   Widget get circularLoadingOverlay => Container(
-        color: App.theme.primaryColor.withOpacity(0.7),
+        color: App.theme.primaryColor.withOpacity(0.88),
         child: Center(
             child: AdaptiveCircularIndicator(
           width: width * 0.08,
@@ -184,13 +191,36 @@ class Helpers {
     return global(id).currentState.removeRoute(route);
   }
 
-  E buildFor<E>({
-    BuildContext context,
-    E Function(BuildContext context) ios,
-    E Function(BuildContext context) android,
+  void forceAppUpdate() {
+    void rebuild(Element el) {
+      el.markNeedsBuild();
+      el.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
+  }
+
+  PageRoute<T> adaptivePageRoute<T>({
+    String title,
+    @required WidgetBuilder builder,
+    RouteSettings settings,
+    bool maintainState = true,
+    bool fullscreenDialog = false,
   }) {
-    if (Platform.isIOS) return ios(context ?? App.context);
-    return android(context ?? App.context);
+    return Platform.isIOS
+        ? CupertinoPageRoute(
+            title: title,
+            builder: builder,
+            settings: settings,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+          )
+        : MaterialPageRoute(
+            builder: builder,
+            settings: settings,
+            maintainState: maintainState,
+            fullscreenDialog: fullscreenDialog,
+          );
   }
 
   Future<U> showAlertDialog<U>({
