@@ -18,14 +18,12 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
     return BlocProvider(
       lazy: true,
       create: (_) => getIt<AuthBloc>(),
-      child: Portal(
-        child: BlocBuilder<AuthBloc, AuthState>(
-          buildWhen: (prev, current) => prev.isLoading != current.isLoading,
-          builder: (context, _) => PortalEntry(
-            visible: context.bloc<AuthBloc>().state.isLoading,
-            portal: App.circularLoadingOverlay,
-            child: this,
-          ),
+      child: BlocBuilder<AuthBloc, AuthState>(
+        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
+        builder: (context, _) => PortalEntry(
+          visible: context.bloc<AuthBloc>().state.isLoading,
+          portal: App.circularLoadingOverlay,
+          child: this,
         ),
       ),
     );
