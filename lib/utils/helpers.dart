@@ -78,7 +78,7 @@ class Helpers {
   Helpers._();
 
   Widget get circularLoadingOverlay => Container(
-        color: App.theme.primaryColor.withOpacity(0.88),
+        color: App.theme.primaryColor.withOpacity(0.65),
         child: Center(
             child: AdaptiveCircularIndicator(
           width: width * 0.08,
