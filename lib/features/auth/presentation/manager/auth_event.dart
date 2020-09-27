@@ -7,6 +7,8 @@ abstract class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.emailChanged(String email) = _EmailChanged;
 
+  const factory AuthEvent.parentEmailChanged(String email) = _ParentEmailChanged;
+
   const factory AuthEvent.passwordChanged(String password, {FIELD_VALIDATION mode}) = _PasswordChanged;
 
   const factory AuthEvent.newPasswordChanged(String newPassword, {FIELD_VALIDATION mode}) = _NewPasswordChanged;

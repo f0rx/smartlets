@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/manager/theme/theme.dart';
 import 'package:smartlets/utils/utils.dart';
@@ -66,6 +67,22 @@ class Helpers {
   static Future<void> precache(BuildContext context) async {
     // precacheImage(AssetImage("${AppAssets.ON_BOARDING_SVG_DIR}/connect.png"), context);
     await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder, "${AppAssets.SVG_DIR}/doodle.svg"), context);
+  }
+
+  static Future<bool> willPop(DateTime current) {
+    DateTime now = DateTime.now();
+    if (current == null || now.difference(current) > Helpers.willPopTimeout) {
+      current = now;
+      Fluttertoast.showToast(
+        msg: "Tap again to exit",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      return Future.value(false);
+    } else {
+      Fluttertoast.cancel();
+      return Future.value(true);
+    }
   }
 
   final DateTime today = DateTime.now();

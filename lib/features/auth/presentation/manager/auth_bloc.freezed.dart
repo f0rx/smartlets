@@ -27,6 +27,13 @@ class _$AuthEventTearOff {
   }
 
 // ignore: unused_element
+  _ParentEmailChanged parentEmailChanged(String email) {
+    return _ParentEmailChanged(
+      email,
+    );
+  }
+
+// ignore: unused_element
   _PasswordChanged passwordChanged(String password, {FIELD_VALIDATION mode}) {
     return _PasswordChanged(
       password,
@@ -127,6 +134,7 @@ mixin _$AuthEvent {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -149,6 +157,7 @@ mixin _$AuthEvent {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -170,6 +179,7 @@ mixin _$AuthEvent {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -194,6 +204,7 @@ mixin _$AuthEvent {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -285,6 +296,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -305,6 +317,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -327,6 +340,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -356,6 +370,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -378,6 +393,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -400,6 +416,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -490,6 +507,7 @@ class _$_EmailChanged implements _EmailChanged {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -510,6 +528,7 @@ class _$_EmailChanged implements _EmailChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -532,6 +551,7 @@ class _$_EmailChanged implements _EmailChanged {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -561,6 +581,7 @@ class _$_EmailChanged implements _EmailChanged {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -583,6 +604,7 @@ class _$_EmailChanged implements _EmailChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -605,6 +627,7 @@ class _$_EmailChanged implements _EmailChanged {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -635,6 +658,218 @@ abstract class _EmailChanged implements AuthEvent {
 
   String get email;
   _$EmailChangedCopyWith<_EmailChanged> get copyWith;
+}
+
+abstract class _$ParentEmailChangedCopyWith<$Res> {
+  factory _$ParentEmailChangedCopyWith(
+          _ParentEmailChanged value, $Res Function(_ParentEmailChanged) then) =
+      __$ParentEmailChangedCopyWithImpl<$Res>;
+  $Res call({String email});
+}
+
+class __$ParentEmailChangedCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res>
+    implements _$ParentEmailChangedCopyWith<$Res> {
+  __$ParentEmailChangedCopyWithImpl(
+      _ParentEmailChanged _value, $Res Function(_ParentEmailChanged) _then)
+      : super(_value, (v) => _then(v as _ParentEmailChanged));
+
+  @override
+  _ParentEmailChanged get _value => super._value as _ParentEmailChanged;
+
+  @override
+  $Res call({
+    Object email = freezed,
+  }) {
+    return _then(_ParentEmailChanged(
+      email == freezed ? _value.email : email as String,
+    ));
+  }
+}
+
+class _$_ParentEmailChanged implements _ParentEmailChanged {
+  const _$_ParentEmailChanged(this.email) : assert(email != null);
+
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'AuthEvent.parentEmailChanged(email: $email)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ParentEmailChanged &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(email);
+
+  @override
+  _$ParentEmailChangedCopyWith<_ParentEmailChanged> get copyWith =>
+      __$ParentEmailChangedCopyWithImpl<_ParentEmailChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result displayNameChanged(String input),
+    @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
+    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+    @required
+        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required Result toggledPasswordVisibility(),
+    @required Result toggledSnackBarVisibility(bool value),
+    @required Result signInWithEmailAndPassword(),
+    @required Result createAccountWithEmailAndPassword(),
+    @required Result updateProfile(),
+    @required Result emailPasswordReset(),
+    @required Result updatePassword(),
+    @required Result signInWithGoogle(@nullable Object incoming),
+    @required Result signInWithFacebook(@nullable Object incoming),
+    @required Result signInWithTwitter(@nullable Object incoming),
+    @required
+        Result signInWithCredentials(@nullable Object credential,
+            @nullable AuthProvider provider, @nullable Object incoming),
+    @required Result signOut(),
+  }) {
+    assert(displayNameChanged != null);
+    assert(emailChanged != null);
+    assert(parentEmailChanged != null);
+    assert(passwordChanged != null);
+    assert(newPasswordChanged != null);
+    assert(toggledPasswordVisibility != null);
+    assert(toggledSnackBarVisibility != null);
+    assert(signInWithEmailAndPassword != null);
+    assert(createAccountWithEmailAndPassword != null);
+    assert(updateProfile != null);
+    assert(emailPasswordReset != null);
+    assert(updatePassword != null);
+    assert(signInWithGoogle != null);
+    assert(signInWithFacebook != null);
+    assert(signInWithTwitter != null);
+    assert(signInWithCredentials != null);
+    assert(signOut != null);
+    return parentEmailChanged(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result displayNameChanged(String input),
+    Result emailChanged(String email),
+    Result parentEmailChanged(String email),
+    Result passwordChanged(String password, FIELD_VALIDATION mode),
+    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    Result toggledPasswordVisibility(),
+    Result toggledSnackBarVisibility(bool value),
+    Result signInWithEmailAndPassword(),
+    Result createAccountWithEmailAndPassword(),
+    Result updateProfile(),
+    Result emailPasswordReset(),
+    Result updatePassword(),
+    Result signInWithGoogle(@nullable Object incoming),
+    Result signInWithFacebook(@nullable Object incoming),
+    Result signInWithTwitter(@nullable Object incoming),
+    Result signInWithCredentials(@nullable Object credential,
+        @nullable AuthProvider provider, @nullable Object incoming),
+    Result signOut(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (parentEmailChanged != null) {
+      return parentEmailChanged(email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result displayNameChanged(_DisplayNameChanged value),
+    @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
+    @required Result passwordChanged(_PasswordChanged value),
+    @required Result newPasswordChanged(_NewPasswordChanged value),
+    @required
+        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    @required
+        Result toggledSnackBarVisibility(_ToggledSnackBarVisibility value),
+    @required
+        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    @required
+        Result createAccountWithEmailAndPassword(
+            _CreateAccountWithEmailAndPassword value),
+    @required Result updateProfile(_UpdateProfile value),
+    @required Result emailPasswordReset(_EmailPasswordReset value),
+    @required Result updatePassword(_UpdatePassword value),
+    @required Result signInWithGoogle(_SignInWithGoogle value),
+    @required Result signInWithFacebook(_SignInWithFacebook value),
+    @required Result signInWithTwitter(_SignInWithTwitter value),
+    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required Result signOut(_SignOut value),
+  }) {
+    assert(displayNameChanged != null);
+    assert(emailChanged != null);
+    assert(parentEmailChanged != null);
+    assert(passwordChanged != null);
+    assert(newPasswordChanged != null);
+    assert(toggledPasswordVisibility != null);
+    assert(toggledSnackBarVisibility != null);
+    assert(signInWithEmailAndPassword != null);
+    assert(createAccountWithEmailAndPassword != null);
+    assert(updateProfile != null);
+    assert(emailPasswordReset != null);
+    assert(updatePassword != null);
+    assert(signInWithGoogle != null);
+    assert(signInWithFacebook != null);
+    assert(signInWithTwitter != null);
+    assert(signInWithCredentials != null);
+    assert(signOut != null);
+    return parentEmailChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result displayNameChanged(_DisplayNameChanged value),
+    Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
+    Result passwordChanged(_PasswordChanged value),
+    Result newPasswordChanged(_NewPasswordChanged value),
+    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    Result toggledSnackBarVisibility(_ToggledSnackBarVisibility value),
+    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    Result createAccountWithEmailAndPassword(
+        _CreateAccountWithEmailAndPassword value),
+    Result updateProfile(_UpdateProfile value),
+    Result emailPasswordReset(_EmailPasswordReset value),
+    Result updatePassword(_UpdatePassword value),
+    Result signInWithGoogle(_SignInWithGoogle value),
+    Result signInWithFacebook(_SignInWithFacebook value),
+    Result signInWithTwitter(_SignInWithTwitter value),
+    Result signInWithCredentials(_SignInWithCredentials value),
+    Result signOut(_SignOut value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (parentEmailChanged != null) {
+      return parentEmailChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ParentEmailChanged implements AuthEvent {
+  const factory _ParentEmailChanged(String email) = _$_ParentEmailChanged;
+
+  String get email;
+  _$ParentEmailChangedCopyWith<_ParentEmailChanged> get copyWith;
 }
 
 abstract class _$PasswordChangedCopyWith<$Res> {
@@ -705,6 +940,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -725,6 +961,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -747,6 +984,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -776,6 +1014,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -798,6 +1037,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -820,6 +1060,7 @@ class _$_PasswordChanged implements _PasswordChanged {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -923,6 +1164,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -943,6 +1185,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -965,6 +1208,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -994,6 +1238,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -1016,6 +1261,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1038,6 +1284,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -1111,6 +1358,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -1131,6 +1379,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1153,6 +1402,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -1182,6 +1432,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -1204,6 +1455,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1226,6 +1478,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -1317,6 +1570,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -1337,6 +1591,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1359,6 +1614,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -1388,6 +1644,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -1410,6 +1667,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1432,6 +1690,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -1505,6 +1764,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -1525,6 +1785,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1547,6 +1808,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -1576,6 +1838,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -1598,6 +1861,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1620,6 +1884,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -1692,6 +1957,7 @@ class _$_CreateAccountWithEmailAndPassword
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -1712,6 +1978,7 @@ class _$_CreateAccountWithEmailAndPassword
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1734,6 +2001,7 @@ class _$_CreateAccountWithEmailAndPassword
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -1763,6 +2031,7 @@ class _$_CreateAccountWithEmailAndPassword
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -1785,6 +2054,7 @@ class _$_CreateAccountWithEmailAndPassword
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1807,6 +2077,7 @@ class _$_CreateAccountWithEmailAndPassword
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -1874,6 +2145,7 @@ class _$_UpdateProfile implements _UpdateProfile {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -1894,6 +2166,7 @@ class _$_UpdateProfile implements _UpdateProfile {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1916,6 +2189,7 @@ class _$_UpdateProfile implements _UpdateProfile {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -1945,6 +2219,7 @@ class _$_UpdateProfile implements _UpdateProfile {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -1967,6 +2242,7 @@ class _$_UpdateProfile implements _UpdateProfile {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -1989,6 +2265,7 @@ class _$_UpdateProfile implements _UpdateProfile {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -2056,6 +2333,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -2076,6 +2354,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2098,6 +2377,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -2127,6 +2407,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -2149,6 +2430,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2171,6 +2453,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -2237,6 +2520,7 @@ class _$_UpdatePassword implements _UpdatePassword {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -2257,6 +2541,7 @@ class _$_UpdatePassword implements _UpdatePassword {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2279,6 +2564,7 @@ class _$_UpdatePassword implements _UpdatePassword {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -2308,6 +2594,7 @@ class _$_UpdatePassword implements _UpdatePassword {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -2330,6 +2617,7 @@ class _$_UpdatePassword implements _UpdatePassword {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2352,6 +2640,7 @@ class _$_UpdatePassword implements _UpdatePassword {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -2442,6 +2731,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -2462,6 +2752,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2484,6 +2775,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -2513,6 +2805,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -2535,6 +2828,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2557,6 +2851,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -2652,6 +2947,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -2672,6 +2968,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2694,6 +2991,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -2723,6 +3021,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -2745,6 +3044,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2767,6 +3067,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -2862,6 +3163,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -2882,6 +3184,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2904,6 +3207,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -2933,6 +3237,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -2955,6 +3260,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -2977,6 +3283,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -3099,6 +3406,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -3119,6 +3427,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -3141,6 +3450,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -3170,6 +3480,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -3192,6 +3503,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -3214,6 +3526,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -3289,6 +3602,7 @@ class _$_SignOut implements _SignOut {
   Result when<Result extends Object>({
     @required Result displayNameChanged(String input),
     @required Result emailChanged(String email),
+    @required Result parentEmailChanged(String email),
     @required Result passwordChanged(String password, FIELD_VALIDATION mode),
     @required
         Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
@@ -3309,6 +3623,7 @@ class _$_SignOut implements _SignOut {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -3331,6 +3646,7 @@ class _$_SignOut implements _SignOut {
   Result maybeWhen<Result extends Object>({
     Result displayNameChanged(String input),
     Result emailChanged(String email),
+    Result parentEmailChanged(String email),
     Result passwordChanged(String password, FIELD_VALIDATION mode),
     Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
     Result toggledPasswordVisibility(),
@@ -3360,6 +3676,7 @@ class _$_SignOut implements _SignOut {
   Result map<Result extends Object>({
     @required Result displayNameChanged(_DisplayNameChanged value),
     @required Result emailChanged(_EmailChanged value),
+    @required Result parentEmailChanged(_ParentEmailChanged value),
     @required Result passwordChanged(_PasswordChanged value),
     @required Result newPasswordChanged(_NewPasswordChanged value),
     @required
@@ -3382,6 +3699,7 @@ class _$_SignOut implements _SignOut {
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
+    assert(parentEmailChanged != null);
     assert(passwordChanged != null);
     assert(newPasswordChanged != null);
     assert(toggledPasswordVisibility != null);
@@ -3404,6 +3722,7 @@ class _$_SignOut implements _SignOut {
   Result maybeMap<Result extends Object>({
     Result displayNameChanged(_DisplayNameChanged value),
     Result emailChanged(_EmailChanged value),
+    Result parentEmailChanged(_ParentEmailChanged value),
     Result passwordChanged(_PasswordChanged value),
     Result newPasswordChanged(_NewPasswordChanged value),
     Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
@@ -3440,8 +3759,10 @@ class _$AuthStateTearOff {
   _AuthState call(
       {@required DisplayName displayName,
       @required EmailAddress emailAddress,
+      @required EmailAddress parentEmailAddress,
       @required Password password,
       @required Password newPassword,
+      Subscription subscription,
       bool isLoading = false,
       bool validate = false,
       bool passwordHidden = true,
@@ -3450,8 +3771,10 @@ class _$AuthStateTearOff {
     return _AuthState(
       displayName: displayName,
       emailAddress: emailAddress,
+      parentEmailAddress: parentEmailAddress,
       password: password,
       newPassword: newPassword,
+      subscription: subscription,
       isLoading: isLoading,
       validate: validate,
       passwordHidden: passwordHidden,
@@ -3467,8 +3790,10 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   DisplayName get displayName;
   EmailAddress get emailAddress;
+  EmailAddress get parentEmailAddress;
   Password get password;
   Password get newPassword;
+  Subscription get subscription;
   bool get isLoading;
   bool get validate;
   bool get passwordHidden;
@@ -3484,8 +3809,10 @@ abstract class $AuthStateCopyWith<$Res> {
   $Res call(
       {DisplayName displayName,
       EmailAddress emailAddress,
+      EmailAddress parentEmailAddress,
       Password password,
       Password newPassword,
+      Subscription subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -3504,8 +3831,10 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call({
     Object displayName = freezed,
     Object emailAddress = freezed,
+    Object parentEmailAddress = freezed,
     Object password = freezed,
     Object newPassword = freezed,
+    Object subscription = freezed,
     Object isLoading = freezed,
     Object validate = freezed,
     Object passwordHidden = freezed,
@@ -3519,9 +3848,15 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress as EmailAddress,
+      parentEmailAddress: parentEmailAddress == freezed
+          ? _value.parentEmailAddress
+          : parentEmailAddress as EmailAddress,
       password: password == freezed ? _value.password : password as Password,
       newPassword:
           newPassword == freezed ? _value.newPassword : newPassword as Password,
+      subscription: subscription == freezed
+          ? _value.subscription
+          : subscription as Subscription,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       validate: validate == freezed ? _value.validate : validate as bool,
       passwordHidden: passwordHidden == freezed
@@ -3545,8 +3880,10 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call(
       {DisplayName displayName,
       EmailAddress emailAddress,
+      EmailAddress parentEmailAddress,
       Password password,
       Password newPassword,
+      Subscription subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -3566,8 +3903,10 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object displayName = freezed,
     Object emailAddress = freezed,
+    Object parentEmailAddress = freezed,
     Object password = freezed,
     Object newPassword = freezed,
+    Object subscription = freezed,
     Object isLoading = freezed,
     Object validate = freezed,
     Object passwordHidden = freezed,
@@ -3581,9 +3920,15 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress as EmailAddress,
+      parentEmailAddress: parentEmailAddress == freezed
+          ? _value.parentEmailAddress
+          : parentEmailAddress as EmailAddress,
       password: password == freezed ? _value.password : password as Password,
       newPassword:
           newPassword == freezed ? _value.newPassword : newPassword as Password,
+      subscription: subscription == freezed
+          ? _value.subscription
+          : subscription as Subscription,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       validate: validate == freezed ? _value.validate : validate as bool,
       passwordHidden: passwordHidden == freezed
@@ -3603,8 +3948,10 @@ class _$_AuthState implements _AuthState {
   const _$_AuthState(
       {@required this.displayName,
       @required this.emailAddress,
+      @required this.parentEmailAddress,
       @required this.password,
       @required this.newPassword,
+      this.subscription,
       this.isLoading = false,
       this.validate = false,
       this.passwordHidden = true,
@@ -3612,6 +3959,7 @@ class _$_AuthState implements _AuthState {
       this.snackbarDismissed = true})
       : assert(displayName != null),
         assert(emailAddress != null),
+        assert(parentEmailAddress != null),
         assert(password != null),
         assert(newPassword != null),
         assert(isLoading != null),
@@ -3625,9 +3973,13 @@ class _$_AuthState implements _AuthState {
   @override
   final EmailAddress emailAddress;
   @override
+  final EmailAddress parentEmailAddress;
+  @override
   final Password password;
   @override
   final Password newPassword;
+  @override
+  final Subscription subscription;
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
@@ -3646,7 +3998,7 @@ class _$_AuthState implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(displayName: $displayName, emailAddress: $emailAddress, password: $password, newPassword: $newPassword, isLoading: $isLoading, validate: $validate, passwordHidden: $passwordHidden, authStatus: $authStatus, snackbarDismissed: $snackbarDismissed)';
+    return 'AuthState(displayName: $displayName, emailAddress: $emailAddress, parentEmailAddress: $parentEmailAddress, password: $password, newPassword: $newPassword, subscription: $subscription, isLoading: $isLoading, validate: $validate, passwordHidden: $passwordHidden, authStatus: $authStatus, snackbarDismissed: $snackbarDismissed)';
   }
 
   @override
@@ -3659,12 +4011,18 @@ class _$_AuthState implements _AuthState {
             (identical(other.emailAddress, emailAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.emailAddress, emailAddress)) &&
+            (identical(other.parentEmailAddress, parentEmailAddress) ||
+                const DeepCollectionEquality()
+                    .equals(other.parentEmailAddress, parentEmailAddress)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
             (identical(other.newPassword, newPassword) ||
                 const DeepCollectionEquality()
                     .equals(other.newPassword, newPassword)) &&
+            (identical(other.subscription, subscription) ||
+                const DeepCollectionEquality()
+                    .equals(other.subscription, subscription)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
@@ -3687,8 +4045,10 @@ class _$_AuthState implements _AuthState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(emailAddress) ^
+      const DeepCollectionEquality().hash(parentEmailAddress) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(newPassword) ^
+      const DeepCollectionEquality().hash(subscription) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(validate) ^
       const DeepCollectionEquality().hash(passwordHidden) ^
@@ -3704,8 +4064,10 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {@required DisplayName displayName,
       @required EmailAddress emailAddress,
+      @required EmailAddress parentEmailAddress,
       @required Password password,
       @required Password newPassword,
+      Subscription subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -3717,9 +4079,13 @@ abstract class _AuthState implements AuthState {
   @override
   EmailAddress get emailAddress;
   @override
+  EmailAddress get parentEmailAddress;
+  @override
   Password get password;
   @override
   Password get newPassword;
+  @override
+  Subscription get subscription;
   @override
   bool get isLoading;
   @override

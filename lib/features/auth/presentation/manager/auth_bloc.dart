@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
+import 'package:smartlets/features/on_boarding/models/subscription.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -31,6 +32,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       emailChanged: (e) async* {
         yield state.copyWith(emailAddress: EmailAddress(e.email));
+      },
+      parentEmailChanged: (e) async* {
+        yield state.copyWith(parentEmailAddress: EmailAddress(e.email));
       },
       passwordChanged: (e) async* {
         yield state.copyWith(password: Password(e.password, mode: e.mode));

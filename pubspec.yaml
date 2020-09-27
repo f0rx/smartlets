@@ -71,6 +71,8 @@ dependencies:
   # Use this package if you need more
   # customization when notifying your user.
   flushbar: ^1.10.4
+  # Toast Library for Flutter
+  fluttertoast: ^7.1.1
   get: ^3.10.2
 
 dev_dependencies:

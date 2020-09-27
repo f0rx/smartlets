@@ -13,7 +13,7 @@ class Subscription extends EnumClass {
 
   static Subscription valueOf(String name) => _$valueOf(name);
 
-  T fold<T>(T Function() parent, T Function() student) {
+  T fold<T>({T Function() parent, T Function() student}) {
     switch (name) {
       case "parent":
         return parent != null ? parent() : null;

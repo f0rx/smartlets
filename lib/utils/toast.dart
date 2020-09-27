@@ -31,6 +31,8 @@ class Toast {
       gravity: gravity,
     );
   }
+
+  static void cancel() => _ToastView.dismiss();
 }
 
 class DecoratedToast extends StatelessWidget {
