@@ -23,6 +23,8 @@ class Smartlets {
 
   static const IconData bell_outlined = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData bell_filled = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bookmark_outline = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bookmark = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData group_users_outlined = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData kids_filled = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData kids_outlined = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -30,9 +32,19 @@ class Smartlets {
   static const IconData kids = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData search = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData silverware = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData account = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData account_outline = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pay_outlined_1 = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pay_filled = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pay_outlined = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user_outlined = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user_filled = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData check_all = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData game_pad_filled = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData game_pad_outlined = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData home_filled = IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData home_outlined = IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData book_filled = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData book_outlined = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData book_stack_filled = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
