@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' hide State;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
+import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/router/export.dart';
@@ -15,10 +17,14 @@ class SplashScreen extends StatelessWidget {
     return FutureBuilder<Option<User>>(
       future: Future.delayed(env.splashDuration, () => getIt<AuthFacade>().currentUser),
       builder: (_, snapshot) {
+        // getIt<AuthFacade>().signOut();
         if (snapshot.hasData)
           getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(
                 () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
-                (_) => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
+                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription.fold(
+                      parent: () => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
+                      student: () => navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false),
+                    ),
               ));
 
         return Scaffold(

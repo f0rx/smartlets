@@ -5,6 +5,8 @@ import 'package:smartlets/features/on_boarding/presentation/on_boarding_screen.d
 import 'package:smartlets/features/on_boarding/presentation/splash_screen.dart';
 import 'package:smartlets/features/parent/presentation/pages/pages.dart';
 import 'package:smartlets/features/parent/presentation/screens/export.dart';
+import 'package:smartlets/features/student/presentation/pages/student_pages.dart';
+import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
@@ -108,6 +110,58 @@ import 'package:smartlets/features/parent/presentation/screens/export.dart';
     ]),
 
     /// PARENT SCREENS END ////////
+    ///
+    ///
+    /// STUDENT SCREENS START ////////
+    AdaptiveRoute(path: "/students", page: StudentRootScreen, maintainState: true),
+    AdaptiveRoute(path: "/students/home", page: StudentHomeScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: StudentHomeIndexPage,
+        cupertinoPageTitle: "Home",
+        maintainState: true,
+      ),
+      AdaptiveRoute(
+        path: "/category_detail",
+        page: CategoryDetailPage,
+        cupertinoPageTitle: "Category Detail",
+        maintainState: true,
+      ),
+    ]),
+    AdaptiveRoute(path: "/students/courses", page: StudentCoursesScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: CoursesIndexPage,
+        cupertinoPageTitle: "My Course",
+        maintainState: true,
+      ),
+    ]),
+    AdaptiveRoute(path: "/students/games", page: GamesScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: GamesIndexPage,
+        cupertinoPageTitle: "Games",
+        maintainState: true,
+      ),
+    ]),
+    AdaptiveRoute(path: "/students/profile", page: StudentProfileScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        path: "/",
+        page: StudentProfileIndexPage,
+        cupertinoPageTitle: "Profile",
+        maintainState: true,
+      ),
+      AdaptiveRoute(
+        path: "/profile/update",
+        page: StudentProfileUpdatePage,
+        cupertinoPageTitle: "Update Profile",
+        maintainState: true,
+      ),
+    ]),
+
+    /// STUDENT SCREENS END ////////
+    //
+    AdaptiveRoute(page: CourseDetailScreen, maintainState: true),
     //
     AdaptiveRoute(path: "*", cupertinoPageTitle: "Error 404", page: UnknownRoute, maintainState: true),
   ],
