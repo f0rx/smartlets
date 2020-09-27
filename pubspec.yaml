@@ -23,7 +23,7 @@ dependencies:
   # Firebase authentication
   firebase_auth: ^0.18.0+1
   # Google services & Authentication
-  google_sign_in: ^4.5.3
+  google_sign_in: ^4.5.4
   # Customize App font
   google_fonts: ^1.1.0
   # A Flutter plugin to use the Cloud Firestore API.
@@ -51,7 +51,7 @@ dependencies:
   # Functional Programming
   dartz: ^0.9.1
   # For regular Unions
-  freezed_annotation: ^0.11.0+1
+  freezed_annotation: ^0.12.0
   # For generating unique UUIDs
   uuid: ^2.2.2
   # Flutter widget that automatically resizes text to fit perfectly within its bounds
@@ -73,6 +73,8 @@ dependencies:
   flushbar: ^1.10.4
   # Toast Library for Flutter
   fluttertoast: ^7.1.1
+  # A Flutter package for easy implementation of fluid navigation bar.
+  curved_navigation_bar: ^0.3.4
   get: ^3.10.2
 
 dev_dependencies:
