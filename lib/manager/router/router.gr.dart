@@ -15,6 +15,8 @@ import 'package:smartlets/features/on_boarding/presentation/splash_screen.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/features/parent/presentation/pages/pages.dart';
 import 'package:smartlets/features/parent/presentation/screens/export.dart';
+import 'package:smartlets/features/student/presentation/pages/student_pages.dart';
+import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
 class Routes {
   static const String splashScreen = '/';
@@ -28,6 +30,12 @@ class Routes {
   static const String childScreen = '/child';
   static const String notificationScreen = '/notifications';
   static const String profileScreen = '/profile';
+  static const String studentRootScreen = '/students';
+  static const String studentHomeScreen = '/students/home';
+  static const String studentCoursesScreen = '/students/courses';
+  static const String gamesScreen = '/students/games';
+  static const String studentProfileScreen = '/students/profile';
+  static const String courseDetailScreen = '/course-detail-screen';
   static const String unknownRoute = '*';
   static const all = <String>{
     splashScreen,
@@ -41,6 +49,12 @@ class Routes {
     childScreen,
     notificationScreen,
     profileScreen,
+    studentRootScreen,
+    studentHomeScreen,
+    studentCoursesScreen,
+    gamesScreen,
+    studentProfileScreen,
+    courseDetailScreen,
     unknownRoute,
   };
 }
@@ -76,6 +90,28 @@ class Router extends RouterBase {
       page: ProfileScreen,
       generator: ProfileScreenRouter(),
     ),
+    RouteDef(Routes.studentRootScreen, page: StudentRootScreen),
+    RouteDef(
+      Routes.studentHomeScreen,
+      page: StudentHomeScreen,
+      generator: StudentHomeScreenRouter(),
+    ),
+    RouteDef(
+      Routes.studentCoursesScreen,
+      page: StudentCoursesScreen,
+      generator: StudentCoursesScreenRouter(),
+    ),
+    RouteDef(
+      Routes.gamesScreen,
+      page: GamesScreen,
+      generator: GamesScreenRouter(),
+    ),
+    RouteDef(
+      Routes.studentProfileScreen,
+      page: StudentProfileScreen,
+      generator: StudentProfileScreenRouter(),
+    ),
+    RouteDef(Routes.courseDetailScreen, page: CourseDetailScreen),
     RouteDef(Routes.unknownRoute, page: UnknownRoute),
   ];
   @override
@@ -173,6 +209,48 @@ class Router extends RouterBase {
         maintainState: true,
       );
     },
+    StudentRootScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentRootScreen().wrappedRoute(context),
+        settings: data,
+        maintainState: true,
+      );
+    },
+    StudentHomeScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentHomeScreen(),
+        settings: data,
+        maintainState: true,
+      );
+    },
+    StudentCoursesScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentCoursesScreen(),
+        settings: data,
+        maintainState: true,
+      );
+    },
+    GamesScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => GamesScreen(),
+        settings: data,
+        maintainState: true,
+      );
+    },
+    StudentProfileScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentProfileScreen(),
+        settings: data,
+        maintainState: true,
+      );
+    },
+    CourseDetailScreen: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => CourseDetailScreen(),
+        settings: data,
+        maintainState: true,
+      );
+    },
     UnknownRoute: (data) {
       return buildAdaptivePageRoute<dynamic>(
         builder: (context) => UnknownRoute(),
@@ -191,13 +269,15 @@ class Router extends RouterBase {
 extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushSplashScreen() => push<dynamic>(Routes.splashScreen);
 
-  Future<dynamic> pushOnBoardingScreen() => push<dynamic>(Routes.onBoardingScreen);
+  Future<dynamic> pushOnBoardingScreen() =>
+      push<dynamic>(Routes.onBoardingScreen);
 
   Future<dynamic> pushLoginScreen() => push<dynamic>(Routes.loginScreen);
 
   Future<dynamic> pushSignupScreen() => push<dynamic>(Routes.signupScreen);
 
-  Future<dynamic> pushForgotPasswordScreen() => push<dynamic>(Routes.forgotPasswordScreen);
+  Future<dynamic> pushForgotPasswordScreen() =>
+      push<dynamic>(Routes.forgotPasswordScreen);
 
   Future<dynamic> pushEmailSentScreen({
     Key key,
@@ -222,15 +302,34 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
             onTap: onTap),
       );
 
-  Future<dynamic> pushParentRootScreen() => push<dynamic>(Routes.parentRootScreen);
+  Future<dynamic> pushParentRootScreen() =>
+      push<dynamic>(Routes.parentRootScreen);
 
   Future<dynamic> pushPaymentScreen() => push<dynamic>(Routes.paymentScreen);
 
   Future<dynamic> pushChildScreen() => push<dynamic>(Routes.childScreen);
 
-  Future<dynamic> pushNotificationScreen() => push<dynamic>(Routes.notificationScreen);
+  Future<dynamic> pushNotificationScreen() =>
+      push<dynamic>(Routes.notificationScreen);
 
   Future<dynamic> pushProfileScreen() => push<dynamic>(Routes.profileScreen);
+
+  Future<dynamic> pushStudentRootScreen() =>
+      push<dynamic>(Routes.studentRootScreen);
+
+  Future<dynamic> pushStudentHomeScreen() =>
+      push<dynamic>(Routes.studentHomeScreen);
+
+  Future<dynamic> pushStudentCoursesScreen() =>
+      push<dynamic>(Routes.studentCoursesScreen);
+
+  Future<dynamic> pushGamesScreen() => push<dynamic>(Routes.gamesScreen);
+
+  Future<dynamic> pushStudentProfileScreen() =>
+      push<dynamic>(Routes.studentProfileScreen);
+
+  Future<dynamic> pushCourseDetailScreen() =>
+      push<dynamic>(Routes.courseDetailScreen);
 
   Future<dynamic> pushUnknownRoute() => push<dynamic>(Routes.unknownRoute);
 }
@@ -279,9 +378,11 @@ class PaymentScreenRouter extends RouterBase {
 /// *************************************************************************
 
 extension PaymentScreenRouterExtendedNavigatorStateX on ExtendedNavigatorState {
-  Future<dynamic> pushPaymentIndexPage() => push<dynamic>(PaymentScreenRoutes.paymentIndexPage);
+  Future<dynamic> pushPaymentIndexPage() =>
+      push<dynamic>(PaymentScreenRoutes.paymentIndexPage);
 
-  Future<dynamic> pushPaymentMethodPage() => push<dynamic>(PaymentScreenRoutes.paymentMethodPage);
+  Future<dynamic> pushPaymentMethodPage() =>
+      push<dynamic>(PaymentScreenRoutes.paymentMethodPage);
 }
 
 class ChildScreenRoutes {
@@ -308,12 +409,14 @@ class ChildScreenRouter extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(ChildScreenRoutes.childIndexPage, page: ChildIndexPage),
-    RouteDef(ChildScreenRoutes.createChildAccountPage, page: CreateChildAccountPage),
+    RouteDef(ChildScreenRoutes.createChildAccountPage,
+        page: CreateChildAccountPage),
     RouteDef(ChildScreenRoutes.showChildPage, page: ShowChildPage),
     RouteDef(ChildScreenRoutes.childCoursesPage, page: ChildCoursesPage),
     RouteDef(ChildScreenRoutes.childAwardsPage, page: ChildAwardsPage),
     RouteDef(ChildScreenRoutes.childProjectsPage, page: ChildProjectsPage),
-    RouteDef(ChildScreenRoutes.childProjectDetailsPage, page: ChildProjectDetailsPage),
+    RouteDef(ChildScreenRoutes.childProjectDetailsPage,
+        page: ChildProjectDetailsPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -381,19 +484,26 @@ class ChildScreenRouter extends RouterBase {
 /// *************************************************************************
 
 extension ChildScreenRouterExtendedNavigatorStateX on ExtendedNavigatorState {
-  Future<dynamic> pushChildIndexPage() => push<dynamic>(ChildScreenRoutes.childIndexPage);
+  Future<dynamic> pushChildIndexPage() =>
+      push<dynamic>(ChildScreenRoutes.childIndexPage);
 
-  Future<dynamic> pushCreateChildAccountPage() => push<dynamic>(ChildScreenRoutes.createChildAccountPage);
+  Future<dynamic> pushCreateChildAccountPage() =>
+      push<dynamic>(ChildScreenRoutes.createChildAccountPage);
 
-  Future<dynamic> pushShowChildPage() => push<dynamic>(ChildScreenRoutes.showChildPage);
+  Future<dynamic> pushShowChildPage() =>
+      push<dynamic>(ChildScreenRoutes.showChildPage);
 
-  Future<dynamic> pushChildCoursesPage() => push<dynamic>(ChildScreenRoutes.childCoursesPage);
+  Future<dynamic> pushChildCoursesPage() =>
+      push<dynamic>(ChildScreenRoutes.childCoursesPage);
 
-  Future<dynamic> pushChildAwardsPage() => push<dynamic>(ChildScreenRoutes.childAwardsPage);
+  Future<dynamic> pushChildAwardsPage() =>
+      push<dynamic>(ChildScreenRoutes.childAwardsPage);
 
-  Future<dynamic> pushChildProjectsPage() => push<dynamic>(ChildScreenRoutes.childProjectsPage);
+  Future<dynamic> pushChildProjectsPage() =>
+      push<dynamic>(ChildScreenRoutes.childProjectsPage);
 
-  Future<dynamic> pushChildProjectDetailsPage() => push<dynamic>(ChildScreenRoutes.childProjectDetailsPage);
+  Future<dynamic> pushChildProjectDetailsPage() =>
+      push<dynamic>(ChildScreenRoutes.childProjectDetailsPage);
 }
 
 class NotificationScreenRoutes {
@@ -407,7 +517,8 @@ class NotificationScreenRouter extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
-    RouteDef(NotificationScreenRoutes.notificationIndexPage, page: NotificationIndexPage),
+    RouteDef(NotificationScreenRoutes.notificationIndexPage,
+        page: NotificationIndexPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -427,8 +538,10 @@ class NotificationScreenRouter extends RouterBase {
 /// Navigation helper methods extension
 /// *************************************************************************
 
-extension NotificationScreenRouterExtendedNavigatorStateX on ExtendedNavigatorState {
-  Future<dynamic> pushNotificationIndexPage() => push<dynamic>(NotificationScreenRoutes.notificationIndexPage);
+extension NotificationScreenRouterExtendedNavigatorStateX
+    on ExtendedNavigatorState {
+  Future<dynamic> pushNotificationIndexPage() =>
+      push<dynamic>(NotificationScreenRoutes.notificationIndexPage);
 }
 
 class ProfileScreenRoutes {
@@ -445,7 +558,8 @@ class ProfileScreenRouter extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(ProfileScreenRoutes.parentProfileIndex, page: ParentProfileIndex),
-    RouteDef(ProfileScreenRoutes.updateParentProfilePage, page: UpdateParentProfilePage),
+    RouteDef(ProfileScreenRoutes.updateParentProfilePage,
+        page: UpdateParentProfilePage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -459,7 +573,8 @@ class ProfileScreenRouter extends RouterBase {
       );
     },
     UpdateParentProfilePage: (data) {
-      final args = data.getArgs<UpdateParentProfilePageArguments>(nullOk: false);
+      final args =
+          data.getArgs<UpdateParentProfilePageArguments>(nullOk: false);
       return buildAdaptivePageRoute<dynamic>(
         builder: (context) => UpdateParentProfilePage(
           args.user,
@@ -478,7 +593,8 @@ class ProfileScreenRouter extends RouterBase {
 /// *************************************************************************
 
 extension ProfileScreenRouterExtendedNavigatorStateX on ExtendedNavigatorState {
-  Future<dynamic> pushParentProfileIndex() => push<dynamic>(ProfileScreenRoutes.parentProfileIndex);
+  Future<dynamic> pushParentProfileIndex() =>
+      push<dynamic>(ProfileScreenRoutes.parentProfileIndex);
 
   Future<dynamic> pushUpdateParentProfilePage({
     @required User user,
@@ -488,6 +604,186 @@ extension ProfileScreenRouterExtendedNavigatorStateX on ExtendedNavigatorState {
         ProfileScreenRoutes.updateParentProfilePage,
         arguments: UpdateParentProfilePageArguments(user: user, key: key),
       );
+}
+
+class StudentHomeScreenRoutes {
+  static const String studentHomeIndexPage = '/';
+  static const String categoryDetailPage = '/category_detail';
+  static const all = <String>{
+    studentHomeIndexPage,
+    categoryDetailPage,
+  };
+}
+
+class StudentHomeScreenRouter extends RouterBase {
+  @override
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(StudentHomeScreenRoutes.studentHomeIndexPage,
+        page: StudentHomeIndexPage),
+    RouteDef(StudentHomeScreenRoutes.categoryDetailPage,
+        page: CategoryDetailPage),
+  ];
+  @override
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    StudentHomeIndexPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentHomeIndexPage(),
+        settings: data,
+        cupertinoTitle: 'Home',
+        maintainState: true,
+      );
+    },
+    CategoryDetailPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => CategoryDetailPage(),
+        settings: data,
+        cupertinoTitle: 'Category Detail',
+        maintainState: true,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension StudentHomeScreenRouterExtendedNavigatorStateX
+    on ExtendedNavigatorState {
+  Future<dynamic> pushStudentHomeIndexPage() =>
+      push<dynamic>(StudentHomeScreenRoutes.studentHomeIndexPage);
+
+  Future<dynamic> pushCategoryDetailPage() =>
+      push<dynamic>(StudentHomeScreenRoutes.categoryDetailPage);
+}
+
+class StudentCoursesScreenRoutes {
+  static const String coursesIndexPage = '/';
+  static const all = <String>{
+    coursesIndexPage,
+  };
+}
+
+class StudentCoursesScreenRouter extends RouterBase {
+  @override
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(StudentCoursesScreenRoutes.coursesIndexPage,
+        page: CoursesIndexPage),
+  ];
+  @override
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    CoursesIndexPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => CoursesIndexPage(),
+        settings: data,
+        cupertinoTitle: 'My Course',
+        maintainState: true,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension StudentCoursesScreenRouterExtendedNavigatorStateX
+    on ExtendedNavigatorState {
+  Future<dynamic> pushCoursesIndexPage() =>
+      push<dynamic>(StudentCoursesScreenRoutes.coursesIndexPage);
+}
+
+class GamesScreenRoutes {
+  static const String gamesIndexPage = '/';
+  static const all = <String>{
+    gamesIndexPage,
+  };
+}
+
+class GamesScreenRouter extends RouterBase {
+  @override
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(GamesScreenRoutes.gamesIndexPage, page: GamesIndexPage),
+  ];
+  @override
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    GamesIndexPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => GamesIndexPage(),
+        settings: data,
+        cupertinoTitle: 'Games',
+        maintainState: true,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension GamesScreenRouterExtendedNavigatorStateX on ExtendedNavigatorState {
+  Future<dynamic> pushGamesIndexPage() =>
+      push<dynamic>(GamesScreenRoutes.gamesIndexPage);
+}
+
+class StudentProfileScreenRoutes {
+  static const String studentProfileIndexPage = '/';
+  static const String studentProfileUpdatePage = '/profile/update';
+  static const all = <String>{
+    studentProfileIndexPage,
+    studentProfileUpdatePage,
+  };
+}
+
+class StudentProfileScreenRouter extends RouterBase {
+  @override
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(StudentProfileScreenRoutes.studentProfileIndexPage,
+        page: StudentProfileIndexPage),
+    RouteDef(StudentProfileScreenRoutes.studentProfileUpdatePage,
+        page: StudentProfileUpdatePage),
+  ];
+  @override
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    StudentProfileIndexPage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentProfileIndexPage(),
+        settings: data,
+        cupertinoTitle: 'Profile',
+        maintainState: true,
+      );
+    },
+    StudentProfileUpdatePage: (data) {
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => StudentProfileUpdatePage(),
+        settings: data,
+        cupertinoTitle: 'Update Profile',
+        maintainState: true,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension StudentProfileScreenRouterExtendedNavigatorStateX
+    on ExtendedNavigatorState {
+  Future<dynamic> pushStudentProfileIndexPage() =>
+      push<dynamic>(StudentProfileScreenRoutes.studentProfileIndexPage);
+
+  Future<dynamic> pushStudentProfileUpdatePage() =>
+      push<dynamic>(StudentProfileScreenRoutes.studentProfileUpdatePage);
 }
 
 /// ************************************************************************

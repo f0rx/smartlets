@@ -15,32 +15,30 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
     return BlocProvider(
       lazy: true,
       create: (_) => getIt<AuthBloc>(),
-      child: Portal(
-        child: BlocConsumer<AuthBloc, AuthState>(
-          listenWhen: (prev, current) => prev.authStatus.isSome() && current.authStatus.isSome(),
-          listener: (context, state) => state.authStatus.fold(
-            () => null,
-            (option) => option.fold(
-              (failure) => Flushbar(
-                duration: const Duration(seconds: 5),
-                icon: Icon(Icons.error, color: Colors.red),
-                messageText: AutoSizeText(failure.message),
-                borderRadius: 8,
-                dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-                margin: EdgeInsets.all(8),
-                flushbarPosition: FlushbarPosition.TOP,
-                shouldIconPulse: true,
-                backgroundColor: Theme.of(context).primaryColor,
-              ).show(context),
-              (_) => null,
-            ),
+      child: BlocConsumer<AuthBloc, AuthState>(
+        listenWhen: (prev, current) => prev.authStatus.isSome() && current.authStatus.isSome(),
+        listener: (context, state) => state.authStatus.fold(
+          () => null,
+          (option) => option.fold(
+            (failure) => Flushbar(
+              duration: const Duration(seconds: 5),
+              icon: Icon(Icons.error, color: Colors.red),
+              messageText: AutoSizeText(failure.message),
+              borderRadius: 8,
+              dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+              margin: EdgeInsets.all(8),
+              flushbarPosition: FlushbarPosition.TOP,
+              shouldIconPulse: true,
+              backgroundColor: Theme.of(context).primaryColor,
+            ).show(context),
+            (_) => null,
           ),
-          buildWhen: (prev, current) => prev.isLoading != current.isLoading,
-          builder: (context, _) => PortalEntry(
-            visible: context.bloc<AuthBloc>().state.isLoading,
-            portal: App.circularLoadingOverlay,
-            child: this,
-          ),
+        ),
+        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
+        builder: (context, _) => PortalEntry(
+          visible: context.bloc<AuthBloc>().state.isLoading,
+          portal: App.circularLoadingOverlay,
+          child: this,
         ),
       ),
     );

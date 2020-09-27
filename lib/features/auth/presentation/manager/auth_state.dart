@@ -6,8 +6,10 @@ abstract class AuthState with _$AuthState {
   const factory AuthState({
     @required DisplayName displayName,
     @required EmailAddress emailAddress,
+    @required EmailAddress parentEmailAddress,
     @required Password password,
     @required Password newPassword,
+    Subscription subscription,
     @Default(false) bool isLoading,
     @Default(false) bool validate,
     @Default(true) bool passwordHidden,
@@ -18,6 +20,7 @@ abstract class AuthState with _$AuthState {
   factory AuthState.init() => AuthState(
         displayName: DisplayName(""),
         emailAddress: EmailAddress(""),
+        parentEmailAddress: EmailAddress(""),
         password: Password(""),
         newPassword: Password(""),
       );

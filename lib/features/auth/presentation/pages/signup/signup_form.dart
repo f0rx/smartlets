@@ -59,6 +59,36 @@ class SignupForm extends StatelessWidget {
                 //
                 VerticalSpace(height: App.height * 0.02),
                 //
+                context.bloc<OnBoardingCubit>().state.subscription.fold(
+                      parent: () => SizedBox.shrink(),
+                      student: () => Column(
+                        children: [
+                          TextFormField(
+                            maxLines: 1,
+                            enableSuggestions: true,
+                            autocorrect: false,
+                            cursorColor: App.theme.accentColor,
+                            enableInteractiveSelection: true,
+                            keyboardType: TextInputType.emailAddress,
+                            textCapitalization: TextCapitalization.none,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                              labelText: "Parent's Email address",
+                              hintText: "sponsor@email.com",
+                            ),
+                            autofillHints: [
+                              AutofillHints.email,
+                            ],
+                            onChanged: (value) => bloc.add(AuthEvent.parentEmailChanged(value)),
+                            validator: (value) => bloc.state.parentEmailAddress.value.fold((error) => error.message, (r) => null),
+                            onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
+                          ),
+                          //
+                          VerticalSpace(height: App.height * 0.02),
+                        ],
+                      ),
+                    ),
+                //
                 TextFormField(
                   maxLines: 1,
                   enableSuggestions: true,

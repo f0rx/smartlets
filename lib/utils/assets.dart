@@ -22,7 +22,7 @@ mixin AppAssets {
 
   static SvgPicture doodle = SvgPicture.asset(
     '$SVG_DIR/doodle.svg',
-    fit: BoxFit.cover,
+    fit: BoxFit.fill,
   );
 
   static SvgPicture unlockPassword = SvgPicture.asset(

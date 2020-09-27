@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart' hide Router;
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
@@ -22,21 +23,23 @@ class SmartletsApp extends StatelessWidget {
         // BlocProvider<RootBloc>(create: (_) => getIt<RootBloc>(), lazy: true),
       ],
       child: BlocBuilder<ThemeCubit, AppTheme>(
-        builder: (context, state) => MaterialApp(
-          title: AppStrings.appName.capitalizeFirst(),
-          debugShowCheckedModeBanner: false,
-          theme: state?.themeData() ?? AppTheme.light().themeData(),
-          darkTheme: AppTheme.dark().themeData(),
-          builder: ExtendedNavigator.builder<Router>(
-            navigatorKey: App.key,
-            observers: [NavigationHistoryObserver()],
-            router: Router(),
-            guards: [AuthGuard()],
-            builder: (context, descendant) => Theme(
-              data: state?.themeData() ?? AppTheme.light().themeData(),
-              child: GestureDetector(
-                onTap: () => Helpers.hideKeyboard(context),
-                child: descendant,
+        builder: (context, state) => Portal(
+          child: MaterialApp(
+            title: AppStrings.appName.capitalizeFirst(),
+            debugShowCheckedModeBanner: false,
+            theme: state?.themeData() ?? AppTheme.light().themeData(),
+            darkTheme: AppTheme.dark().themeData(),
+            builder: ExtendedNavigator.builder<Router>(
+              navigatorKey: App.key,
+              observers: [NavigationHistoryObserver()],
+              router: Router(),
+              guards: [AuthGuard()],
+              builder: (context, descendant) => Theme(
+                data: state?.themeData() ?? AppTheme.light().themeData(),
+                child: GestureDetector(
+                  onTap: () => Helpers.hideKeyboard(context),
+                  child: descendant,
+                ),
               ),
             ),
           ),

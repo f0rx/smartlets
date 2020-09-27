@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smartlets/widgets/widgets.dart';
+import 'package:smartlets/features/shared/shared.dart';
 
 typedef _ResponsiveBuilder = Widget Function(BuildContext context, QueryData query);
 
