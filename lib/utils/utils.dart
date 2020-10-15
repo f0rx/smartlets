@@ -9,5 +9,6 @@ export 'extensions/list_extension.dart';
 export 'extensions/num_extension.dart';
 export 'extensions/string_extension.dart';
 export 'helpers.dart';
+export 'smartlets_icons.dart';
 export 'strings.dart';
 // export 'toast.dart';

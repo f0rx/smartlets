@@ -1,12 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:smartlets/features/auth/domain/core/auth.dart';
+import 'package:smartlets/features/auth/domain/core/auth_failure.dart';
+import 'package:smartlets/features/shared/shared.dart';
+import 'package:smartlets/utils/utils.dart';
 
 @immutable
 abstract class FieldObject<T> {
   const FieldObject();
 
-  Either<FieldObjectException<T>, T> get value;
+  Either<FieldObjectException<String>, T> get value;
 
   bool isEqualTo(String other, {bool inMemory = false}) {
     if (this.isValid) {
@@ -18,7 +20,10 @@ abstract class FieldObject<T> {
 
   bool get isValid => value.isRight();
 
-  T get getOrCrash => value.fold((failure) => throw UnExpectedFailure(message: failure.message), id);
+  T get getOrCrash => value.fold((failure) {
+        log.e("Oops! The program crashed (Field Object Failure: [${value.runtimeType}])");
+        throw UnExpectedFailure(message: failure.message);
+      }, id);
 
   @override
   bool operator ==(other) {

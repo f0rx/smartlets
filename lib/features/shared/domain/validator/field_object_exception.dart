@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:smartlets/features/auth/domain/core/validator/validator.dart';
+import 'package:smartlets/features/shared/shared.dart';
 
 part 'field_object_exception.freezed.dart';
 
@@ -23,4 +23,6 @@ abstract class FieldObjectException<T> with _$FieldObjectException<T> {
   factory FieldObjectException.empty({String message}) => FieldObjectException(message: message ?? REQUIRED_FIELD_MESSAGE);
 
   factory FieldObjectException.invalid({@required String message}) => FieldObjectException(message: message ?? INVALID_FIELD_MESSAGE);
+
+  factory FieldObjectException.exceedsLength({@required String message}) => FieldObjectException(message: message ?? INVALID_FIELD_MESSAGE);
 }

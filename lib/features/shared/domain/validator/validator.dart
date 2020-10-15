@@ -1,6 +1,8 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:dartz/dartz.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
-import 'package:smartlets/features/auth/domain/core/validator/field_object_exception.dart';
+import 'package:smartlets/features/shared/shared.dart';
 
 const int MIN_PASSWORD_LENGTH = 6;
 const int MIN_USERNAME_LENGTH = 6;
@@ -14,12 +16,14 @@ const Pattern onlyNumbersPattern = "^[0-9]*\$";
 class Validator {
   Validator._();
 
-  static Either<FieldObjectException<T>, T> basic<T>(dynamic value) {
+  static Either<FieldObjectException<String>, T> isEmpty<T>(dynamic value) {
     // Returns the string without any leading and trailing whitespace
     if (value == null) return left(FieldObjectException.empty());
     if (value is String && (value.trim().isEmpty || value.trim().length < 1)) return left(FieldObjectException.empty());
+    if (value is KtList && (value.isEmpty())) return left(FieldObjectException.empty());
+    if (value is BuiltList && (value.isEmpty)) return left(FieldObjectException.empty());
 
-    return right((value is String ? value.trim() : value));
+    return right((value is String ? value.trim() : value as T));
   }
 
   static Either<FieldObjectException<String>, String> usernameValidator(String value) {
@@ -72,5 +76,21 @@ class Validator {
     }
 
     return right(password);
+  }
+
+  static Either<FieldObjectException<String>, String> multilineValidator(String input) {
+    String value = input.trim();
+    if (value.contains("\n")) return left(FieldObjectException.invalid(message: "Field must be single line"));
+    return right(value);
+  }
+
+  static Either<FieldObjectException<String>, KtList<T>> maxListLength<T>(KtList<T> input, int max) {
+    if (input.size > max) return left(FieldObjectException.exceedsLength(message: "Value exceed max: $max"));
+    return right(input);
+  }
+
+  static Either<FieldObjectException<String>, String> maxStringLength(String input, [int max = 500]) {
+    if (input.length > max) return left(FieldObjectException.exceedsLength(message: "Value exceeds max length!"));
+    return right(input);
   }
 }

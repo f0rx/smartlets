@@ -9,9 +9,17 @@ mixin AppAssets {
   static const IMAGES_DIR = "$ASSETS_DIR/images";
   static const AUTH_SVG_DIR = "$SVG_DIR/auth";
   static const HOME_SVG_DIR = "$SVG_DIR/home";
+  static const STUDENT_SVG_DIR = "$HOME_SVG_DIR/student";
   static const HOME_IMAGES_DIR = "$IMAGES_DIR/home";
+  static const STUDENT_IMAGES_DIR = "$HOME_IMAGES_DIR/student";
 
   static String anonymous = "$HOME_IMAGES_DIR/default-user.png";
+
+  static String courseFrame1 = "$STUDENT_IMAGES_DIR/frame_1.jpg";
+  static String courseFrame2 = "$STUDENT_IMAGES_DIR/frame_2.png";
+  static String courseFrame3 = "$STUDENT_IMAGES_DIR/frame_3.png";
+  static String courseFrame4 = "$STUDENT_IMAGES_DIR/frame_4.jpg";
+  static String playback = "$STUDENT_IMAGES_DIR/playback.png";
 
   static SvgPicture mailTo = SvgPicture.asset(
     '$AUTH_SVG_DIR/mail_to.svg',
@@ -135,4 +143,18 @@ mixin AppAssets {
     width: App.width * 0.35,
     fit: BoxFit.contain,
   );
+
+  static SvgPicture skip = SvgPicture.asset(
+    '$STUDENT_SVG_DIR/reply.svg',
+    color: Colors.white.withOpacity(0.8),
+    fit: BoxFit.contain,
+    height: 30,
+    width: 30,
+  );
+
+  // static SvgPicture coding_1 = SvgPicture.asset(
+  //   '$STUDENT_SVG_DIR/coding_1.svg',
+  //   color: Colors.white.withOpacity(0.2),
+  //   fit: BoxFit.contain,
+  // );
 }
