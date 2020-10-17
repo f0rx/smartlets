@@ -7,7 +7,6 @@ import 'package:smartlets/features/parent/presentation/pages/pages.dart';
 import 'package:smartlets/features/parent/presentation/screens/export.dart';
 import 'package:smartlets/features/student/presentation/pages/student_pages.dart';
 import 'package:smartlets/features/student/presentation/screens/course_details/course_detail_index_page.dart';
-import 'package:smartlets/features/student/presentation/screens/course_details/video_fullscreen_widget.dart';
 import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
 @AdaptiveAutoRouter(
@@ -167,12 +166,6 @@ import 'package:smartlets/features/student/presentation/screens/exports.dart';
       AdaptiveRoute(
         initial: true,
         page: CourseDetailIndexPage,
-        maintainState: true,
-      ),
-      //
-      AdaptiveRoute(
-        path: "/video-player-fullscreen",
-        page: VideoFullscreenWidget,
         maintainState: true,
       ),
     ]),

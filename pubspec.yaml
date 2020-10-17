@@ -23,13 +23,13 @@ dependencies:
   # Firebase authentication
   firebase_auth: ^0.18.1+2
   # Google services & Authentication
-  google_sign_in: ^4.5.4
+  google_sign_in: ^4.5.5
   # Customize App font
-  google_fonts: ^1.1.0
+  google_fonts: ^1.1.1
   # A Flutter plugin to use the Cloud Firestore API.
 #  cloud_firestore: ^0.14.0+2
   # For Facebook authentication
-  flutter_login_facebook: ^0.2.1
+  flutter_login_facebook: ^0.2.1+1
   # Check Internet connectivity
   data_connection_checker: ^0.3.4
   # Service locator
@@ -83,12 +83,16 @@ dependencies:
   inflection2: ^0.4.3
   # Advanced video player based on video_player and Chewie.
   better_player: ^0.0.25
+  # Flick Video Player is a video player for flutter
+  flick_video_player: ^0.1.1
+#  # The video player for Flutter with a heart of gold.
+#  chewie: ^0.9.10
   # A Flutter plugin for iOS, Android and Web for playing back video on a Widget surface.
-  video_player: ">=0.11.0 <2.0.0"
+  video_player: ">=0.10.0 <2.0.0"
   json_annotation: ^3.1.0
   # Seekbar Package
   seekbar: ^0.0.2
-  get: ^3.10.2
+  get: ^3.13.2
 
 dev_dependencies:
   flutter_test:

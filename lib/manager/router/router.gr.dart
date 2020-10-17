@@ -16,10 +16,8 @@ import 'package:smartlets/features/on_boarding/presentation/splash_screen.dart';
 import 'package:smartlets/features/parent/presentation/pages/pages.dart';
 import 'package:smartlets/features/parent/presentation/screens/export.dart';
 import 'package:smartlets/features/student/domain/domain.dart';
-import 'package:smartlets/features/student/presentation/manager/blocs.dart';
 import 'package:smartlets/features/student/presentation/pages/student_pages.dart';
 import 'package:smartlets/features/student/presentation/screens/course_details/course_detail_index_page.dart';
-import 'package:smartlets/features/student/presentation/screens/course_details/video_fullscreen_widget.dart';
 import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
 class Routes {
@@ -818,10 +816,8 @@ extension StudentProfileScreenRouterExtendedNavigatorStateX
 
 class CourseDetailScreenRoutes {
   static const String courseDetailIndexPage = '/';
-  static const String videoFullscreenWidget = '/video-player-fullscreen';
   static const all = <String>{
     courseDetailIndexPage,
-    videoFullscreenWidget,
   };
 }
 
@@ -831,8 +827,6 @@ class CourseDetailScreenRouter extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(CourseDetailScreenRoutes.courseDetailIndexPage,
         page: CourseDetailIndexPage),
-    RouteDef(CourseDetailScreenRoutes.videoFullscreenWidget,
-        page: VideoFullscreenWidget),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -843,20 +837,6 @@ class CourseDetailScreenRouter extends RouterBase {
         builder: (context) => CourseDetailIndexPage(
           key: args.key,
           course: args.course,
-        ).wrappedRoute(context),
-        settings: data,
-        maintainState: true,
-      );
-    },
-    VideoFullscreenWidget: (data) {
-      final args = data.getArgs<VideoFullscreenWidgetArguments>(
-        orElse: () => VideoFullscreenWidgetArguments(),
-      );
-      return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => VideoFullscreenWidget(
-          key: args.key,
-          context: args.context,
-          bloc: args.bloc,
         ).wrappedRoute(context),
         settings: data,
         maintainState: true,
@@ -878,17 +858,6 @@ extension CourseDetailScreenRouterExtendedNavigatorStateX
       push<dynamic>(
         CourseDetailScreenRoutes.courseDetailIndexPage,
         arguments: CourseDetailIndexPageArguments(key: key, course: course),
-      );
-
-  Future<dynamic> pushVideoFullscreenWidget({
-    Key key,
-    BuildContext context,
-    PlaybackBloc bloc,
-  }) =>
-      push<dynamic>(
-        CourseDetailScreenRoutes.videoFullscreenWidget,
-        arguments: VideoFullscreenWidgetArguments(
-            key: key, context: context, bloc: bloc),
       );
 }
 
@@ -943,12 +912,4 @@ class CourseDetailIndexPageArguments {
   final Key key;
   final Course course;
   CourseDetailIndexPageArguments({this.key, @required this.course});
-}
-
-/// VideoFullscreenWidget arguments holder class
-class VideoFullscreenWidgetArguments {
-  final Key key;
-  final BuildContext context;
-  final PlaybackBloc bloc;
-  VideoFullscreenWidgetArguments({this.key, this.context, this.bloc});
 }

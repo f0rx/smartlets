@@ -42,8 +42,7 @@ Future<GetIt> $initGetIt(
   gh.factory<OnBoardingCubit>(
       () => OnBoardingCubit(get<DataConnectionChecker>()));
   gh.factory<ParentNavCubit>(() => ParentNavCubit());
-  gh.factoryParam<PlaybackBloc, PlaybackState, dynamic>(
-      (prevState, _) => PlaybackBloc(prevState));
+  gh.factory<PlaybackBloc>(() => PlaybackBloc());
   gh.factory<StudentNavCubit>(() => StudentNavCubit());
   gh.factory<ThemeCubit>(() => ThemeCubit());
   gh.factory<WillPopCubit>(() => WillPopCubit());
