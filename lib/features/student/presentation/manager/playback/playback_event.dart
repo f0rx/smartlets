@@ -2,15 +2,10 @@ part of 'playback_bloc.dart';
 
 @freezed
 @immutable
-abstract class PlaybackEvent
-    with _$PlaybackEvent {
-  const factory PlaybackEvent.initializeLocalVideo(BuildContext context) = _InitializeLocalVideo;
-
-  const factory PlaybackEvent.setupVideoPlayer(String url, {
-    @nullable BetterPlayerController controller,
-    @nullable PlaybackState oldState,
-    @Default(false) bool isFullScreen,
-    @Default(BetterPlayerDataSourceType.NETWORK) BetterPlayerDataSourceType type,
+abstract class PlaybackEvent with _$PlaybackEvent {
+  const factory PlaybackEvent.setupVideoPlayer(
+    String url, {
+    @nullable FlickManager controller,
   }) = _SetupVideoController;
 
   const factory PlaybackEvent.play([bool firstTouch]) = _PlayVideo;
@@ -29,13 +24,9 @@ abstract class PlaybackEvent
 
   const factory PlaybackEvent.exitFullScreen() = _ExitFullScreen;
 
-  const factory PlaybackEvent.increaseSliderSize({
+  const factory PlaybackEvent.changeSliderSize({
     SliderConfiguration config,
-  }) = _IncreaseSliderComponentSize;
-
-  const factory PlaybackEvent.decreaseSliderSize({
-    SliderConfiguration config,
-  }) = _DecreaseSliderComponentSize;
+  }) = _ChangeSliderComponentSize;
 
   const factory PlaybackEvent.toggleFullScreen() = _ToggleFullScreen;
 

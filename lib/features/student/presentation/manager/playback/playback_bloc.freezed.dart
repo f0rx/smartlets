@@ -13,24 +13,11 @@ class _$PlaybackEventTearOff {
   const _$PlaybackEventTearOff();
 
 // ignore: unused_element
-  _InitializeLocalVideo initializeLocalVideo(BuildContext context) {
-    return _InitializeLocalVideo(
-      context,
-    );
-  }
-
-// ignore: unused_element
   _SetupVideoController setupVideoPlayer(String url,
-      {@nullable BetterPlayerController controller,
-      @nullable PlaybackState oldState,
-      bool isFullScreen = false,
-      BetterPlayerDataSourceType type = BetterPlayerDataSourceType.NETWORK}) {
+      {@nullable FlickManager controller}) {
     return _SetupVideoController(
       url,
       controller: controller,
-      oldState: oldState,
-      isFullScreen: isFullScreen,
-      type: type,
     );
   }
 
@@ -81,17 +68,8 @@ class _$PlaybackEventTearOff {
   }
 
 // ignore: unused_element
-  _IncreaseSliderComponentSize increaseSliderSize(
-      {SliderConfiguration config}) {
-    return _IncreaseSliderComponentSize(
-      config: config,
-    );
-  }
-
-// ignore: unused_element
-  _DecreaseSliderComponentSize decreaseSliderSize(
-      {SliderConfiguration config}) {
-    return _DecreaseSliderComponentSize(
+  _ChangeSliderComponentSize changeSliderSize({SliderConfiguration config}) {
+    return _ChangeSliderComponentSize(
       config: config,
     );
   }
@@ -137,14 +115,8 @@ const $PlaybackEvent = _$PlaybackEventTearOff();
 mixin _$PlaybackEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -153,8 +125,7 @@ mixin _$PlaybackEvent {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
@@ -163,13 +134,7 @@ mixin _$PlaybackEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -178,8 +143,7 @@ mixin _$PlaybackEvent {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -189,7 +153,6 @@ mixin _$PlaybackEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -199,8 +162,7 @@ mixin _$PlaybackEvent {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
@@ -209,7 +171,6 @@ mixin _$PlaybackEvent {
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -219,8 +180,7 @@ mixin _$PlaybackEvent {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -245,243 +205,11 @@ class _$PlaybackEventCopyWithImpl<$Res>
   final $Res Function(PlaybackEvent) _then;
 }
 
-abstract class _$InitializeLocalVideoCopyWith<$Res> {
-  factory _$InitializeLocalVideoCopyWith(_InitializeLocalVideo value,
-          $Res Function(_InitializeLocalVideo) then) =
-      __$InitializeLocalVideoCopyWithImpl<$Res>;
-  $Res call({BuildContext context});
-}
-
-class __$InitializeLocalVideoCopyWithImpl<$Res>
-    extends _$PlaybackEventCopyWithImpl<$Res>
-    implements _$InitializeLocalVideoCopyWith<$Res> {
-  __$InitializeLocalVideoCopyWithImpl(
-      _InitializeLocalVideo _value, $Res Function(_InitializeLocalVideo) _then)
-      : super(_value, (v) => _then(v as _InitializeLocalVideo));
-
-  @override
-  _InitializeLocalVideo get _value => super._value as _InitializeLocalVideo;
-
-  @override
-  $Res call({
-    Object context = freezed,
-  }) {
-    return _then(_InitializeLocalVideo(
-      context == freezed ? _value.context : context as BuildContext,
-    ));
-  }
-}
-
-class _$_InitializeLocalVideo
-    with DiagnosticableTreeMixin
-    implements _InitializeLocalVideo {
-  const _$_InitializeLocalVideo(this.context) : assert(context != null);
-
-  @override
-  final BuildContext context;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlaybackEvent.initializeLocalVideo(context: $context)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlaybackEvent.initializeLocalVideo'))
-      ..add(DiagnosticsProperty('context', context));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _InitializeLocalVideo &&
-            (identical(other.context, context) ||
-                const DeepCollectionEquality().equals(other.context, context)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(context);
-
-  @override
-  _$InitializeLocalVideoCopyWith<_InitializeLocalVideo> get copyWith =>
-      __$InitializeLocalVideoCopyWithImpl<_InitializeLocalVideo>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
-    @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
-  }) {
-    assert(initializeLocalVideo != null);
-    assert(setupVideoPlayer != null);
-    assert(play != null);
-    assert(pause != null);
-    assert(changePath != null);
-    assert(changeVolume != null);
-    assert(mute != null);
-    assert(unMute != null);
-    assert(enterFullScreen != null);
-    assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
-    assert(toggleFullScreen != null);
-    assert(refreshPlayer != null);
-    assert(fastForward != null);
-    assert(seek != null);
-    assert(rewind != null);
-    return initializeLocalVideo(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (initializeLocalVideo != null) {
-      return initializeLocalVideo(context);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
-  }) {
-    assert(initializeLocalVideo != null);
-    assert(setupVideoPlayer != null);
-    assert(play != null);
-    assert(pause != null);
-    assert(changePath != null);
-    assert(changeVolume != null);
-    assert(mute != null);
-    assert(unMute != null);
-    assert(enterFullScreen != null);
-    assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
-    assert(toggleFullScreen != null);
-    assert(refreshPlayer != null);
-    assert(fastForward != null);
-    assert(seek != null);
-    assert(rewind != null);
-    return initializeLocalVideo(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (initializeLocalVideo != null) {
-      return initializeLocalVideo(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _InitializeLocalVideo implements PlaybackEvent {
-  const factory _InitializeLocalVideo(BuildContext context) =
-      _$_InitializeLocalVideo;
-
-  BuildContext get context;
-  _$InitializeLocalVideoCopyWith<_InitializeLocalVideo> get copyWith;
-}
-
 abstract class _$SetupVideoControllerCopyWith<$Res> {
   factory _$SetupVideoControllerCopyWith(_SetupVideoController value,
           $Res Function(_SetupVideoController) then) =
       __$SetupVideoControllerCopyWithImpl<$Res>;
-  $Res call(
-      {String url,
-      @nullable BetterPlayerController controller,
-      @nullable PlaybackState oldState,
-      bool isFullScreen,
-      BetterPlayerDataSourceType type});
-
-  $PlaybackStateCopyWith<$Res> get oldState;
+  $Res call({String url, @nullable FlickManager controller});
 }
 
 class __$SetupVideoControllerCopyWithImpl<$Res>
@@ -498,64 +226,31 @@ class __$SetupVideoControllerCopyWithImpl<$Res>
   $Res call({
     Object url = freezed,
     Object controller = freezed,
-    Object oldState = freezed,
-    Object isFullScreen = freezed,
-    Object type = freezed,
   }) {
     return _then(_SetupVideoController(
       url == freezed ? _value.url : url as String,
       controller: controller == freezed
           ? _value.controller
-          : controller as BetterPlayerController,
-      oldState:
-          oldState == freezed ? _value.oldState : oldState as PlaybackState,
-      isFullScreen:
-          isFullScreen == freezed ? _value.isFullScreen : isFullScreen as bool,
-      type: type == freezed ? _value.type : type as BetterPlayerDataSourceType,
+          : controller as FlickManager,
     ));
-  }
-
-  @override
-  $PlaybackStateCopyWith<$Res> get oldState {
-    if (_value.oldState == null) {
-      return null;
-    }
-    return $PlaybackStateCopyWith<$Res>(_value.oldState, (value) {
-      return _then(_value.copyWith(oldState: value));
-    });
   }
 }
 
 class _$_SetupVideoController
     with DiagnosticableTreeMixin
     implements _SetupVideoController {
-  const _$_SetupVideoController(this.url,
-      {@nullable this.controller,
-      @nullable this.oldState,
-      this.isFullScreen = false,
-      this.type = BetterPlayerDataSourceType.NETWORK})
-      : assert(url != null),
-        assert(isFullScreen != null),
-        assert(type != null);
+  const _$_SetupVideoController(this.url, {@nullable this.controller})
+      : assert(url != null);
 
   @override
   final String url;
   @override
   @nullable
-  final BetterPlayerController controller;
-  @override
-  @nullable
-  final PlaybackState oldState;
-  @JsonKey(defaultValue: false)
-  @override
-  final bool isFullScreen;
-  @JsonKey(defaultValue: BetterPlayerDataSourceType.NETWORK)
-  @override
-  final BetterPlayerDataSourceType type;
+  final FlickManager controller;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlaybackEvent.setupVideoPlayer(url: $url, controller: $controller, oldState: $oldState, isFullScreen: $isFullScreen, type: $type)';
+    return 'PlaybackEvent.setupVideoPlayer(url: $url, controller: $controller)';
   }
 
   @override
@@ -564,10 +259,7 @@ class _$_SetupVideoController
     properties
       ..add(DiagnosticsProperty('type', 'PlaybackEvent.setupVideoPlayer'))
       ..add(DiagnosticsProperty('url', url))
-      ..add(DiagnosticsProperty('controller', controller))
-      ..add(DiagnosticsProperty('oldState', oldState))
-      ..add(DiagnosticsProperty('isFullScreen', isFullScreen))
-      ..add(DiagnosticsProperty('type', type));
+      ..add(DiagnosticsProperty('controller', controller));
   }
 
   @override
@@ -578,25 +270,14 @@ class _$_SetupVideoController
                 const DeepCollectionEquality().equals(other.url, url)) &&
             (identical(other.controller, controller) ||
                 const DeepCollectionEquality()
-                    .equals(other.controller, controller)) &&
-            (identical(other.oldState, oldState) ||
-                const DeepCollectionEquality()
-                    .equals(other.oldState, oldState)) &&
-            (identical(other.isFullScreen, isFullScreen) ||
-                const DeepCollectionEquality()
-                    .equals(other.isFullScreen, isFullScreen)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)));
+                    .equals(other.controller, controller)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(controller) ^
-      const DeepCollectionEquality().hash(oldState) ^
-      const DeepCollectionEquality().hash(isFullScreen) ^
-      const DeepCollectionEquality().hash(type);
+      const DeepCollectionEquality().hash(controller);
 
   @override
   _$SetupVideoControllerCopyWith<_SetupVideoController> get copyWith =>
@@ -606,14 +287,8 @@ class _$_SetupVideoController
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -622,15 +297,13 @@ class _$_SetupVideoController
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -640,26 +313,19 @@ class _$_SetupVideoController
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
     assert(seek != null);
     assert(rewind != null);
-    return setupVideoPlayer(url, controller, oldState, isFullScreen, type);
+    return setupVideoPlayer(url, controller);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -668,8 +334,7 @@ class _$_SetupVideoController
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -679,7 +344,7 @@ class _$_SetupVideoController
   }) {
     assert(orElse != null);
     if (setupVideoPlayer != null) {
-      return setupVideoPlayer(url, controller, oldState, isFullScreen, type);
+      return setupVideoPlayer(url, controller);
     }
     return orElse();
   }
@@ -687,7 +352,6 @@ class _$_SetupVideoController
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -697,15 +361,13 @@ class _$_SetupVideoController
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -715,8 +377,7 @@ class _$_SetupVideoController
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -728,7 +389,6 @@ class _$_SetupVideoController
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -738,8 +398,7 @@ class _$_SetupVideoController
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -757,18 +416,11 @@ class _$_SetupVideoController
 
 abstract class _SetupVideoController implements PlaybackEvent {
   const factory _SetupVideoController(String url,
-      {@nullable BetterPlayerController controller,
-      @nullable PlaybackState oldState,
-      bool isFullScreen,
-      BetterPlayerDataSourceType type}) = _$_SetupVideoController;
+      {@nullable FlickManager controller}) = _$_SetupVideoController;
 
   String get url;
   @nullable
-  BetterPlayerController get controller;
-  @nullable
-  PlaybackState get oldState;
-  bool get isFullScreen;
-  BetterPlayerDataSourceType get type;
+  FlickManager get controller;
   _$SetupVideoControllerCopyWith<_SetupVideoController> get copyWith;
 }
 
@@ -836,14 +488,8 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -852,15 +498,13 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -870,8 +514,7 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -883,13 +526,7 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -898,8 +535,7 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -917,7 +553,6 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -927,15 +562,13 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -945,8 +578,7 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -958,7 +590,6 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -968,8 +599,7 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -1033,14 +663,8 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -1049,15 +673,13 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1067,8 +689,7 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1080,13 +701,7 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -1095,8 +710,7 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -1114,7 +728,6 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -1124,15 +737,13 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1142,8 +753,7 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1155,7 +765,6 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -1165,8 +774,7 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -1250,14 +858,8 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -1266,15 +868,13 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1284,8 +884,7 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1297,13 +896,7 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -1312,8 +905,7 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -1331,7 +923,6 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -1341,15 +932,13 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1359,8 +948,7 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1372,7 +960,6 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -1382,8 +969,7 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -1469,14 +1055,8 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -1485,15 +1065,13 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1503,8 +1081,7 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1516,13 +1093,7 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -1531,8 +1102,7 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -1550,7 +1120,6 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -1560,15 +1129,13 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1578,8 +1145,7 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1591,7 +1157,6 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -1601,8 +1166,7 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -1665,14 +1229,8 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -1681,15 +1239,13 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1699,8 +1255,7 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1712,13 +1267,7 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -1727,8 +1276,7 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -1746,7 +1294,6 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -1756,15 +1303,13 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1774,8 +1319,7 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1787,7 +1331,6 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -1797,8 +1340,7 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -1859,14 +1401,8 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -1875,15 +1411,13 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1893,8 +1427,7 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1906,13 +1439,7 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -1921,8 +1448,7 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -1940,7 +1466,6 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -1950,15 +1475,13 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -1968,8 +1491,7 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -1981,7 +1503,6 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -1991,8 +1512,7 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -2057,14 +1577,8 @@ class _$_EnterFullScreen
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -2073,15 +1587,13 @@ class _$_EnterFullScreen
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2091,8 +1603,7 @@ class _$_EnterFullScreen
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -2104,13 +1615,7 @@ class _$_EnterFullScreen
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -2119,8 +1624,7 @@ class _$_EnterFullScreen
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -2138,7 +1642,6 @@ class _$_EnterFullScreen
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -2148,15 +1651,13 @@ class _$_EnterFullScreen
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2166,8 +1667,7 @@ class _$_EnterFullScreen
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -2179,7 +1679,6 @@ class _$_EnterFullScreen
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -2189,8 +1688,7 @@ class _$_EnterFullScreen
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -2255,14 +1753,8 @@ class _$_ExitFullScreen
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -2271,15 +1763,13 @@ class _$_ExitFullScreen
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2289,8 +1779,7 @@ class _$_ExitFullScreen
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -2302,13 +1791,7 @@ class _$_ExitFullScreen
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -2317,8 +1800,7 @@ class _$_ExitFullScreen
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -2336,7 +1818,6 @@ class _$_ExitFullScreen
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -2346,15 +1827,13 @@ class _$_ExitFullScreen
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2364,8 +1843,7 @@ class _$_ExitFullScreen
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -2377,7 +1855,6 @@ class _$_ExitFullScreen
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -2387,8 +1864,7 @@ class _$_ExitFullScreen
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -2408,61 +1884,59 @@ abstract class _ExitFullScreen implements PlaybackEvent {
   const factory _ExitFullScreen() = _$_ExitFullScreen;
 }
 
-abstract class _$IncreaseSliderComponentSizeCopyWith<$Res> {
-  factory _$IncreaseSliderComponentSizeCopyWith(
-          _IncreaseSliderComponentSize value,
-          $Res Function(_IncreaseSliderComponentSize) then) =
-      __$IncreaseSliderComponentSizeCopyWithImpl<$Res>;
+abstract class _$ChangeSliderComponentSizeCopyWith<$Res> {
+  factory _$ChangeSliderComponentSizeCopyWith(_ChangeSliderComponentSize value,
+          $Res Function(_ChangeSliderComponentSize) then) =
+      __$ChangeSliderComponentSizeCopyWithImpl<$Res>;
   $Res call({SliderConfiguration config});
 }
 
-class __$IncreaseSliderComponentSizeCopyWithImpl<$Res>
+class __$ChangeSliderComponentSizeCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
-    implements _$IncreaseSliderComponentSizeCopyWith<$Res> {
-  __$IncreaseSliderComponentSizeCopyWithImpl(
-      _IncreaseSliderComponentSize _value,
-      $Res Function(_IncreaseSliderComponentSize) _then)
-      : super(_value, (v) => _then(v as _IncreaseSliderComponentSize));
+    implements _$ChangeSliderComponentSizeCopyWith<$Res> {
+  __$ChangeSliderComponentSizeCopyWithImpl(_ChangeSliderComponentSize _value,
+      $Res Function(_ChangeSliderComponentSize) _then)
+      : super(_value, (v) => _then(v as _ChangeSliderComponentSize));
 
   @override
-  _IncreaseSliderComponentSize get _value =>
-      super._value as _IncreaseSliderComponentSize;
+  _ChangeSliderComponentSize get _value =>
+      super._value as _ChangeSliderComponentSize;
 
   @override
   $Res call({
     Object config = freezed,
   }) {
-    return _then(_IncreaseSliderComponentSize(
+    return _then(_ChangeSliderComponentSize(
       config: config == freezed ? _value.config : config as SliderConfiguration,
     ));
   }
 }
 
-class _$_IncreaseSliderComponentSize
+class _$_ChangeSliderComponentSize
     with DiagnosticableTreeMixin
-    implements _IncreaseSliderComponentSize {
-  const _$_IncreaseSliderComponentSize({this.config});
+    implements _ChangeSliderComponentSize {
+  const _$_ChangeSliderComponentSize({this.config});
 
   @override
   final SliderConfiguration config;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlaybackEvent.increaseSliderSize(config: $config)';
+    return 'PlaybackEvent.changeSliderSize(config: $config)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'PlaybackEvent.increaseSliderSize'))
+      ..add(DiagnosticsProperty('type', 'PlaybackEvent.changeSliderSize'))
       ..add(DiagnosticsProperty('config', config));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _IncreaseSliderComponentSize &&
+        (other is _ChangeSliderComponentSize &&
             (identical(other.config, config) ||
                 const DeepCollectionEquality().equals(other.config, config)));
   }
@@ -2472,21 +1946,16 @@ class _$_IncreaseSliderComponentSize
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(config);
 
   @override
-  _$IncreaseSliderComponentSizeCopyWith<_IncreaseSliderComponentSize>
-      get copyWith => __$IncreaseSliderComponentSizeCopyWithImpl<
-          _IncreaseSliderComponentSize>(this, _$identity);
+  _$ChangeSliderComponentSizeCopyWith<_ChangeSliderComponentSize>
+      get copyWith =>
+          __$ChangeSliderComponentSizeCopyWithImpl<_ChangeSliderComponentSize>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -2495,15 +1964,13 @@ class _$_IncreaseSliderComponentSize
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2513,26 +1980,19 @@ class _$_IncreaseSliderComponentSize
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
     assert(seek != null);
     assert(rewind != null);
-    return increaseSliderSize(config);
+    return changeSliderSize(config);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -2541,8 +2001,7 @@ class _$_IncreaseSliderComponentSize
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -2551,8 +2010,8 @@ class _$_IncreaseSliderComponentSize
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (increaseSliderSize != null) {
-      return increaseSliderSize(config);
+    if (changeSliderSize != null) {
+      return changeSliderSize(config);
     }
     return orElse();
   }
@@ -2560,7 +2019,6 @@ class _$_IncreaseSliderComponentSize
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -2570,15 +2028,13 @@ class _$_IncreaseSliderComponentSize
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2588,20 +2044,18 @@ class _$_IncreaseSliderComponentSize
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
     assert(seek != null);
     assert(rewind != null);
-    return increaseSliderSize(this);
+    return changeSliderSize(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -2611,8 +2065,7 @@ class _$_IncreaseSliderComponentSize
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -2621,249 +2074,19 @@ class _$_IncreaseSliderComponentSize
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (increaseSliderSize != null) {
-      return increaseSliderSize(this);
+    if (changeSliderSize != null) {
+      return changeSliderSize(this);
     }
     return orElse();
   }
 }
 
-abstract class _IncreaseSliderComponentSize implements PlaybackEvent {
-  const factory _IncreaseSliderComponentSize({SliderConfiguration config}) =
-      _$_IncreaseSliderComponentSize;
+abstract class _ChangeSliderComponentSize implements PlaybackEvent {
+  const factory _ChangeSliderComponentSize({SliderConfiguration config}) =
+      _$_ChangeSliderComponentSize;
 
   SliderConfiguration get config;
-  _$IncreaseSliderComponentSizeCopyWith<_IncreaseSliderComponentSize>
-      get copyWith;
-}
-
-abstract class _$DecreaseSliderComponentSizeCopyWith<$Res> {
-  factory _$DecreaseSliderComponentSizeCopyWith(
-          _DecreaseSliderComponentSize value,
-          $Res Function(_DecreaseSliderComponentSize) then) =
-      __$DecreaseSliderComponentSizeCopyWithImpl<$Res>;
-  $Res call({SliderConfiguration config});
-}
-
-class __$DecreaseSliderComponentSizeCopyWithImpl<$Res>
-    extends _$PlaybackEventCopyWithImpl<$Res>
-    implements _$DecreaseSliderComponentSizeCopyWith<$Res> {
-  __$DecreaseSliderComponentSizeCopyWithImpl(
-      _DecreaseSliderComponentSize _value,
-      $Res Function(_DecreaseSliderComponentSize) _then)
-      : super(_value, (v) => _then(v as _DecreaseSliderComponentSize));
-
-  @override
-  _DecreaseSliderComponentSize get _value =>
-      super._value as _DecreaseSliderComponentSize;
-
-  @override
-  $Res call({
-    Object config = freezed,
-  }) {
-    return _then(_DecreaseSliderComponentSize(
-      config: config == freezed ? _value.config : config as SliderConfiguration,
-    ));
-  }
-}
-
-class _$_DecreaseSliderComponentSize
-    with DiagnosticableTreeMixin
-    implements _DecreaseSliderComponentSize {
-  const _$_DecreaseSliderComponentSize({this.config});
-
-  @override
-  final SliderConfiguration config;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlaybackEvent.decreaseSliderSize(config: $config)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'PlaybackEvent.decreaseSliderSize'))
-      ..add(DiagnosticsProperty('config', config));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _DecreaseSliderComponentSize &&
-            (identical(other.config, config) ||
-                const DeepCollectionEquality().equals(other.config, config)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(config);
-
-  @override
-  _$DecreaseSliderComponentSizeCopyWith<_DecreaseSliderComponentSize>
-      get copyWith => __$DecreaseSliderComponentSizeCopyWithImpl<
-          _DecreaseSliderComponentSize>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
-    @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
-  }) {
-    assert(initializeLocalVideo != null);
-    assert(setupVideoPlayer != null);
-    assert(play != null);
-    assert(pause != null);
-    assert(changePath != null);
-    assert(changeVolume != null);
-    assert(mute != null);
-    assert(unMute != null);
-    assert(enterFullScreen != null);
-    assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
-    assert(toggleFullScreen != null);
-    assert(refreshPlayer != null);
-    assert(fastForward != null);
-    assert(seek != null);
-    assert(rewind != null);
-    return decreaseSliderSize(config);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (decreaseSliderSize != null) {
-      return decreaseSliderSize(config);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
-  }) {
-    assert(initializeLocalVideo != null);
-    assert(setupVideoPlayer != null);
-    assert(play != null);
-    assert(pause != null);
-    assert(changePath != null);
-    assert(changeVolume != null);
-    assert(mute != null);
-    assert(unMute != null);
-    assert(enterFullScreen != null);
-    assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
-    assert(toggleFullScreen != null);
-    assert(refreshPlayer != null);
-    assert(fastForward != null);
-    assert(seek != null);
-    assert(rewind != null);
-    return decreaseSliderSize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (decreaseSliderSize != null) {
-      return decreaseSliderSize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DecreaseSliderComponentSize implements PlaybackEvent {
-  const factory _DecreaseSliderComponentSize({SliderConfiguration config}) =
-      _$_DecreaseSliderComponentSize;
-
-  SliderConfiguration get config;
-  _$DecreaseSliderComponentSizeCopyWith<_DecreaseSliderComponentSize>
-      get copyWith;
+  _$ChangeSliderComponentSizeCopyWith<_ChangeSliderComponentSize> get copyWith;
 }
 
 abstract class _$ToggleFullScreenCopyWith<$Res> {
@@ -2911,14 +2134,8 @@ class _$_ToggleFullScreen
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -2927,15 +2144,13 @@ class _$_ToggleFullScreen
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -2945,8 +2160,7 @@ class _$_ToggleFullScreen
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -2958,13 +2172,7 @@ class _$_ToggleFullScreen
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -2973,8 +2181,7 @@ class _$_ToggleFullScreen
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -2992,7 +2199,6 @@ class _$_ToggleFullScreen
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -3002,15 +2208,13 @@ class _$_ToggleFullScreen
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3020,8 +2224,7 @@ class _$_ToggleFullScreen
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3033,7 +2236,6 @@ class _$_ToggleFullScreen
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -3043,8 +2245,7 @@ class _$_ToggleFullScreen
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -3143,14 +2344,8 @@ class _$_RefreshVideoPlayer
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -3159,15 +2354,13 @@ class _$_RefreshVideoPlayer
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3177,8 +2370,7 @@ class _$_RefreshVideoPlayer
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3190,13 +2382,7 @@ class _$_RefreshVideoPlayer
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -3205,8 +2391,7 @@ class _$_RefreshVideoPlayer
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -3224,7 +2409,6 @@ class _$_RefreshVideoPlayer
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -3234,15 +2418,13 @@ class _$_RefreshVideoPlayer
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3252,8 +2434,7 @@ class _$_RefreshVideoPlayer
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3265,7 +2446,6 @@ class _$_RefreshVideoPlayer
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -3275,8 +2455,7 @@ class _$_RefreshVideoPlayer
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -3369,14 +2548,8 @@ class _$_FastForwardVideo
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -3385,15 +2558,13 @@ class _$_FastForwardVideo
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3403,8 +2574,7 @@ class _$_FastForwardVideo
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3416,13 +2586,7 @@ class _$_FastForwardVideo
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -3431,8 +2595,7 @@ class _$_FastForwardVideo
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -3450,7 +2613,6 @@ class _$_FastForwardVideo
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -3460,15 +2622,13 @@ class _$_FastForwardVideo
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3478,8 +2638,7 @@ class _$_FastForwardVideo
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3491,7 +2650,6 @@ class _$_FastForwardVideo
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -3501,8 +2659,7 @@ class _$_FastForwardVideo
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -3590,14 +2747,8 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -3606,15 +2757,13 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3624,8 +2773,7 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3637,13 +2785,7 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -3652,8 +2794,7 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -3671,7 +2812,6 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -3681,15 +2821,13 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3699,8 +2837,7 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3712,7 +2849,6 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -3722,8 +2858,7 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -3812,14 +2947,8 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initializeLocalVideo(BuildContext context),
     @required
-        Result setupVideoPlayer(
-            String url,
-            @nullable BetterPlayerController controller,
-            @nullable PlaybackState oldState,
-            bool isFullScreen,
-            BetterPlayerDataSourceType type),
+        Result setupVideoPlayer(String url, @nullable FlickManager controller),
     @required Result play(bool firstTouch),
     @required Result pause(),
     @required Result changePath(String value),
@@ -3828,15 +2957,13 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
     @required Result unMute(),
     @required Result enterFullScreen(),
     @required Result exitFullScreen(),
-    @required Result increaseSliderSize(SliderConfiguration config),
-    @required Result decreaseSliderSize(SliderConfiguration config),
+    @required Result changeSliderSize(SliderConfiguration config),
     @required Result toggleFullScreen(),
     @required Result refreshPlayer(PlaybackState state),
     @required Result fastForward(Duration moment),
     @required Result seek(Duration progress),
     @required Result rewind(Duration moment),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3846,8 +2973,7 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3859,13 +2985,7 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initializeLocalVideo(BuildContext context),
-    Result setupVideoPlayer(
-        String url,
-        @nullable BetterPlayerController controller,
-        @nullable PlaybackState oldState,
-        bool isFullScreen,
-        BetterPlayerDataSourceType type),
+    Result setupVideoPlayer(String url, @nullable FlickManager controller),
     Result play(bool firstTouch),
     Result pause(),
     Result changePath(String value),
@@ -3874,8 +2994,7 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
     Result unMute(),
     Result enterFullScreen(),
     Result exitFullScreen(),
-    Result increaseSliderSize(SliderConfiguration config),
-    Result decreaseSliderSize(SliderConfiguration config),
+    Result changeSliderSize(SliderConfiguration config),
     Result toggleFullScreen(),
     Result refreshPlayer(PlaybackState state),
     Result fastForward(Duration moment),
@@ -3893,7 +3012,6 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initializeLocalVideo(_InitializeLocalVideo value),
     @required Result setupVideoPlayer(_SetupVideoController value),
     @required Result play(_PlayVideo value),
     @required Result pause(_PauseVideo value),
@@ -3903,15 +3021,13 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
     @required Result unMute(_UnMuteVideo value),
     @required Result enterFullScreen(_EnterFullScreen value),
     @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    @required Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    @required Result changeSliderSize(_ChangeSliderComponentSize value),
     @required Result toggleFullScreen(_ToggleFullScreen value),
     @required Result refreshPlayer(_RefreshVideoPlayer value),
     @required Result fastForward(_FastForwardVideo value),
     @required Result seek(_Seek value),
     @required Result rewind(_RewindVideo value),
   }) {
-    assert(initializeLocalVideo != null);
     assert(setupVideoPlayer != null);
     assert(play != null);
     assert(pause != null);
@@ -3921,8 +3037,7 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
     assert(unMute != null);
     assert(enterFullScreen != null);
     assert(exitFullScreen != null);
-    assert(increaseSliderSize != null);
-    assert(decreaseSliderSize != null);
+    assert(changeSliderSize != null);
     assert(toggleFullScreen != null);
     assert(refreshPlayer != null);
     assert(fastForward != null);
@@ -3934,7 +3049,6 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initializeLocalVideo(_InitializeLocalVideo value),
     Result setupVideoPlayer(_SetupVideoController value),
     Result play(_PlayVideo value),
     Result pause(_PauseVideo value),
@@ -3944,8 +3058,7 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
     Result unMute(_UnMuteVideo value),
     Result enterFullScreen(_EnterFullScreen value),
     Result exitFullScreen(_ExitFullScreen value),
-    Result increaseSliderSize(_IncreaseSliderComponentSize value),
-    Result decreaseSliderSize(_DecreaseSliderComponentSize value),
+    Result changeSliderSize(_ChangeSliderComponentSize value),
     Result toggleFullScreen(_ToggleFullScreen value),
     Result refreshPlayer(_RefreshVideoPlayer value),
     Result fastForward(_FastForwardVideo value),
@@ -3973,21 +3086,18 @@ class _$PlaybackStateTearOff {
 
 // ignore: unused_element
   _PlaybackState call(
-      {BetterPlayerDataSourceType sourceType =
-          BetterPlayerDataSourceType.NETWORK,
-      BetterPlayerController controller,
+      {@nullable FlickManager manager,
       @required SliderConfiguration sliderConfig,
-      @nullable dynamic notifier,
+      @nullable VideoPlayerValue notifier,
       String path = PlaybackState.DEFAULT_PATH,
       String fileName = PlaybackState.TEST_VIDEO_NAME,
       String extension = PlaybackState.DEFAULT_EXTENSION,
-      BetterPlayerEventType playerEvent = BetterPlayerEventType.PAUSE,
       Duration buffered = Duration.zero,
+      Duration playbackDuration = Duration.zero,
       double volume = PlaybackState.INITIAL_VOLUME,
-      double volumeBeforeMute = PlaybackState.INITIAL_VOLUME,
+      Duration moment = Duration.zero,
       bool autoPlay = false,
       bool willLoop = false,
-      bool isFirstTouch = false,
       bool isInitialized = false,
       bool isLoading = false,
       bool isPlaying = false,
@@ -3995,23 +3105,20 @@ class _$PlaybackStateTearOff {
       bool isSeeking = false,
       bool isMute = false,
       bool isBuffering = false,
-      bool isFullscreen = false,
-      Duration moment = Duration.zero}) {
+      bool isFullscreen = false}) {
     return _PlaybackState(
-      sourceType: sourceType,
-      controller: controller,
+      manager: manager,
       sliderConfig: sliderConfig,
       notifier: notifier,
       path: path,
       fileName: fileName,
       extension: extension,
-      playerEvent: playerEvent,
       buffered: buffered,
+      playbackDuration: playbackDuration,
       volume: volume,
-      volumeBeforeMute: volumeBeforeMute,
+      moment: moment,
       autoPlay: autoPlay,
       willLoop: willLoop,
-      isFirstTouch: isFirstTouch,
       isInitialized: isInitialized,
       isLoading: isLoading,
       isPlaying: isPlaying,
@@ -4020,7 +3127,6 @@ class _$PlaybackStateTearOff {
       isMute: isMute,
       isBuffering: isBuffering,
       isFullscreen: isFullscreen,
-      moment: moment,
     );
   }
 }
@@ -4029,21 +3135,20 @@ class _$PlaybackStateTearOff {
 const $PlaybackState = _$PlaybackStateTearOff();
 
 mixin _$PlaybackState {
-  BetterPlayerDataSourceType get sourceType;
-  BetterPlayerController get controller;
+  @nullable
+  FlickManager get manager;
   SliderConfiguration get sliderConfig;
   @nullable
-  dynamic get notifier;
+  VideoPlayerValue get notifier;
   String get path;
   String get fileName;
   String get extension;
-  BetterPlayerEventType get playerEvent;
   Duration get buffered;
+  Duration get playbackDuration;
   double get volume;
-  double get volumeBeforeMute;
+  Duration get moment;
   bool get autoPlay;
   bool get willLoop;
-  bool get isFirstTouch;
   bool get isInitialized;
   bool get isLoading;
   bool get isPlaying;
@@ -4052,7 +3157,6 @@ mixin _$PlaybackState {
   bool get isMute;
   bool get isBuffering;
   bool get isFullscreen;
-  Duration get moment;
 
   $PlaybackStateCopyWith<PlaybackState> get copyWith;
 }
@@ -4062,20 +3166,18 @@ abstract class $PlaybackStateCopyWith<$Res> {
           PlaybackState value, $Res Function(PlaybackState) then) =
       _$PlaybackStateCopyWithImpl<$Res>;
   $Res call(
-      {BetterPlayerDataSourceType sourceType,
-      BetterPlayerController controller,
+      {@nullable FlickManager manager,
       SliderConfiguration sliderConfig,
-      @nullable dynamic notifier,
+      @nullable VideoPlayerValue notifier,
       String path,
       String fileName,
       String extension,
-      BetterPlayerEventType playerEvent,
       Duration buffered,
+      Duration playbackDuration,
       double volume,
-      double volumeBeforeMute,
+      Duration moment,
       bool autoPlay,
       bool willLoop,
-      bool isFirstTouch,
       bool isInitialized,
       bool isLoading,
       bool isPlaying,
@@ -4083,8 +3185,7 @@ abstract class $PlaybackStateCopyWith<$Res> {
       bool isSeeking,
       bool isMute,
       bool isBuffering,
-      bool isFullscreen,
-      Duration moment});
+      bool isFullscreen});
 }
 
 class _$PlaybackStateCopyWithImpl<$Res>
@@ -4097,20 +3198,18 @@ class _$PlaybackStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object sourceType = freezed,
-    Object controller = freezed,
+    Object manager = freezed,
     Object sliderConfig = freezed,
     Object notifier = freezed,
     Object path = freezed,
     Object fileName = freezed,
     Object extension = freezed,
-    Object playerEvent = freezed,
     Object buffered = freezed,
+    Object playbackDuration = freezed,
     Object volume = freezed,
-    Object volumeBeforeMute = freezed,
+    Object moment = freezed,
     Object autoPlay = freezed,
     Object willLoop = freezed,
-    Object isFirstTouch = freezed,
     Object isInitialized = freezed,
     Object isLoading = freezed,
     Object isPlaying = freezed,
@@ -4119,34 +3218,25 @@ class _$PlaybackStateCopyWithImpl<$Res>
     Object isMute = freezed,
     Object isBuffering = freezed,
     Object isFullscreen = freezed,
-    Object moment = freezed,
   }) {
     return _then(_value.copyWith(
-      sourceType: sourceType == freezed
-          ? _value.sourceType
-          : sourceType as BetterPlayerDataSourceType,
-      controller: controller == freezed
-          ? _value.controller
-          : controller as BetterPlayerController,
+      manager: manager == freezed ? _value.manager : manager as FlickManager,
       sliderConfig: sliderConfig == freezed
           ? _value.sliderConfig
           : sliderConfig as SliderConfiguration,
-      notifier: notifier == freezed ? _value.notifier : notifier as dynamic,
+      notifier:
+          notifier == freezed ? _value.notifier : notifier as VideoPlayerValue,
       path: path == freezed ? _value.path : path as String,
       fileName: fileName == freezed ? _value.fileName : fileName as String,
       extension: extension == freezed ? _value.extension : extension as String,
-      playerEvent: playerEvent == freezed
-          ? _value.playerEvent
-          : playerEvent as BetterPlayerEventType,
       buffered: buffered == freezed ? _value.buffered : buffered as Duration,
+      playbackDuration: playbackDuration == freezed
+          ? _value.playbackDuration
+          : playbackDuration as Duration,
       volume: volume == freezed ? _value.volume : volume as double,
-      volumeBeforeMute: volumeBeforeMute == freezed
-          ? _value.volumeBeforeMute
-          : volumeBeforeMute as double,
+      moment: moment == freezed ? _value.moment : moment as Duration,
       autoPlay: autoPlay == freezed ? _value.autoPlay : autoPlay as bool,
       willLoop: willLoop == freezed ? _value.willLoop : willLoop as bool,
-      isFirstTouch:
-          isFirstTouch == freezed ? _value.isFirstTouch : isFirstTouch as bool,
       isInitialized: isInitialized == freezed
           ? _value.isInitialized
           : isInitialized as bool,
@@ -4160,7 +3250,6 @@ class _$PlaybackStateCopyWithImpl<$Res>
           isBuffering == freezed ? _value.isBuffering : isBuffering as bool,
       isFullscreen:
           isFullscreen == freezed ? _value.isFullscreen : isFullscreen as bool,
-      moment: moment == freezed ? _value.moment : moment as Duration,
     ));
   }
 }
@@ -4172,20 +3261,18 @@ abstract class _$PlaybackStateCopyWith<$Res>
       __$PlaybackStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BetterPlayerDataSourceType sourceType,
-      BetterPlayerController controller,
+      {@nullable FlickManager manager,
       SliderConfiguration sliderConfig,
-      @nullable dynamic notifier,
+      @nullable VideoPlayerValue notifier,
       String path,
       String fileName,
       String extension,
-      BetterPlayerEventType playerEvent,
       Duration buffered,
+      Duration playbackDuration,
       double volume,
-      double volumeBeforeMute,
+      Duration moment,
       bool autoPlay,
       bool willLoop,
-      bool isFirstTouch,
       bool isInitialized,
       bool isLoading,
       bool isPlaying,
@@ -4193,8 +3280,7 @@ abstract class _$PlaybackStateCopyWith<$Res>
       bool isSeeking,
       bool isMute,
       bool isBuffering,
-      bool isFullscreen,
-      Duration moment});
+      bool isFullscreen});
 }
 
 class __$PlaybackStateCopyWithImpl<$Res>
@@ -4209,20 +3295,18 @@ class __$PlaybackStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object sourceType = freezed,
-    Object controller = freezed,
+    Object manager = freezed,
     Object sliderConfig = freezed,
     Object notifier = freezed,
     Object path = freezed,
     Object fileName = freezed,
     Object extension = freezed,
-    Object playerEvent = freezed,
     Object buffered = freezed,
+    Object playbackDuration = freezed,
     Object volume = freezed,
-    Object volumeBeforeMute = freezed,
+    Object moment = freezed,
     Object autoPlay = freezed,
     Object willLoop = freezed,
-    Object isFirstTouch = freezed,
     Object isInitialized = freezed,
     Object isLoading = freezed,
     Object isPlaying = freezed,
@@ -4231,34 +3315,25 @@ class __$PlaybackStateCopyWithImpl<$Res>
     Object isMute = freezed,
     Object isBuffering = freezed,
     Object isFullscreen = freezed,
-    Object moment = freezed,
   }) {
     return _then(_PlaybackState(
-      sourceType: sourceType == freezed
-          ? _value.sourceType
-          : sourceType as BetterPlayerDataSourceType,
-      controller: controller == freezed
-          ? _value.controller
-          : controller as BetterPlayerController,
+      manager: manager == freezed ? _value.manager : manager as FlickManager,
       sliderConfig: sliderConfig == freezed
           ? _value.sliderConfig
           : sliderConfig as SliderConfiguration,
-      notifier: notifier == freezed ? _value.notifier : notifier as dynamic,
+      notifier:
+          notifier == freezed ? _value.notifier : notifier as VideoPlayerValue,
       path: path == freezed ? _value.path : path as String,
       fileName: fileName == freezed ? _value.fileName : fileName as String,
       extension: extension == freezed ? _value.extension : extension as String,
-      playerEvent: playerEvent == freezed
-          ? _value.playerEvent
-          : playerEvent as BetterPlayerEventType,
       buffered: buffered == freezed ? _value.buffered : buffered as Duration,
+      playbackDuration: playbackDuration == freezed
+          ? _value.playbackDuration
+          : playbackDuration as Duration,
       volume: volume == freezed ? _value.volume : volume as double,
-      volumeBeforeMute: volumeBeforeMute == freezed
-          ? _value.volumeBeforeMute
-          : volumeBeforeMute as double,
+      moment: moment == freezed ? _value.moment : moment as Duration,
       autoPlay: autoPlay == freezed ? _value.autoPlay : autoPlay as bool,
       willLoop: willLoop == freezed ? _value.willLoop : willLoop as bool,
-      isFirstTouch:
-          isFirstTouch == freezed ? _value.isFirstTouch : isFirstTouch as bool,
       isInitialized: isInitialized == freezed
           ? _value.isInitialized
           : isInitialized as bool,
@@ -4272,27 +3347,24 @@ class __$PlaybackStateCopyWithImpl<$Res>
           isBuffering == freezed ? _value.isBuffering : isBuffering as bool,
       isFullscreen:
           isFullscreen == freezed ? _value.isFullscreen : isFullscreen as bool,
-      moment: moment == freezed ? _value.moment : moment as Duration,
     ));
   }
 }
 
 class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
   const _$_PlaybackState(
-      {this.sourceType = BetterPlayerDataSourceType.NETWORK,
-      this.controller,
+      {@nullable this.manager,
       @required this.sliderConfig,
       @nullable this.notifier,
       this.path = PlaybackState.DEFAULT_PATH,
       this.fileName = PlaybackState.TEST_VIDEO_NAME,
       this.extension = PlaybackState.DEFAULT_EXTENSION,
-      this.playerEvent = BetterPlayerEventType.PAUSE,
       this.buffered = Duration.zero,
+      this.playbackDuration = Duration.zero,
       this.volume = PlaybackState.INITIAL_VOLUME,
-      this.volumeBeforeMute = PlaybackState.INITIAL_VOLUME,
+      this.moment = Duration.zero,
       this.autoPlay = false,
       this.willLoop = false,
-      this.isFirstTouch = false,
       this.isInitialized = false,
       this.isLoading = false,
       this.isPlaying = false,
@@ -4300,20 +3372,17 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
       this.isSeeking = false,
       this.isMute = false,
       this.isBuffering = false,
-      this.isFullscreen = false,
-      this.moment = Duration.zero})
-      : assert(sourceType != null),
-        assert(sliderConfig != null),
+      this.isFullscreen = false})
+      : assert(sliderConfig != null),
         assert(path != null),
         assert(fileName != null),
         assert(extension != null),
-        assert(playerEvent != null),
         assert(buffered != null),
+        assert(playbackDuration != null),
         assert(volume != null),
-        assert(volumeBeforeMute != null),
+        assert(moment != null),
         assert(autoPlay != null),
         assert(willLoop != null),
-        assert(isFirstTouch != null),
         assert(isInitialized != null),
         assert(isLoading != null),
         assert(isPlaying != null),
@@ -4322,19 +3391,16 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
         assert(isMute != null),
         assert(isBuffering != null),
         assert(isFullscreen != null),
-        assert(moment != null),
         super._();
 
-  @JsonKey(defaultValue: BetterPlayerDataSourceType.NETWORK)
   @override
-  final BetterPlayerDataSourceType sourceType;
-  @override
-  final BetterPlayerController controller;
+  @nullable
+  final FlickManager manager;
   @override
   final SliderConfiguration sliderConfig;
   @override
   @nullable
-  final dynamic notifier;
+  final VideoPlayerValue notifier;
   @JsonKey(defaultValue: PlaybackState.DEFAULT_PATH)
   @override
   final String path;
@@ -4344,27 +3410,24 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
   @JsonKey(defaultValue: PlaybackState.DEFAULT_EXTENSION)
   @override
   final String extension;
-  @JsonKey(defaultValue: BetterPlayerEventType.PAUSE)
-  @override
-  final BetterPlayerEventType playerEvent;
   @JsonKey(defaultValue: Duration.zero)
   @override
   final Duration buffered;
+  @JsonKey(defaultValue: Duration.zero)
+  @override
+  final Duration playbackDuration;
   @JsonKey(defaultValue: PlaybackState.INITIAL_VOLUME)
   @override
   final double volume;
-  @JsonKey(defaultValue: PlaybackState.INITIAL_VOLUME)
+  @JsonKey(defaultValue: Duration.zero)
   @override
-  final double volumeBeforeMute;
+  final Duration moment;
   @JsonKey(defaultValue: false)
   @override
   final bool autoPlay;
   @JsonKey(defaultValue: false)
   @override
   final bool willLoop;
-  @JsonKey(defaultValue: false)
-  @override
-  final bool isFirstTouch;
   @JsonKey(defaultValue: false)
   @override
   final bool isInitialized;
@@ -4389,13 +3452,10 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
   @JsonKey(defaultValue: false)
   @override
   final bool isFullscreen;
-  @JsonKey(defaultValue: Duration.zero)
-  @override
-  final Duration moment;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PlaybackState(sourceType: $sourceType, controller: $controller, sliderConfig: $sliderConfig, notifier: $notifier, path: $path, fileName: $fileName, extension: $extension, playerEvent: $playerEvent, buffered: $buffered, volume: $volume, volumeBeforeMute: $volumeBeforeMute, autoPlay: $autoPlay, willLoop: $willLoop, isFirstTouch: $isFirstTouch, isInitialized: $isInitialized, isLoading: $isLoading, isPlaying: $isPlaying, isFinished: $isFinished, isSeeking: $isSeeking, isMute: $isMute, isBuffering: $isBuffering, isFullscreen: $isFullscreen, moment: $moment)';
+    return 'PlaybackState(manager: $manager, sliderConfig: $sliderConfig, notifier: $notifier, path: $path, fileName: $fileName, extension: $extension, buffered: $buffered, playbackDuration: $playbackDuration, volume: $volume, moment: $moment, autoPlay: $autoPlay, willLoop: $willLoop, isInitialized: $isInitialized, isLoading: $isLoading, isPlaying: $isPlaying, isFinished: $isFinished, isSeeking: $isSeeking, isMute: $isMute, isBuffering: $isBuffering, isFullscreen: $isFullscreen)';
   }
 
   @override
@@ -4403,20 +3463,18 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'PlaybackState'))
-      ..add(DiagnosticsProperty('sourceType', sourceType))
-      ..add(DiagnosticsProperty('controller', controller))
+      ..add(DiagnosticsProperty('manager', manager))
       ..add(DiagnosticsProperty('sliderConfig', sliderConfig))
       ..add(DiagnosticsProperty('notifier', notifier))
       ..add(DiagnosticsProperty('path', path))
       ..add(DiagnosticsProperty('fileName', fileName))
       ..add(DiagnosticsProperty('extension', extension))
-      ..add(DiagnosticsProperty('playerEvent', playerEvent))
       ..add(DiagnosticsProperty('buffered', buffered))
+      ..add(DiagnosticsProperty('playbackDuration', playbackDuration))
       ..add(DiagnosticsProperty('volume', volume))
-      ..add(DiagnosticsProperty('volumeBeforeMute', volumeBeforeMute))
+      ..add(DiagnosticsProperty('moment', moment))
       ..add(DiagnosticsProperty('autoPlay', autoPlay))
       ..add(DiagnosticsProperty('willLoop', willLoop))
-      ..add(DiagnosticsProperty('isFirstTouch', isFirstTouch))
       ..add(DiagnosticsProperty('isInitialized', isInitialized))
       ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('isPlaying', isPlaying))
@@ -4424,20 +3482,16 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('isSeeking', isSeeking))
       ..add(DiagnosticsProperty('isMute', isMute))
       ..add(DiagnosticsProperty('isBuffering', isBuffering))
-      ..add(DiagnosticsProperty('isFullscreen', isFullscreen))
-      ..add(DiagnosticsProperty('moment', moment));
+      ..add(DiagnosticsProperty('isFullscreen', isFullscreen));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _PlaybackState &&
-            (identical(other.sourceType, sourceType) ||
+            (identical(other.manager, manager) ||
                 const DeepCollectionEquality()
-                    .equals(other.sourceType, sourceType)) &&
-            (identical(other.controller, controller) ||
-                const DeepCollectionEquality()
-                    .equals(other.controller, controller)) &&
+                    .equals(other.manager, manager)) &&
             (identical(other.sliderConfig, sliderConfig) ||
                 const DeepCollectionEquality()
                     .equals(other.sliderConfig, sliderConfig)) &&
@@ -4452,26 +3506,22 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
             (identical(other.extension, extension) ||
                 const DeepCollectionEquality()
                     .equals(other.extension, extension)) &&
-            (identical(other.playerEvent, playerEvent) ||
-                const DeepCollectionEquality()
-                    .equals(other.playerEvent, playerEvent)) &&
             (identical(other.buffered, buffered) ||
                 const DeepCollectionEquality()
                     .equals(other.buffered, buffered)) &&
+            (identical(other.playbackDuration, playbackDuration) ||
+                const DeepCollectionEquality()
+                    .equals(other.playbackDuration, playbackDuration)) &&
             (identical(other.volume, volume) ||
                 const DeepCollectionEquality().equals(other.volume, volume)) &&
-            (identical(other.volumeBeforeMute, volumeBeforeMute) ||
-                const DeepCollectionEquality()
-                    .equals(other.volumeBeforeMute, volumeBeforeMute)) &&
+            (identical(other.moment, moment) ||
+                const DeepCollectionEquality().equals(other.moment, moment)) &&
             (identical(other.autoPlay, autoPlay) ||
                 const DeepCollectionEquality()
                     .equals(other.autoPlay, autoPlay)) &&
             (identical(other.willLoop, willLoop) ||
                 const DeepCollectionEquality()
                     .equals(other.willLoop, willLoop)) &&
-            (identical(other.isFirstTouch, isFirstTouch) ||
-                const DeepCollectionEquality()
-                    .equals(other.isFirstTouch, isFirstTouch)) &&
             (identical(other.isInitialized, isInitialized) ||
                 const DeepCollectionEquality()
                     .equals(other.isInitialized, isInitialized)) &&
@@ -4494,28 +3544,24 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
                     .equals(other.isBuffering, isBuffering)) &&
             (identical(other.isFullscreen, isFullscreen) ||
                 const DeepCollectionEquality()
-                    .equals(other.isFullscreen, isFullscreen)) &&
-            (identical(other.moment, moment) ||
-                const DeepCollectionEquality().equals(other.moment, moment)));
+                    .equals(other.isFullscreen, isFullscreen)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(sourceType) ^
-      const DeepCollectionEquality().hash(controller) ^
+      const DeepCollectionEquality().hash(manager) ^
       const DeepCollectionEquality().hash(sliderConfig) ^
       const DeepCollectionEquality().hash(notifier) ^
       const DeepCollectionEquality().hash(path) ^
       const DeepCollectionEquality().hash(fileName) ^
       const DeepCollectionEquality().hash(extension) ^
-      const DeepCollectionEquality().hash(playerEvent) ^
       const DeepCollectionEquality().hash(buffered) ^
+      const DeepCollectionEquality().hash(playbackDuration) ^
       const DeepCollectionEquality().hash(volume) ^
-      const DeepCollectionEquality().hash(volumeBeforeMute) ^
+      const DeepCollectionEquality().hash(moment) ^
       const DeepCollectionEquality().hash(autoPlay) ^
       const DeepCollectionEquality().hash(willLoop) ^
-      const DeepCollectionEquality().hash(isFirstTouch) ^
       const DeepCollectionEquality().hash(isInitialized) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(isPlaying) ^
@@ -4523,8 +3569,7 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(isSeeking) ^
       const DeepCollectionEquality().hash(isMute) ^
       const DeepCollectionEquality().hash(isBuffering) ^
-      const DeepCollectionEquality().hash(isFullscreen) ^
-      const DeepCollectionEquality().hash(moment);
+      const DeepCollectionEquality().hash(isFullscreen);
 
   @override
   _$PlaybackStateCopyWith<_PlaybackState> get copyWith =>
@@ -4534,20 +3579,18 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
 abstract class _PlaybackState extends PlaybackState {
   const _PlaybackState._() : super._();
   const factory _PlaybackState(
-      {BetterPlayerDataSourceType sourceType,
-      BetterPlayerController controller,
+      {@nullable FlickManager manager,
       @required SliderConfiguration sliderConfig,
-      @nullable dynamic notifier,
+      @nullable VideoPlayerValue notifier,
       String path,
       String fileName,
       String extension,
-      BetterPlayerEventType playerEvent,
       Duration buffered,
+      Duration playbackDuration,
       double volume,
-      double volumeBeforeMute,
+      Duration moment,
       bool autoPlay,
       bool willLoop,
-      bool isFirstTouch,
       bool isInitialized,
       bool isLoading,
       bool isPlaying,
@@ -4555,18 +3598,16 @@ abstract class _PlaybackState extends PlaybackState {
       bool isSeeking,
       bool isMute,
       bool isBuffering,
-      bool isFullscreen,
-      Duration moment}) = _$_PlaybackState;
+      bool isFullscreen}) = _$_PlaybackState;
 
   @override
-  BetterPlayerDataSourceType get sourceType;
-  @override
-  BetterPlayerController get controller;
+  @nullable
+  FlickManager get manager;
   @override
   SliderConfiguration get sliderConfig;
   @override
   @nullable
-  dynamic get notifier;
+  VideoPlayerValue get notifier;
   @override
   String get path;
   @override
@@ -4574,19 +3615,17 @@ abstract class _PlaybackState extends PlaybackState {
   @override
   String get extension;
   @override
-  BetterPlayerEventType get playerEvent;
-  @override
   Duration get buffered;
+  @override
+  Duration get playbackDuration;
   @override
   double get volume;
   @override
-  double get volumeBeforeMute;
+  Duration get moment;
   @override
   bool get autoPlay;
   @override
   bool get willLoop;
-  @override
-  bool get isFirstTouch;
   @override
   bool get isInitialized;
   @override
@@ -4603,8 +3642,6 @@ abstract class _PlaybackState extends PlaybackState {
   bool get isBuffering;
   @override
   bool get isFullscreen;
-  @override
-  Duration get moment;
   @override
   _$PlaybackStateCopyWith<_PlaybackState> get copyWith;
 }

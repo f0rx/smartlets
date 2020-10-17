@@ -12,33 +12,32 @@ abstract class PlaybackState implements _$PlaybackState {
   const PlaybackState._();
 
   const factory PlaybackState({
-    @Default(BetterPlayerDataSourceType.NETWORK) BetterPlayerDataSourceType sourceType,
-    BetterPlayerController controller,
+    @nullable FlickManager manager,
     @required SliderConfiguration sliderConfig,
-    @nullable dynamic notifier,
+    @nullable VideoPlayerValue notifier,
     @Default(PlaybackState.DEFAULT_PATH) String path,
     @Default(PlaybackState.TEST_VIDEO_NAME) String fileName,
     @Default(PlaybackState.DEFAULT_EXTENSION) String extension,
-    @Default(BetterPlayerEventType.PAUSE) BetterPlayerEventType playerEvent,
     @Default(Duration.zero) Duration buffered,
+    @Default(Duration.zero) Duration playbackDuration,
     @Default(PlaybackState.INITIAL_VOLUME) double volume,
-    @Default(PlaybackState.INITIAL_VOLUME) double volumeBeforeMute,
     @Default(Duration.zero) Duration moment,
     @Default(false) bool autoPlay,
     @Default(false) bool willLoop,
-    @Default(false) bool isFirstTouch,
     @Default(false) bool isInitialized,
     @Default(false) bool isLoading,
     @Default(false) bool isPlaying,
     @Default(false) bool isFinished,
+    // "isSeeking" - When a user is dragging the seek bar
     @Default(false) bool isSeeking,
     @Default(false) bool isMute,
+    // "isBuffering" - When the video is buffering (Local or Network)
     @Default(false) bool isBuffering,
     @Default(false) bool isFullscreen,
   }) = _PlaybackState;
 
-  factory PlaybackState.init([BetterPlayerController controller]) => PlaybackState(
-        controller: controller,
+  factory PlaybackState.init([FlickManager manager]) => PlaybackState(
+        manager: manager,
         sliderConfig: SliderConfiguration.dflt(),
       );
 }
