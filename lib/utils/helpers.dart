@@ -166,6 +166,8 @@ class Helpers {
   /// give access to MediaQuery.of(context)
   MediaQueryData get mediaQuery => MediaQuery.of(context);
 
+  WidgetsBinding get engine => WidgetsBinding.instance;
+
   /// give access to Theme.of(context).iconTheme.color
   Color get iconColor => Theme.of(context).iconTheme.color;
 
@@ -177,6 +179,9 @@ class Helpers {
 
   /// give access to Immutable MediaQuery.of(context).size.width
   double get width => MediaQuery.of(context).size.width;
+
+  /// Check if dark mode theme is enable on platform on android Q+
+  bool get isPlatformDarkMode => (mediaQuery.platformBrightness == Brightness.dark);
 
   /// Push the given [page], and then pop several [pages] in the stack until
   /// [predicate] returns true
@@ -227,13 +232,27 @@ class Helpers {
     return global(id).currentState.removeRoute(route);
   }
 
-  void forceAppUpdate() {
+  /// As a rule, Flutter knows which widget to update,
+  /// so this command is rarely needed. We can mention situations
+  /// where you use const so that widgets are not updated with setState,
+  /// but you want it to be forcefully updated when an event like
+  /// language change happens. using context to make the widget dirty
+  /// for performRebuild() is a viable solution.
+  /// However, in situations where this is not possible, or at least,
+  /// is not desired by the developer, the only solution for updating
+  /// widgets that Flutter does not want to update is to use reassemble
+  /// to forcibly rebuild all widgets. Attention: calling this function will
+  /// reconstruct the application from the sketch, use this with caution.
+  /// Your entire application will be rebuilt, and touch events will not
+  /// work until the end of rendering.
+  Future<void> forceAppUpdate() async {
     void rebuild(Element el) {
       el.markNeedsBuild();
       el.visitChildren(rebuild);
     }
 
     (context as Element).visitChildren(rebuild);
+    // await engine.reassembleApplication();
   }
 
   PageRoute<T> adaptivePageRoute<T>({
