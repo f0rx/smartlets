@@ -8,7 +8,7 @@ class StudentDestination<E> {
   final String title;
   final E selectedIcon;
   final E unSelectedIcon;
-  final E page;
+  final Widget page;
 
   StudentDestination({
     @required this.title,
@@ -18,32 +18,32 @@ class StudentDestination<E> {
     E unSelectedIcon,
   }) : unSelectedIcon = unSelectedIcon ?? selectedIcon;
 
-  static final List<StudentDestination<Widget>> destinations = <StudentDestination<Widget>>[
-    StudentDestination<Widget>(
+  static final List<StudentDestination<IconData>> destinations = <StudentDestination<IconData>>[
+    StudentDestination<IconData>(
       title: "Home",
-      selectedIcon: Icon(Smartlets.home_filled),
-      unSelectedIcon: Icon(Smartlets.home_outlined),
+      selectedIcon: Smartlets.home_filled,
+      unSelectedIcon: Smartlets.home_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: StudentHomeScreen(),
     ),
-    StudentDestination<Widget>(
+    StudentDestination<IconData>(
       title: "Courses",
-      selectedIcon: Icon(Smartlets.book_filled),
-      unSelectedIcon: Icon(Smartlets.book_outlined),
+      selectedIcon: Smartlets.book_filled,
+      unSelectedIcon: Smartlets.book_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: StudentCoursesScreen(),
     ),
-    StudentDestination<Widget>(
+    StudentDestination<IconData>(
       title: "Games",
-      selectedIcon: Icon(Smartlets.game_pad_filled),
-      unSelectedIcon: Icon(Smartlets.game_pad_outlined),
+      selectedIcon: Smartlets.game_pad_filled,
+      unSelectedIcon: Smartlets.game_pad_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: GamesScreen(),
     ),
-    StudentDestination<Widget>(
+    StudentDestination<IconData>(
       title: "Profile",
-      selectedIcon: Icon(Smartlets.account),
-      unSelectedIcon: Icon(Smartlets.account_outline),
+      selectedIcon: Smartlets.account,
+      unSelectedIcon: Smartlets.account_outline,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: StudentProfileScreen(),
     ),

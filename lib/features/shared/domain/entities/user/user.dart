@@ -1,46 +1,56 @@
 library user;
 
-import 'dart:convert';
-
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
-import 'package:smartlets/manager/serializer/serializer.dart';
 import 'package:smartlets/utils/utils.dart';
 
-part 'user.g.dart';
+part 'user.freezed.dart';
 
-abstract class User implements Built<User, UserBuilder> {
-  UniqueId get id;
-  @nullable
-  String get displayName;
-  String get email;
-  @nullable
-  bool get isEmailVerified;
-  @nullable
-  String get phone;
-  @nullable
-  String get photoURL;
-  DateTime get createdAt;
-  DateTime get lastSeenAt;
+@freezed
+@immutable
+abstract class User implements _$User {
+  @protected
+  const factory User._({
+    @required UniqueId id,
+    @nullable String displayName,
+    @required String email,
+    @nullable bool isEmailVerified,
+    @nullable String phone,
+    @nullable String photoURL,
+    @required DateTime createdAt,
+    @required DateTime lastSeenAt,
+  }) = _User;
 
-  User._();
+  factory User.firebaseAuth({
+    @required UniqueId id,
+    @nullable String displayName,
+    @required String email,
+    @nullable bool isEmailVerified,
+    @nullable String phone,
+    @nullable String photoURL,
+    @required DateTime createdAt,
+    @required DateTime lastSeenAt,
+  }) =>
+      User._(
+        id: id,
+        displayName: displayName,
+        email: email,
+        isEmailVerified: isEmailVerified,
+        phone: phone,
+        photoURL: photoURL,
+        createdAt: createdAt,
+        lastSeenAt: lastSeenAt,
+      );
 
-  static void _initializeBuilder(UserBuilder builder) => builder
-    ..id = UniqueId()
-    ..displayName = "Anonymous"
-    ..email = "name@email.com"
-    ..isEmailVerified = false
-    ..phone = "+2348100000000"
-    ..photoURL = ""
-    ..createdAt = Helpers.I.today
-    ..lastSeenAt = Helpers.I.today;
-
-  factory User([updates(UserBuilder b)]) = _$User;
-
-  String toJson() => json.encode(serializers.serializeWith(User.serializer, this));
-
-  static User fromJson(String jsonString) => serializers.deserializeWith(User.serializer, json.decode(jsonString));
-
-  static Serializer<User> get serializer => _$userSerializer;
+  factory User.guest() => User._(
+        id: UniqueId(),
+        displayName: "Anonymous",
+        email: "name@email.com",
+        isEmailVerified: false,
+        phone: "+2348100000000",
+        photoURL: "",
+        createdAt: Helpers.I.today,
+        lastSeenAt: Helpers.I.today,
+      );
 }

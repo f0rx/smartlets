@@ -6,6 +6,7 @@ import 'package:smartlets/features/on_boarding/presentation/splash_screen.dart';
 import 'package:smartlets/features/parent/presentation/pages/pages.dart';
 import 'package:smartlets/features/parent/presentation/screens/export.dart';
 import 'package:smartlets/features/student/presentation/pages/student_pages.dart';
+import 'package:smartlets/features/student/presentation/screens/course_details/course_detail_index_page.dart';
 import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
 @AdaptiveAutoRouter(
@@ -161,7 +162,13 @@ import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
     /// STUDENT SCREENS END ////////
     //
-    AdaptiveRoute(page: CourseDetailScreen, maintainState: true),
+    AdaptiveRoute(path: "/students/course-details", page: CourseDetailScreen, maintainState: true, children: [
+      AdaptiveRoute(
+        initial: true,
+        page: CourseDetailIndexPage,
+        maintainState: true,
+      ),
+    ]),
     //
     AdaptiveRoute(path: "*", cupertinoPageTitle: "Error 404", page: UnknownRoute, maintainState: true),
   ],

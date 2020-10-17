@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
-import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 
 class DisplayName extends FieldObject<String> {
   @override
@@ -8,7 +7,7 @@ class DisplayName extends FieldObject<String> {
 
   factory DisplayName(String input) {
     assert(input != null);
-    return DisplayName._(Validator.basic(input));
+    return DisplayName._(Validator.isEmpty(input));
   }
 
   const DisplayName._(this.value);
