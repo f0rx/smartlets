@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:logger/logger.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/manager/theme/theme.dart';
 import 'package:smartlets/utils/utils.dart';
@@ -15,7 +16,7 @@ import 'package:smartlets/widgets/widgets.dart';
 // ignore: non_constant_identifier_names
 final App = Helpers.I;
 
-final log = Log;
+final log = Helpers.logger;
 
 ExtendedNavigatorState<RouterBase> get navigator => App.context.navigator;
 
@@ -39,9 +40,10 @@ class Helpers {
 
   static Helpers get I => Helpers._();
   static double buttonRadius = 12.0;
-  static double buttonVerticalPadding = App.mediaQuery.size.width * 0.04;
-  static double horizontalSpacing = App.mediaQuery.size.width * 0.04;
+  static double appPadding = App.width * 0.04;
+  static ScrollPhysics physics = BouncingScrollPhysics();
   static Duration willPopTimeout = const Duration(seconds: 3);
+  static Logger logger = Logger();
 
   static String writeNotNull(String other) {
     if (other.trim() != null || other.trim().isNotEmpty) {
@@ -64,9 +66,17 @@ class Helpers {
     return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
   }
 
+  static Color computeLuminance(Color color) => color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
+
   static Future<void> precache(BuildContext context) async {
-    // precacheImage(AssetImage("${AppAssets.ON_BOARDING_SVG_DIR}/connect.png"), context);
+    context ??= App.context;
     await precachePicture(ExactAssetPicture(SvgPicture.svgStringDecoder, "${AppAssets.SVG_DIR}/doodle.svg"), context);
+    await precacheImage(AssetImage(AppAssets.anonymous), context);
+    await precacheImage(AssetImage(AppAssets.courseFrame1), context);
+    await precacheImage(AssetImage(AppAssets.courseFrame2), context);
+    await precacheImage(AssetImage(AppAssets.courseFrame3), context);
+    await precacheImage(AssetImage(AppAssets.courseFrame4), context);
+    await precacheImage(AssetImage(AppAssets.playback), context);
   }
 
   static Future<bool> willPop(DateTime current) {
@@ -83,6 +93,15 @@ class Helpers {
       Fluttertoast.cancel();
       return Future.value(true);
     }
+  }
+
+  static String hhmmss([Duration duration = Duration.zero]) {
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+    String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
+    return "${duration.inHours > 0 ? twoDigits(duration.inHours).pad(":") : ''}"
+        "${twoDigitMinutes.pad(":")}"
+        "$twoDigitSeconds";
   }
 
   final DateTime today = DateTime.now();
@@ -147,6 +166,8 @@ class Helpers {
   /// give access to MediaQuery.of(context)
   MediaQueryData get mediaQuery => MediaQuery.of(context);
 
+  WidgetsBinding get engine => WidgetsBinding.instance;
+
   /// give access to Theme.of(context).iconTheme.color
   Color get iconColor => Theme.of(context).iconTheme.color;
 
@@ -158,6 +179,9 @@ class Helpers {
 
   /// give access to Immutable MediaQuery.of(context).size.width
   double get width => MediaQuery.of(context).size.width;
+
+  /// Check if dark mode theme is enable on platform on android Q+
+  bool get isPlatformDarkMode => (mediaQuery.platformBrightness == Brightness.dark);
 
   /// Push the given [page], and then pop several [pages] in the stack until
   /// [predicate] returns true
@@ -208,13 +232,27 @@ class Helpers {
     return global(id).currentState.removeRoute(route);
   }
 
-  void forceAppUpdate() {
+  /// As a rule, Flutter knows which widget to update,
+  /// so this command is rarely needed. We can mention situations
+  /// where you use const so that widgets are not updated with setState,
+  /// but you want it to be forcefully updated when an event like
+  /// language change happens. using context to make the widget dirty
+  /// for performRebuild() is a viable solution.
+  /// However, in situations where this is not possible, or at least,
+  /// is not desired by the developer, the only solution for updating
+  /// widgets that Flutter does not want to update is to use reassemble
+  /// to forcibly rebuild all widgets. Attention: calling this function will
+  /// reconstruct the application from the sketch, use this with caution.
+  /// Your entire application will be rebuilt, and touch events will not
+  /// work until the end of rendering.
+  Future<void> forceAppUpdate() async {
     void rebuild(Element el) {
       el.markNeedsBuild();
       el.visitChildren(rebuild);
     }
 
     (context as Element).visitChildren(rebuild);
+    // await engine.reassembleApplication();
   }
 
   PageRoute<T> adaptivePageRoute<T>({

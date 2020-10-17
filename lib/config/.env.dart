@@ -17,17 +17,17 @@ class BuildEnvironment {
   });
 
   /// Sets up the top-level [env] getter on the first call only.
-  static Future<void> init({@required flavor}) async {
+  static Future<void> init({@required BuildFlavor flavor}) async {
     _env ??= BuildEnvironment._init(
       flavor: flavor,
-      splashDuration: flavor == Environment.dev ? const Duration(milliseconds: 500) : const Duration(seconds: 2),
+      splashDuration: flavor == BuildFlavor.dev ? const Duration(milliseconds: 500) : const Duration(seconds: 2),
     );
 
     switch (flavor) {
-      case Environment.dev:
+      case BuildFlavor.dev:
         await locator(Environment.dev);
         break;
-      case Environment.prod:
+      case BuildFlavor.prod:
         await locator(Environment.prod);
         break;
       default:

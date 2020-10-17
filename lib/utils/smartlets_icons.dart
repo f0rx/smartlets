@@ -47,4 +47,14 @@ class Smartlets {
   static const IconData book_filled = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData book_outlined = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData book_stack_filled = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData clock_icon = IconData(0xe837, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData lesson_icon = IconData(0xe838, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData play_icon = IconData(0xe839, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_icon = IconData(0xe83a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData play_button = IconData(0xe842, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData skip_button = IconData(0xe843, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pause_button = IconData(0xe844, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData fit_screen_icon = IconData(0xe849, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData low_volume = IconData(0xe84a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mute_volume = IconData(0xe84b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

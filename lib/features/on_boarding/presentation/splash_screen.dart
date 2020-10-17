@@ -17,7 +17,6 @@ class SplashScreen extends StatelessWidget {
     return FutureBuilder<Option<User>>(
       future: Future.delayed(env.splashDuration, () => getIt<AuthFacade>().currentUser),
       builder: (_, snapshot) {
-        // getIt<AuthFacade>().signOut();
         if (snapshot.hasData)
           getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(
                 () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),

@@ -9,13 +9,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:smartlets/features/_404.dart';
+import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/presentation/pages/auth_screens.dart';
 import 'package:smartlets/features/on_boarding/presentation/on_boarding_screen.dart';
 import 'package:smartlets/features/on_boarding/presentation/splash_screen.dart';
-import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/features/parent/presentation/pages/pages.dart';
 import 'package:smartlets/features/parent/presentation/screens/export.dart';
+import 'package:smartlets/features/student/domain/domain.dart';
 import 'package:smartlets/features/student/presentation/pages/student_pages.dart';
+import 'package:smartlets/features/student/presentation/screens/course_details/course_detail_index_page.dart';
 import 'package:smartlets/features/student/presentation/screens/exports.dart';
 
 class Routes {
@@ -35,7 +37,7 @@ class Routes {
   static const String studentCoursesScreen = '/students/courses';
   static const String gamesScreen = '/students/games';
   static const String studentProfileScreen = '/students/profile';
-  static const String courseDetailScreen = '/course-detail-screen';
+  static const String courseDetailScreen = '/students/course-details';
   static const String unknownRoute = '*';
   static const all = <String>{
     splashScreen,
@@ -111,7 +113,11 @@ class Router extends RouterBase {
       page: StudentProfileScreen,
       generator: StudentProfileScreenRouter(),
     ),
-    RouteDef(Routes.courseDetailScreen, page: CourseDetailScreen),
+    RouteDef(
+      Routes.courseDetailScreen,
+      page: CourseDetailScreen,
+      generator: CourseDetailScreenRouter(),
+    ),
     RouteDef(Routes.unknownRoute, page: UnknownRoute),
   ];
   @override
@@ -245,8 +251,12 @@ class Router extends RouterBase {
       );
     },
     CourseDetailScreen: (data) {
+      final args = data.getArgs<CourseDetailScreenArguments>(nullOk: false);
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => CourseDetailScreen(),
+        builder: (context) => CourseDetailScreen(
+          key: args.key,
+          course: args.course,
+        ).wrappedRoute(context),
         settings: data,
         maintainState: true,
       );
@@ -328,8 +338,14 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushStudentProfileScreen() =>
       push<dynamic>(Routes.studentProfileScreen);
 
-  Future<dynamic> pushCourseDetailScreen() =>
-      push<dynamic>(Routes.courseDetailScreen);
+  Future<dynamic> pushCourseDetailScreen({
+    Key key,
+    @required Course course,
+  }) =>
+      push<dynamic>(
+        Routes.courseDetailScreen,
+        arguments: CourseDetailScreenArguments(key: key, course: course),
+      );
 
   Future<dynamic> pushUnknownRoute() => push<dynamic>(Routes.unknownRoute);
 }
@@ -636,8 +652,14 @@ class StudentHomeScreenRouter extends RouterBase {
       );
     },
     CategoryDetailPage: (data) {
+      final args = data.getArgs<CategoryDetailPageArguments>(
+        orElse: () => CategoryDetailPageArguments(),
+      );
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => CategoryDetailPage(),
+        builder: (context) => CategoryDetailPage(
+          key: args.key,
+          category: args.category,
+        ),
         settings: data,
         cupertinoTitle: 'Category Detail',
         maintainState: true,
@@ -655,8 +677,14 @@ extension StudentHomeScreenRouterExtendedNavigatorStateX
   Future<dynamic> pushStudentHomeIndexPage() =>
       push<dynamic>(StudentHomeScreenRoutes.studentHomeIndexPage);
 
-  Future<dynamic> pushCategoryDetailPage() =>
-      push<dynamic>(StudentHomeScreenRoutes.categoryDetailPage);
+  Future<dynamic> pushCategoryDetailPage({
+    Key key,
+    CourseCategory category,
+  }) =>
+      push<dynamic>(
+        StudentHomeScreenRoutes.categoryDetailPage,
+        arguments: CategoryDetailPageArguments(key: key, category: category),
+      );
 }
 
 class StudentCoursesScreenRoutes {
@@ -786,6 +814,53 @@ extension StudentProfileScreenRouterExtendedNavigatorStateX
       push<dynamic>(StudentProfileScreenRoutes.studentProfileUpdatePage);
 }
 
+class CourseDetailScreenRoutes {
+  static const String courseDetailIndexPage = '/';
+  static const all = <String>{
+    courseDetailIndexPage,
+  };
+}
+
+class CourseDetailScreenRouter extends RouterBase {
+  @override
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(CourseDetailScreenRoutes.courseDetailIndexPage,
+        page: CourseDetailIndexPage),
+  ];
+  @override
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    CourseDetailIndexPage: (data) {
+      final args = data.getArgs<CourseDetailIndexPageArguments>(nullOk: false);
+      return buildAdaptivePageRoute<dynamic>(
+        builder: (context) => CourseDetailIndexPage(
+          key: args.key,
+          course: args.course,
+        ).wrappedRoute(context),
+        settings: data,
+        maintainState: true,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension CourseDetailScreenRouterExtendedNavigatorStateX
+    on ExtendedNavigatorState {
+  Future<dynamic> pushCourseDetailIndexPage({
+    Key key,
+    @required Course course,
+  }) =>
+      push<dynamic>(
+        CourseDetailScreenRoutes.courseDetailIndexPage,
+        arguments: CourseDetailIndexPageArguments(key: key, course: course),
+      );
+}
+
 /// ************************************************************************
 /// Arguments holder classes
 /// *************************************************************************
@@ -811,9 +886,30 @@ class EmailSentScreenArguments {
       this.onTap});
 }
 
+/// CourseDetailScreen arguments holder class
+class CourseDetailScreenArguments {
+  final Key key;
+  final Course course;
+  CourseDetailScreenArguments({this.key, @required this.course});
+}
+
 /// UpdateParentProfilePage arguments holder class
 class UpdateParentProfilePageArguments {
   final User user;
   final Key key;
   UpdateParentProfilePageArguments({@required this.user, this.key});
+}
+
+/// CategoryDetailPage arguments holder class
+class CategoryDetailPageArguments {
+  final Key key;
+  final CourseCategory category;
+  CategoryDetailPageArguments({this.key, this.category});
+}
+
+/// CourseDetailIndexPage arguments holder class
+class CourseDetailIndexPageArguments {
+  final Key key;
+  final Course course;
+  CourseDetailIndexPageArguments({this.key, @required this.course});
 }

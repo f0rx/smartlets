@@ -1,3 +1,4 @@
+import 'package:inflection2/inflection2.dart' as I;
 import 'package:intl/intl.dart';
 
 extension StringX on String {
@@ -58,6 +59,11 @@ extension StringX on String {
     }
   }
 
+  String padIf([bool condition = true, String pad = '', Direction start = Direction.right]) {
+    if (condition) return this.pad(pad, start);
+    return this;
+  }
+
   /// Returns string in currency format
   ///
   /// Example: 50000 => 50,000
@@ -73,6 +79,19 @@ extension StringX on String {
   /// Checks if string consist only numeric.
   /// Numeric only doesn't accepting "." which double data type have
   static bool isNumericOnly(String s) => RegExp(r'^\d+$').hasMatch(s);
+
+  String pluralize([int quantity = 2, String value]) {
+    assert(quantity >= 0);
+    switch (quantity) {
+      case 0:
+        return I.convertToSingular("${value ?? this}");
+      case 1:
+        return I.convertToSingular("${value ?? this}");
+      case 2:
+      default:
+        return I.convertToPlural(this);
+    }
+  }
 
   /// Extract numeric value of string
   /// Example: OTP 12312 27/04/2020 => 1231227042020ß
