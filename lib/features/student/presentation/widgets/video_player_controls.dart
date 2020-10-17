@@ -2,11 +2,13 @@ import 'dart:math' as math;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/student/presentation/manager/blocs.dart';
 import 'package:smartlets/utils/utils.dart';
+import 'package:smartlets/widgets/widgets.dart';
 
 class VideoPlayerControls extends StatefulWidget {
   const VideoPlayerControls({Key key}) : super(key: key);
@@ -16,6 +18,8 @@ class VideoPlayerControls extends StatefulWidget {
 }
 
 class _VideoPlayerControlsState extends State<VideoPlayerControls> with AutomaticKeepAliveClientMixin {
+  final EdgeInsets seekbarPadding = EdgeInsets.symmetric(horizontal: App.width * 0.02);
+
   @override
   bool get wantKeepAlive => true;
 
@@ -28,169 +32,180 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> with Automati
         // ignore: close_sinks
         final _bloc = context.bloc<PlaybackBloc>();
 
-        return Stack(
-          children: [
-            Visibility(
-              visible: !_bloc.state.isFirstTouch,
-              child: Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: 0,
-                child: PlayerControls(
-                  icon: Smartlets.play_button,
-                  padding: App.width * 0.08,
-                  iconSize: 45,
-                  onTap: () => _bloc.add(PlaybackEvent.play(true)),
+        return HorizontalSpace(
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: FlickAutoHideChild(
+                  child: AnimatedContainer(
+                    duration: Duration(seconds: 1),
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  ),
                 ),
               ),
-              replacement: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Expanded(
-                    child: PlayerControls(
-                      icon: Smartlets.skip_button,
-                      text: "- 10",
-                      showText: true,
-                      onTap: () {},
-                      onDoubleTap: () => _bloc.add(PlaybackEvent.rewind()),
+              //
+              Positioned.fill(
+                child: FlickShowControlsAction(
+                  behavior: HitTestBehavior.translucent,
+                  child: FlickSeekVideoAction(
+                    backwardSeekIcon: Icon(Smartlets.skip_button, size: 30),
+                    forwardSeekIcon: Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(math.pi),
+                      child: Icon(Smartlets.skip_button, size: 30),
                     ),
-                  ),
-                  Expanded(
-                    child: Visibility(
-                      visible: !_bloc.state.isPlaying,
-                      replacement: PlayerControls(
-                        icon: Smartlets.pause_button,
-                        padding: App.width * 0.01,
-                        iconSize: 45,
-                        onTap: () => _bloc.add(PlaybackEvent.pause()),
-                      ),
-                      child: PlayerControls(
-                        icon: Smartlets.play_button,
-                        padding: App.width * 0.01,
-                        iconSize: 45,
-                        onTap: () => _bloc.add(PlaybackEvent.play()),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: PlayerControls(
-                      icon: Smartlets.skip_button,
-                      text: "+ 10",
-                      reversed: true,
-                      showText: true,
-                      onTap: () {
-                        _bloc.add(PlaybackEvent.toggleFullScreen());
-                      },
-                      onDoubleTap: () {
-                        _bloc.add(PlaybackEvent.fastForward());
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: Container(
-                width: App.width,
-                color: Colors.grey.withOpacity(0.6),
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        SliderTheme(
-                          data: SliderThemeData(
-                            activeTrackColor: _bloc.state.sliderConfig.activeTrackColor.withOpacity(0.6),
-                            inactiveTrackColor: Colors.transparent,
-                            trackShape: RoundedRectSliderTrackShape(),
-                            trackHeight: _bloc.state.sliderConfig.trackHeight * 0.5,
-                            thumbColor: Colors.transparent,
-                            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0),
-                            overlayColor: Colors.transparent,
-                            overlayShape: RoundSliderOverlayShape(overlayRadius: _bloc.state.sliderConfig.overlayRadius),
-                            showValueIndicator: ShowValueIndicator.never,
-                          ),
-                          child: Slider.adaptive(
-                            value: _bloc.state.buffered.inSeconds.toDouble(),
-                            min: Duration.zero.inSeconds.toDouble(),
-                            max: _bloc.state.notifier?.duration?.inSeconds?.toDouble() ?? double.infinity,
-                            onChanged: (value) {},
+                    child: Center(
+                      child: Visibility(
+                        visible: _bloc.state.manager.flickVideoManager.nextVideoAutoPlayTimer == null,
+                        replacement: FlickAutoPlayCircularProgress(
+                          colors: FlickAutoPlayTimerProgressColors(
+                            backgroundColor: Colors.white38,
+                            color: Theme.of(context).accentColor,
                           ),
                         ),
-                        SliderTheme(
-                          data: SliderThemeData(
-                            activeTrackColor: _bloc.state.sliderConfig.activeTrackColor,
-                            inactiveTrackColor: _bloc.state.sliderConfig.inactiveTrackColor,
-                            trackShape: RoundedRectSliderTrackShape(),
-                            trackHeight: _bloc.state.sliderConfig.trackHeight,
-                            thumbColor: _bloc.state.sliderConfig.thumbColor,
-                            thumbShape: RoundSliderThumbShape(
-                              enabledThumbRadius: _bloc.state.sliderConfig.enabledThumbRadius,
-                              disabledThumbRadius: _bloc.state.sliderConfig.disabledThumbRadius,
-                            ),
-                            overlayColor: _bloc.state.sliderConfig.overlayColor,
-                            overlayShape: RoundSliderOverlayShape(overlayRadius: _bloc.state.sliderConfig.overlayRadius),
-                            showValueIndicator: _bloc.state.sliderConfig.showValueIndicator,
-                            valueIndicatorColor: _bloc.state.sliderConfig.valueIndicatorColor,
-                            valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-                            valueIndicatorTextStyle: TextStyle(color: _bloc.state.sliderConfig.valueIndicatorTextColor),
+                        child: FlickAutoHideChild(
+                          // showIfVideoNotInitialized: false,
+                          child: FlickPlayToggle(
+                            playChild: Icon(Smartlets.play_button),
+                            pauseChild: Icon(Smartlets.pause_button),
                           ),
-                          child: Slider.adaptive(
-                            value: _bloc.state.moment.inSeconds.toDouble(),
-                            min: Duration.zero.inSeconds.toDouble(),
-                            max: _bloc.state.notifier?.duration?.inSeconds?.toDouble() ?? double.infinity,
-                            onChanged: (value) => _bloc.add(PlaybackEvent.seek(Duration(seconds: value.toInt()))),
-                            label: "${Helpers.hhmmss(_bloc.state.moment)}",
-                            onChangeStart: (value) {},
-                            onChangeEnd: (value) {},
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              //
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: FlickAutoHideChild(
+                  child: Container(
+                    width: App.width,
+                    color: Colors.grey.withOpacity(0.2),
+                    child: Column(
+                      children: [
+                        Visibility(
+                          visible: _bloc.state.manager.flickControlManager.isFullscreen,
+                          child: Padding(
+                            padding: seekbarPadding.copyWith(top: 5.0, left: App.width * 0.03),
+                            child: Row(
+                              children: <Widget>[
+                                FlickCurrentPosition(),
+                                Text(' / ', style: TextStyle(color: Colors.white)),
+                                FlickTotalDuration(),
+                              ],
+                            ),
+                          ),
+                        ),
+                        //
+                        Padding(
+                          padding: EdgeInsets.only(right: 8.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Stack(
+                                  children: [
+                                    SliderTheme(
+                                      data: SliderThemeData(
+                                        activeTrackColor: _bloc.state.sliderConfig.activeTrackColor.withOpacity(0.6),
+                                        inactiveTrackColor: Colors.transparent,
+                                        trackShape: RoundedRectSliderTrackShape(),
+                                        trackHeight: _bloc.state.sliderConfig.trackHeight * 0.5,
+                                        thumbColor: Colors.transparent,
+                                        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0),
+                                        overlayColor: Colors.transparent,
+                                        overlayShape: RoundSliderOverlayShape(overlayRadius: _bloc.state.sliderConfig.overlayRadius),
+                                        showValueIndicator: ShowValueIndicator.never,
+                                      ),
+                                      child: Slider.adaptive(
+                                        value: _bloc.state.buffered.inSeconds.toDouble(),
+                                        min: Duration.zero.inSeconds.toDouble(),
+                                        max: _bloc.state.notifier?.duration?.inSeconds?.toDouble() ?? double.infinity,
+                                        onChanged: (value) {},
+                                      ),
+                                    ),
+                                    SliderTheme(
+                                      data: SliderThemeData(
+                                        activeTrackColor: _bloc.state.sliderConfig.activeTrackColor,
+                                        inactiveTrackColor: _bloc.state.sliderConfig.inactiveTrackColor,
+                                        trackShape: RoundedRectSliderTrackShape(),
+                                        trackHeight: _bloc.state.sliderConfig.trackHeight,
+                                        thumbColor: _bloc.state.sliderConfig.thumbColor,
+                                        thumbShape: RoundSliderThumbShape(
+                                          enabledThumbRadius: _bloc.state.sliderConfig.enabledThumbRadius,
+                                          disabledThumbRadius: _bloc.state.sliderConfig.disabledThumbRadius,
+                                        ),
+                                        overlayColor: _bloc.state.sliderConfig.overlayColor,
+                                        overlayShape: RoundSliderOverlayShape(overlayRadius: _bloc.state.sliderConfig.overlayRadius),
+                                        showValueIndicator: _bloc.state.sliderConfig.showValueIndicator,
+                                        valueIndicatorColor: _bloc.state.sliderConfig.valueIndicatorColor,
+                                        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
+                                        valueIndicatorTextStyle: TextStyle(color: _bloc.state.sliderConfig.valueIndicatorTextColor),
+                                      ),
+                                      child: Slider.adaptive(
+                                        value: _bloc.state.moment.inSeconds.toDouble(),
+                                        min: Duration.zero.inSeconds.toDouble(),
+                                        max: _bloc.state.playbackDuration.inSeconds.toDouble(),
+                                        onChanged: (value) => _bloc.add(PlaybackEvent.seek(Duration(seconds: value.toInt()))),
+                                        label: "${Helpers.hhmmss(_bloc.state.moment)}",
+                                        onChangeStart: (value) {},
+                                        onChangeEnd: (value) {},
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              //
+                              Visibility(
+                                visible: !_bloc.state.manager.flickControlManager.isFullscreen,
+                                child: FlickLeftDuration(),
+                              ),
+                            ],
+                          ),
+                        ),
+                        //
+                        Padding(
+                          padding: seekbarPadding.copyWith(bottom: App.height * 0.008),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Flexible(
+                                child: Row(
+                                  children: [
+                                    Flexible(child: FlickPlayToggle(size: 25)),
+                                    //
+                                    HorizontalSpace(width: 10.0),
+                                    //
+                                    Flexible(child: FlickSoundToggle(size: 25)),
+                                  ],
+                                ),
+                              ),
+                              //
+                              Spacer(),
+                              //
+                              // TODO: Try to tweak the SafeArea on Enter Fullscreen
+                              Flexible(child: FlickFullScreenToggle(size: 25)),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                    //
-                    // Row(
-                    //   children: [
-                    //     Flexible(
-                    //       child: Icon(
-                    //         Smartlets.play_button,
-                    //         color: Colors.white70,
-                    //         size: 17.0,
-                    //       ),
-                    //     ),
-                    //     //
-                    //     Flexible(
-                    //       child: Icon(
-                    //         Smartlets.low_volume,
-                    //         color: Colors.white70,
-                    //         size: 19.0,
-                    //       ),
-                    //     ),
-                    //     //
-                    //     Flexible(
-                    //       child: Icon(
-                    //         Smartlets.fit_screen_icon,
-                    //         color: Colors.white70,
-                    //         size: 17.0,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
   }
 }
 
-class PlayerControls extends StatelessWidget {
+class SeekControls extends StatelessWidget {
   final double padding;
   final double iconSize;
   final IconData icon;
@@ -199,17 +214,13 @@ class PlayerControls extends StatelessWidget {
   final String text;
   final bool showText;
   final bool reversed;
-  final void Function() onTap;
-  final void Function() onDoubleTap;
 
-  PlayerControls({
+  SeekControls({
     Key key,
     @required this.icon,
     this.iconSize = 30,
     this.text = "",
     this.showText = false,
-    @required this.onTap,
-    this.onDoubleTap,
     ShapeBorder shape,
     double padding,
     Color iconColor,
@@ -223,52 +234,41 @@ class PlayerControls extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(padding),
-      child: Material(
-        color: Colors.transparent,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: shape,
-        child: InkWell(
-          onTap: onTap,
-          onDoubleTap: onDoubleTap,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Visibility(
-                  visible: reversed,
-                  replacement: Icon(
-                    icon,
-                    color: iconColor,
-                    size: iconSize,
-                  ),
-                  child: Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.rotationY(math.pi),
-                    child: Icon(
-                      icon,
-                      color: iconColor,
-                      size: iconSize,
-                    ),
-                  ),
-                ),
-                //
-                Visibility(
-                  visible: showText,
-                  child: AutoSizeText(
-                    text,
-                    maxLines: 1,
-                    minFontSize: 18,
-                    softWrap: true,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Visibility(
+            visible: reversed,
+            replacement: Icon(
+              icon,
+              color: iconColor,
+              size: iconSize,
+            ),
+            child: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationY(math.pi),
+              child: Icon(
+                icon,
+                color: iconColor,
+                size: iconSize,
+              ),
             ),
           ),
-        ),
+          //
+          Visibility(
+            visible: showText,
+            child: AutoSizeText(
+              text,
+              maxLines: 1,
+              minFontSize: 18,
+              softWrap: true,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
