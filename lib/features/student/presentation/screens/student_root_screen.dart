@@ -24,7 +24,7 @@ class StudentRootScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _StudentRootScreenState extends State<StudentRootScreen> with AutomaticKeepAliveClientMixin {
-  final List<StudentDestination<Widget>> destinations = StudentDestination.destinations;
+  final List<StudentDestination<IconData>> destinations = StudentDestination.destinations;
   DateTime _buttonPressedTime;
 
   @override

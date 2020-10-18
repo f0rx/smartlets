@@ -27,8 +27,5 @@ void main() async {
   // Initialize Hydrated storage
   HydratedBloc.storage = await HydratedStorage.build();
 
-  // Precache dependencies & images
-  await Helpers.precache(null);
-
   runApp(SmartletsApp());
 }
