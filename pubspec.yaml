@@ -64,7 +64,7 @@ dependencies:
   # A declarative routing solution
   auto_route: ^0.6.9
   # Helpful package for manipulating "overlays":
-  flutter_portal: ^0.1.0
+  flutter_portal: ^0.3.0
   # A flutter navigation observer that adds access to lists
   # that track the navigation stack both forwards and backwards.
   navigation_history_observer: ^1.0.3+1
@@ -81,17 +81,13 @@ dependencies:
   flutter_rating_bar: ^3.0.1+1
   # A port of the Rails/ActiveSupport inflector library to Dart.
   inflection2: ^0.4.3
-  # Advanced video player based on video_player and Chewie.
-  better_player: ^0.0.25
+  # Wraps an existing Flutter widget and fires a callback when the widget's visibility changes
+  visibility_detector: ^0.1.5
   # Flick Video Player is a video player for flutter
   flick_video_player: ^0.1.1
-#  # The video player for Flutter with a heart of gold.
-#  chewie: ^0.9.10
   # A Flutter plugin for iOS, Android and Web for playing back video on a Widget surface.
   video_player: ">=0.10.0 <2.0.0"
   json_annotation: ^3.1.0
-  # Seekbar Package
-  seekbar: ^0.0.2
   get: ^3.13.2
 
 dev_dependencies:
