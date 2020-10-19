@@ -60,10 +60,13 @@ class Helpers {
       FocusManager.instance.primaryFocus.unfocus();
   }
 
-  static T optionOf<T>(dynamic _default, dynamic other) {
+  static T optionOf<T>(dynamic _default, dynamic dark, {BuildContext context}) {
     assert(_default != null);
-    assert(other != null);
-    return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
+    assert(dark != null);
+    var isDarkMode = BlocProvider.of<ThemeCubit>(context ?? App.context).isDarkMode ||
+        (MediaQuery.of(context ?? App.context).platformBrightness == Brightness.dark);
+
+    return isDarkMode ? dark : _default;
   }
 
   static Color computeLuminance(Color color) => color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
@@ -106,7 +109,7 @@ class Helpers {
 
   final DateTime today = DateTime.now();
 
-  Color get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.88);
+  Color get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.91);
 
   /// Current BuildContext
   BuildContext _ctx;
@@ -116,7 +119,7 @@ class Helpers {
   Widget get circularLoadingOverlay => Container(
         color: App.theme.primaryColor.withOpacity(0.65),
         child: Center(
-            child: AdaptiveCircularIndicator(
+            child: CircularProgressBar.adaptive(
           width: width * 0.08,
           height: width * 0.08,
           strokeWidth: 3.5,

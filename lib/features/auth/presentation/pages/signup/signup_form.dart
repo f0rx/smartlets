@@ -59,7 +59,7 @@ class SignupForm extends StatelessWidget {
                 //
                 VerticalSpace(height: App.height * 0.02),
                 //
-                context.bloc<OnBoardingCubit>().state.subscription.fold(
+                context.bloc<OnBoardingCubit>().state.subscription?.fold(
                       parent: () => SizedBox.shrink(),
                       student: () => Column(
                         children: [
@@ -129,7 +129,7 @@ class SignupForm extends StatelessWidget {
                         AutofillHints.newPassword,
                       ],
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Create Password",
                         hintText: "secret",
                         contentPadding: const EdgeInsets.only(left: 12.0, right: 45.0).copyWith(top: 1.0, bottom: 30.0),
                       ),

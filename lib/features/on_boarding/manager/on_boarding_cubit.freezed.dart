@@ -17,7 +17,7 @@ class _$OnBoardingStateTearOff {
       {bool isLoading = false,
       bool shouldListen = false,
       bool hasStableInternet = false,
-      Subscription subscription = Subscription.student}) {
+      @nullable Subscription subscription}) {
     return _OnBoardingState(
       isLoading: isLoading,
       shouldListen: shouldListen,
@@ -34,6 +34,7 @@ mixin _$OnBoardingState {
   bool get isLoading;
   bool get shouldListen;
   bool get hasStableInternet;
+  @nullable
   Subscription get subscription;
 
   $OnBoardingStateCopyWith<OnBoardingState> get copyWith;
@@ -47,7 +48,7 @@ abstract class $OnBoardingStateCopyWith<$Res> {
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      Subscription subscription});
+      @nullable Subscription subscription});
 }
 
 class _$OnBoardingStateCopyWithImpl<$Res>
@@ -89,7 +90,7 @@ abstract class _$OnBoardingStateCopyWith<$Res>
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      Subscription subscription});
+      @nullable Subscription subscription});
 }
 
 class __$OnBoardingStateCopyWithImpl<$Res>
@@ -128,11 +129,10 @@ class _$_OnBoardingState implements _OnBoardingState {
       {this.isLoading = false,
       this.shouldListen = false,
       this.hasStableInternet = false,
-      this.subscription = Subscription.student})
+      @nullable this.subscription})
       : assert(isLoading != null),
         assert(shouldListen != null),
-        assert(hasStableInternet != null),
-        assert(subscription != null);
+        assert(hasStableInternet != null);
 
   @JsonKey(defaultValue: false)
   @override
@@ -143,8 +143,8 @@ class _$_OnBoardingState implements _OnBoardingState {
   @JsonKey(defaultValue: false)
   @override
   final bool hasStableInternet;
-  @JsonKey(defaultValue: Subscription.student)
   @override
+  @nullable
   final Subscription subscription;
 
   @override
@@ -188,7 +188,7 @@ abstract class _OnBoardingState implements OnBoardingState {
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      Subscription subscription}) = _$_OnBoardingState;
+      @nullable Subscription subscription}) = _$_OnBoardingState;
 
   @override
   bool get isLoading;
@@ -197,6 +197,7 @@ abstract class _OnBoardingState implements OnBoardingState {
   @override
   bool get hasStableInternet;
   @override
+  @nullable
   Subscription get subscription;
   @override
   _$OnBoardingStateCopyWith<_OnBoardingState> get copyWith;

@@ -20,7 +20,8 @@ class SplashScreen extends StatelessWidget {
         if (snapshot.hasData)
           getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(
                 () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
-                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription.fold(
+                // Using this screens' context is wrong because it will be disposed on navigation; hence the use of App.context
+                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription?.fold(
                       parent: () => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
                       student: () => navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false),
                     ),
@@ -47,10 +48,10 @@ class SplashScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: App.height * 0.02,
-                child: AdaptiveCircularIndicator(
+                child: CircularProgressBar.adaptive(
                   width: App.width * 0.09,
                   height: App.width * 0.09,
-                  bgColor: Colors.white,
+                  background: Colors.white,
                   strokeWidth: 2.5,
                 ),
               ),

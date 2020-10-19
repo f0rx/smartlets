@@ -30,7 +30,11 @@ mixin AppAssets {
 
   static SvgPicture doodle = SvgPicture.asset(
     '$SVG_DIR/doodle.svg',
-    fit: BoxFit.fill,
+    fit: BoxFit.cover,
+    height: App.height,
+    width: App.width,
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    allowDrawingOutsideViewBox: true,
   );
 
   static SvgPicture unlockPassword = SvgPicture.asset(

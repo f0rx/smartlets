@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
+import 'package:flutter/widgets.dart';
 
 part 'subscription.g.dart';
 
@@ -20,7 +21,7 @@ class Subscription extends EnumClass {
       case "student":
         return student != null ? student() : null;
       default:
-        return null;
+        return (T is Widget) ? SizedBox() as T : null;
     }
   }
 }
