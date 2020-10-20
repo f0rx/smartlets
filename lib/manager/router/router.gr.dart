@@ -379,7 +379,7 @@ class PaymentScreenRouter extends RouterBase {
     },
     PaymentMethodPage: (data) {
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => PaymentMethodPage(),
+        builder: (context) => PaymentMethodPage().wrappedRoute(context),
         settings: data,
         cupertinoTitle: 'Payment Method',
         fullscreenDialog: true,

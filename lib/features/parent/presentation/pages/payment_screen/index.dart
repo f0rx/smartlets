@@ -58,6 +58,7 @@ class PaymentIndexPage extends StatelessWidget {
                                     softWrap: true,
                                     wrapWords: true,
                                     maxLines: 4,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
@@ -70,7 +71,8 @@ class PaymentIndexPage extends StatelessWidget {
                       MkButton(
                         text: "Start 14 Days Free Trial",
                         padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
-                        onPressed: () {},
+                        onPressed: () => inner(context).pushPaymentMethodPage(),
+                        // onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CreditCardExample())),
                       ),
                       //
                       VerticalSpace(height: App.height * 0.02),
