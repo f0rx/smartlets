@@ -24,7 +24,7 @@ class ParentRootScreen extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _ParentRootScreenState extends State<ParentRootScreen> with AutomaticKeepAliveClientMixin {
-  final List<ParentDestination<Widget>> destinations = ParentDestination.destinations;
+  final List<ParentDestination<IconData>> destinations = ParentDestination.destinations;
   DateTime _buttonPressedTime;
 
   Future<bool> willPop() {

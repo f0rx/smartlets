@@ -8,7 +8,7 @@ class ParentDestination<E> {
   final String title;
   final E selectedIcon;
   final E unSelectedIcon;
-  final E page;
+  final Widget page;
 
   ParentDestination({
     @required this.title,
@@ -18,32 +18,32 @@ class ParentDestination<E> {
     E unSelectedIcon,
   }) : unSelectedIcon = unSelectedIcon ?? selectedIcon;
 
-  static final List<ParentDestination<Widget>> destinations = <ParentDestination<Widget>>[
-    ParentDestination<Widget>(
+  static final List<ParentDestination<IconData>> destinations = <ParentDestination<IconData>>[
+    ParentDestination<IconData>(
       title: "Payment",
-      selectedIcon: Icon(Smartlets.pay_filled),
-      unSelectedIcon: Icon(Smartlets.pay_outlined),
+      selectedIcon: Smartlets.pay_filled,
+      unSelectedIcon: Smartlets.pay_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: PaymentScreen(),
     ),
-    ParentDestination<Widget>(
+    ParentDestination<IconData>(
       title: "Kids",
-      selectedIcon: Icon(Smartlets.group_users_filled),
-      unSelectedIcon: Icon(Smartlets.group_users_outlined),
+      selectedIcon: Smartlets.group_users_filled,
+      unSelectedIcon: Smartlets.group_users_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: ChildScreen(),
     ),
-    ParentDestination<Widget>(
+    ParentDestination<IconData>(
       title: "Notifications",
-      selectedIcon: Icon(Smartlets.bell_filled),
-      unSelectedIcon: Icon(Smartlets.bell_outlined),
+      selectedIcon: Smartlets.notification,
+      unSelectedIcon: Smartlets.bell_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: NotificationScreen(),
     ),
-    ParentDestination<Widget>(
+    ParentDestination<IconData>(
       title: "Profile",
-      selectedIcon: Icon(Smartlets.user_filled),
-      unSelectedIcon: Icon(Smartlets.user_outlined),
+      selectedIcon: Smartlets.user_filled,
+      unSelectedIcon: Smartlets.user_outlined,
       navigatorKey: GlobalKey<NavigatorState>(),
       page: ProfileScreen(),
     ),
