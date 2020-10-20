@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smartlets/features/student/domain/domain.dart';
 import 'package:smartlets/features/student/presentation/manager/blocs.dart';
 import 'package:smartlets/features/student/presentation/widgets/student_widgets.dart';
@@ -27,6 +28,22 @@ class _StudentRootScreenState extends State<StudentRootScreen> with AutomaticKee
   final List<StudentDestination<IconData>> destinations = StudentDestination.destinations;
   DateTime _buttonPressedTime;
 
+  Future<bool> willPop() {
+    DateTime now = DateTime.now();
+    if (_buttonPressedTime == null || now.difference(_buttonPressedTime) > Helpers.willPopTimeout) {
+      _buttonPressedTime = now;
+      Fluttertoast.showToast(
+        msg: "Tap again to exit",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      return Future.value(false);
+    } else {
+      Fluttertoast.cancel();
+      return Future.value(true);
+    }
+  }
+
   @override
   bool get wantKeepAlive => true;
 
@@ -35,7 +52,7 @@ class _StudentRootScreenState extends State<StudentRootScreen> with AutomaticKee
     super.build(context);
 
     return WillPopScope(
-      onWillPop: () async => await Helpers.willPop(_buttonPressedTime),
+      onWillPop: () async => await willPop(),
       child: BlocBuilder<StudentNavCubit, int>(
         builder: (context, index) => Scaffold(
           body: IndexedStack(

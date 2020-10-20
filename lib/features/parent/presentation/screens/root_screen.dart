@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/features/parent/presentation/manager/blocs.dart';
 import 'package:smartlets/features/parent/presentation/widgets/parent_widgets.dart';
@@ -29,6 +30,22 @@ class _ParentRootScreenState extends State<ParentRootScreen> with AutomaticKeepA
   @override
   bool get wantKeepAlive => true;
 
+  Future<bool> willPop() {
+    DateTime now = DateTime.now();
+    if (_buttonPressedTime == null || now.difference(_buttonPressedTime) > Helpers.willPopTimeout) {
+      _buttonPressedTime = now;
+      Fluttertoast.showToast(
+        msg: "Tap again to exit",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      return Future.value(false);
+    } else {
+      Fluttertoast.cancel();
+      return Future.value(true);
+    }
+  }
+
   /*
   if (App.currentRoute == Routes.parentRootScreen && index == 0)
             navigator.pop();
@@ -42,7 +59,7 @@ class _ParentRootScreenState extends State<ParentRootScreen> with AutomaticKeepA
     super.build(context);
 
     return WillPopScope(
-      onWillPop: () async => await Helpers.willPop(_buttonPressedTime),
+      onWillPop: () async => await willPop(),
       child: BlocBuilder<ParentNavCubit, int>(
         builder: (context, index) => Scaffold(
           body: IndexedStack(
