@@ -31,7 +31,7 @@ class SplashScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).accentColor,
           body: Stack(
             alignment: Alignment.center,
-            overflow: Overflow.clip,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
             children: [
               Positioned(
                 top: App.height * 0.45,
