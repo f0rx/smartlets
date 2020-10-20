@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
@@ -88,6 +89,10 @@ class Helpers {
     return "${duration.inHours > 0 ? twoDigits(duration.inHours).pad(":") : ''}"
         "${twoDigitMinutes.pad(":")}"
         "$twoDigitSeconds";
+  }
+
+  static Future<void> platformPop({bool animated = true}) async {
+    await SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop', animated);
   }
 
   final DateTime today = DateTime.now();

@@ -51,17 +51,26 @@ class _StudentRootScreenState extends State<StudentRootScreen> with AutomaticKee
   Widget build(BuildContext context) {
     super.build(context);
 
-    return WillPopScope(
-      onWillPop: () async => await willPop(),
-      child: BlocBuilder<StudentNavCubit, int>(
-        builder: (context, index) => Scaffold(
+    return BlocBuilder<StudentNavCubit, int>(builder: (context, index) {
+      return WillPopScope(
+        onWillPop: () async {
+          // if (App.currentRoute == Routes.parentRootScreen && index == 0)
+          //   return await willPop();
+          // else if (App.currentRoute == Routes.parentRootScreen) {
+          //   context.bloc<ParentNavCubit>().indexChanged(0);
+          //   return false;
+          // }
+
+          return await willPop();
+        },
+        child: Scaffold(
           body: IndexedStack(
             index: index,
             children: destinations.map((d) => d.page).toList(),
           ),
           bottomNavigationBar: StudentBottomNav(destinations),
         ),
-      ),
-    );
+      );
+    });
   }
 }

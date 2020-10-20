@@ -27,9 +27,6 @@ class _ParentRootScreenState extends State<ParentRootScreen> with AutomaticKeepA
   final List<ParentDestination<Widget>> destinations = ParentDestination.destinations;
   DateTime _buttonPressedTime;
 
-  @override
-  bool get wantKeepAlive => true;
-
   Future<bool> willPop() {
     DateTime now = DateTime.now();
     if (_buttonPressedTime == null || now.difference(_buttonPressedTime) > Helpers.willPopTimeout) {
@@ -46,29 +43,33 @@ class _ParentRootScreenState extends State<ParentRootScreen> with AutomaticKeepA
     }
   }
 
-  /*
-  if (App.currentRoute == Routes.parentRootScreen && index == 0)
-            navigator.pop();
-          else if (App.currentRoute == Routes.parentRootScreen) context.bloc<ParentNavCubit>().indexChanged(0);
-          return !(await inner(context).maybePop());
-          // return !(await destinations.elementAt(index).navigatorKey.currentState.maybePop());
-  */
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
 
-    return WillPopScope(
-      onWillPop: () async => await willPop(),
-      child: BlocBuilder<ParentNavCubit, int>(
-        builder: (context, index) => Scaffold(
+    return BlocBuilder<ParentNavCubit, int>(builder: (context, index) {
+      return WillPopScope(
+        onWillPop: () async {
+          // if (App.currentRoute == Routes.parentRootScreen && index == 0)
+          //   return await willPop();
+          // else if (App.currentRoute == Routes.parentRootScreen) {
+          //   context.bloc<ParentNavCubit>().indexChanged(0);
+          //   return false;
+          // }
+
+          return await willPop();
+        },
+        child: Scaffold(
           body: IndexedStack(
             index: index,
             children: destinations.map((d) => d.page).toList(),
           ),
           bottomNavigationBar: ParentBottomNav(destinations),
         ),
-      ),
-    );
+      );
+    });
   }
 }
