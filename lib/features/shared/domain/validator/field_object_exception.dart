@@ -15,6 +15,10 @@ const String NUMBER_CHAR_MESSAGE = "Password must contain a number!";
 const String SYMBOL_MESSAGE = "Password must contain a symbol! (e.g: @#)";
 const INVALID_PHONE_NUMBER = "Invalid phone number!";
 const INVALID_OTP_CODE = "Invalid OTP code.";
+const INVALID_CARD_NUMBER = "Provide a valid Card Number.";
+const INVALID_CARDHOLDER_NAME = "Provide a Cardholder Name.";
+const INVALID_EXPIRY_DATE = "Provide a valid Date.";
+const INVALID_CVV = "Provide a valid Card Verification Value.";
 
 @freezed
 abstract class FieldObjectException<T> with _$FieldObjectException<T> {

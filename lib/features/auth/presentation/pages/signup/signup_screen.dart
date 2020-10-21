@@ -7,7 +7,7 @@ import 'package:flutter_portal/flutter_portal.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
 import 'package:smartlets/features/auth/presentation/widgets/oauth_widget.dart';
-import 'package:smartlets/features/auth/presentation/widgets/providerAuthWidget.dart';
+import 'package:smartlets/features/auth/presentation/widgets/provider_auth_widget.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';

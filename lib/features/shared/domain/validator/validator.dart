@@ -104,6 +104,16 @@ class Validator {
     return right(input);
   }
 
+  static Either<FieldObjectException<String>, String> cardNumber(String input) {
+    String clean = input.trim();
+
+    bool containsOnlyDigits = RegExp(r"^[0-9 ]+$", multiLine: true).hasMatch(clean);
+
+    if (!containsOnlyDigits) return left(FieldObjectException.invalid(message: INVALID_CARD_NUMBER));
+
+    return right(input);
+  }
+
   static Either<FieldObjectException<String>, String> cardExpiration(String input) {
     final _input = input.trim();
 
