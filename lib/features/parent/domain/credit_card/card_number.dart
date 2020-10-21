@@ -9,7 +9,7 @@ class CardNumber extends FieldObject<String> {
     assert(input != null);
     return CardNumber._(
       Validator.isEmpty(input).flatMap(
-        (a) => Validator.onlyDigits(a),
+        (a) => Validator.cardNumber(a),
       ),
     );
   }

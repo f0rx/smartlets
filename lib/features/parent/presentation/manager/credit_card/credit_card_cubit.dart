@@ -14,7 +14,14 @@ part 'credit_card_state.dart';
 class CreditCardCubit extends Cubit<CreditCardState> {
   CreditCardCubit() : super(CreditCardState.init());
 
-  void addNewCard() {}
+  void addNewCard() {
+    emit(
+      state.copyWith(
+        cards: CreditCards(input: state.cards.add(state.card)),
+        card: CreditCardState.blankCard,
+      ),
+    );
+  }
 
   void infoChanged({
     @required String number,

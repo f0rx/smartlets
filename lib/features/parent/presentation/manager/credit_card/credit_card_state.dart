@@ -16,22 +16,25 @@ abstract class CreditCardState implements _$CreditCardState {
     'RESET': 'Reset',
   };
 
+  static CreditCard get blankCard => CreditCard(
+    cardNumber: CardNumber(input: ""),
+    cardholderName: CardholderName(input: ""),
+    expires: CardExpirationDate(input: ""),
+    cvv: CardVerificationValue(input: ""),
+  );
+
   const CreditCardState._();
 
   const factory CreditCardState({
     @required CreditCards cards,
     @required CreditCard card,
     @Default(false) bool isLoading,
+    @Default(false) bool isCvvFocused,
   }) = _CreditCardState;
 
   factory CreditCardState.init() => CreditCardState(
         cards: CreditCards(input: emptyList<CreditCard>()),
-        card: CreditCard(
-          cardNumber: CardNumber(input: ""),
-          cardholderName: CardholderName(input: ""),
-          expires: CardExpirationDate(input: ""),
-          cvv: CardVerificationValue(input: ""),
-        ),
+        card: blankCard,
       );
 
   BoxDecoration get prevButtonStyle => BoxDecoration(
@@ -63,13 +66,13 @@ abstract class CreditCardState implements _$CreditCardState {
         boxShadow: <BoxShadow>[BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))],
         gradient: LinearGradient(
           colors: [
-            Colors.red,
+            AppColors.cardColor,
             Colors.blue,
           ],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0],
-          tileMode: TileMode.clamp,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomCenter,
+          stops: [0.2, 1],
+          tileMode: TileMode.mirror,
         ),
       );
 

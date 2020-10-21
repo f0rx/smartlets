@@ -8,7 +8,7 @@ class CardholderName extends FieldObject<String> {
   factory CardholderName({@required String input}) {
     assert(input != null);
     return CardholderName._(
-      Validator.isEmpty(input),
+      Validator.isEmpty(input.toUpperCase()),
     );
   }
 

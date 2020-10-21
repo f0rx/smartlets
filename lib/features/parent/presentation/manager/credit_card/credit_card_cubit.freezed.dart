@@ -16,11 +16,13 @@ class _$CreditCardStateTearOff {
   _CreditCardState call(
       {@required CreditCards cards,
       @required CreditCard card,
-      bool isLoading = false}) {
+      bool isLoading = false,
+      bool isCvvFocused = false}) {
     return _CreditCardState(
       cards: cards,
       card: card,
       isLoading: isLoading,
+      isCvvFocused: isCvvFocused,
     );
   }
 }
@@ -32,6 +34,7 @@ mixin _$CreditCardState {
   CreditCards get cards;
   CreditCard get card;
   bool get isLoading;
+  bool get isCvvFocused;
 
   $CreditCardStateCopyWith<CreditCardState> get copyWith;
 }
@@ -40,7 +43,8 @@ abstract class $CreditCardStateCopyWith<$Res> {
   factory $CreditCardStateCopyWith(
           CreditCardState value, $Res Function(CreditCardState) then) =
       _$CreditCardStateCopyWithImpl<$Res>;
-  $Res call({CreditCards cards, CreditCard card, bool isLoading});
+  $Res call(
+      {CreditCards cards, CreditCard card, bool isLoading, bool isCvvFocused});
 
   $CreditCardCopyWith<$Res> get card;
 }
@@ -58,11 +62,14 @@ class _$CreditCardStateCopyWithImpl<$Res>
     Object cards = freezed,
     Object card = freezed,
     Object isLoading = freezed,
+    Object isCvvFocused = freezed,
   }) {
     return _then(_value.copyWith(
       cards: cards == freezed ? _value.cards : cards as CreditCards,
       card: card == freezed ? _value.card : card as CreditCard,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isCvvFocused:
+          isCvvFocused == freezed ? _value.isCvvFocused : isCvvFocused as bool,
     ));
   }
 
@@ -83,7 +90,8 @@ abstract class _$CreditCardStateCopyWith<$Res>
           _CreditCardState value, $Res Function(_CreditCardState) then) =
       __$CreditCardStateCopyWithImpl<$Res>;
   @override
-  $Res call({CreditCards cards, CreditCard card, bool isLoading});
+  $Res call(
+      {CreditCards cards, CreditCard card, bool isLoading, bool isCvvFocused});
 
   @override
   $CreditCardCopyWith<$Res> get card;
@@ -104,21 +112,28 @@ class __$CreditCardStateCopyWithImpl<$Res>
     Object cards = freezed,
     Object card = freezed,
     Object isLoading = freezed,
+    Object isCvvFocused = freezed,
   }) {
     return _then(_CreditCardState(
       cards: cards == freezed ? _value.cards : cards as CreditCards,
       card: card == freezed ? _value.card : card as CreditCard,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isCvvFocused:
+          isCvvFocused == freezed ? _value.isCvvFocused : isCvvFocused as bool,
     ));
   }
 }
 
 class _$_CreditCardState extends _CreditCardState {
   const _$_CreditCardState(
-      {@required this.cards, @required this.card, this.isLoading = false})
+      {@required this.cards,
+      @required this.card,
+      this.isLoading = false,
+      this.isCvvFocused = false})
       : assert(cards != null),
         assert(card != null),
         assert(isLoading != null),
+        assert(isCvvFocused != null),
         super._();
 
   @override
@@ -128,10 +143,13 @@ class _$_CreditCardState extends _CreditCardState {
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isCvvFocused;
 
   @override
   String toString() {
-    return 'CreditCardState(cards: $cards, card: $card, isLoading: $isLoading)';
+    return 'CreditCardState(cards: $cards, card: $card, isLoading: $isLoading, isCvvFocused: $isCvvFocused)';
   }
 
   @override
@@ -144,7 +162,10 @@ class _$_CreditCardState extends _CreditCardState {
                 const DeepCollectionEquality().equals(other.card, card)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)));
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.isCvvFocused, isCvvFocused) ||
+                const DeepCollectionEquality()
+                    .equals(other.isCvvFocused, isCvvFocused)));
   }
 
   @override
@@ -152,7 +173,8 @@ class _$_CreditCardState extends _CreditCardState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(cards) ^
       const DeepCollectionEquality().hash(card) ^
-      const DeepCollectionEquality().hash(isLoading);
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(isCvvFocused);
 
   @override
   _$CreditCardStateCopyWith<_CreditCardState> get copyWith =>
@@ -164,7 +186,8 @@ abstract class _CreditCardState extends CreditCardState {
   const factory _CreditCardState(
       {@required CreditCards cards,
       @required CreditCard card,
-      bool isLoading}) = _$_CreditCardState;
+      bool isLoading,
+      bool isCvvFocused}) = _$_CreditCardState;
 
   @override
   CreditCards get cards;
@@ -172,6 +195,8 @@ abstract class _CreditCardState extends CreditCardState {
   CreditCard get card;
   @override
   bool get isLoading;
+  @override
+  bool get isCvvFocused;
   @override
   _$CreditCardStateCopyWith<_CreditCardState> get copyWith;
 }

@@ -20,6 +20,12 @@ class CreditCards extends FieldObject<KtList<CreditCard>> {
 
   bool get isNotEmpty => value.getOrElse(() => emptyList())?.isNotEmpty();
 
+  KtList<CreditCard> get getOrEmpty => value.getOrElse(() => emptyList())?.orEmpty();
+
+  CreditCard get(int index) => value.getOrElse(() => emptyList())?.getOrElse(index, (i) => null);
+
+  KtList<CreditCard> add(CreditCard e) => value.getOrElse(() => emptyList())?.plusElement(e);
+
   bool exists(CreditCard card) => value.getOrElse(() => emptyList())?.any((c) => c == card);
 
   KtList<R> map<R>(R Function(CreditCard) transform) => value.getOrElse(() => emptyList())?.map(transform);
