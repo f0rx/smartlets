@@ -14,6 +14,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../features/auth/presentation/manager/auth_bloc.dart';
 import '../../features/auth/domain/core/auth.dart';
+import '../../features/parent/presentation/manager/credit_card/credit_card_cubit.dart';
 import '../../features/auth/data/repositories/firebase_auth_impl.dart';
 import 'modules/modules.dart';
 import '../../features/on_boarding/manager/on_boarding_cubit.dart';
@@ -21,7 +22,6 @@ import '../../features/parent/presentation/manager/parent_nav_cubit.dart';
 import '../../features/student/presentation/manager/playback/playback_bloc.dart';
 import '../../features/student/presentation/manager/student_nav_cubit.dart';
 import '../theme/manager/theme_cubit.dart';
-import '../../features/parent/presentation/manager/will_pop_scope/will_pop_cubit.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -33,6 +33,7 @@ Future<GetIt> $initGetIt(
 }) async {
   final gh = GetItHelper(get, environment, environmentFilter);
   final modules = _$Modules();
+  gh.factory<CreditCardCubit>(() => CreditCardCubit());
   gh.lazySingleton<DataConnectionChecker>(() => modules.connectionChecker);
   gh.lazySingleton<FacebookLogin>(() => modules.facebookLogin);
   final firebaseApp = await modules.firebaseApp;
@@ -45,7 +46,6 @@ Future<GetIt> $initGetIt(
   gh.factory<PlaybackBloc>(() => PlaybackBloc());
   gh.factory<StudentNavCubit>(() => StudentNavCubit());
   gh.factory<ThemeCubit>(() => ThemeCubit());
-  gh.factory<WillPopCubit>(() => WillPopCubit());
   gh.lazySingleton<AuthFacade>(() => FirebaseAuthImpl.instance(
         get<FirebaseAuth>(),
         get<GoogleSignIn>(),

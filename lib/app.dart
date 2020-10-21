@@ -10,6 +10,8 @@ import 'package:smartlets/manager/router/export.dart';
 import 'package:smartlets/manager/theme/theme.dart';
 import 'package:smartlets/utils/utils.dart';
 
+import 'features/parent/presentation/manager/blocs.dart';
+
 class SmartletsApp extends StatelessWidget {
   /// This is the entry point for Smartlets App
   const SmartletsApp({Key key}) : super(key: key);
@@ -23,7 +25,7 @@ class SmartletsApp extends StatelessWidget {
       providers: [
         BlocProvider<ThemeCubit>(create: (_) => getIt<ThemeCubit>()),
         BlocProvider<OnBoardingCubit>(create: (_) => getIt<OnBoardingCubit>()..getSubscription()),
-        // BlocProvider<RootBloc>(create: (_) => getIt<RootBloc>(), lazy: true),
+        BlocProvider<CreditCardCubit>(create: (_) => getIt<CreditCardCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, AppTheme>(
         builder: (context, state) => Portal(
@@ -32,18 +34,12 @@ class SmartletsApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: state?.themeData() ?? AppTheme.light().themeData(),
             darkTheme: AppTheme.dark().themeData(),
-            builder: ExtendedNavigator.builder<Router>(
+            builder: ExtendedNavigator(
               navigatorKey: App.key,
+              initialRoute: Routes.splashScreen,
               observers: [NavigationHistoryObserver()],
               router: Router(),
               guards: [AuthGuard()],
-              builder: (context, descendant) => Theme(
-                data: state?.themeData() ?? AppTheme.light().themeData(),
-                child: GestureDetector(
-                  onTap: () => Helpers.hideKeyboard(context),
-                  child: descendant,
-                ),
-              ),
             ),
           ),
         ),

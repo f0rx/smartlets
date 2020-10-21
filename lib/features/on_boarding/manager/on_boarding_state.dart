@@ -7,6 +7,6 @@ abstract class OnBoardingState with _$OnBoardingState {
     @Default(false) bool isLoading,
     @Default(false) bool shouldListen,
     @Default(false) bool hasStableInternet,
-    @Default(Subscription.student) Subscription subscription,
+    @nullable Subscription subscription,
   }) = _OnBoardingState;
 }

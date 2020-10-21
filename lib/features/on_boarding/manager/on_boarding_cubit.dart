@@ -5,6 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smartlets/features/on_boarding/models/subscription.dart';
+import 'package:smartlets/features/shared/shared.dart';
 
 part 'on_boarding_cubit.freezed.dart';
 part 'on_boarding_state.dart';
@@ -12,7 +13,7 @@ part 'on_boarding_state.dart';
 @Injectable()
 class OnBoardingCubit extends Cubit<OnBoardingState> {
   static const String SUBSCRIPTION_KEY = "subscription-type";
-  final box = Hive.openLazyBox("user-settings-box");
+  final box = Hive.openLazyBox(USER_SETTINGS_KEY__HIVE);
   final DataConnectionChecker connectionChecker;
 
   OnBoardingCubit(this.connectionChecker) : super(OnBoardingState());
@@ -41,7 +42,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   void getSubscription() async {
     final data = await (await box).get(SUBSCRIPTION_KEY);
     emit(state.copyWith(
-      subscription: data != null ? Subscription.valueOf(data) : state.subscription,
+      subscription: data != null ? Subscription.valueOf(data) : Subscription.student,
     ));
   }
 }

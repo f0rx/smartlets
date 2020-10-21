@@ -35,88 +35,91 @@ class ParentProfileIndex extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        top: true,
+        top: false,
         child: Center(
-          child: Column(
-            children: [
-              VerticalSpace(height: App.height * 0.05),
-              AutoSizeText(
-                "Profile",
-                style: TextStyle(fontWeight: FontWeight.bold),
-                minFontSize: 30,
-              ),
-              //
-              VerticalSpace(height: App.height * 0.02),
-              //
-              Stack(
-                children: [
-                  Column(
-                    children: [
-                      getIt<AuthFacade>().currentUser.fold(
-                            () => null,
-                            (a) => _Authenticated(user: a),
-                          ),
-                      //
-                      Divider(thickness: 0.7, height: 0.0),
-                    ],
-                  ),
-                  //
-                  Positioned(
-                    top: 45,
-                    right: App.width * 0.03,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: App.width * 0.04),
-                      child: Material(
-                        color: Theme.of(context).accentColor,
-                        borderRadius: BorderRadius.circular(50.0),
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: App.width * 0.026,
-                              vertical: App.width * 0.026,
+          child: Padding(
+            padding: EdgeInsets.zero.copyWith(top: App.mediaQuery.padding.top * 2),
+            child: Column(
+              children: [
+                AutoSizeText(
+                  "Profile",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  minFontSize: 30,
+                  textAlign: TextAlign.center,
+                ),
+                //
+                VerticalSpace(height: App.height * 0.02),
+                //
+                Stack(
+                  children: [
+                    Column(
+                      children: [
+                        getIt<AuthFacade>().currentUser.fold(
+                              () => null,
+                              (a) => _Authenticated(user: a),
                             ),
-                            child: Icon(
-                              Icons.photo_camera,
-                              color: Colors.white,
+                        //
+                        Divider(thickness: 0.7, height: 0.0),
+                      ],
+                    ),
+                    //
+                    Positioned(
+                      top: 45,
+                      right: App.width * 0.03,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: App.width * 0.04),
+                        child: Material(
+                          color: Theme.of(context).accentColor,
+                          borderRadius: BorderRadius.circular(50.0),
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: App.width * 0.026,
+                                vertical: App.width * 0.026,
+                              ),
+                              child: Icon(
+                                Icons.photo_camera,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  //
-                  VerticalSpace(height: App.height * 0.15),
-                ],
-              ),
-              //
-              Flexible(
-                child: Column(
-                  children: tiles.map(
-                    (tile) {
-                      if (!tile.builder.isNull)
-                        return Flexible(
-                          child: tile.builder(context),
-                        );
-                      return Flexible(
-                        child: ListTile(
-                          dense: true,
-                          leading: Container(
-                            padding: const EdgeInsets.all(6.5),
-                            decoration: BoxDecoration(color: tile.leadingColor, borderRadius: BorderRadius.circular(8.0)),
-                            child: tile.leading,
-                          ),
-                          title: Text("${tile.title}", style: const TextStyle(fontSize: 16.5)),
-                          subtitle: Text("${tile.subtitle}", style: const TextStyle(fontSize: 13.0)),
-                          onTap: () => tile.onPressed(context),
-                        ),
-                      );
-                    },
-                  ).toList(),
+                    //
+                    VerticalSpace(height: App.height * 0.15),
+                  ],
                 ),
-              ),
-            ],
+                //
+                Flexible(
+                  child: Column(
+                    children: tiles.map(
+                      (tile) {
+                        if (!tile.builder.isNull)
+                          return Flexible(
+                            child: tile.builder(context),
+                          );
+                        return Flexible(
+                          child: ListTile(
+                            dense: true,
+                            leading: Container(
+                              padding: const EdgeInsets.all(6.5),
+                              decoration: BoxDecoration(color: tile.leadingColor, borderRadius: BorderRadius.circular(8.0)),
+                              child: tile.leading,
+                            ),
+                            title: Text("${tile.title}", style: const TextStyle(fontSize: 16.5)),
+                            subtitle: Text("${tile.subtitle}", style: const TextStyle(fontSize: 13.0)),
+                            onTap: () => tile.onPressed(context),
+                          ),
+                        );
+                      },
+                    ).toList(),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -9,7 +9,11 @@ class SignupForm extends StatelessWidget {
         () => null,
         (option) => option.fold(
           (failure) => Flushbar(
-            duration: const Duration(seconds: 5),
+            duration: failure.maybeMap(
+              (_) => const Duration(seconds: 5),
+              accountAlreadyExists: (_) => const Duration(minutes: 2),
+              orElse: () => const Duration(seconds: 5),
+            ),
             icon: Icon(Icons.error, color: Colors.red),
             messageText: AutoSizeText(failure.message),
             borderRadius: 8,
@@ -18,6 +22,36 @@ class SignupForm extends StatelessWidget {
             flushbarPosition: FlushbarPosition.TOP,
             shouldIconPulse: true,
             backgroundColor: Theme.of(context).primaryColor,
+            mainButton: failure.maybeMap(
+              (_) => null,
+              accountAlreadyExists: (_) => Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                padding: const EdgeInsets.all(8.0),
+                child: AutoSizeText("OK", style: TextStyle(fontWeight: FontWeight.w600)),
+              ),
+              orElse: () => null,
+            ),
+            onTap: (info) => failure.maybeMap(
+              (_) => null,
+              accountAlreadyExists: (e) => AuthProvider.switchCase(
+                e.provider.name,
+                isGoogle: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithGoogle(e.credentials)),
+                isFacebook: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithFacebook(e.credentials)),
+                orElse: (name) => App.showAlertDialog(
+                  context: context,
+                  builder: (context) => ProviderAuthWidget(
+                    error: e.message,
+                    email: e.email,
+                    provider: e.provider,
+                    incoming: e.credentials,
+                  ),
+                ),
+              ),
+              orElse: () => null,
+            ),
           ).show(context),
           (_) => null,
         ),
@@ -27,7 +61,7 @@ class SignupForm extends StatelessWidget {
         final bloc = context.bloc<AuthBloc>();
 
         return Form(
-          autovalidate: bloc.state.validate,
+          autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
           child: AutofillGroup(
             onDisposeAction: AutofillContextAction.commit,
             child: Column(
@@ -59,7 +93,7 @@ class SignupForm extends StatelessWidget {
                 //
                 VerticalSpace(height: App.height * 0.02),
                 //
-                context.bloc<OnBoardingCubit>().state.subscription.fold(
+                context.bloc<OnBoardingCubit>().state.subscription?.fold(
                       parent: () => SizedBox.shrink(),
                       student: () => Column(
                         children: [
@@ -129,7 +163,7 @@ class SignupForm extends StatelessWidget {
                         AutofillHints.newPassword,
                       ],
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Create Password",
                         hintText: "secret",
                         contentPadding: const EdgeInsets.only(left: 12.0, right: 45.0).copyWith(top: 1.0, bottom: 30.0),
                       ),

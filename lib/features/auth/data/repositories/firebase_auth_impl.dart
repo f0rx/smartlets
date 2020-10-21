@@ -294,7 +294,7 @@ class FirebaseAuthImpl implements AuthFacade {
             throw FirebaseAuthException(
               code: ACCOUNT_EXISTS_WITH_DIFFERENT_CRED,
               message: "An account already exists with the same email address but different sign-in credentials."
-                  "\n\nEnter your password to continue.",
+                  "\n\nClick to enter your Password.",
               email: account.email,
               credential: authCredential,
             );
@@ -355,7 +355,7 @@ class FirebaseAuthImpl implements AuthFacade {
                 throw FirebaseAuthException(
                   code: ACCOUNT_EXISTS_WITH_DIFFERENT_CRED,
                   message: "An account already exists with the same email address but different sign-in credentials."
-                      "\n\nEnter your password to continue.",
+                      "\n\nClick to enter your Password.",
                   email: email,
                   credential: credential,
                 );
