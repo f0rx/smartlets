@@ -156,6 +156,13 @@ mixin AppAssets {
     width: 30,
   );
 
+  static SvgPicture cardChip = SvgPicture.asset(
+    '$HOME_SVG_DIR/card_chip.svg',
+    clipBehavior: Clip.antiAlias,
+    fit: BoxFit.contain,
+    width: 50,
+  );
+
   // static SvgPicture coding_1 = SvgPicture.asset(
   //   '$STUDENT_SVG_DIR/coding_1.svg',
   //   color: Colors.white.withOpacity(0.2),
