@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -109,66 +110,33 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> with Automati
                         ),
                         //
                         Padding(
-                          padding: EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
                             children: [
-                              Expanded(
-                                child: Stack(
-                                  children: [
-                                    SliderTheme(
-                                      data: SliderThemeData(
-                                        activeTrackColor: _bloc.state.sliderConfig.activeTrackColor.withOpacity(0.6),
-                                        inactiveTrackColor: Colors.transparent,
-                                        trackShape: RoundedRectSliderTrackShape(),
-                                        trackHeight: _bloc.state.sliderConfig.trackHeight * 0.5,
-                                        thumbColor: Colors.transparent,
-                                        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0),
-                                        overlayColor: Colors.transparent,
-                                        overlayShape: RoundSliderOverlayShape(overlayRadius: _bloc.state.sliderConfig.overlayRadius),
-                                        showValueIndicator: ShowValueIndicator.never,
-                                      ),
-                                      child: Slider.adaptive(
-                                        value: _bloc.state.buffered.inSeconds.toDouble(),
-                                        min: Duration.zero.inSeconds.toDouble(),
-                                        max: _bloc.state.notifier?.duration?.inSeconds?.toDouble() ?? double.infinity,
-                                        onChanged: (value) {},
-                                      ),
-                                    ),
-                                    SliderTheme(
-                                      data: SliderThemeData(
-                                        activeTrackColor: _bloc.state.sliderConfig.activeTrackColor,
-                                        inactiveTrackColor: _bloc.state.sliderConfig.inactiveTrackColor,
-                                        trackShape: RoundedRectSliderTrackShape(),
-                                        trackHeight: _bloc.state.sliderConfig.trackHeight,
-                                        thumbColor: _bloc.state.sliderConfig.thumbColor,
-                                        thumbShape: RoundSliderThumbShape(
-                                          enabledThumbRadius: _bloc.state.sliderConfig.enabledThumbRadius,
-                                          disabledThumbRadius: _bloc.state.sliderConfig.disabledThumbRadius,
-                                        ),
-                                        overlayColor: _bloc.state.sliderConfig.overlayColor,
-                                        overlayShape: RoundSliderOverlayShape(overlayRadius: _bloc.state.sliderConfig.overlayRadius),
-                                        showValueIndicator: _bloc.state.sliderConfig.showValueIndicator,
-                                        valueIndicatorColor: _bloc.state.sliderConfig.valueIndicatorColor,
-                                        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-                                        valueIndicatorTextStyle: TextStyle(color: _bloc.state.sliderConfig.valueIndicatorTextColor),
-                                      ),
-                                      child: Slider.adaptive(
-                                        value: _bloc.state.moment.inSeconds.toDouble(),
-                                        min: Duration.zero.inSeconds.toDouble(),
-                                        max: _bloc.state.playbackDuration.inSeconds.toDouble(),
-                                        onChanged: (value) => _bloc.add(PlaybackEvent.seek(Duration(seconds: value.toInt()))),
-                                        label: "${Helpers.hhmmss(_bloc.state.moment)}",
-                                        onChangeStart: (value) {},
-                                        onChangeEnd: (value) {},
-                                      ),
-                                    ),
-                                  ],
+                              Flexible(
+                                child: FlickVideoProgressBar(
+                                  flickProgressBarSettings: FlickProgressBarSettings(
+                                    height: 5,
+                                    handleRadius: 5,
+                                    curveRadius: 100,
+                                    backgroundColor: Colors.white24,
+                                    bufferedColor: Colors.white38,
+                                    playedColor: Colors.white,
+                                    handleColor: Colors.white,
+                                  ),
                                 ),
                               ),
-                              //
                               Visibility(
                                 visible: !_bloc.state.manager.flickControlManager.isFullscreen,
-                                child: FlickLeftDuration(),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: Row(
+                                    children: [
+                                      AutoSizeText("-", minFontSize: 18),
+                                      FlickLeftDuration(),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
