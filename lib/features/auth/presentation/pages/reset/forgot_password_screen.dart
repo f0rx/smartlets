@@ -92,7 +92,7 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
                       //
                       BlocBuilder<AuthBloc, AuthState>(
                         builder: (context, _) => Form(
-                          autovalidate: bloc.state.validate,
+                          autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
                           child: TextFormField(
                             maxLines: 1,
                             enableSuggestions: true,

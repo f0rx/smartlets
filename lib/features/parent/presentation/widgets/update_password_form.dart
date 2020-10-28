@@ -52,7 +52,7 @@ class _FormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      autovalidate: bloc.state.validate,
+      autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

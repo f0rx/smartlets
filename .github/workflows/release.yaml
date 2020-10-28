@@ -59,7 +59,7 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk --release --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm,android-arm64,android-x64 --split-per-abi --flavor=prod
+      - run: flutter build apk -t lib/main.dart --release --target-platform android-arm,android-arm64 --split-per-abi --flavor=prod
 
       - name: Bump version and push tag
         id: bump_tag
@@ -67,10 +67,6 @@ jobs:
         with:
           release_branches: .*
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Print Tag / Release Parameters
-        run: |
-          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
 
       - name: Push APK to Release Tags
         uses: ncipollo/release-action@v1
@@ -98,12 +94,3 @@ jobs:
           SLACK_MESSAGE: Version ${{ needs.build.outputs.bump_tag_version }} of ${{ env.APP_NAME }} mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_FOOTER: Powered by f0rx
-
-    #      - name: Send message to Slack API
-    #        id: notify
-    #        uses: archive/github-actions-slack@v1.0.3
-    #        with:
-    #          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
-    #          slack-channel: patch
-    #          slack-text: Version ${{ env.FAKE_VERSION }} of Smartlets mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ env.FAKE_TAG }}
-    #          slack-optional-icon_emoji: ":fire:"

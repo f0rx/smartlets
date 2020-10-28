@@ -82,7 +82,7 @@ class OnBoardingScreen extends StatelessWidget {
                     visible: state.isLoading,
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: AdaptiveCircularIndicator(
+                      child: CircularProgressBar.adaptive(
                         width: App.width * 0.08,
                         height: App.width * 0.08,
                         strokeWidth: 3.5,

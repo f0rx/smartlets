@@ -1,7 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,29 +44,37 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> with Automati
               ),
               //
               Positioned.fill(
-                child: FlickShowControlsAction(
-                  behavior: HitTestBehavior.translucent,
-                  child: FlickSeekVideoAction(
-                    backwardSeekIcon: Icon(Smartlets.skip_button, size: 30),
-                    forwardSeekIcon: Transform(
-                      alignment: Alignment.center,
-                      transform: Matrix4.rotationY(math.pi),
-                      child: Icon(Smartlets.skip_button, size: 30),
-                    ),
-                    child: Center(
-                      child: Visibility(
-                        visible: _bloc.state.manager.flickVideoManager.nextVideoAutoPlayTimer == null,
-                        replacement: FlickAutoPlayCircularProgress(
-                          colors: FlickAutoPlayTimerProgressColors(
-                            backgroundColor: Colors.white38,
-                            color: Theme.of(context).accentColor,
-                          ),
+                child: FlickSeekVideoAction(
+                  backwardSeekIcon: Icon(Smartlets.skip_button, size: 30),
+                  forwardSeekIcon: Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.rotationY(math.pi),
+                    child: Icon(Smartlets.skip_button, size: 30),
+                  ),
+                  child: Center(
+                    child: Visibility(
+                      visible: _bloc.state.manager.flickVideoManager.nextVideoAutoPlayTimer == null,
+                      replacement: FlickAutoPlayCircularProgress(
+                        colors: FlickAutoPlayTimerProgressColors(
+                          backgroundColor: Colors.white38,
+                          color: Theme.of(context).accentColor,
                         ),
-                        child: FlickAutoHideChild(
-                          // showIfVideoNotInitialized: false,
-                          child: FlickPlayToggle(
-                            playChild: Icon(Smartlets.play_button),
-                            pauseChild: Icon(Smartlets.pause_button),
+                      ),
+                      child: FlickVideoBuffer(
+                        bufferingChild: CircularProgressBar.adaptive(
+                          width: 40,
+                          height: 40,
+                          strokeWidth: 3.0,
+                          radius: 14,
+                        ),
+                        child: FlickShowControlsAction(
+                          // behavior: HitTestBehavior.translucent,
+                          child: FlickAutoHideChild(
+                            showIfVideoNotInitialized: false,
+                            child: FlickPlayToggle(
+                              playChild: Icon(Smartlets.play_button),
+                              pauseChild: Icon(Smartlets.pause_button),
+                            ),
                           ),
                         ),
                       ),
@@ -82,6 +88,7 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> with Automati
                 right: 0,
                 bottom: 0,
                 child: FlickAutoHideChild(
+                  showIfVideoNotInitialized: false,
                   child: Container(
                     width: App.width,
                     color: Colors.grey.withOpacity(0.2),
@@ -201,75 +208,6 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> with Automati
           ),
         );
       },
-    );
-  }
-}
-
-class SeekControls extends StatelessWidget {
-  final double padding;
-  final double iconSize;
-  final IconData icon;
-  final Color iconColor;
-  final ShapeBorder shape;
-  final String text;
-  final bool showText;
-  final bool reversed;
-
-  SeekControls({
-    Key key,
-    @required this.icon,
-    this.iconSize = 30,
-    this.text = "",
-    this.showText = false,
-    ShapeBorder shape,
-    double padding,
-    Color iconColor,
-    this.reversed = false,
-  })  : shape = shape ?? CircleBorder(),
-        padding = padding ?? App.width * 0.07,
-        iconColor = iconColor ?? Colors.white.withOpacity(0.8),
-        super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(padding),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Visibility(
-            visible: reversed,
-            replacement: Icon(
-              icon,
-              color: iconColor,
-              size: iconSize,
-            ),
-            child: Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.rotationY(math.pi),
-              child: Icon(
-                icon,
-                color: iconColor,
-                size: iconSize,
-              ),
-            ),
-          ),
-          //
-          Visibility(
-            visible: showText,
-            child: AutoSizeText(
-              text,
-              maxLines: 1,
-              minFontSize: 18,
-              softWrap: true,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
