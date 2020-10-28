@@ -15,10 +15,6 @@ class CustomCreditCard extends StatelessWidget {
     this.cardType,
   }) : super(key: key);
 
-  String get _formattedCardNumber {
-    return card.cardNumber.value.getOrElse(() => null)?.splitMapJoin(" ", onMatch: (m) => "${m.group(0).pad("    ")}");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -52,15 +48,26 @@ class CustomCreditCard extends StatelessWidget {
                     VerticalSpace(height: App.height * 0.01),
                     //
                     Center(
-                      child: AutoSizeText(
-                        "$_formattedCardNumber",
-                        softWrap: true,
-                        minFontSize: 27,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: card.cardNumber.value
+                            .getOrElse(() => "")
+                            ?.split(" ")
+                            ?.map(
+                              (e) => Flexible(
+                                child: AutoSizeText(
+                                  "$e",
+                                  softWrap: true,
+                                  minFontSize: 25,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            )
+                            ?.toList(),
                       ),
                     ),
                   ],
