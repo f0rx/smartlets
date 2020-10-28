@@ -23,7 +23,9 @@ class CourseDetailScreen extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<PlaybackBloc>()..add(PlaybackEvent.setupVideoPlayer(NINTH_MAY)),
+      create: (_) => getIt<PlaybackBloc>()
+        ..saveLocalVideo()
+        ..add(PlaybackEvent.setupVideoPlayer(NINTH_MAY)),
       child: this,
     );
   }
