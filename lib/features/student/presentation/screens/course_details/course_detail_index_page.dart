@@ -1,12 +1,27 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/student/domain/domain.dart';
 import 'package:smartlets/features/student/presentation/screens/course_details/video_widget.dart';
+import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/smartlets_icons.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
+
+part 'package:smartlets/features/student/presentation/screens/course_details/instructor_tile.dart';
+
+part 'package:smartlets/features/student/presentation/screens/course_details/tabbed_widget.dart';
+
+part 'package:smartlets/features/student/presentation/screens/course_details/tabs/about_tab_widget.dart';
+
+part 'package:smartlets/features/student/presentation/screens/course_details/tabs/discussion_tab_widget.dart';
+
+part 'package:smartlets/features/student/presentation/screens/course_details/tabs/lessons_tab_widget.dart';
 
 class CourseDetailIndexPage extends StatefulWidget with AutoRouteWrapper {
   final Course course;
@@ -154,6 +169,7 @@ class _CourseDetailIndexPageState extends State<CourseDetailIndexPage> with Auto
                                       "500",
                                       minFontSize: 16.0,
                                       maxLines: 1,
+                                      style: TextStyle(color: AppColors.fromHex("#6E798C")),
                                     ),
                                   ],
                                 ),
@@ -168,8 +184,23 @@ class _CourseDetailIndexPageState extends State<CourseDetailIndexPage> with Auto
                   VerticalSpace(height: App.height * .01),
                   //
                   VideoWidget(),
+                  //
+                  Column(
+                    children: [
+                      _InstructorTile(),
+                      //
+                      Divider(
+                        thickness: 0.7,
+                        height: 0.0,
+                      ),
+                    ],
+                  ),
                 ],
               ),
+            ),
+            SliverFillRemaining(
+              fillOverscroll: Platform.isIOS,
+              child: TabbedWidget(),
             ),
           ],
         ),
