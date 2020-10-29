@@ -784,15 +784,20 @@ class StudentProfileScreenRouter extends RouterBase {
   final _pagesMap = <Type, AutoRouteFactory>{
     StudentProfileIndexPage: (data) {
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => StudentProfileIndexPage(),
+        builder: (context) => StudentProfileIndexPage().wrappedRoute(context),
         settings: data,
         cupertinoTitle: 'Profile',
         maintainState: true,
       );
     },
     StudentProfileUpdatePage: (data) {
+      final args =
+          data.getArgs<StudentProfileUpdatePageArguments>(nullOk: false);
       return buildAdaptivePageRoute<dynamic>(
-        builder: (context) => StudentProfileUpdatePage(),
+        builder: (context) => StudentProfileUpdatePage(
+          args.user,
+          key: args.key,
+        ).wrappedRoute(context),
         settings: data,
         cupertinoTitle: 'Update Profile',
         maintainState: true,
@@ -810,8 +815,14 @@ extension StudentProfileScreenRouterExtendedNavigatorStateX
   Future<dynamic> pushStudentProfileIndexPage() =>
       push<dynamic>(StudentProfileScreenRoutes.studentProfileIndexPage);
 
-  Future<dynamic> pushStudentProfileUpdatePage() =>
-      push<dynamic>(StudentProfileScreenRoutes.studentProfileUpdatePage);
+  Future<dynamic> pushStudentProfileUpdatePage({
+    @required User user,
+    Key key,
+  }) =>
+      push<dynamic>(
+        StudentProfileScreenRoutes.studentProfileUpdatePage,
+        arguments: StudentProfileUpdatePageArguments(user: user, key: key),
+      );
 }
 
 class CourseDetailScreenRoutes {
@@ -905,6 +916,13 @@ class CategoryDetailPageArguments {
   final Key key;
   final CourseCategory category;
   CategoryDetailPageArguments({this.key, this.category});
+}
+
+/// StudentProfileUpdatePage arguments holder class
+class StudentProfileUpdatePageArguments {
+  final User user;
+  final Key key;
+  StudentProfileUpdatePageArguments({@required this.user, this.key});
 }
 
 /// CourseDetailIndexPage arguments holder class

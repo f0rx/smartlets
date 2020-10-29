@@ -77,6 +77,8 @@ dependencies:
   curved_navigation_bar: ^0.3.4
   # A port of Kotlin's Kotlin Standard library for Dart/Flutter projects.
   kt_dart: ^0.8.0
+  # A powerful official extension library of image
+  extended_image: ^1.3.0
   # Customizable rating bar for flutter
   flutter_rating_bar: ^3.0.1+1
   # A port of the Rails/ActiveSupport inflector library to Dart.
