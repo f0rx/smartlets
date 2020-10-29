@@ -14,6 +14,8 @@ mixin AppAssets {
   static const STUDENT_IMAGES_DIR = "$HOME_IMAGES_DIR/student";
 
   static String anonymous = "$HOME_IMAGES_DIR/default-user.png";
+  static String onlineAnonymous = "https://firebasestorage.googleapis.com/v0/b/smartlets-x.appspot.com/o/assets%2Fdefault-user.png"
+      "?alt=media&token=82e08454-1786-4f0f-989a-03605e489a64";
 
   static String courseFrame1 = "$STUDENT_IMAGES_DIR/frame_1.jpg";
   static String courseFrame2 = "$STUDENT_IMAGES_DIR/frame_2.png";
