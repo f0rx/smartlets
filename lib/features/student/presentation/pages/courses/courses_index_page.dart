@@ -47,7 +47,7 @@ class CoursesIndexPage extends StatelessWidget {
                 itemBuilder: (context, i) => CourseCardWidget(
                   image: AppAssets.courseFrame1,
                   course: courses.elementAt(i),
-                  height: App.height * 0.125,
+                  height: App.height * 0.13,
                   progress: 0.72,
                   showProgress: true,
                 ),
