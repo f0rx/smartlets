@@ -9,6 +9,7 @@ part of 'playback_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PlaybackEventTearOff {
   const _$PlaybackEventTearOff();
 
@@ -109,9 +110,11 @@ class _$PlaybackEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PlaybackEvent = _$PlaybackEventTearOff();
 
+/// @nodoc
 mixin _$PlaybackEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -190,12 +193,14 @@ mixin _$PlaybackEvent {
   });
 }
 
+/// @nodoc
 abstract class $PlaybackEventCopyWith<$Res> {
   factory $PlaybackEventCopyWith(
           PlaybackEvent value, $Res Function(PlaybackEvent) then) =
       _$PlaybackEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$PlaybackEventCopyWithImpl<$Res>
     implements $PlaybackEventCopyWith<$Res> {
   _$PlaybackEventCopyWithImpl(this._value, this._then);
@@ -205,6 +210,7 @@ class _$PlaybackEventCopyWithImpl<$Res>
   final $Res Function(PlaybackEvent) _then;
 }
 
+/// @nodoc
 abstract class _$SetupVideoControllerCopyWith<$Res> {
   factory _$SetupVideoControllerCopyWith(_SetupVideoController value,
           $Res Function(_SetupVideoController) then) =
@@ -212,6 +218,7 @@ abstract class _$SetupVideoControllerCopyWith<$Res> {
   $Res call({String url, @nullable FlickManager controller});
 }
 
+/// @nodoc
 class __$SetupVideoControllerCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$SetupVideoControllerCopyWith<$Res> {
@@ -236,6 +243,7 @@ class __$SetupVideoControllerCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SetupVideoController
     with DiagnosticableTreeMixin
     implements _SetupVideoController {
@@ -424,6 +432,7 @@ abstract class _SetupVideoController implements PlaybackEvent {
   _$SetupVideoControllerCopyWith<_SetupVideoController> get copyWith;
 }
 
+/// @nodoc
 abstract class _$PlayVideoCopyWith<$Res> {
   factory _$PlayVideoCopyWith(
           _PlayVideo value, $Res Function(_PlayVideo) then) =
@@ -431,6 +440,7 @@ abstract class _$PlayVideoCopyWith<$Res> {
   $Res call({bool firstTouch});
 }
 
+/// @nodoc
 class __$PlayVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$PlayVideoCopyWith<$Res> {
   __$PlayVideoCopyWithImpl(_PlayVideo _value, $Res Function(_PlayVideo) _then)
@@ -449,6 +459,7 @@ class __$PlayVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
   const _$_PlayVideo([this.firstTouch]);
 
@@ -622,12 +633,14 @@ abstract class _PlayVideo implements PlaybackEvent {
   _$PlayVideoCopyWith<_PlayVideo> get copyWith;
 }
 
+/// @nodoc
 abstract class _$PauseVideoCopyWith<$Res> {
   factory _$PauseVideoCopyWith(
           _PauseVideo value, $Res Function(_PauseVideo) then) =
       __$PauseVideoCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$PauseVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$PauseVideoCopyWith<$Res> {
   __$PauseVideoCopyWithImpl(
@@ -638,6 +651,7 @@ class __$PauseVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   _PauseVideo get _value => super._value as _PauseVideo;
 }
 
+/// @nodoc
 class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
   const _$_PauseVideo();
 
@@ -794,6 +808,7 @@ abstract class _PauseVideo implements PlaybackEvent {
   const factory _PauseVideo() = _$_PauseVideo;
 }
 
+/// @nodoc
 abstract class _$ChangePathCopyWith<$Res> {
   factory _$ChangePathCopyWith(
           _ChangePath value, $Res Function(_ChangePath) then) =
@@ -801,6 +816,7 @@ abstract class _$ChangePathCopyWith<$Res> {
   $Res call({String value});
 }
 
+/// @nodoc
 class __$ChangePathCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$ChangePathCopyWith<$Res> {
   __$ChangePathCopyWithImpl(
@@ -820,6 +836,7 @@ class __$ChangePathCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
   const _$_ChangePath(this.value) : assert(value != null);
 
@@ -992,6 +1009,7 @@ abstract class _ChangePath implements PlaybackEvent {
   _$ChangePathCopyWith<_ChangePath> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SetVolumeCopyWith<$Res> {
   factory _$SetVolumeCopyWith(
           _SetVolume value, $Res Function(_SetVolume) then) =
@@ -999,6 +1017,7 @@ abstract class _$SetVolumeCopyWith<$Res> {
   $Res call({double volume});
 }
 
+/// @nodoc
 class __$SetVolumeCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$SetVolumeCopyWith<$Res> {
   __$SetVolumeCopyWithImpl(_SetVolume _value, $Res Function(_SetVolume) _then)
@@ -1017,6 +1036,7 @@ class __$SetVolumeCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
   const _$_SetVolume(this.volume) : assert(volume != null);
 
@@ -1189,12 +1209,14 @@ abstract class _SetVolume implements PlaybackEvent {
   _$SetVolumeCopyWith<_SetVolume> get copyWith;
 }
 
+/// @nodoc
 abstract class _$MuteVideoCopyWith<$Res> {
   factory _$MuteVideoCopyWith(
           _MuteVideo value, $Res Function(_MuteVideo) then) =
       __$MuteVideoCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$MuteVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$MuteVideoCopyWith<$Res> {
   __$MuteVideoCopyWithImpl(_MuteVideo _value, $Res Function(_MuteVideo) _then)
@@ -1204,6 +1226,7 @@ class __$MuteVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   _MuteVideo get _value => super._value as _MuteVideo;
 }
 
+/// @nodoc
 class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
   const _$_MuteVideo();
 
@@ -1360,12 +1383,14 @@ abstract class _MuteVideo implements PlaybackEvent {
   const factory _MuteVideo() = _$_MuteVideo;
 }
 
+/// @nodoc
 abstract class _$UnMuteVideoCopyWith<$Res> {
   factory _$UnMuteVideoCopyWith(
           _UnMuteVideo value, $Res Function(_UnMuteVideo) then) =
       __$UnMuteVideoCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnMuteVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$UnMuteVideoCopyWith<$Res> {
   __$UnMuteVideoCopyWithImpl(
@@ -1376,6 +1401,7 @@ class __$UnMuteVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   _UnMuteVideo get _value => super._value as _UnMuteVideo;
 }
 
+/// @nodoc
 class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
   const _$_UnMuteVideo();
 
@@ -1532,12 +1558,14 @@ abstract class _UnMuteVideo implements PlaybackEvent {
   const factory _UnMuteVideo() = _$_UnMuteVideo;
 }
 
+/// @nodoc
 abstract class _$EnterFullScreenCopyWith<$Res> {
   factory _$EnterFullScreenCopyWith(
           _EnterFullScreen value, $Res Function(_EnterFullScreen) then) =
       __$EnterFullScreenCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$EnterFullScreenCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$EnterFullScreenCopyWith<$Res> {
@@ -1549,6 +1577,7 @@ class __$EnterFullScreenCopyWithImpl<$Res>
   _EnterFullScreen get _value => super._value as _EnterFullScreen;
 }
 
+/// @nodoc
 class _$_EnterFullScreen
     with DiagnosticableTreeMixin
     implements _EnterFullScreen {
@@ -1708,12 +1737,14 @@ abstract class _EnterFullScreen implements PlaybackEvent {
   const factory _EnterFullScreen() = _$_EnterFullScreen;
 }
 
+/// @nodoc
 abstract class _$ExitFullScreenCopyWith<$Res> {
   factory _$ExitFullScreenCopyWith(
           _ExitFullScreen value, $Res Function(_ExitFullScreen) then) =
       __$ExitFullScreenCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ExitFullScreenCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$ExitFullScreenCopyWith<$Res> {
@@ -1725,6 +1756,7 @@ class __$ExitFullScreenCopyWithImpl<$Res>
   _ExitFullScreen get _value => super._value as _ExitFullScreen;
 }
 
+/// @nodoc
 class _$_ExitFullScreen
     with DiagnosticableTreeMixin
     implements _ExitFullScreen {
@@ -1884,6 +1916,7 @@ abstract class _ExitFullScreen implements PlaybackEvent {
   const factory _ExitFullScreen() = _$_ExitFullScreen;
 }
 
+/// @nodoc
 abstract class _$ChangeSliderComponentSizeCopyWith<$Res> {
   factory _$ChangeSliderComponentSizeCopyWith(_ChangeSliderComponentSize value,
           $Res Function(_ChangeSliderComponentSize) then) =
@@ -1891,6 +1924,7 @@ abstract class _$ChangeSliderComponentSizeCopyWith<$Res> {
   $Res call({SliderConfiguration config});
 }
 
+/// @nodoc
 class __$ChangeSliderComponentSizeCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$ChangeSliderComponentSizeCopyWith<$Res> {
@@ -1912,6 +1946,7 @@ class __$ChangeSliderComponentSizeCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ChangeSliderComponentSize
     with DiagnosticableTreeMixin
     implements _ChangeSliderComponentSize {
@@ -2089,12 +2124,14 @@ abstract class _ChangeSliderComponentSize implements PlaybackEvent {
   _$ChangeSliderComponentSizeCopyWith<_ChangeSliderComponentSize> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ToggleFullScreenCopyWith<$Res> {
   factory _$ToggleFullScreenCopyWith(
           _ToggleFullScreen value, $Res Function(_ToggleFullScreen) then) =
       __$ToggleFullScreenCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$ToggleFullScreenCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$ToggleFullScreenCopyWith<$Res> {
@@ -2106,6 +2143,7 @@ class __$ToggleFullScreenCopyWithImpl<$Res>
   _ToggleFullScreen get _value => super._value as _ToggleFullScreen;
 }
 
+/// @nodoc
 class _$_ToggleFullScreen
     with DiagnosticableTreeMixin
     implements _ToggleFullScreen {
@@ -2265,6 +2303,7 @@ abstract class _ToggleFullScreen implements PlaybackEvent {
   const factory _ToggleFullScreen() = _$_ToggleFullScreen;
 }
 
+/// @nodoc
 abstract class _$RefreshVideoPlayerCopyWith<$Res> {
   factory _$RefreshVideoPlayerCopyWith(
           _RefreshVideoPlayer value, $Res Function(_RefreshVideoPlayer) then) =
@@ -2274,6 +2313,7 @@ abstract class _$RefreshVideoPlayerCopyWith<$Res> {
   $PlaybackStateCopyWith<$Res> get state;
 }
 
+/// @nodoc
 class __$RefreshVideoPlayerCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$RefreshVideoPlayerCopyWith<$Res> {
@@ -2304,6 +2344,7 @@ class __$RefreshVideoPlayerCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RefreshVideoPlayer
     with DiagnosticableTreeMixin
     implements _RefreshVideoPlayer {
@@ -2479,6 +2520,7 @@ abstract class _RefreshVideoPlayer implements PlaybackEvent {
   _$RefreshVideoPlayerCopyWith<_RefreshVideoPlayer> get copyWith;
 }
 
+/// @nodoc
 abstract class _$FastForwardVideoCopyWith<$Res> {
   factory _$FastForwardVideoCopyWith(
           _FastForwardVideo value, $Res Function(_FastForwardVideo) then) =
@@ -2486,6 +2528,7 @@ abstract class _$FastForwardVideoCopyWith<$Res> {
   $Res call({Duration moment});
 }
 
+/// @nodoc
 class __$FastForwardVideoCopyWithImpl<$Res>
     extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$FastForwardVideoCopyWith<$Res> {
@@ -2506,6 +2549,7 @@ class __$FastForwardVideoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_FastForwardVideo
     with DiagnosticableTreeMixin
     implements _FastForwardVideo {
@@ -2682,12 +2726,14 @@ abstract class _FastForwardVideo implements PlaybackEvent {
   _$FastForwardVideoCopyWith<_FastForwardVideo> get copyWith;
 }
 
+/// @nodoc
 abstract class _$SeekCopyWith<$Res> {
   factory _$SeekCopyWith(_Seek value, $Res Function(_Seek) then) =
       __$SeekCopyWithImpl<$Res>;
   $Res call({Duration progress});
 }
 
+/// @nodoc
 class __$SeekCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$SeekCopyWith<$Res> {
   __$SeekCopyWithImpl(_Seek _value, $Res Function(_Seek) _then)
@@ -2706,6 +2752,7 @@ class __$SeekCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Seek with DiagnosticableTreeMixin implements _Seek {
   const _$_Seek([this.progress = const Duration(seconds: 4)])
       : assert(progress != null);
@@ -2881,6 +2928,7 @@ abstract class _Seek implements PlaybackEvent {
   _$SeekCopyWith<_Seek> get copyWith;
 }
 
+/// @nodoc
 abstract class _$RewindVideoCopyWith<$Res> {
   factory _$RewindVideoCopyWith(
           _RewindVideo value, $Res Function(_RewindVideo) then) =
@@ -2888,6 +2936,7 @@ abstract class _$RewindVideoCopyWith<$Res> {
   $Res call({Duration moment});
 }
 
+/// @nodoc
 class __$RewindVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
     implements _$RewindVideoCopyWith<$Res> {
   __$RewindVideoCopyWithImpl(
@@ -2907,6 +2956,7 @@ class __$RewindVideoCopyWithImpl<$Res> extends _$PlaybackEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
   const _$_RewindVideo([this.moment = const Duration(seconds: 10)])
       : assert(moment != null);
@@ -3081,6 +3131,7 @@ abstract class _RewindVideo implements PlaybackEvent {
   _$RewindVideoCopyWith<_RewindVideo> get copyWith;
 }
 
+/// @nodoc
 class _$PlaybackStateTearOff {
   const _$PlaybackStateTearOff();
 
@@ -3131,9 +3182,11 @@ class _$PlaybackStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PlaybackState = _$PlaybackStateTearOff();
 
+/// @nodoc
 mixin _$PlaybackState {
   @nullable
   FlickManager get manager;
@@ -3152,15 +3205,17 @@ mixin _$PlaybackState {
   bool get isInitialized;
   bool get isLoading;
   bool get isPlaying;
-  bool get isFinished;
+  bool get isFinished; // "isSeeking" - When a user is dragging the seek bar
   bool get isSeeking;
-  bool get isMute;
+  bool
+      get isMute; // "isBuffering" - When the video is buffering (Local or Network)
   bool get isBuffering;
   bool get isFullscreen;
 
   $PlaybackStateCopyWith<PlaybackState> get copyWith;
 }
 
+/// @nodoc
 abstract class $PlaybackStateCopyWith<$Res> {
   factory $PlaybackStateCopyWith(
           PlaybackState value, $Res Function(PlaybackState) then) =
@@ -3188,6 +3243,7 @@ abstract class $PlaybackStateCopyWith<$Res> {
       bool isFullscreen});
 }
 
+/// @nodoc
 class _$PlaybackStateCopyWithImpl<$Res>
     implements $PlaybackStateCopyWith<$Res> {
   _$PlaybackStateCopyWithImpl(this._value, this._then);
@@ -3254,6 +3310,7 @@ class _$PlaybackStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$PlaybackStateCopyWith<$Res>
     implements $PlaybackStateCopyWith<$Res> {
   factory _$PlaybackStateCopyWith(
@@ -3283,6 +3340,7 @@ abstract class _$PlaybackStateCopyWith<$Res>
       bool isFullscreen});
 }
 
+/// @nodoc
 class __$PlaybackStateCopyWithImpl<$Res>
     extends _$PlaybackStateCopyWithImpl<$Res>
     implements _$PlaybackStateCopyWith<$Res> {
@@ -3351,6 +3409,7 @@ class __$PlaybackStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
   const _$_PlaybackState(
       {@nullable this.manager,
@@ -3441,13 +3500,13 @@ class _$_PlaybackState extends _PlaybackState with DiagnosticableTreeMixin {
   @override
   final bool isFinished;
   @JsonKey(defaultValue: false)
-  @override
+  @override // "isSeeking" - When a user is dragging the seek bar
   final bool isSeeking;
   @JsonKey(defaultValue: false)
   @override
   final bool isMute;
   @JsonKey(defaultValue: false)
-  @override
+  @override // "isBuffering" - When the video is buffering (Local or Network)
   final bool isBuffering;
   @JsonKey(defaultValue: false)
   @override
@@ -3634,11 +3693,11 @@ abstract class _PlaybackState extends PlaybackState {
   bool get isPlaying;
   @override
   bool get isFinished;
-  @override
+  @override // "isSeeking" - When a user is dragging the seek bar
   bool get isSeeking;
   @override
   bool get isMute;
-  @override
+  @override // "isBuffering" - When the video is buffering (Local or Network)
   bool get isBuffering;
   @override
   bool get isFullscreen;

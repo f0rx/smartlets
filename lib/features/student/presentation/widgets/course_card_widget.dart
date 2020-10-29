@@ -81,10 +81,10 @@ class CourseCardWidget extends StatelessWidget {
                             Flexible(
                               flex: 2,
                               child: AutoSizeText(
-                                "${course.title.getOrCrash}",
+                                "${course.title.value.getOrElse(() => "")}",
                                 style: TextStyle(fontWeight: FontWeight.w600),
                                 maxLines: 2,
-                                minFontSize: 17.0,
+                                minFontSize: 16.0,
                                 softWrap: true,
                                 wrapWords: true,
                                 overflow: TextOverflow.ellipsis,

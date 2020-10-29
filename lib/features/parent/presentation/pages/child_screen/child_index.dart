@@ -39,7 +39,7 @@ class _EmptyList extends StatelessWidget {
             //
             MkButton(
               text: "Add Child",
-              padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
+              exteriorPadding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
               onPressed: () {},
             ),
           ],

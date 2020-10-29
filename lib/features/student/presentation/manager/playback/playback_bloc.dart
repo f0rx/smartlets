@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flick_video_player/flick_video_player.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:video_player/video_player.dart';
 
@@ -22,6 +24,15 @@ class PlaybackBloc extends Bloc<PlaybackEvent, PlaybackState> {
   FlickManager flickManager;
 
   PlaybackBloc() : super(PlaybackState.init());
+
+  void saveLocalVideo() async {
+    if (env.flavor == BuildFlavor.dev) {
+      final content = await rootBundle.load("${AppAssets.ASSETS_DIR}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}");
+      final directory = await getExternalStorageDirectory();
+      final file = File("${directory.path}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}");
+      await file.writeAsBytes(content.buffer.asUint8List());
+    }
+  }
 
   Duration controlsTimeout({bool errorInVideo, bool isPlaying, bool isVideoEnded, bool isVideoInitialized}) {
     return Duration(seconds: 1);
@@ -88,8 +99,8 @@ class PlaybackBloc extends Bloc<PlaybackEvent, PlaybackState> {
     flickManager = state.manager ??
         FlickManager(
           videoPlayerController: env.flavor == BuildFlavor.dev
-              ? VideoPlayerController.asset(
-                  "${AppAssets.ASSETS_DIR}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}",
+              ? VideoPlayerController.file(
+                  File("${(await getExternalStorageDirectory()).path}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}"),
                   videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
                 )
               : VideoPlayerController.network(

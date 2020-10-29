@@ -103,6 +103,7 @@ class CategoryDetailPage extends StatelessWidget {
                   itemBuilder: (context, i) => CourseCardWidget(
                     course: courses.elementAt(i),
                     image: AppAssets.courseFrame1,
+                    height: App.height * 0.13,
                     progress: 0.72,
                     showRating: true,
                   ),

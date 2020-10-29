@@ -9,6 +9,7 @@ part of 'field_object_exception.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FieldObjectExceptionTearOff {
   const _$FieldObjectExceptionTearOff();
 
@@ -20,15 +21,18 @@ class _$FieldObjectExceptionTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FieldObjectException = _$FieldObjectExceptionTearOff();
 
+/// @nodoc
 mixin _$FieldObjectException<T> {
   String get message;
 
   $FieldObjectExceptionCopyWith<T, FieldObjectException<T>> get copyWith;
 }
 
+/// @nodoc
 abstract class $FieldObjectExceptionCopyWith<T, $Res> {
   factory $FieldObjectExceptionCopyWith(FieldObjectException<T> value,
           $Res Function(FieldObjectException<T>) then) =
@@ -36,6 +40,7 @@ abstract class $FieldObjectExceptionCopyWith<T, $Res> {
   $Res call({String message});
 }
 
+/// @nodoc
 class _$FieldObjectExceptionCopyWithImpl<T, $Res>
     implements $FieldObjectExceptionCopyWith<T, $Res> {
   _$FieldObjectExceptionCopyWithImpl(this._value, this._then);
@@ -54,6 +59,7 @@ class _$FieldObjectExceptionCopyWithImpl<T, $Res>
   }
 }
 
+/// @nodoc
 abstract class _$FieldObjectExceptionCopyWith<T, $Res>
     implements $FieldObjectExceptionCopyWith<T, $Res> {
   factory _$FieldObjectExceptionCopyWith(_FieldObjectException<T> value,
@@ -63,6 +69,7 @@ abstract class _$FieldObjectExceptionCopyWith<T, $Res>
   $Res call({String message});
 }
 
+/// @nodoc
 class __$FieldObjectExceptionCopyWithImpl<T, $Res>
     extends _$FieldObjectExceptionCopyWithImpl<T, $Res>
     implements _$FieldObjectExceptionCopyWith<T, $Res> {
@@ -84,6 +91,7 @@ class __$FieldObjectExceptionCopyWithImpl<T, $Res>
   }
 }
 
+/// @nodoc
 class _$_FieldObjectException<T>
     with DiagnosticableTreeMixin
     implements _FieldObjectException<T> {

@@ -14,6 +14,8 @@ mixin AppAssets {
   static const STUDENT_IMAGES_DIR = "$HOME_IMAGES_DIR/student";
 
   static String anonymous = "$HOME_IMAGES_DIR/default-user.png";
+  static String onlineAnonymous = "https://firebasestorage.googleapis.com/v0/b/smartlets-x.appspot.com/o/assets%2Fdefault-user.png"
+      "?alt=media&token=82e08454-1786-4f0f-989a-03605e489a64";
 
   static String courseFrame1 = "$STUDENT_IMAGES_DIR/frame_1.jpg";
   static String courseFrame2 = "$STUDENT_IMAGES_DIR/frame_2.png";
@@ -30,7 +32,11 @@ mixin AppAssets {
 
   static SvgPicture doodle = SvgPicture.asset(
     '$SVG_DIR/doodle.svg',
-    fit: BoxFit.fill,
+    fit: BoxFit.cover,
+    height: App.height,
+    width: App.width,
+    clipBehavior: Clip.antiAliasWithSaveLayer,
+    allowDrawingOutsideViewBox: true,
   );
 
   static SvgPicture unlockPassword = SvgPicture.asset(
@@ -150,6 +156,13 @@ mixin AppAssets {
     fit: BoxFit.contain,
     height: 30,
     width: 30,
+  );
+
+  static SvgPicture cardChip = SvgPicture.asset(
+    '$HOME_SVG_DIR/card_chip.svg',
+    clipBehavior: Clip.antiAlias,
+    fit: BoxFit.contain,
+    width: 50,
   );
 
   // static SvgPicture coding_1 = SvgPicture.asset(

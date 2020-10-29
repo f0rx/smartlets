@@ -1,9 +1,21 @@
-part of 'package:smartlets/features/parent/presentation/pages/profile_screen/parent_profile_update.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flushbar/flushbar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_portal/flutter_portal.dart';
+import 'package:smartlets/features/auth/domain/core/auth.dart';
+import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
+import 'package:smartlets/features/shared/shared.dart';
+import 'package:smartlets/manager/locator/locator.dart';
+import 'package:smartlets/utils/utils.dart';
+import 'package:smartlets/widgets/widgets.dart';
 
-class _UpdateProfileForm extends StatelessWidget {
+class UpdateProfileForm extends StatelessWidget {
   final User user;
 
-  const _UpdateProfileForm(this.user, {Key key}) : super(key: key);
+  const UpdateProfileForm(this.user, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +66,7 @@ class __FormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      autovalidate: bloc.state.validate,
+      autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

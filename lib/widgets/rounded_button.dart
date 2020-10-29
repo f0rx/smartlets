@@ -6,7 +6,7 @@ import 'package:smartlets/widgets/widgets.dart';
 
 class MkButton extends StatelessWidget {
   final String text;
-  final EdgeInsets padding;
+  final EdgeInsets exteriorPadding;
   final TextStyle style;
   final Color color;
   final double elevation;
@@ -19,7 +19,7 @@ class MkButton extends StatelessWidget {
   MkButton({
     Key key,
     @required this.text,
-    this.padding = EdgeInsets.zero,
+    this.exteriorPadding = EdgeInsets.zero,
     TextStyle style = const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
     Color color,
     Color textColor,
@@ -36,7 +36,7 @@ class MkButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding,
+      padding: exteriorPadding,
       child: RaisedButton(
         onPressed: onPressed,
         child: HorizontalSpace(

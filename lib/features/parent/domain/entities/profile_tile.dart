@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
+import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/theme/theme.dart';
 import 'package:smartlets/utils/utils.dart';
@@ -31,9 +32,17 @@ class ProfileTile {
           title: "Account",
           leading: AppAssets.user,
           subtitle: "Details & Password",
-          onPressed: (context) => inner(context).pushUpdateParentProfilePage(
-            user: getIt<AuthFacade>().currentUser.getOrElse(() => null),
-          ),
+          onPressed: (context) => getIt<AuthFacade>().currentUser?.fold(
+                () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
+                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription?.fold(
+                      parent: () => inner(context).pushUpdateParentProfilePage(
+                        user: getIt<AuthFacade>().currentUser.getOrElse(() => null),
+                      ),
+                      student: () => inner(context).pushStudentProfileUpdatePage(
+                        user: getIt<AuthFacade>().currentUser.getOrElse(() => null),
+                      ),
+                    ),
+              ),
         ),
         //
         ProfileTile(

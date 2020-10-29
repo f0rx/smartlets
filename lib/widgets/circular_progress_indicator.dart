@@ -4,14 +4,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smartlets/utils/utils.dart';
 
-class AdaptiveCircularIndicator extends StatelessWidget {
+enum _CircularProgressBarType { material, adaptive }
+
+class CircularProgressBar extends StatelessWidget {
   final double height;
   final double width;
   final Color color;
-  final Color bgColor;
+  final Color background;
   final double value;
   final double strokeWidth;
-  final bool forceShowIOS;
+  final _CircularProgressBarType _type;
 
   /// [Cupertino] Whether the activity indicator is running its animation.
   final bool isAnimating;
@@ -19,17 +21,32 @@ class AdaptiveCircularIndicator extends StatelessWidget {
   /// [Cupertino] Radius of the activity indicator.
   final double radius;
 
-  AdaptiveCircularIndicator({
+  /// [Cupertino] Force show CupertinoActivityIndicator
+  final bool forceShowIOS;
+
+  const CircularProgressBar({
     this.width,
     this.height,
     this.color = AppColors.accentColor,
     this.value,
     this.strokeWidth = 4.0,
-    this.bgColor,
+    this.background,
     this.isAnimating = true,
     this.radius,
     this.forceShowIOS = false,
-  });
+  }) : _type = _CircularProgressBarType.material;
+
+  const CircularProgressBar.adaptive({
+    this.width,
+    this.height,
+    this.color = AppColors.accentColor,
+    this.value,
+    this.strokeWidth = 4.0,
+    this.background,
+    this.isAnimating = true,
+    this.radius,
+    this.forceShowIOS = false,
+  }) : _type = _CircularProgressBarType.adaptive;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +58,7 @@ class AdaptiveCircularIndicator extends StatelessWidget {
   }
 
   Widget _progressIndicator() {
-    if (Platform.isIOS || forceShowIOS) {
+    if (_type == _CircularProgressBarType.adaptive && (Platform.isIOS || forceShowIOS)) {
       return CupertinoActivityIndicator(
         animating: isAnimating,
         radius: radius,
@@ -50,7 +67,7 @@ class AdaptiveCircularIndicator extends StatelessWidget {
     return CircularProgressIndicator(
       value: value,
       valueColor: AlwaysStoppedAnimation(color),
-      backgroundColor: bgColor,
+      backgroundColor: background,
       strokeWidth: strokeWidth,
       semanticsLabel: "Progress Indicator",
       semanticsValue: "1% completed.",

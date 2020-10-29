@@ -93,4 +93,55 @@ class Validator {
     if (input.length > max) return left(FieldObjectException.exceedsLength(message: "Value exceeds max length!"));
     return right(input);
   }
+
+  static Either<FieldObjectException<String>, String> onlyDigits(String input, [String message = INVALID_FIELD_MESSAGE]) {
+    String clean = input.trim();
+
+    bool containsOnlyDigits = RegExp(r"^[0-9]+$", multiLine: true).hasMatch(clean);
+
+    if (!containsOnlyDigits) return left(FieldObjectException.invalid(message: message));
+
+    return right(input);
+  }
+
+  static Either<FieldObjectException<String>, String> cardNumber(String input) {
+    String clean = input.trim();
+
+    bool containsOnlyDigits = RegExp(r"^[0-9 ]+$", multiLine: true).hasMatch(clean);
+
+    if (!containsOnlyDigits) return left(FieldObjectException.invalid(message: INVALID_CARD_NUMBER));
+
+    return right(input);
+  }
+
+  static Either<FieldObjectException<String>, String> cardExpiration(String input) {
+    final _input = input.trim();
+
+    String toOriginalFormatString(DateTime dateTime) {
+      final y = dateTime.year.toString().padLeft(4, '0');
+      final m = dateTime.month.toString().padLeft(2, '0');
+      final d = dateTime.day.toString().padLeft(2, '0');
+
+      print("toOriginalFormatString =========> $y$m$d");
+      return "$y$m$d";
+    }
+
+    bool isValidDate(String input) {
+      try {
+        final date = DateTime.parse(input);
+        final formattedString = toOriginalFormatString(date);
+
+        print("Input: =========> $input}");
+        print("isValidDate =========> ${input == formattedString}");
+
+        return input == formattedString;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // if (val)
+
+    return right(input);
+  }
 }

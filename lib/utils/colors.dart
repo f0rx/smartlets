@@ -76,6 +76,7 @@ class AppColors {
   static const Color loginButton = Color(0xFF3871b6);
 
   static const Color errorRed = Color(0xFFED4337);
+  static const Color cardColor = Color(0xFFfe4d55);
 
   static const Color green = Color(0xFF00C853);
   static const Color successGreen = Color(0xFF4bb543);

@@ -57,4 +57,5 @@ class Smartlets {
   static const IconData fit_screen_icon = IconData(0xe849, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData low_volume = IconData(0xe84a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData mute_volume = IconData(0xe84b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData notification = IconData(0xe87b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

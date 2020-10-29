@@ -18,9 +18,9 @@ class PlatformBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) return ios(context);
     if (Platform.isAndroid) return android(context);
-    if (Platform.isWindows) return desktop(context);
+    if (Platform.isIOS) return ios != null ? ios(context) : android(context);
+    if (Platform.isWindows) return desktop != null ? desktop(context) : android(context);
     return android(context);
   }
 }
