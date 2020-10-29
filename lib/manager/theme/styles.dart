@@ -99,11 +99,11 @@ class AppTheme extends HiveObject {
           borderRadius: BorderRadius.circular(8.0),
         ),
       ),
-      textTheme: TextTheme()
+      textTheme: GoogleFonts.montserratTextTheme(TextTheme()
         ..apply(
           displayColor: Colors.black87, // For headline 1 - 6
           bodyColor: Colors.black87, // For every other text style
-        ),
+        )),
     );
   }
 
@@ -149,11 +149,11 @@ class AppTheme extends HiveObject {
           borderRadius: BorderRadius.circular(8.0),
         ),
       ),
-      textTheme: TextTheme()
+      textTheme: GoogleFonts.montserratTextTheme(TextTheme()
         ..apply(
           displayColor: Colors.white, // For headline 1 - 6
           bodyColor: Colors.white, // For every other text style
-        ),
+        )),
     );
   }
 
@@ -172,7 +172,7 @@ class AppTheme extends HiveObject {
       splashColor: this._splashColor,
       splashFactory: this._splashFactory,
       visualDensity: this._visualDensity,
-      textTheme: GoogleFonts.montserratTextTheme(this._textTheme),
+      textTheme: this._textTheme,
     );
   }
 

@@ -9,6 +9,7 @@ part of 'on_boarding_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$OnBoardingStateTearOff {
   const _$OnBoardingStateTearOff();
 
@@ -27,9 +28,11 @@ class _$OnBoardingStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $OnBoardingState = _$OnBoardingStateTearOff();
 
+/// @nodoc
 mixin _$OnBoardingState {
   bool get isLoading;
   bool get shouldListen;
@@ -40,6 +43,7 @@ mixin _$OnBoardingState {
   $OnBoardingStateCopyWith<OnBoardingState> get copyWith;
 }
 
+/// @nodoc
 abstract class $OnBoardingStateCopyWith<$Res> {
   factory $OnBoardingStateCopyWith(
           OnBoardingState value, $Res Function(OnBoardingState) then) =
@@ -51,6 +55,7 @@ abstract class $OnBoardingStateCopyWith<$Res> {
       @nullable Subscription subscription});
 }
 
+/// @nodoc
 class _$OnBoardingStateCopyWithImpl<$Res>
     implements $OnBoardingStateCopyWith<$Res> {
   _$OnBoardingStateCopyWithImpl(this._value, this._then);
@@ -80,6 +85,7 @@ class _$OnBoardingStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$OnBoardingStateCopyWith<$Res>
     implements $OnBoardingStateCopyWith<$Res> {
   factory _$OnBoardingStateCopyWith(
@@ -93,6 +99,7 @@ abstract class _$OnBoardingStateCopyWith<$Res>
       @nullable Subscription subscription});
 }
 
+/// @nodoc
 class __$OnBoardingStateCopyWithImpl<$Res>
     extends _$OnBoardingStateCopyWithImpl<$Res>
     implements _$OnBoardingStateCopyWith<$Res> {
@@ -124,6 +131,7 @@ class __$OnBoardingStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_OnBoardingState implements _OnBoardingState {
   const _$_OnBoardingState(
       {this.isLoading = false,

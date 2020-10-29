@@ -9,6 +9,7 @@ part of 'credit_card.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CreditCardTearOff {
   const _$CreditCardTearOff();
 
@@ -27,9 +28,11 @@ class _$CreditCardTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CreditCard = _$CreditCardTearOff();
 
+/// @nodoc
 mixin _$CreditCard {
   CardNumber get cardNumber;
   CardholderName get cardholderName;
@@ -39,6 +42,7 @@ mixin _$CreditCard {
   $CreditCardCopyWith<CreditCard> get copyWith;
 }
 
+/// @nodoc
 abstract class $CreditCardCopyWith<$Res> {
   factory $CreditCardCopyWith(
           CreditCard value, $Res Function(CreditCard) then) =
@@ -50,6 +54,7 @@ abstract class $CreditCardCopyWith<$Res> {
       CardVerificationValue cvv});
 }
 
+/// @nodoc
 class _$CreditCardCopyWithImpl<$Res> implements $CreditCardCopyWith<$Res> {
   _$CreditCardCopyWithImpl(this._value, this._then);
 
@@ -77,6 +82,7 @@ class _$CreditCardCopyWithImpl<$Res> implements $CreditCardCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CreditCardCopyWith<$Res> implements $CreditCardCopyWith<$Res> {
   factory _$CreditCardCopyWith(
           _CreditCard value, $Res Function(_CreditCard) then) =
@@ -89,6 +95,7 @@ abstract class _$CreditCardCopyWith<$Res> implements $CreditCardCopyWith<$Res> {
       CardVerificationValue cvv});
 }
 
+/// @nodoc
 class __$CreditCardCopyWithImpl<$Res> extends _$CreditCardCopyWithImpl<$Res>
     implements _$CreditCardCopyWith<$Res> {
   __$CreditCardCopyWithImpl(
@@ -118,6 +125,7 @@ class __$CreditCardCopyWithImpl<$Res> extends _$CreditCardCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CreditCard extends _CreditCard with DiagnosticableTreeMixin {
   const _$_CreditCard(
       {@required this.cardNumber,

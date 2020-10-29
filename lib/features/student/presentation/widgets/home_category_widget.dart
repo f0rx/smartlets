@@ -54,9 +54,7 @@ class HomeCategoryWidget extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Flexible(child: VerticalSpace(height: App.height * 0.01)),
                         Expanded(
-                          flex: 2,
                           child: Align(
                             alignment: Alignment.center,
                             child: Padding(
@@ -68,30 +66,6 @@ class HomeCategoryWidget extends StatelessWidget {
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                          ),
-                        ),
-                        Flexible(
-                          child: Column(
-                            children: [
-                              Flexible(
-                                flex: 3,
-                                child: Material(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                  type: MaterialType.card,
-                                  child: InkWell(
-                                    onTap: () => inner(context).pushCategoryDetailPage(category: category),
-                                    splashColor: Colors.grey.shade300,
-                                    child: const Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: 17.0, vertical: 6.0),
-                                      child: AutoSizeText("More"),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              //
-                              Flexible(child: VerticalSpace(height: App.height * 0.01)),
-                            ],
                           ),
                         ),
                       ],

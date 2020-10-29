@@ -41,7 +41,7 @@ class Helpers {
   static Helpers get I => Helpers._();
   static double buttonRadius = 12.0;
   static double appPadding = App.width * 0.04;
-  static ScrollPhysics physics = BouncingScrollPhysics();
+  static ScrollPhysics physics = const BouncingScrollPhysics();
   static Duration willPopTimeout = const Duration(seconds: 3);
   static Logger logger = Logger();
 

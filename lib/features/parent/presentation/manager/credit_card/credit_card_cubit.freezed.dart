@@ -9,6 +9,7 @@ part of 'credit_card_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CreditCardStateTearOff {
   const _$CreditCardStateTearOff();
 
@@ -27,9 +28,11 @@ class _$CreditCardStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CreditCardState = _$CreditCardStateTearOff();
 
+/// @nodoc
 mixin _$CreditCardState {
   CreditCards get cards;
   CreditCard get card;
@@ -39,6 +42,7 @@ mixin _$CreditCardState {
   $CreditCardStateCopyWith<CreditCardState> get copyWith;
 }
 
+/// @nodoc
 abstract class $CreditCardStateCopyWith<$Res> {
   factory $CreditCardStateCopyWith(
           CreditCardState value, $Res Function(CreditCardState) then) =
@@ -49,6 +53,7 @@ abstract class $CreditCardStateCopyWith<$Res> {
   $CreditCardCopyWith<$Res> get card;
 }
 
+/// @nodoc
 class _$CreditCardStateCopyWithImpl<$Res>
     implements $CreditCardStateCopyWith<$Res> {
   _$CreditCardStateCopyWithImpl(this._value, this._then);
@@ -84,6 +89,7 @@ class _$CreditCardStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$CreditCardStateCopyWith<$Res>
     implements $CreditCardStateCopyWith<$Res> {
   factory _$CreditCardStateCopyWith(
@@ -97,6 +103,7 @@ abstract class _$CreditCardStateCopyWith<$Res>
   $CreditCardCopyWith<$Res> get card;
 }
 
+/// @nodoc
 class __$CreditCardStateCopyWithImpl<$Res>
     extends _$CreditCardStateCopyWithImpl<$Res>
     implements _$CreditCardStateCopyWith<$Res> {
@@ -124,6 +131,7 @@ class __$CreditCardStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CreditCardState extends _CreditCardState {
   const _$_CreditCardState(
       {@required this.cards,

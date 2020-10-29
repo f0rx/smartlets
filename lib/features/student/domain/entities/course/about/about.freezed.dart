@@ -9,6 +9,7 @@ part of 'about.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AboutTearOff {
   const _$AboutTearOff();
 
@@ -29,9 +30,11 @@ class _$AboutTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $About = _$AboutTearOff();
 
+/// @nodoc
 mixin _$About {
   UniqueId get id;
   String get description;
@@ -42,6 +45,7 @@ mixin _$About {
   $AboutCopyWith<About> get copyWith;
 }
 
+/// @nodoc
 abstract class $AboutCopyWith<$Res> {
   factory $AboutCopyWith(About value, $Res Function(About) then) =
       _$AboutCopyWithImpl<$Res>;
@@ -53,6 +57,7 @@ abstract class $AboutCopyWith<$Res> {
       String language});
 }
 
+/// @nodoc
 class _$AboutCopyWithImpl<$Res> implements $AboutCopyWith<$Res> {
   _$AboutCopyWithImpl(this._value, this._then);
 
@@ -81,6 +86,7 @@ class _$AboutCopyWithImpl<$Res> implements $AboutCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AboutCopyWith<$Res> implements $AboutCopyWith<$Res> {
   factory _$AboutCopyWith(_About value, $Res Function(_About) then) =
       __$AboutCopyWithImpl<$Res>;
@@ -93,6 +99,7 @@ abstract class _$AboutCopyWith<$Res> implements $AboutCopyWith<$Res> {
       String language});
 }
 
+/// @nodoc
 class __$AboutCopyWithImpl<$Res> extends _$AboutCopyWithImpl<$Res>
     implements _$AboutCopyWith<$Res> {
   __$AboutCopyWithImpl(_About _value, $Res Function(_About) _then)
@@ -122,6 +129,7 @@ class __$AboutCopyWithImpl<$Res> extends _$AboutCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_About extends _About with DiagnosticableTreeMixin {
   const _$_About(
       {@required this.id,

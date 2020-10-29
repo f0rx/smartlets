@@ -17,10 +17,9 @@ class StudentHomeIndexPage extends StatelessWidget {
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, isBoxScrolled) => [],
-        physics: BouncingScrollPhysics(),
+        physics: Helpers.physics,
         controller: ScrollController(),
         scrollDirection: Axis.vertical,
-        // dragStartBehavior: DragStartBehavior.start,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Helpers.appPadding),
@@ -39,52 +38,52 @@ class StudentHomeIndexPage extends StatelessWidget {
                 //
                 VerticalSpace(height: App.height * 0.04),
                 //
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
-                  child: Material(
-                    elevation: 1.0,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    shadowColor: Colors.grey,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                    type: MaterialType.card,
-                    child: TextFormField(
-                      maxLines: 1,
-                      enableSuggestions: true,
-                      cursorColor: App.theme.accentColor,
-                      enableInteractiveSelection: true,
-                      keyboardType: TextInputType.text,
-                      textCapitalization: TextCapitalization.none,
-                      textInputAction: TextInputAction.search,
-                      decoration: InputDecoration(
-                        hintText: "Search",
-                        contentPadding: const EdgeInsets.symmetric(vertical: 12.5, horizontal: 14.0),
-                        prefixIcon: const Icon(AppIcons.search_filled, size: 15.0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.accentColor),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey, width: 0.5),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
+                Material(
+                  elevation: MediaQuery.of(context).platformBrightness == Brightness.dark ? 2.5 : 1.0,
+                  clipBehavior: Clip.antiAlias,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  shadowColor: Colors.grey,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17.0)),
+                  type: MaterialType.card,
+                  child: TextFormField(
+                    maxLines: 1,
+                    enableSuggestions: true,
+                    style: TextStyle(fontSize: 18.0),
+                    cursorColor: App.theme.accentColor,
+                    enableInteractiveSelection: true,
+                    keyboardType: TextInputType.text,
+                    textCapitalization: TextCapitalization.none,
+                    textInputAction: TextInputAction.search,
+                    decoration: InputDecoration(
+                      hintText: "Search",
+                      contentPadding: const EdgeInsets.symmetric(vertical: 12.5, horizontal: 14.0),
+                      prefixIcon: const Icon(AppIcons.search_filled, size: 15.0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
-                      onChanged: (value) {},
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
                     ),
+                    onChanged: (value) {},
                   ),
                 ),
                 //
                 VerticalSpace(height: App.height * 0.04),
                 //
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
-                  child: const AutoSizeText(
+                  child: AutoSizeText(
                     "Categories",
                     style: TextStyle(fontWeight: FontWeight.w600),
                     minFontSize: 18,
                     textAlign: TextAlign.left,
                   ),
                 ),
+                //
+                VerticalSpace(height: App.height * 0.02),
                 //
                 Wrap(
                   direction: Axis.horizontal,

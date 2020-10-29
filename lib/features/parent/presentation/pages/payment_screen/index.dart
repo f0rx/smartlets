@@ -19,8 +19,8 @@ class PaymentIndexPage extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 controller: ScrollController(),
                 padding: EdgeInsets.zero.copyWith(top: App.mediaQuery.padding.top * 0.8),
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                physics: BouncingScrollPhysics(),
+                clipBehavior: Clip.antiAlias,
+                physics: Helpers.physics,
                 child: SafeArea(
                   top: false,
                   child: Column(
@@ -70,7 +70,7 @@ class PaymentIndexPage extends StatelessWidget {
                       //
                       MkButton(
                         text: "Start 14 Days Free Trial",
-                        padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
+                        exteriorPadding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
                         onPressed: () => inner(context).pushPaymentMethodPage(),
                         // onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CreditCardExample())),
                       ),
@@ -79,7 +79,7 @@ class PaymentIndexPage extends StatelessWidget {
                       //
                       MkButton(
                         text: "Not Now",
-                        padding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
+                        exteriorPadding: EdgeInsets.symmetric(horizontal: App.width * 0.04),
                         color: Theme.of(context).scaffoldBackgroundColor,
                         elevation: 0.0,
                         highlightElevation: 0.0,
