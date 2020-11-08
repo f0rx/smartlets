@@ -57,18 +57,32 @@ abstract class User implements _$User {
         lastSeenAt: Helpers.I.today,
       );
 
-  Student get sampleStudent => Student(
+  Student asStudent({
+    UniqueId id,
+    DisplayName name,
+    EmailAddress email,
+    EmailAddress guardianEmail,
+    Gender gender,
+    bool verified,
+    Phone phone,
+    Phone guardianPhone,
+    DateTime createdAt,
+    DateTime lastSeenAt,
+    DateTime updatedAt,
+  }) =>
+      Student(
         id: id,
-        displayName: DisplayName(displayName),
-        email: EmailAddress(email),
-        isEmailVerified: isEmailVerified,
-        phone: phone,
-        photoURL: photoURL,
-        createdAt: createdAt,
-        lastSeenAt: lastSeenAt,
-        gender: Gender(GenderType.Female),
-        guardianPhone: null,
-        guardianEmail: null,
+        displayName: name ?? DisplayName(this.displayName),
+        email: email ?? EmailAddress(this.email),
+        isEmailVerified: verified ?? this.isEmailVerified,
+        phone: phone ?? Phone(this.phone, phone?.country ?? Country.NG),
+        photoURL: photoURL ?? this.photoURL,
+        // This here sets the default Gender to Male (when saving to firestore)
+        gender: gender ?? Gender(GenderType.Other),
+        guardianPhone: guardianPhone ?? Phone(this.phone, phone?.country ?? Country.NG),
+        guardianEmail: guardianEmail ?? EmailAddress(this.email),
+        createdAt: createdAt ?? this.createdAt,
+        lastSeenAt: lastSeenAt ?? this.lastSeenAt,
       );
 
   Instructor get sampleInstructor => Instructor(

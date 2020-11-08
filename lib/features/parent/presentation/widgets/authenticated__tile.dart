@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartlets/features/auth/presentation/manager/student/student_auth_cubit.dart';
 import 'package:smartlets/features/shared/shared.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
@@ -23,6 +25,12 @@ class AuthenticatedProfileTile extends StatelessWidget {
               Flexible(
                 child: Stack(
                   children: [
+                    BlocBuilder<StudentAuthCubit, StudentAuthState>(
+                      builder: (context, state) {
+                        // print("Reading from Widget ===> ${context.bloc<StudentAuthCubit>().state.toString()}");
+                        return SizedBox();
+                      },
+                    ),
                     Positioned(
                       child: Material(
                         color: Colors.transparent,
@@ -32,7 +40,7 @@ class AuthenticatedProfileTile extends StatelessWidget {
                           onTap: () {},
                           splashColor: Colors.grey,
                           child: ExtendedImage.network(
-                            user?.photoURL,
+                            user?.photoURL ?? AppAssets.onlineAnonymous,
                             fit: BoxFit.fill,
                             height: App.height * 0.08,
                             shape: BoxShape.circle,
@@ -98,7 +106,7 @@ class AuthenticatedProfileTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     holder(
-                      AutoSizeText("${user?.displayName}", style: TextStyle(fontSize: 17.0)),
+                      AutoSizeText("${user?.displayName}", style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600)),
                       condition: user?.displayName != null && user.displayName.isNotEmpty,
                     ),
                     //

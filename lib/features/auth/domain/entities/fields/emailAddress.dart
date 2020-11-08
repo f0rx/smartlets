@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 
 class EmailAddress extends FieldObject<String> {
-  @override
+  static const EmailAddress DEFAULT = EmailAddress._(Right(''));
   final Either<FieldObjectException<String>, String> value;
 
   factory EmailAddress(String email) {

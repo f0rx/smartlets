@@ -38,14 +38,8 @@ class LoginForm extends StatelessWidget {
               (_) => null,
               accountAlreadyExists: (e) => AuthProvider.switchCase(
                 e.provider.name,
-                isGoogle: (name) => BlocProvider.of<AuthBloc>(context)
-                  ..add(
-                    AuthEvent.signInWithGoogle(e.credentials),
-                  ),
-                isFacebook: (name) => BlocProvider.of<AuthBloc>(context)
-                  ..add(
-                    AuthEvent.signInWithFacebook(e.credentials),
-                  ),
+                isGoogle: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithGoogle(e.credentials)),
+                isFacebook: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithFacebook(e.credentials)),
                 orElse: (name) => App.showAlertDialog(
                   context: context,
                   builder: (context) => ProviderAuthWidget(
