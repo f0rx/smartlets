@@ -101,7 +101,9 @@ mixin _$StudentAuthDTO {
 
 /// @nodoc
 abstract class $StudentAuthDTOCopyWith<$Res> {
-  factory $StudentAuthDTOCopyWith(StudentAuthDTO value, $Res Function(StudentAuthDTO) then) = _$StudentAuthDTOCopyWithImpl<$Res>;
+  factory $StudentAuthDTOCopyWith(
+          StudentAuthDTO value, $Res Function(StudentAuthDTO) then) =
+      _$StudentAuthDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) String id,
       String displayName,
@@ -124,7 +126,8 @@ abstract class $StudentAuthDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StudentAuthDTOCopyWithImpl<$Res> implements $StudentAuthDTOCopyWith<$Res> {
+class _$StudentAuthDTOCopyWithImpl<$Res>
+    implements $StudentAuthDTOCopyWith<$Res> {
   _$StudentAuthDTOCopyWithImpl(this._value, this._then);
 
   final StudentAuthDTO _value;
@@ -152,21 +155,35 @@ class _$StudentAuthDTOCopyWithImpl<$Res> implements $StudentAuthDTOCopyWith<$Res
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      displayName: displayName == freezed ? _value.displayName : displayName as String,
+      displayName:
+          displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
-      guardianEmail: guardianEmail == freezed ? _value.guardianEmail : guardianEmail as String,
+      guardianEmail: guardianEmail == freezed
+          ? _value.guardianEmail
+          : guardianEmail as String,
       gender: gender == freezed ? _value.gender : gender as String,
-      courseIds: courseIds == freezed ? _value.courseIds : courseIds as List<String>,
-      projectIds: projectIds == freezed ? _value.projectIds : projectIds as List<String>,
-      awardIds: awardIds == freezed ? _value.awardIds : awardIds as List<String>,
-      isEmailVerified: isEmailVerified == freezed ? _value.isEmailVerified : isEmailVerified as bool,
+      courseIds:
+          courseIds == freezed ? _value.courseIds : courseIds as List<String>,
+      projectIds: projectIds == freezed
+          ? _value.projectIds
+          : projectIds as List<String>,
+      awardIds:
+          awardIds == freezed ? _value.awardIds : awardIds as List<String>,
+      isEmailVerified: isEmailVerified == freezed
+          ? _value.isEmailVerified
+          : isEmailVerified as bool,
       phone: phone == freezed ? _value.phone : phone as String,
       country: country == freezed ? _value.country : country as Country,
-      guardianPhone: guardianPhone == freezed ? _value.guardianPhone : guardianPhone as String,
+      guardianPhone: guardianPhone == freezed
+          ? _value.guardianPhone
+          : guardianPhone as String,
       photoURL: photoURL == freezed ? _value.photoURL : photoURL as String,
-      createdAt: createdAt == freezed ? _value.createdAt : createdAt as Timestamp,
-      lastSeenAt: lastSeenAt == freezed ? _value.lastSeenAt : lastSeenAt as Timestamp,
-      updatedAt: updatedAt == freezed ? _value.updatedAt : updatedAt as Timestamp,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as Timestamp,
+      lastSeenAt:
+          lastSeenAt == freezed ? _value.lastSeenAt : lastSeenAt as Timestamp,
+      updatedAt:
+          updatedAt == freezed ? _value.updatedAt : updatedAt as Timestamp,
     ));
   }
 
@@ -182,8 +199,10 @@ class _$StudentAuthDTOCopyWithImpl<$Res> implements $StudentAuthDTOCopyWith<$Res
 }
 
 /// @nodoc
-abstract class _$StudentAuthDTOCopyWith<$Res> implements $StudentAuthDTOCopyWith<$Res> {
-  factory _$StudentAuthDTOCopyWith(_StudentAuthDTO value, $Res Function(_StudentAuthDTO) then) =
+abstract class _$StudentAuthDTOCopyWith<$Res>
+    implements $StudentAuthDTOCopyWith<$Res> {
+  factory _$StudentAuthDTOCopyWith(
+          _StudentAuthDTO value, $Res Function(_StudentAuthDTO) then) =
       __$StudentAuthDTOCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -209,8 +228,11 @@ abstract class _$StudentAuthDTOCopyWith<$Res> implements $StudentAuthDTOCopyWith
 }
 
 /// @nodoc
-class __$StudentAuthDTOCopyWithImpl<$Res> extends _$StudentAuthDTOCopyWithImpl<$Res> implements _$StudentAuthDTOCopyWith<$Res> {
-  __$StudentAuthDTOCopyWithImpl(_StudentAuthDTO _value, $Res Function(_StudentAuthDTO) _then)
+class __$StudentAuthDTOCopyWithImpl<$Res>
+    extends _$StudentAuthDTOCopyWithImpl<$Res>
+    implements _$StudentAuthDTOCopyWith<$Res> {
+  __$StudentAuthDTOCopyWithImpl(
+      _StudentAuthDTO _value, $Res Function(_StudentAuthDTO) _then)
       : super(_value, (v) => _then(v as _StudentAuthDTO));
 
   @override
@@ -237,21 +259,35 @@ class __$StudentAuthDTOCopyWithImpl<$Res> extends _$StudentAuthDTOCopyWithImpl<$
   }) {
     return _then(_StudentAuthDTO(
       id: id == freezed ? _value.id : id as String,
-      displayName: displayName == freezed ? _value.displayName : displayName as String,
+      displayName:
+          displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
-      guardianEmail: guardianEmail == freezed ? _value.guardianEmail : guardianEmail as String,
+      guardianEmail: guardianEmail == freezed
+          ? _value.guardianEmail
+          : guardianEmail as String,
       gender: gender == freezed ? _value.gender : gender as String,
-      courseIds: courseIds == freezed ? _value.courseIds : courseIds as List<String>,
-      projectIds: projectIds == freezed ? _value.projectIds : projectIds as List<String>,
-      awardIds: awardIds == freezed ? _value.awardIds : awardIds as List<String>,
-      isEmailVerified: isEmailVerified == freezed ? _value.isEmailVerified : isEmailVerified as bool,
+      courseIds:
+          courseIds == freezed ? _value.courseIds : courseIds as List<String>,
+      projectIds: projectIds == freezed
+          ? _value.projectIds
+          : projectIds as List<String>,
+      awardIds:
+          awardIds == freezed ? _value.awardIds : awardIds as List<String>,
+      isEmailVerified: isEmailVerified == freezed
+          ? _value.isEmailVerified
+          : isEmailVerified as bool,
       phone: phone == freezed ? _value.phone : phone as String,
       country: country == freezed ? _value.country : country as Country,
-      guardianPhone: guardianPhone == freezed ? _value.guardianPhone : guardianPhone as String,
+      guardianPhone: guardianPhone == freezed
+          ? _value.guardianPhone
+          : guardianPhone as String,
       photoURL: photoURL == freezed ? _value.photoURL : photoURL as String,
-      createdAt: createdAt == freezed ? _value.createdAt : createdAt as Timestamp,
-      lastSeenAt: lastSeenAt == freezed ? _value.lastSeenAt : lastSeenAt as Timestamp,
-      updatedAt: updatedAt == freezed ? _value.updatedAt : updatedAt as Timestamp,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as Timestamp,
+      lastSeenAt:
+          lastSeenAt == freezed ? _value.lastSeenAt : lastSeenAt as Timestamp,
+      updatedAt:
+          updatedAt == freezed ? _value.updatedAt : updatedAt as Timestamp,
     ));
   }
 }
@@ -287,7 +323,8 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
         assert(country != null),
         super._();
 
-  factory _$_StudentAuthDTO.fromJson(Map<String, dynamic> json) => _$_$_StudentAuthDTOFromJson(json);
+  factory _$_StudentAuthDTO.fromJson(Map<String, dynamic> json) =>
+      _$_$_StudentAuthDTOFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -343,26 +380,50 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _StudentAuthDTO &&
-            (identical(other.id, id) || const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.displayName, displayName) ||
-                const DeepCollectionEquality().equals(other.displayName, displayName)) &&
-            (identical(other.email, email) || const DeepCollectionEquality().equals(other.email, email)) &&
+                const DeepCollectionEquality()
+                    .equals(other.displayName, displayName)) &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.guardianEmail, guardianEmail) ||
-                const DeepCollectionEquality().equals(other.guardianEmail, guardianEmail)) &&
-            (identical(other.gender, gender) || const DeepCollectionEquality().equals(other.gender, gender)) &&
-            (identical(other.courseIds, courseIds) || const DeepCollectionEquality().equals(other.courseIds, courseIds)) &&
-            (identical(other.projectIds, projectIds) || const DeepCollectionEquality().equals(other.projectIds, projectIds)) &&
-            (identical(other.awardIds, awardIds) || const DeepCollectionEquality().equals(other.awardIds, awardIds)) &&
+                const DeepCollectionEquality()
+                    .equals(other.guardianEmail, guardianEmail)) &&
+            (identical(other.gender, gender) ||
+                const DeepCollectionEquality().equals(other.gender, gender)) &&
+            (identical(other.courseIds, courseIds) ||
+                const DeepCollectionEquality()
+                    .equals(other.courseIds, courseIds)) &&
+            (identical(other.projectIds, projectIds) ||
+                const DeepCollectionEquality()
+                    .equals(other.projectIds, projectIds)) &&
+            (identical(other.awardIds, awardIds) ||
+                const DeepCollectionEquality()
+                    .equals(other.awardIds, awardIds)) &&
             (identical(other.isEmailVerified, isEmailVerified) ||
-                const DeepCollectionEquality().equals(other.isEmailVerified, isEmailVerified)) &&
-            (identical(other.phone, phone) || const DeepCollectionEquality().equals(other.phone, phone)) &&
-            (identical(other.country, country) || const DeepCollectionEquality().equals(other.country, country)) &&
+                const DeepCollectionEquality()
+                    .equals(other.isEmailVerified, isEmailVerified)) &&
+            (identical(other.phone, phone) ||
+                const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.country, country) ||
+                const DeepCollectionEquality()
+                    .equals(other.country, country)) &&
             (identical(other.guardianPhone, guardianPhone) ||
-                const DeepCollectionEquality().equals(other.guardianPhone, guardianPhone)) &&
-            (identical(other.photoURL, photoURL) || const DeepCollectionEquality().equals(other.photoURL, photoURL)) &&
-            (identical(other.createdAt, createdAt) || const DeepCollectionEquality().equals(other.createdAt, createdAt)) &&
-            (identical(other.lastSeenAt, lastSeenAt) || const DeepCollectionEquality().equals(other.lastSeenAt, lastSeenAt)) &&
-            (identical(other.updatedAt, updatedAt) || const DeepCollectionEquality().equals(other.updatedAt, updatedAt)));
+                const DeepCollectionEquality()
+                    .equals(other.guardianPhone, guardianPhone)) &&
+            (identical(other.photoURL, photoURL) ||
+                const DeepCollectionEquality()
+                    .equals(other.photoURL, photoURL)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.lastSeenAt, lastSeenAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.lastSeenAt, lastSeenAt)) &&
+            (identical(other.updatedAt, updatedAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedAt, updatedAt)));
   }
 
   @override
@@ -386,7 +447,8 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
       const DeepCollectionEquality().hash(updatedAt);
 
   @override
-  _$StudentAuthDTOCopyWith<_StudentAuthDTO> get copyWith => __$StudentAuthDTOCopyWithImpl<_StudentAuthDTO>(this, _$identity);
+  _$StudentAuthDTOCopyWith<_StudentAuthDTO> get copyWith =>
+      __$StudentAuthDTOCopyWithImpl<_StudentAuthDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -397,24 +459,26 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
 abstract class _StudentAuthDTO extends StudentAuthDTO {
   const _StudentAuthDTO._() : super._();
   const factory _StudentAuthDTO(
-      {@JsonKey(ignore: true) String id,
-      @required String displayName,
-      @required String email,
-      @required @nullable String guardianEmail,
-      @required String gender,
-      @required List<String> courseIds,
-      @required List<String> projectIds,
-      @required List<String> awardIds,
-      @required bool isEmailVerified,
-      @required @nullable String phone,
-      @required @CountrySerializer() Country country,
-      @required @nullable String guardianPhone,
-      @required @nullable String photoURL,
-      @nullable @ServerTimestampConverter() Timestamp createdAt,
-      @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
-      @nullable @ServerTimestampConverter() Timestamp updatedAt}) = _$_StudentAuthDTO;
+          {@JsonKey(ignore: true) String id,
+          @required String displayName,
+          @required String email,
+          @required @nullable String guardianEmail,
+          @required String gender,
+          @required List<String> courseIds,
+          @required List<String> projectIds,
+          @required List<String> awardIds,
+          @required bool isEmailVerified,
+          @required @nullable String phone,
+          @required @CountrySerializer() Country country,
+          @required @nullable String guardianPhone,
+          @required @nullable String photoURL,
+          @nullable @ServerTimestampConverter() Timestamp createdAt,
+          @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
+          @nullable @ServerTimestampConverter() Timestamp updatedAt}) =
+      _$_StudentAuthDTO;
 
-  factory _StudentAuthDTO.fromJson(Map<String, dynamic> json) = _$_StudentAuthDTO.fromJson;
+  factory _StudentAuthDTO.fromJson(Map<String, dynamic> json) =
+      _$_StudentAuthDTO.fromJson;
 
   @override
   @JsonKey(ignore: true)
