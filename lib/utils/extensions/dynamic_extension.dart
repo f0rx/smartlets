@@ -13,7 +13,7 @@ extension DynamicX on dynamic {
   bool get isNullOrBlank {
     if (isNull) return true;
 
-    switch (this.runtimeType as Type) {
+    switch (this.runtimeType) {
       case String:
       case List:
       case Map:

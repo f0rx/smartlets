@@ -9,6 +9,7 @@ part of 'on_boarding_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$OnBoardingStateTearOff {
   const _$OnBoardingStateTearOff();
 
@@ -17,7 +18,7 @@ class _$OnBoardingStateTearOff {
       {bool isLoading = false,
       bool shouldListen = false,
       bool hasStableInternet = false,
-      Subscription subscription = Subscription.student}) {
+      @nullable Subscription subscription}) {
     return _OnBoardingState(
       isLoading: isLoading,
       shouldListen: shouldListen,
@@ -27,18 +28,22 @@ class _$OnBoardingStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $OnBoardingState = _$OnBoardingStateTearOff();
 
+/// @nodoc
 mixin _$OnBoardingState {
   bool get isLoading;
   bool get shouldListen;
   bool get hasStableInternet;
+  @nullable
   Subscription get subscription;
 
   $OnBoardingStateCopyWith<OnBoardingState> get copyWith;
 }
 
+/// @nodoc
 abstract class $OnBoardingStateCopyWith<$Res> {
   factory $OnBoardingStateCopyWith(
           OnBoardingState value, $Res Function(OnBoardingState) then) =
@@ -47,9 +52,10 @@ abstract class $OnBoardingStateCopyWith<$Res> {
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      Subscription subscription});
+      @nullable Subscription subscription});
 }
 
+/// @nodoc
 class _$OnBoardingStateCopyWithImpl<$Res>
     implements $OnBoardingStateCopyWith<$Res> {
   _$OnBoardingStateCopyWithImpl(this._value, this._then);
@@ -79,6 +85,7 @@ class _$OnBoardingStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$OnBoardingStateCopyWith<$Res>
     implements $OnBoardingStateCopyWith<$Res> {
   factory _$OnBoardingStateCopyWith(
@@ -89,9 +96,10 @@ abstract class _$OnBoardingStateCopyWith<$Res>
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      Subscription subscription});
+      @nullable Subscription subscription});
 }
 
+/// @nodoc
 class __$OnBoardingStateCopyWithImpl<$Res>
     extends _$OnBoardingStateCopyWithImpl<$Res>
     implements _$OnBoardingStateCopyWith<$Res> {
@@ -123,16 +131,16 @@ class __$OnBoardingStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_OnBoardingState implements _OnBoardingState {
   const _$_OnBoardingState(
       {this.isLoading = false,
       this.shouldListen = false,
       this.hasStableInternet = false,
-      this.subscription = Subscription.student})
+      @nullable this.subscription})
       : assert(isLoading != null),
         assert(shouldListen != null),
-        assert(hasStableInternet != null),
-        assert(subscription != null);
+        assert(hasStableInternet != null);
 
   @JsonKey(defaultValue: false)
   @override
@@ -143,8 +151,8 @@ class _$_OnBoardingState implements _OnBoardingState {
   @JsonKey(defaultValue: false)
   @override
   final bool hasStableInternet;
-  @JsonKey(defaultValue: Subscription.student)
   @override
+  @nullable
   final Subscription subscription;
 
   @override
@@ -188,7 +196,7 @@ abstract class _OnBoardingState implements OnBoardingState {
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      Subscription subscription}) = _$_OnBoardingState;
+      @nullable Subscription subscription}) = _$_OnBoardingState;
 
   @override
   bool get isLoading;
@@ -197,6 +205,7 @@ abstract class _OnBoardingState implements OnBoardingState {
   @override
   bool get hasStableInternet;
   @override
+  @nullable
   Subscription get subscription;
   @override
   _$OnBoardingStateCopyWith<_OnBoardingState> get copyWith;

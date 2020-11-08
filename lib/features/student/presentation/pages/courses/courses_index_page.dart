@@ -20,8 +20,8 @@ class CoursesIndexPage extends StatelessWidget {
           automaticallyImplyLeading: true,
           title: AutoSizeText(
             "My Courses",
-            minFontSize: 25.0,
-            style: TextStyle(color: Helpers.computeLuminance(Theme.of(context).accentColor)),
+            minFontSize: 20.0,
+            style: TextStyle(color: Helpers.computeLuminance(Theme.of(context).accentColor), fontSize: 25.0),
           ),
           toolbarHeight: App.height * 0.07,
           backgroundColor: Theme.of(context).accentColor,
@@ -47,9 +47,10 @@ class CoursesIndexPage extends StatelessWidget {
                 itemBuilder: (context, i) => CourseCardWidget(
                   image: AppAssets.courseFrame1,
                   course: courses.elementAt(i),
-                  height: App.height * 0.125,
+                  height: App.height * 0.13,
                   progress: 0.72,
                   showProgress: true,
+                  showDurationAndLesson: true,
                 ),
               ),
             ],

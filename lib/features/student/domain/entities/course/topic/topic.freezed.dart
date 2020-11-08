@@ -9,6 +9,7 @@ part of 'topic.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$TopicTearOff {
   const _$TopicTearOff();
 
@@ -25,9 +26,11 @@ class _$TopicTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Topic = _$TopicTearOff();
 
+/// @nodoc
 mixin _$Topic {
   UniqueId get id;
   Chapter get title;
@@ -36,12 +39,14 @@ mixin _$Topic {
   $TopicCopyWith<Topic> get copyWith;
 }
 
+/// @nodoc
 abstract class $TopicCopyWith<$Res> {
   factory $TopicCopyWith(Topic value, $Res Function(Topic) then) =
       _$TopicCopyWithImpl<$Res>;
   $Res call({UniqueId id, Chapter title, Lessons lessons});
 }
 
+/// @nodoc
 class _$TopicCopyWithImpl<$Res> implements $TopicCopyWith<$Res> {
   _$TopicCopyWithImpl(this._value, this._then);
 
@@ -63,6 +68,7 @@ class _$TopicCopyWithImpl<$Res> implements $TopicCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$TopicCopyWith<$Res> implements $TopicCopyWith<$Res> {
   factory _$TopicCopyWith(_Topic value, $Res Function(_Topic) then) =
       __$TopicCopyWithImpl<$Res>;
@@ -70,6 +76,7 @@ abstract class _$TopicCopyWith<$Res> implements $TopicCopyWith<$Res> {
   $Res call({UniqueId id, Chapter title, Lessons lessons});
 }
 
+/// @nodoc
 class __$TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res>
     implements _$TopicCopyWith<$Res> {
   __$TopicCopyWithImpl(_Topic _value, $Res Function(_Topic) _then)
@@ -92,6 +99,7 @@ class __$TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Topic extends _Topic with DiagnosticableTreeMixin {
   const _$_Topic(
       {@required this.id, @required this.title, @required this.lessons})

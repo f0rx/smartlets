@@ -1,9 +1,13 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
 
   static Color fromHex(String hex) => Color(int.parse(hex.substring(1, 7), radix: 16) + 0xFF000000);
+
+  static get random => Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0);
 
   // App Colors
   static const _primaryPrivate = 0xffE5E5E5;
@@ -76,6 +80,7 @@ class AppColors {
   static const Color loginButton = Color(0xFF3871b6);
 
   static const Color errorRed = Color(0xFFED4337);
+  static const Color cardColor = Color(0xFFfe4d55);
 
   static const Color green = Color(0xFF00C853);
   static const Color successGreen = Color(0xFF4bb543);

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
 import 'package:smartlets/manager/theme/theme.dart';
@@ -41,7 +41,7 @@ class Helpers {
   static Helpers get I => Helpers._();
   static double buttonRadius = 12.0;
   static double appPadding = App.width * 0.04;
-  static ScrollPhysics physics = BouncingScrollPhysics();
+  static ScrollPhysics physics = const BouncingScrollPhysics();
   static Duration willPopTimeout = const Duration(seconds: 3);
   static Logger logger = Logger();
 
@@ -60,10 +60,13 @@ class Helpers {
       FocusManager.instance.primaryFocus.unfocus();
   }
 
-  static T optionOf<T>(dynamic _default, dynamic other) {
+  static T optionOf<T>(dynamic _default, dynamic dark, {BuildContext context}) {
     assert(_default != null);
-    assert(other != null);
-    return BlocProvider.of<ThemeCubit>(App.context).isDarkMode ? other : _default;
+    assert(dark != null);
+    var isDarkMode = BlocProvider.of<ThemeCubit>(context ?? App.context).isDarkMode ||
+        (MediaQuery.of(context ?? App.context).platformBrightness == Brightness.dark);
+
+    return isDarkMode ? dark : _default;
   }
 
   static Color computeLuminance(Color color) => color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
@@ -79,22 +82,6 @@ class Helpers {
     await precacheImage(AssetImage(AppAssets.playback), context);
   }
 
-  static Future<bool> willPop(DateTime current) {
-    DateTime now = DateTime.now();
-    if (current == null || now.difference(current) > Helpers.willPopTimeout) {
-      current = now;
-      Fluttertoast.showToast(
-        msg: "Tap again to exit",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-      );
-      return Future.value(false);
-    } else {
-      Fluttertoast.cancel();
-      return Future.value(true);
-    }
-  }
-
   static String hhmmss([Duration duration = Duration.zero]) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
     String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
@@ -104,9 +91,13 @@ class Helpers {
         "$twoDigitSeconds";
   }
 
+  static Future<void> platformPop({bool animated = true}) async {
+    await SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop', animated);
+  }
+
   final DateTime today = DateTime.now();
 
-  Color get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.88);
+  Color get backgroundOverlayColor => App.theme.primaryColor.withOpacity(0.91);
 
   /// Current BuildContext
   BuildContext _ctx;
@@ -116,7 +107,7 @@ class Helpers {
   Widget get circularLoadingOverlay => Container(
         color: App.theme.primaryColor.withOpacity(0.65),
         child: Center(
-            child: AdaptiveCircularIndicator(
+            child: CircularProgressBar.adaptive(
           width: width * 0.08,
           height: width * 0.08,
           strokeWidth: 3.5,

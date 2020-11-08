@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dartz/dartz.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,16 +10,12 @@ import 'package:smartlets/features/student/domain/domain.dart';
 import 'package:smartlets/features/student/presentation/manager/blocs.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';
+import 'package:smartlets/widgets/widgets.dart';
 
 class StudentBottomNav extends StatelessWidget {
   final List<StudentDestination<IconData>> destinations;
 
   const StudentBottomNav(this.destinations, {Key key}) : super(key: key);
-
-  Image _image(String image) {
-    if (image != null) return Image.network(image);
-    return Image.asset("${AppAssets.HOME_IMAGES_DIR}/default-user.png");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +33,34 @@ class StudentBottomNav extends StatelessWidget {
                     children: [
                       Visibility(
                         visible: !dest.title.caseInsensitiveContains("profile"),
-                        replacement: CircleAvatar(
-                          backgroundImage: _image(snapshot.data?.getOrElse(() => null)?.photoURL).image,
-                          backgroundColor: Theme.of(context).accentColor,
-                          radius: 14,
+                        replacement: ExtendedImage.network(
+                          snapshot.data?.getOrElse(() => null)?.photoURL ?? AppAssets.onlineAnonymous,
+                          height: 25,
+                          fit: BoxFit.cover,
+                          shape: BoxShape.circle,
+                          borderRadius: BorderRadius.circular(100.0),
+                          clipBehavior: Clip.antiAlias,
+                          clearMemoryCacheIfFailed: false,
+                          handleLoadingProgress: true,
+                          retries: 999899,
+                          isAntiAlias: true,
+                          loadStateChanged: (state) {
+                            switch (state.extendedImageLoadState) {
+                              case LoadState.loading:
+                                return CircularProgressBar.adaptive(
+                                  width: App.width * 0.06,
+                                  height: App.width * 0.06,
+                                  strokeWidth: 3,
+                                  radius: 12,
+                                );
+                              case LoadState.completed:
+                                return state.completedWidget;
+                              case LoadState.failed:
+                                return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
+                              default:
+                                return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
+                            }
+                          },
                         ),
                         child: Icon(
                           dest.selectedIcon,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flick_video_player/flick_video_player.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:video_player/video_player.dart';
 
@@ -22,6 +24,16 @@ class PlaybackBloc extends Bloc<PlaybackEvent, PlaybackState> {
   FlickManager flickManager;
 
   PlaybackBloc() : super(PlaybackState.init());
+
+  void saveLocalVideo() async {
+    if (env.flavor == BuildFlavor.dev) {
+      final content = await rootBundle.load("${AppAssets.ASSETS_DIR}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}");
+      final directory = await getExternalStorageDirectory();
+      final file = File("${directory.path}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}");
+      if (!(await file.exists()))
+        await file.writeAsBytes(content.buffer.asUint8List());
+    }
+  }
 
   Duration controlsTimeout({bool errorInVideo, bool isPlaying, bool isVideoEnded, bool isVideoInitialized}) {
     return Duration(seconds: 1);
@@ -85,26 +97,33 @@ class PlaybackBloc extends Bloc<PlaybackEvent, PlaybackState> {
   }
 
   Stream<PlaybackState> mapSetupVideoPlayer(_SetupVideoController e) async* {
-    flickManager = state.manager ??
-        FlickManager(
-          videoPlayerController: env.flavor == BuildFlavor.dev
-              ? VideoPlayerController.asset(
-                  "${AppAssets.ASSETS_DIR}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}",
-                  videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-                )
-              : VideoPlayerController.network(
-                  e.url,
-                  videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
-                  // formatHint: VideoFormat.hls,
-                ),
-          autoPlay: false,
-          onVideoEnd: () {
-            // TODO: Play Next Video
-            log.w("============= Video has ended ==================");
-          },
-        );
+    try {
+      flickManager = state.manager?.flickVideoManager != null && state.manager.flickVideoManager.isVideoInitialized
+          ? state.manager
+          : FlickManager(
+        videoPlayerController: env.flavor == BuildFlavor.dev
+            ? VideoPlayerController.file(
+          File(
+              "${(await getExternalStorageDirectory()).path}/${PlaybackState.TEST_VIDEO_NAME}.${PlaybackState.DEFAULT_EXTENSION}"),
+          videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+        )
+            : VideoPlayerController.network(
+          e.url,
+          videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
+          // formatHint: VideoFormat.hls,
+        ),
+        autoPlay: true,
+        onVideoEnd: () {
+          // TODO: Play Next Video
+          log.w("============= Video has ended ==================");
+        },
+      );
+    } catch (e) {
+      log.e("============= Exception on Video Widget Level ==================");
+      print("HERE'S WHAT WE COULD FIND ===> $e");
+    }
 
-    flickManager.flickVideoManager.addListener(() async {
+    flickManager?.flickVideoManager?.addListener(() async {
       Duration moment;
       Duration buffered;
 
@@ -136,7 +155,10 @@ class PlaybackBloc extends Bloc<PlaybackEvent, PlaybackState> {
 
     add(PlaybackEvent.changeVolume(state.volume));
 
-    yield state.copyWith(manager: flickManager);
+    yield state.copyWith(
+      manager: flickManager,
+      path: e.url,
+    );
   }
 
   Stream<PlaybackState> mapMuteVolume(_MuteVideo e) async* {

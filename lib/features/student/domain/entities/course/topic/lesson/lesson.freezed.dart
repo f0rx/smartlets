@@ -9,6 +9,7 @@ part of 'lesson.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LessonTearOff {
   const _$LessonTearOff();
 
@@ -25,9 +26,11 @@ class _$LessonTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Lesson = _$LessonTearOff();
 
+/// @nodoc
 mixin _$Lesson {
   UniqueId get id;
   LessonTitle get title;
@@ -36,12 +39,14 @@ mixin _$Lesson {
   $LessonCopyWith<Lesson> get copyWith;
 }
 
+/// @nodoc
 abstract class $LessonCopyWith<$Res> {
   factory $LessonCopyWith(Lesson value, $Res Function(Lesson) then) =
       _$LessonCopyWithImpl<$Res>;
   $Res call({UniqueId id, LessonTitle title, Duration duration});
 }
 
+/// @nodoc
 class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
   _$LessonCopyWithImpl(this._value, this._then);
 
@@ -63,6 +68,7 @@ class _$LessonCopyWithImpl<$Res> implements $LessonCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   factory _$LessonCopyWith(_Lesson value, $Res Function(_Lesson) then) =
       __$LessonCopyWithImpl<$Res>;
@@ -70,6 +76,7 @@ abstract class _$LessonCopyWith<$Res> implements $LessonCopyWith<$Res> {
   $Res call({UniqueId id, LessonTitle title, Duration duration});
 }
 
+/// @nodoc
 class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
     implements _$LessonCopyWith<$Res> {
   __$LessonCopyWithImpl(_Lesson _value, $Res Function(_Lesson) _then)
@@ -92,6 +99,7 @@ class __$LessonCopyWithImpl<$Res> extends _$LessonCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Lesson extends _Lesson with DiagnosticableTreeMixin {
   const _$_Lesson(
       {@required this.id, @required this.title, @required this.duration})

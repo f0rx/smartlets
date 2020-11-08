@@ -4,8 +4,10 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
 import 'package:smartlets/features/auth/presentation/widgets/oauth_widget.dart';
+import 'package:smartlets/features/auth/presentation/widgets/provider_auth_widget.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';
@@ -122,14 +124,14 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
                     ),
                   ),
                   //
-                  VerticalSpace(height: App.height * 0.01),
+                  VerticalSpace(height: App.height * 0.015),
                   //
                   GestureDetector(
                     onTap: () {},
                     child: AutoSizeText.rich(
                       TextSpan(
                         children: [
-                          TextSpan(text: "By clicking create account you agree to our"),
+                          TextSpan(text: "By clicking \"create account\" you agree to our"),
                           TextSpan(text: " "),
                           TextSpan(
                             text: "terms",
@@ -152,6 +154,7 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
                       ),
                       softWrap: true,
                       maxLines: 2,
+                      style: TextStyle(fontSize: 15.0),
                     ),
                   ),
                   //

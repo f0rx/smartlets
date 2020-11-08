@@ -51,7 +51,7 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: Toolbar(leading: Icon(Icons.close_rounded)),
+      appBar: Toolbar(leadingIcon: Icon(Icons.close_rounded)),
       body: Stack(
         children: [
           AppAssets.doodle,
@@ -92,7 +92,7 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
                       //
                       BlocBuilder<AuthBloc, AuthState>(
                         builder: (context, _) => Form(
-                          autovalidate: bloc.state.validate,
+                          autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
                           child: TextFormField(
                             maxLines: 1,
                             enableSuggestions: true,

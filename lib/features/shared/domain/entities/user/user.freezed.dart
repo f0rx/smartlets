@@ -9,17 +9,18 @@ part of user;
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$UserTearOff {
   const _$UserTearOff();
 
 // ignore: unused_element
-  _User _(
+  _User call(
       {@required UniqueId id,
-      @nullable String displayName,
+      @required @nullable String displayName,
       @required String email,
-      @nullable bool isEmailVerified,
-      @nullable String phone,
-      @nullable String photoURL,
+      @required @nullable bool isEmailVerified,
+      @required @nullable String phone,
+      @required @nullable String photoURL,
       @required DateTime createdAt,
       @required DateTime lastSeenAt}) {
     return _User(
@@ -35,9 +36,11 @@ class _$UserTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $User = _$UserTearOff();
 
+/// @nodoc
 mixin _$User {
   UniqueId get id;
   @nullable
@@ -55,6 +58,7 @@ mixin _$User {
   $UserCopyWith<User> get copyWith;
 }
 
+/// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
@@ -69,6 +73,7 @@ abstract class $UserCopyWith<$Res> {
       DateTime lastSeenAt});
 }
 
+/// @nodoc
 class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
@@ -105,6 +110,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
@@ -120,6 +126,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       DateTime lastSeenAt});
 }
 
+/// @nodoc
 class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     implements _$UserCopyWith<$Res> {
   __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
@@ -157,21 +164,22 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   }
 }
 
-@protected
-class _$_User with DiagnosticableTreeMixin implements _User {
+/// @nodoc
+class _$_User extends _User with DiagnosticableTreeMixin {
   const _$_User(
       {@required this.id,
-      @nullable this.displayName,
+      @required @nullable this.displayName,
       @required this.email,
-      @nullable this.isEmailVerified,
-      @nullable this.phone,
-      @nullable this.photoURL,
+      @required @nullable this.isEmailVerified,
+      @required @nullable this.phone,
+      @required @nullable this.photoURL,
       @required this.createdAt,
       @required this.lastSeenAt})
       : assert(id != null),
         assert(email != null),
         assert(createdAt != null),
-        assert(lastSeenAt != null);
+        assert(lastSeenAt != null),
+        super._();
 
   @override
   final UniqueId id;
@@ -196,14 +204,14 @@ class _$_User with DiagnosticableTreeMixin implements _User {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User._(id: $id, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt)';
+    return 'User(id: $id, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'User._'))
+      ..add(DiagnosticsProperty('type', 'User'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('displayName', displayName))
       ..add(DiagnosticsProperty('email', email))
@@ -258,14 +266,15 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       __$UserCopyWithImpl<_User>(this, _$identity);
 }
 
-abstract class _User implements User {
+abstract class _User extends User {
+  const _User._() : super._();
   const factory _User(
       {@required UniqueId id,
-      @nullable String displayName,
+      @required @nullable String displayName,
       @required String email,
-      @nullable bool isEmailVerified,
-      @nullable String phone,
-      @nullable String photoURL,
+      @required @nullable bool isEmailVerified,
+      @required @nullable String phone,
+      @required @nullable String photoURL,
       @required DateTime createdAt,
       @required DateTime lastSeenAt}) = _$_User;
 

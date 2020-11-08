@@ -9,6 +9,7 @@ part of 'auth_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AuthFailureTearOff {
   const _$AuthFailureTearOff();
 
@@ -42,9 +43,11 @@ class _$AuthFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AuthFailure = _$AuthFailureTearOff();
 
+/// @nodoc
 mixin _$AuthFailure {
   String get message;
 
@@ -81,6 +84,7 @@ mixin _$AuthFailure {
   $AuthFailureCopyWith<AuthFailure> get copyWith;
 }
 
+/// @nodoc
 abstract class $AuthFailureCopyWith<$Res> {
   factory $AuthFailureCopyWith(
           AuthFailure value, $Res Function(AuthFailure) then) =
@@ -88,6 +92,7 @@ abstract class $AuthFailureCopyWith<$Res> {
   $Res call({String message});
 }
 
+/// @nodoc
 class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   _$AuthFailureCopyWithImpl(this._value, this._then);
 
@@ -105,6 +110,7 @@ class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AuthFailureCopyWith<$Res>
     implements $AuthFailureCopyWith<$Res> {
   factory _$AuthFailureCopyWith(
@@ -114,6 +120,7 @@ abstract class _$AuthFailureCopyWith<$Res>
   $Res call({String code, String message});
 }
 
+/// @nodoc
 class __$AuthFailureCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
     implements _$AuthFailureCopyWith<$Res> {
   __$AuthFailureCopyWithImpl(
@@ -135,6 +142,7 @@ class __$AuthFailureCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
   const _$_AuthFailure({this.code, @required this.message})
       : assert(message != null);
@@ -249,6 +257,7 @@ abstract class _AuthFailure implements AuthFailure {
   _$AuthFailureCopyWith<_AuthFailure> get copyWith;
 }
 
+/// @nodoc
 abstract class $UnExpectedFailureCopyWith<$Res>
     implements $AuthFailureCopyWith<$Res> {
   factory $UnExpectedFailureCopyWith(
@@ -258,6 +267,7 @@ abstract class $UnExpectedFailureCopyWith<$Res>
   $Res call({String message});
 }
 
+/// @nodoc
 class _$UnExpectedFailureCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements $UnExpectedFailureCopyWith<$Res> {
@@ -278,6 +288,7 @@ class _$UnExpectedFailureCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$UnExpectedFailure
     with DiagnosticableTreeMixin
     implements UnExpectedFailure {
@@ -385,6 +396,7 @@ abstract class UnExpectedFailure implements AuthFailure {
   $UnExpectedFailureCopyWith<UnExpectedFailure> get copyWith;
 }
 
+/// @nodoc
 abstract class $AccountAlreadyExistsCopyWith<$Res>
     implements $AuthFailureCopyWith<$Res> {
   factory $AccountAlreadyExistsCopyWith(AccountAlreadyExists value,
@@ -398,6 +410,7 @@ abstract class $AccountAlreadyExistsCopyWith<$Res>
       @nullable Object credentials});
 }
 
+/// @nodoc
 class _$AccountAlreadyExistsCopyWithImpl<$Res>
     extends _$AuthFailureCopyWithImpl<$Res>
     implements $AccountAlreadyExistsCopyWith<$Res> {
@@ -425,6 +438,7 @@ class _$AccountAlreadyExistsCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$AccountAlreadyExists
     with DiagnosticableTreeMixin
     implements AccountAlreadyExists {
