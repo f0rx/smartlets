@@ -46,8 +46,8 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
       country: student.phone?.country,
       guardianPhone: student.guardianPhone?.getOrEmpty,
       photoURL: student?.photoURL,
-      createdAt: Timestamp.fromDate(student?.createdAt),
-      lastSeenAt: Timestamp.fromDate(student?.lastSeenAt),
+      createdAt: !student.createdAt.isNull ? Timestamp.fromDate(student?.createdAt) : null,
+      lastSeenAt: !student.lastSeenAt.isNull ? Timestamp.fromDate(student?.lastSeenAt) : null,
       updatedAt: !student.updatedAt.isNull ? Timestamp.fromDate(student?.updatedAt) : null,
     );
   }

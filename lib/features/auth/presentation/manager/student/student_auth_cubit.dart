@@ -32,8 +32,16 @@ class StudentAuthCubit extends Cubit<StudentAuthState> {
   void create(Student student) async {
     emit(state.copyWith(isLoading: true));
     // Log output if error
-    if (student.failureOption.isSome()) log.d(student.failureOption);
+    // if (student.failureOption.isSome()) log.d(student.failureOption);
     final _result = await _facade.create(student);
+    emit(state.copyWith(isLoading: false, status: _result));
+  }
+
+  void update(Student student) async {
+    emit(state.copyWith(isLoading: true));
+    // Log output if error
+    if (student.failureOption.isSome()) log.d(student.failureOption);
+    final _result = await _facade.update(student);
     emit(state.copyWith(isLoading: false, status: _result));
   }
 

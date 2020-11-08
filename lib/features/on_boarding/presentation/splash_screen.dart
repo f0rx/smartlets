@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
-import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
@@ -27,12 +26,7 @@ class SplashScreen extends StatelessWidget {
                   (user) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription?.fold(
                         parent: () => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
                         student: () {
-                          // getIt<StudentAuthCubit>().create(user?.asStudent(phone: Phone("8100395180", Country.NG)));
-
-                          getIt<StudentAuthCubit>().create(Student(
-                            displayName: DisplayName(''),
-                            email: EmailAddress(''),
-                          ));
+                          getIt<StudentAuthCubit>().create(user?.asStudent(phone: Phone("8100395180", Country.NG)));
                           return navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false);
                         },
                       ),
