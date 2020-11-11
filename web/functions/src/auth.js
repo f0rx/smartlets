@@ -1,5 +1,4 @@
-const { db } = require("../admin");
-const { dbRaw } = require("../admin");
+const { db, dbRaw, config } = require("../admin");
 
 const COLLECTION = "students";
 
@@ -29,19 +28,11 @@ const createUserRecord = (user) => {
   let data = {
     displayName: displayName,
     email: email,
-    photoURL: photoURL,
+    // Get default photoURL from firebase.config()
+    photoURL: photoURL == '' ? config.user.photourl : photoURL,
     isEmailVerified: emailVerified,
     providers: providerData,
-    country: {
-        codeName: "NG",
-        dialCode: "+234",
-        language: "English - UK",
-        name: "Nigeria",
-    },
     phone: phoneNumber,
-    awardIds: [],
-    courseIds: [],
-    projectIds: [],
     createdAt: createdAt,
     lastSeenAt: lastSeenAt == null ? lastRefreshTime == null ? createdAt : lastRefreshTime : lastSeenAt,
     updatedAt: lastSeenAt == null ? lastRefreshTime == null ? createdAt : lastRefreshTime : lastSeenAt,
