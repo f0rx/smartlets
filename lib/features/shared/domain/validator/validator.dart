@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/shared/shared.dart';
+import 'package:smartlets/utils/utils.dart';
 
 const int MIN_PASSWORD_LENGTH = 6;
 const int MIN_USERNAME_LENGTH = 6;
@@ -76,6 +77,40 @@ class Validator {
     }
 
     return right(password);
+  }
+
+  static Either<FieldObjectException<String>, String> phoneNumberValidator(
+    String phone,
+    Country country, {
+    FIELD_VALIDATION mode = FIELD_VALIDATION.DEEP,
+  }) {
+    String clean = phone.trim();
+    bool containsOnlyDigits = RegExp(r"^[0-9]+$", multiLine: true).hasMatch(clean);
+
+    switch (mode) {
+      case FIELD_VALIDATION.NONE:
+        break;
+      case FIELD_VALIDATION.BASIC:
+        if (clean == null || clean.isEmpty || clean.length < 1) return left(FieldObjectException.empty());
+        break;
+      case FIELD_VALIDATION.DEEP:
+      default:
+        if (clean == null || clean.isEmpty || clean.length < 1) return left(FieldObjectException.empty());
+        if (clean.first == country.prefix) return left(FieldObjectException.invalid(message: "Remove prefix: ${country.prefix}"));
+        if (clean.length != country.digitsCount)
+          return left(FieldObjectException.invalid(message: "Required: ${country.digitsCount - clean.length} digits."));
+        if (!containsOnlyDigits) return left(FieldObjectException.invalid(message: INVALID_PHONE_NUMBER));
+        break;
+    }
+
+    return right(clean);
+  }
+
+  static Either<FieldObjectException<String>, String> otpCodeValidator(String code, {int max = 6}) {
+    String clean = code.trim();
+    if (clean == null || clean.isEmpty || clean.length < 1) return left(FieldObjectException.empty());
+    if (clean.length < max) return left(FieldObjectException.invalid(message: INVALID_OTP_CODE));
+    return right(clean);
   }
 
   static Either<FieldObjectException<String>, String> multilineValidator(String input) {

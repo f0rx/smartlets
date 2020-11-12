@@ -1,0 +1,17 @@
+{
+  "id": "some-sample-string",
+  "displayName": "Michael Paul",
+  "email": "johndoe@gmail.com",
+  "guardianEmail": "omsomega34@yahoo.com",
+  "gender": "Male",
+  "courseIds": [],
+  "projectIds": [],
+  "awardIds": [],
+  "isEmailVerified": true,
+  "phone": "",
+  "guardianPhone": "",
+  "photoURL": "",
+  "createdAt": null,
+  "lastSeenAt": null,
+  "updatedAt": null
+}

@@ -43,9 +43,9 @@ class UpdateProfileForm extends StatelessWidget {
         buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, state) {
           return PortalEntry(
-            visible: context.bloc<AuthBloc>().state.isLoading,
+            visible: context.watch<AuthBloc>().state.isLoading,
             portal: App.circularLoadingOverlay,
-            child: __FormWidget(bloc: context.bloc<AuthBloc>(), user: user, key: key),
+            child: __FormWidget(bloc: context.watch<AuthBloc>(), user: user, key: key),
           );
         },
       ),

@@ -29,7 +29,7 @@ class _VideoPlayerControlsState extends State<VideoPlayerControls> with Automati
     return BlocBuilder<PlaybackBloc, PlaybackState>(
       builder: (context, _) {
         // ignore: close_sinks
-        final _bloc = context.bloc<PlaybackBloc>();
+        final _bloc = context.watch<PlaybackBloc>();
 
         return HorizontalSpace(
           width: double.infinity,

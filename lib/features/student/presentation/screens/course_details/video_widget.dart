@@ -27,7 +27,7 @@ class _VideoWidgetState extends State<VideoWidget> with TickerProviderStateMixin
 
   @override
   void didChangeDependencies() {
-    _bloc ??= context.bloc<PlaybackBloc>();
+    _bloc ??= context.read<PlaybackBloc>();
     super.didChangeDependencies();
   }
 

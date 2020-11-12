@@ -107,6 +107,19 @@ extension StringX on String {
   }
 
   String get first => "${this[0]}";
+
+  String replaceRandom() {
+    return this.split('').asMap().entries.map((e) {
+      if (e.value.isNotEmpty &&
+          e.key != 0 &&
+          e.key != 1 &&
+          !RegExp(r'[A-Za-z0-9][@][A-Za-z]{1}').stringMatch(this).caseInsensitiveContains(e.value) &&
+          !RegExp(r'\.[A-Za-z]+$').stringMatch(this).caseInsensitiveContains(e.value)) {
+        return e.value.replaceFirst(e.value, '.');
+      }
+      return e.value;
+    }).join();
+  }
 }
 
 enum Direction {

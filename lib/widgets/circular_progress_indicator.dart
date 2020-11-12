@@ -7,6 +7,7 @@ import 'package:smartlets/utils/utils.dart';
 enum _CircularProgressBarType { material, adaptive }
 
 class CircularProgressBar extends StatelessWidget {
+  static const double _kDefaultIndicatorRadius = 10.0;
   final double height;
   final double width;
   final Color color;
@@ -32,7 +33,7 @@ class CircularProgressBar extends StatelessWidget {
     this.strokeWidth = 4.0,
     this.background,
     this.isAnimating = true,
-    this.radius,
+    this.radius = _kDefaultIndicatorRadius,
     this.forceShowIOS = false,
   }) : _type = _CircularProgressBarType.material;
 
@@ -44,7 +45,7 @@ class CircularProgressBar extends StatelessWidget {
     this.strokeWidth = 4.0,
     this.background,
     this.isAnimating = true,
-    this.radius,
+    this.radius = _kDefaultIndicatorRadius,
     this.forceShowIOS = false,
   }) : _type = _CircularProgressBarType.adaptive;
 

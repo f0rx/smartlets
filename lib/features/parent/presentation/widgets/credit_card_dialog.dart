@@ -31,17 +31,17 @@ class CreditCardDialog extends StatelessWidget {
                 child: BlocBuilder<CreditCardCubit, CreditCardState>(
                   builder: (context, state) => CreditCardInputForm(
                     showResetButton: true,
-                    onStateChange: (currentState, cardInfo) => context.bloc<CreditCardCubit>().infoChanged(
+                    onStateChange: (currentState, cardInfo) => context.read<CreditCardCubit>().infoChanged(
                           number: cardInfo.cardNumber,
                           name: cardInfo.name,
                           date: cardInfo.validate,
                           cvv: cardInfo.cvv,
                         ),
                     customCaptions: CreditCardState.customCaptions,
-                    cardCVV: context.bloc<CreditCardCubit>().state.card.cvv.value.getOrElse(() => ""),
-                    cardName: context.bloc<CreditCardCubit>().state.card.cardholderName.value.getOrElse(() => ""),
-                    cardNumber: context.bloc<CreditCardCubit>().state.card.cardNumber.value.getOrElse(() => ""),
-                    cardValid: context.bloc<CreditCardCubit>().state.card.expires.value.getOrElse(() => ""),
+                    cardCVV: context.watch<CreditCardCubit>().state.card.cvv.value.getOrElse(() => ""),
+                    cardName: context.watch<CreditCardCubit>().state.card.cardholderName.value.getOrElse(() => ""),
+                    cardNumber: context.watch<CreditCardCubit>().state.card.cardNumber.value.getOrElse(() => ""),
+                    cardValid: context.watch<CreditCardCubit>().state.card.expires.value.getOrElse(() => ""),
                     intialCardState: InputState.NUMBER,
                     frontCardDecoration: state.cardDecoration,
                     // backCardDecoration: state.cardDecoration,
@@ -64,7 +64,7 @@ class CreditCardDialog extends StatelessWidget {
         Builder(
           builder: (context) => FlatButton(
             onPressed: () {
-              context.bloc<CreditCardCubit>().addNewCard();
+              context.read<CreditCardCubit>().addNewCard();
               navigator.pop(context);
             },
             child: Text('Save'),

@@ -43,11 +43,12 @@ class FirebaseAuthImpl implements AuthFacade {
     if (!hasStableInternet) throw AuthFailure.noInternetConnection();
   }
 
-  Future<List<String>> _fetchSignInMethods(Either<String, EmailAddress> email) async {
+  Future<Tuple2<List<String>, bool>> _fetchSignInMethods(Either<String, EmailAddress> email,
+      {@required AuthProvider auth}) async {
     try {
       String _email = email.fold(id, (r) => r.getOrCrash);
       final result = await _firebaseAuth.fetchSignInMethodsForEmail(_email);
-      return result;
+      return Tuple2(result, result.contains(auth.name));
     } catch (e) {
       rethrow;
     }
@@ -138,10 +139,10 @@ class FirebaseAuthImpl implements AuthFacade {
   }
 
   @override
-  Option<User> get currentUser => optionOf(_firebaseAuth.currentUser?.domain());
+  Option<User> get currentUser => optionOf(_firebaseAuth.currentUser?.domain);
 
   @override
-  Stream<Option<User>> get onAuthStateChanged => _firebaseAuth.userChanges().map((user) => optionOf(user?.domain()));
+  Stream<Option<User>> get onAuthStateChanged => _firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
 
   @override
   Future<Either<AuthFailure, Unit>> createAccount({@required EmailAddress emailAddress, @required Password password}) async {
@@ -149,7 +150,8 @@ class FirebaseAuthImpl implements AuthFacade {
       // First we'll check for stable Internet connection
       await _checkForStableInternet();
       await _firebaseAuth.createUserWithEmailAndPassword(email: emailAddress.getOrCrash, password: password.getOrCrash);
-      if (_firebaseAuth.currentUser != null && !_firebaseAuth.currentUser.emailVerified) _firebaseAuth.currentUser.sendEmailVerification();
+      if (_firebaseAuth.currentUser != null && !_firebaseAuth.currentUser.emailVerified)
+        _firebaseAuth.currentUser.sendEmailVerification();
       return right(unit);
     } on AuthFailure catch (e) {
       return left(e);
@@ -179,6 +181,8 @@ class FirebaseAuthImpl implements AuthFacade {
   @override
   Future<Either<AuthFailure, Unit>> updateProfile({DisplayName name, EmailAddress email, String photoURL}) async {
     try {
+      // First we'll check for stable Internet connection
+      await _checkForStableInternet();
       await name?.value?.fold(
         (_) => throw AuthFailure.unExpectedFailure(message: "Name Field is invalid"),
         (name) async => await _firebaseAuth.currentUser?.updateProfile(displayName: name),
@@ -212,6 +216,8 @@ class FirebaseAuthImpl implements AuthFacade {
     String _newPassword = newPassword.getOrCrash;
 
     try {
+      // First we'll check for stable Internet connection
+      await _checkForStableInternet();
       await _firebaseAuth.currentUser?.reauthenticateWithCredential(EmailAuthProvider.credential(
         email: _firebaseAuth.currentUser?.email,
         password: _oldPassword,
@@ -284,12 +290,12 @@ class FirebaseAuthImpl implements AuthFacade {
         accessToken: authentication.accessToken,
       );
 
-      var _provider = await _fetchSignInMethods(left(account.email));
-      if (_provider.isNotEmpty)
+      var _provider = await _fetchSignInMethods(left(account.email), auth: AuthProvider.Google);
+      if (_provider.value1.isNotEmpty && !_provider.value2)
+        // Checks if Sign in method exists for email address && Current Provider does not exist on Firebase
         await AuthProvider.switchCase<Future<AuthFailure>>(
-          _provider?.first,
+          _provider?.value1?.first,
           isPassword: (name) {
-            // Set the first AuthProvider user signed-in with
             provider = AuthProvider.Password;
             throw FirebaseAuthException(
               code: ACCOUNT_EXISTS_WITH_DIFFERENT_CRED,
@@ -313,7 +319,8 @@ class FirebaseAuthImpl implements AuthFacade {
         );
 
       final _result = await _firebaseSignInWithCredentials(authCredential);
-      if (pendingCredentials != null && _result.isRight()) await _firebaseAuth.currentUser?.linkWithCredential(pendingCredentials);
+      if (pendingCredentials != null && _result.isRight())
+        await _firebaseAuth.currentUser?.linkWithCredential(pendingCredentials);
       return _result;
     } on AuthFailure catch (e) {
       return left(e);
@@ -326,11 +333,6 @@ class FirebaseAuthImpl implements AuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> facebookAuthentication([Object pendingCredentials]) async {
-    // TEST USER //
-    // open_meiqiqy_user@tfbnw.net
-    // septembeR123
-    // viafhebinf_1596061126@tfbnw.net
-    // name52
     try {
       // First we'll check for stable Internet connection
       await _checkForStableInternet();
@@ -344,11 +346,11 @@ class FirebaseAuthImpl implements AuthFacade {
           AuthCredential credential = FacebookAuthProvider.credential(result.accessToken.token);
           String email = await _facebookLogin.getUserEmail();
 
-          var _provider = await _fetchSignInMethods(left(email));
-          if (_provider.isNotEmpty)
-            // Check if Sign in method exists for email address
+          var _provider = await _fetchSignInMethods(left(email), auth: AuthProvider.Facebook);
+          if (_provider.value1.isNotEmpty && !_provider.value2)
+            // Checks if Sign in method exists for email address && Current Provider does not exist on Firebase
             await AuthProvider.switchCase<FutureOr<AuthFailure>>(
-              _provider.first,
+              _provider.value1.first,
               isPassword: (name) {
                 // Set the first AuthProvider user signed-in with
                 provider = AuthProvider.Password;
@@ -374,7 +376,8 @@ class FirebaseAuthImpl implements AuthFacade {
             );
 
           final _result = await _firebaseSignInWithCredentials(credential);
-          if (pendingCredentials != null && _result.isRight()) await _firebaseAuth.currentUser?.linkWithCredential(pendingCredentials);
+          if (pendingCredentials != null && _result.isRight())
+            await _firebaseAuth.currentUser?.linkWithCredential(pendingCredentials);
           return _result;
         case FacebookLoginStatus.Cancel:
           throw AuthFailure.cancelledAction();
@@ -392,13 +395,15 @@ class FirebaseAuthImpl implements AuthFacade {
     } on FirebaseAuthException catch (e) {
       return _handleAuthException(e);
     } catch (e) {
-      return left(AuthFailure.unknownFailure(message: (e is Exception || e is Error) ? e?.message : null));
+      return left(AuthFailure.unknownFailure(message: (e is Exception || e is Error) ? e.toString() : null));
     }
   }
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithCredentials([AuthCredential old, AuthCredential incoming]) async {
     try {
+      // First we'll check for stable Internet connection
+      await _checkForStableInternet();
       if (old != null && incoming == null) {
         return await _firebaseSignInWithCredentials(old);
       }
@@ -424,8 +429,9 @@ class FirebaseAuthImpl implements AuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> twitterAuthentication([Object pendingCredentials]) async => throw UnimplementedError("Twitter "
-      "Authentication Feature not Implemented.\nPlease contact support.");
+  Future<Either<AuthFailure, Unit>> twitterAuthentication([Object pendingCredentials]) async =>
+      throw UnimplementedError("Twitter "
+          "Authentication Feature not Implemented.\nPlease contact support.");
 
   @override
   Future<void> signOut() => Future.wait([

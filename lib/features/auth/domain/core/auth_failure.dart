@@ -8,7 +8,9 @@ part 'auth_failure.freezed.dart';
 
 @freezed
 @immutable
-abstract class AuthFailure with _$AuthFailure {
+abstract class AuthFailure implements _$AuthFailure, Failure<String> {
+  const AuthFailure._();
+
   const factory AuthFailure({String code, @required String message}) = _AuthFailure;
 
   const factory AuthFailure.unExpectedFailure({@required String message}) = UnExpectedFailure;

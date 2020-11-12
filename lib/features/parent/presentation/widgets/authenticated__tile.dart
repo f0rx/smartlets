@@ -26,30 +26,39 @@ class AuthenticatedProfileTile extends StatelessWidget {
                     Positioned(
                       child: Material(
                         color: Colors.transparent,
-                        type: MaterialType.circle,
+                        type: MaterialType.card,
+                        shape: RoundedRectangleBorder(),
+                        borderOnForeground: false,
                         clipBehavior: Clip.antiAlias,
                         child: InkWell(
                           onTap: () {},
                           splashColor: Colors.grey,
+                          borderRadius: BorderRadius.circular(100.0),
                           child: ExtendedImage.network(
-                            user?.photoURL,
+                            user?.photoURL ?? AppAssets.onlineAnonymous,
                             fit: BoxFit.fill,
                             height: App.height * 0.08,
                             shape: BoxShape.circle,
                             borderRadius: BorderRadius.circular(100.0),
                             clipBehavior: Clip.antiAlias,
-                            clearMemoryCacheIfFailed: false,
                             handleLoadingProgress: true,
                             retries: 999899,
                             isAntiAlias: true,
                             loadStateChanged: (state) {
                               switch (state.extendedImageLoadState) {
                                 case LoadState.loading:
-                                  return CircularProgressBar.adaptive(
-                                    width: App.width * 0.06,
-                                    height: App.width * 0.06,
-                                    strokeWidth: 3,
-                                    radius: 12,
+                                  return ConstrainedBox(
+                                    constraints: BoxConstraints(
+                                      maxWidth: App.width * 0.1,
+                                      maxHeight: App.width * 0.1,
+                                    ),
+                                    child: Center(
+                                      child: CircularProgressBar.adaptive(
+                                        width: App.width * 0.07,
+                                        height: App.width * 0.07,
+                                        strokeWidth: 2.5,
+                                      ),
+                                    ),
                                   );
                                 case LoadState.completed:
                                   return state.completedWidget;
@@ -66,21 +75,24 @@ class AuthenticatedProfileTile extends StatelessWidget {
                     Positioned(
                       right: 0,
                       bottom: 0,
-                      child: Material(
-                        color: Theme.of(context).accentColor,
-                        type: MaterialType.circle,
-                        clipBehavior: Clip.antiAlias,
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: App.width * 0.01,
-                              vertical: App.width * 0.01,
-                            ),
-                            child: Icon(
-                              Icons.photo_camera,
-                              color: Colors.white,
-                              size: 15.0,
+                      child: Visibility(
+                        // visible: state.student?.photoURL != null && !state.student.isNullOrBlank,
+                        child: Material(
+                          color: Theme.of(context).accentColor,
+                          type: MaterialType.circle,
+                          clipBehavior: Clip.antiAlias,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: App.width * 0.015,
+                                vertical: App.width * 0.015,
+                              ),
+                              child: Icon(
+                                Icons.photo_camera,
+                                color: Colors.white,
+                                size: 16.0,
+                              ),
                             ),
                           ),
                         ),
@@ -98,13 +110,22 @@ class AuthenticatedProfileTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     holder(
-                      AutoSizeText("${user?.displayName}", style: TextStyle(fontSize: 17.0)),
+                      AutoSizeText(
+                        "${user?.displayName}",
+                        style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600),
+                      ),
                       condition: user?.displayName != null && user.displayName.isNotEmpty,
                     ),
                     //
                     VerticalSpace(height: App.height * 0.005),
                     //
-                    holder(AutoSizeText("${user?.email}", style: TextStyle(fontSize: 17.0))),
+                    holder(
+                      AutoSizeText(
+                        "${user?.email}",
+                        style: TextStyle(fontSize: 17.0),
+                      ),
+                      condition: user?.email != null && user.email.isNotEmpty,
+                    ),
                   ],
                 ),
               ),

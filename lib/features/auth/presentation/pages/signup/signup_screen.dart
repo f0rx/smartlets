@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
-import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
+import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/auth/presentation/widgets/oauth_widget.dart';
 import 'package:smartlets/features/auth/presentation/widgets/provider_auth_widget.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
@@ -22,9 +22,8 @@ class SignupScreen extends StatelessWidget with AutoRouteWrapper {
       lazy: true,
       create: (_) => getIt<AuthBloc>(),
       child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),
