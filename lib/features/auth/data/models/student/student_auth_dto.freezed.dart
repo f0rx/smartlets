@@ -18,22 +18,70 @@ class _$StudentAuthDTOTearOff {
 
 // ignore: unused_element
   _StudentAuthDTO call(
-      {@JsonKey(ignore: true) String id,
-      @required String displayName,
-      @required String email,
-      @required @nullable String guardianEmail,
-      @required String gender,
-      @required List<String> courseIds,
-      @required List<String> projectIds,
-      @required List<String> awardIds,
-      @required bool isEmailVerified,
-      @required @nullable String phone,
-      @required @CountrySerializer() Country country,
-      @required @nullable String guardianPhone,
-      @required @nullable String photoURL,
-      @nullable @ServerTimestampConverter() Timestamp createdAt,
-      @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
-      @nullable @ServerTimestampConverter() Timestamp updatedAt}) {
+      {@JsonKey(ignore: true, includeIfNull: false)
+      @nullable
+          String id,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String displayName,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String email,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianEmail,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String gender,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> courseIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> projectIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> awardIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          bool isEmailVerified,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String phone,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+      @CountrySerializer()
+          Country country,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianPhone,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String photoURL,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp createdAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp lastSeenAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp updatedAt}) {
     return _StudentAuthDTO(
       id: id,
       displayName: displayName,
@@ -66,32 +114,56 @@ const $StudentAuthDTO = _$StudentAuthDTOTearOff();
 
 /// @nodoc
 mixin _$StudentAuthDTO {
-  @JsonKey(ignore: true)
+  @JsonKey(ignore: true, includeIfNull: false)
+  @nullable
   String get id;
+  @JsonKey(includeIfNull: false)
+  @nullable
   String get displayName;
+  @JsonKey(includeIfNull: false)
+  @nullable
   String get email;
+  @JsonKey(includeIfNull: false)
   @nullable
   String get guardianEmail;
+  @JsonKey(includeIfNull: false)
+  @nullable
   String get gender;
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<String> get courseIds;
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<String> get projectIds;
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<String> get awardIds;
+  @JsonKey(includeIfNull: false)
+  @nullable
   bool get isEmailVerified;
+  @JsonKey(includeIfNull: false)
   @nullable
   String get phone;
+  @JsonKey(includeIfNull: false)
+  @nullable
   @CountrySerializer()
   Country get country;
+  @JsonKey(includeIfNull: false)
   @nullable
   String get guardianPhone;
+  @JsonKey(includeIfNull: false)
   @nullable
   String get photoURL;
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   Timestamp get createdAt;
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   Timestamp get lastSeenAt;
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   Timestamp get updatedAt;
 
@@ -105,22 +177,58 @@ abstract class $StudentAuthDTOCopyWith<$Res> {
           StudentAuthDTO value, $Res Function(StudentAuthDTO) then) =
       _$StudentAuthDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true) String id,
-      String displayName,
-      String email,
-      @nullable String guardianEmail,
-      String gender,
-      List<String> courseIds,
-      List<String> projectIds,
-      List<String> awardIds,
-      bool isEmailVerified,
-      @nullable String phone,
-      @CountrySerializer() Country country,
-      @nullable String guardianPhone,
-      @nullable String photoURL,
-      @nullable @ServerTimestampConverter() Timestamp createdAt,
-      @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
-      @nullable @ServerTimestampConverter() Timestamp updatedAt});
+      {@JsonKey(ignore: true, includeIfNull: false)
+      @nullable
+          String id,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String displayName,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String email,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianEmail,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String gender,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> courseIds,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> projectIds,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> awardIds,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          bool isEmailVerified,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String phone,
+      @JsonKey(includeIfNull: false)
+      @nullable
+      @CountrySerializer()
+          Country country,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianPhone,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String photoURL,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp createdAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp lastSeenAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp updatedAt});
 
   $CountryCopyWith<$Res> get country;
 }
@@ -206,22 +314,58 @@ abstract class _$StudentAuthDTOCopyWith<$Res>
       __$StudentAuthDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true) String id,
-      String displayName,
-      String email,
-      @nullable String guardianEmail,
-      String gender,
-      List<String> courseIds,
-      List<String> projectIds,
-      List<String> awardIds,
-      bool isEmailVerified,
-      @nullable String phone,
-      @CountrySerializer() Country country,
-      @nullable String guardianPhone,
-      @nullable String photoURL,
-      @nullable @ServerTimestampConverter() Timestamp createdAt,
-      @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
-      @nullable @ServerTimestampConverter() Timestamp updatedAt});
+      {@JsonKey(ignore: true, includeIfNull: false)
+      @nullable
+          String id,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String displayName,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String email,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianEmail,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String gender,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> courseIds,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> projectIds,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> awardIds,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          bool isEmailVerified,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String phone,
+      @JsonKey(includeIfNull: false)
+      @nullable
+      @CountrySerializer()
+          Country country,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianPhone,
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String photoURL,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp createdAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp lastSeenAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp updatedAt});
 
   @override
   $CountryCopyWith<$Res> get country;
@@ -297,77 +441,141 @@ class __$StudentAuthDTOCopyWithImpl<$Res>
 /// @nodoc
 class _$_StudentAuthDTO extends _StudentAuthDTO {
   const _$_StudentAuthDTO(
-      {@JsonKey(ignore: true) this.id,
-      @required this.displayName,
-      @required this.email,
-      @required @nullable this.guardianEmail,
-      @required this.gender,
-      @required this.courseIds,
-      @required this.projectIds,
-      @required this.awardIds,
-      @required this.isEmailVerified,
-      @required @nullable this.phone,
-      @required @CountrySerializer() this.country,
-      @required @nullable this.guardianPhone,
-      @required @nullable this.photoURL,
-      @nullable @ServerTimestampConverter() this.createdAt,
-      @nullable @ServerTimestampConverter() this.lastSeenAt,
-      @nullable @ServerTimestampConverter() this.updatedAt})
-      : assert(displayName != null),
-        assert(email != null),
-        assert(gender != null),
-        assert(courseIds != null),
-        assert(projectIds != null),
-        assert(awardIds != null),
-        assert(isEmailVerified != null),
-        assert(country != null),
-        super._();
+      {@JsonKey(ignore: true, includeIfNull: false)
+      @nullable
+          this.id,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.displayName,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.email,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.guardianEmail,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.gender,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.courseIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.projectIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.awardIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.isEmailVerified,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.phone,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+      @CountrySerializer()
+          this.country,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.guardianPhone,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          this.photoURL,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          this.createdAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          this.lastSeenAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          this.updatedAt})
+      : super._();
 
   factory _$_StudentAuthDTO.fromJson(Map<String, dynamic> json) =>
       _$_$_StudentAuthDTOFromJson(json);
 
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(ignore: true, includeIfNull: false)
+  @nullable
   final String id;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final String displayName;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final String email;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   final String guardianEmail;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final String gender;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final List<String> courseIds;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final List<String> projectIds;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final List<String> awardIds;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   final bool isEmailVerified;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   final String phone;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   @CountrySerializer()
   final Country country;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   final String guardianPhone;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   final String photoURL;
   @override
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   final Timestamp createdAt;
   @override
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   final Timestamp lastSeenAt;
   @override
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   final Timestamp updatedAt;
 
@@ -459,69 +667,140 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
 abstract class _StudentAuthDTO extends StudentAuthDTO {
   const _StudentAuthDTO._() : super._();
   const factory _StudentAuthDTO(
-          {@JsonKey(ignore: true) String id,
-          @required String displayName,
-          @required String email,
-          @required @nullable String guardianEmail,
-          @required String gender,
-          @required List<String> courseIds,
-          @required List<String> projectIds,
-          @required List<String> awardIds,
-          @required bool isEmailVerified,
-          @required @nullable String phone,
-          @required @CountrySerializer() Country country,
-          @required @nullable String guardianPhone,
-          @required @nullable String photoURL,
-          @nullable @ServerTimestampConverter() Timestamp createdAt,
-          @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
-          @nullable @ServerTimestampConverter() Timestamp updatedAt}) =
-      _$_StudentAuthDTO;
+      {@JsonKey(ignore: true, includeIfNull: false)
+      @nullable
+          String id,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String displayName,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String email,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianEmail,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String gender,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> courseIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> projectIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          List<String> awardIds,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          bool isEmailVerified,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String phone,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+      @CountrySerializer()
+          Country country,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String guardianPhone,
+      @required
+      @JsonKey(includeIfNull: false)
+      @nullable
+          String photoURL,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp createdAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp lastSeenAt,
+      @nullable
+      @JsonKey(includeIfNull: false)
+      @ServerTimestampConverter()
+          Timestamp updatedAt}) = _$_StudentAuthDTO;
 
   factory _StudentAuthDTO.fromJson(Map<String, dynamic> json) =
       _$_StudentAuthDTO.fromJson;
 
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(ignore: true, includeIfNull: false)
+  @nullable
   String get id;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   String get displayName;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   String get email;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   String get guardianEmail;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   String get gender;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<String> get courseIds;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<String> get projectIds;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   List<String> get awardIds;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   bool get isEmailVerified;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   String get phone;
   @override
+  @JsonKey(includeIfNull: false)
+  @nullable
   @CountrySerializer()
   Country get country;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   String get guardianPhone;
   @override
+  @JsonKey(includeIfNull: false)
   @nullable
   String get photoURL;
   @override
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   Timestamp get createdAt;
   @override
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   Timestamp get lastSeenAt;
   @override
   @nullable
+  @JsonKey(includeIfNull: false)
   @ServerTimestampConverter()
   Timestamp get updatedAt;
   @override

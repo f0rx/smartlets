@@ -13,10 +13,18 @@ class CountrySerializer implements JsonConverter<Country, Map<String, dynamic>> 
       );
 
   @override
-  Map<String, dynamic> toJson(Country instance) => <String, dynamic>{
-        "name": instance.name.name,
-        "codeName": instance.codeName,
-        "dialCode": instance.dialCode,
-        "language": instance.language,
-      };
+  Map<String, dynamic> toJson(Country instance) {
+    final val = <String, dynamic>{};
+
+    void writeNotNull(String key, dynamic value) {
+      if (value != null) val[key] = value;
+    }
+
+    writeNotNull("name", instance?.name?.name);
+    writeNotNull("codeName", instance?.codeName);
+    writeNotNull("dialCode", instance?.dialCode);
+    writeNotNull("language", instance?.language);
+
+    return val.isEmpty ? null : val;
+  }
 }

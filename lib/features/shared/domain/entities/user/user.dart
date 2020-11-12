@@ -75,11 +75,11 @@ abstract class User implements _$User {
         displayName: name ?? DisplayName(this.displayName),
         email: email ?? EmailAddress(this.email),
         isEmailVerified: verified ?? this.isEmailVerified,
-        phone: phone ?? Phone(this.phone, phone?.country ?? Country.NG),
+        phone: phone ?? !this.phone.isNull ? Phone(this.phone, phone?.country ?? Country.NG) : Phone.DEFAULT,
         photoURL: photoURL ?? this.photoURL,
         // This here sets the default Gender to Male (when saving to firestore)
         gender: gender ?? Gender(GenderType.Other),
-        guardianPhone: guardianPhone ?? Phone(this.phone, phone?.country ?? Country.NG),
+        guardianPhone: guardianPhone ?? !this.phone.isNull ? Phone(this.phone, phone?.country ?? Country.NG) : Phone.DEFAULT,
         guardianEmail: guardianEmail ?? EmailAddress(this.email),
         createdAt: createdAt ?? this.createdAt,
         lastSeenAt: lastSeenAt ?? this.lastSeenAt,

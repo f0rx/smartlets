@@ -12,32 +12,32 @@ abstract class Student implements _$Student {
 
   const factory Student({
     @nullable UniqueId id,
-    @required DisplayName displayName,
-    @required EmailAddress email,
-    @Default(EmailAddress.DEFAULT) EmailAddress guardianEmail,
+    @nullable DisplayName displayName,
+    @nullable EmailAddress email,
+    @nullable EmailAddress guardianEmail,
     @nullable Gender gender,
-    @Default(ImmutableIds.EMPTY) ImmutableIds courseIds,
-    @Default(ImmutableIds.EMPTY) ImmutableIds projectIds,
-    @Default(ImmutableIds.EMPTY) ImmutableIds awardIds,
-    @Default(false) bool isEmailVerified,
-    @Default(Phone.DEFAULT) Phone phone,
-    @Default(Phone.DEFAULT) Phone guardianPhone,
-    @Default('') String photoURL,
-    @nullable @nullable DateTime createdAt,
-    @nullable @nullable DateTime lastSeenAt,
+    @nullable ImmutableIds courseIds,
+    @nullable ImmutableIds projectIds,
+    @nullable ImmutableIds awardIds,
+    @nullable bool isEmailVerified,
+    @nullable Phone phone,
+    @nullable Phone guardianPhone,
+    @nullable String photoURL,
+    @nullable DateTime createdAt,
+    @nullable DateTime lastSeenAt,
     @nullable DateTime updatedAt,
   }) = _Student;
 
   Option<FieldObjectException<dynamic>> get failureOption {
-    return email.failureOrUnit
-        .andThen(displayName?.failureOrUnit)
-        .andThen(guardianEmail?.failureOrUnit)
-        .andThen(gender?.failureOrUnit)
-        .andThen(courseIds?.failureOrUnit)
-        .andThen(projectIds?.failureOrUnit)
-        .andThen(awardIds?.failureOrUnit)
-        .andThen(phone?.failureOrUnit)
-        .andThen(guardianPhone?.failureOrUnit)
-        .fold((f) => some(f), (_) => none());
+    return email?.failureOrUnit
+        ?.andThen(displayName?.failureOrUnit)
+        ?.andThen(guardianEmail?.failureOrUnit)
+        ?.andThen(gender?.failureOrUnit)
+        ?.andThen(courseIds?.failureOrUnit)
+        ?.andThen(projectIds?.failureOrUnit)
+        ?.andThen(awardIds?.failureOrUnit)
+        ?.andThen(phone?.failureOrUnit)
+        ?.andThen(guardianPhone?.failureOrUnit)
+        ?.fold((f) => some(f), (_) => none());
   }
 }

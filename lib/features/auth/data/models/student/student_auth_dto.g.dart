@@ -17,7 +17,8 @@ _$_StudentAuthDTO _$_$_StudentAuthDTOFromJson(Map<String, dynamic> json) {
     awardIds: (json['awardIds'] as List)?.map((e) => e as String)?.toList(),
     isEmailVerified: json['isEmailVerified'] as bool,
     phone: json['phone'] as String,
-    country: const CountrySerializer().fromJson(json['country'] as Map<String, dynamic>),
+    country: const CountrySerializer()
+        .fromJson(json['country'] as Map<String, dynamic>),
     guardianPhone: json['guardianPhone'] as String,
     photoURL: json['photoURL'] as String,
     createdAt: const ServerTimestampConverter().fromJson(json['createdAt']),
@@ -26,20 +27,32 @@ _$_StudentAuthDTO _$_$_StudentAuthDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_StudentAuthDTOToJson(_$_StudentAuthDTO instance) => <String, dynamic>{
-      'displayName': instance.displayName,
-      'email': instance.email,
-      'guardianEmail': instance.guardianEmail,
-      'gender': instance.gender,
-      'courseIds': instance.courseIds,
-      'projectIds': instance.projectIds,
-      'awardIds': instance.awardIds,
-      'isEmailVerified': instance.isEmailVerified,
-      'phone': instance.phone,
-      'country': const CountrySerializer().toJson(instance.country),
-      'guardianPhone': instance.guardianPhone,
-      'photoURL': instance.photoURL,
-      'createdAt': const ServerTimestampConverter().toJson(instance.createdAt),
-      'lastSeenAt': const ServerTimestampConverter().toJson(instance.lastSeenAt),
-      'updatedAt': const ServerTimestampConverter().toJson(instance.updatedAt),
-    };
+Map<String, dynamic> _$_$_StudentAuthDTOToJson(_$_StudentAuthDTO instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('displayName', instance.displayName);
+  writeNotNull('email', instance.email);
+  writeNotNull('guardianEmail', instance.guardianEmail);
+  writeNotNull('gender', instance.gender);
+  writeNotNull('courseIds', instance.courseIds);
+  writeNotNull('projectIds', instance.projectIds);
+  writeNotNull('awardIds', instance.awardIds);
+  writeNotNull('isEmailVerified', instance.isEmailVerified);
+  writeNotNull('phone', instance.phone);
+  writeNotNull('country', const CountrySerializer().toJson(instance.country));
+  writeNotNull('guardianPhone', instance.guardianPhone);
+  writeNotNull('photoURL', instance.photoURL);
+  writeNotNull(
+      'createdAt', const ServerTimestampConverter().toJson(instance.createdAt));
+  writeNotNull('lastSeenAt',
+      const ServerTimestampConverter().toJson(instance.lastSeenAt));
+  writeNotNull(
+      'updatedAt', const ServerTimestampConverter().toJson(instance.updatedAt));
+  return val;
+}

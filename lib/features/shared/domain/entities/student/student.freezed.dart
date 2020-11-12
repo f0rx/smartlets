@@ -16,19 +16,19 @@ class _$StudentTearOff {
 // ignore: unused_element
   _Student call(
       {@nullable UniqueId id,
-      @required DisplayName displayName,
-      @required EmailAddress email,
-      EmailAddress guardianEmail = EmailAddress.DEFAULT,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
-      ImmutableIds courseIds = ImmutableIds.EMPTY,
-      ImmutableIds projectIds = ImmutableIds.EMPTY,
-      ImmutableIds awardIds = ImmutableIds.EMPTY,
-      bool isEmailVerified = false,
-      Phone phone = Phone.DEFAULT,
-      Phone guardianPhone = Phone.DEFAULT,
-      String photoURL = '',
-      @nullable @nullable DateTime createdAt,
-      @nullable @nullable DateTime lastSeenAt,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt}) {
     return _Student(
       id: id,
@@ -58,22 +58,30 @@ const $Student = _$StudentTearOff();
 mixin _$Student {
   @nullable
   UniqueId get id;
+  @nullable
   DisplayName get displayName;
+  @nullable
   EmailAddress get email;
+  @nullable
   EmailAddress get guardianEmail;
   @nullable
   Gender get gender;
+  @nullable
   ImmutableIds get courseIds;
+  @nullable
   ImmutableIds get projectIds;
+  @nullable
   ImmutableIds get awardIds;
+  @nullable
   bool get isEmailVerified;
+  @nullable
   Phone get phone;
+  @nullable
   Phone get guardianPhone;
+  @nullable
   String get photoURL;
   @nullable
-  @nullable
   DateTime get createdAt;
-  @nullable
   @nullable
   DateTime get lastSeenAt;
   @nullable
@@ -88,19 +96,19 @@ abstract class $StudentCopyWith<$Res> {
       _$StudentCopyWithImpl<$Res>;
   $Res call(
       {@nullable UniqueId id,
-      DisplayName displayName,
-      EmailAddress email,
-      EmailAddress guardianEmail,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
-      ImmutableIds courseIds,
-      ImmutableIds projectIds,
-      ImmutableIds awardIds,
-      bool isEmailVerified,
-      Phone phone,
-      Phone guardianPhone,
-      String photoURL,
-      @nullable @nullable DateTime createdAt,
-      @nullable @nullable DateTime lastSeenAt,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt});
 }
 
@@ -172,19 +180,19 @@ abstract class _$StudentCopyWith<$Res> implements $StudentCopyWith<$Res> {
   @override
   $Res call(
       {@nullable UniqueId id,
-      DisplayName displayName,
-      EmailAddress email,
-      EmailAddress guardianEmail,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
-      ImmutableIds courseIds,
-      ImmutableIds projectIds,
-      ImmutableIds awardIds,
-      bool isEmailVerified,
-      Phone phone,
-      Phone guardianPhone,
-      String photoURL,
-      @nullable @nullable DateTime createdAt,
-      @nullable @nullable DateTime lastSeenAt,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt});
 }
 
@@ -254,72 +262,62 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
 class _$_Student extends _Student {
   const _$_Student(
       {@nullable this.id,
-      @required this.displayName,
-      @required this.email,
-      this.guardianEmail = EmailAddress.DEFAULT,
+      @nullable this.displayName,
+      @nullable this.email,
+      @nullable this.guardianEmail,
       @nullable this.gender,
-      this.courseIds = ImmutableIds.EMPTY,
-      this.projectIds = ImmutableIds.EMPTY,
-      this.awardIds = ImmutableIds.EMPTY,
-      this.isEmailVerified = false,
-      this.phone = Phone.DEFAULT,
-      this.guardianPhone = Phone.DEFAULT,
-      this.photoURL = '',
-      @nullable @nullable this.createdAt,
-      @nullable @nullable this.lastSeenAt,
+      @nullable this.courseIds,
+      @nullable this.projectIds,
+      @nullable this.awardIds,
+      @nullable this.isEmailVerified,
+      @nullable this.phone,
+      @nullable this.guardianPhone,
+      @nullable this.photoURL,
+      @nullable this.createdAt,
+      @nullable this.lastSeenAt,
       @nullable this.updatedAt})
-      : assert(displayName != null),
-        assert(email != null),
-        assert(guardianEmail != null),
-        assert(courseIds != null),
-        assert(projectIds != null),
-        assert(awardIds != null),
-        assert(isEmailVerified != null),
-        assert(phone != null),
-        assert(guardianPhone != null),
-        assert(photoURL != null),
-        super._();
+      : super._();
 
   @override
   @nullable
   final UniqueId id;
   @override
+  @nullable
   final DisplayName displayName;
   @override
+  @nullable
   final EmailAddress email;
-  @JsonKey(defaultValue: EmailAddress.DEFAULT)
   @override
+  @nullable
   final EmailAddress guardianEmail;
   @override
   @nullable
   final Gender gender;
-  @JsonKey(defaultValue: ImmutableIds.EMPTY)
   @override
+  @nullable
   final ImmutableIds courseIds;
-  @JsonKey(defaultValue: ImmutableIds.EMPTY)
   @override
+  @nullable
   final ImmutableIds projectIds;
-  @JsonKey(defaultValue: ImmutableIds.EMPTY)
   @override
+  @nullable
   final ImmutableIds awardIds;
-  @JsonKey(defaultValue: false)
   @override
+  @nullable
   final bool isEmailVerified;
-  @JsonKey(defaultValue: Phone.DEFAULT)
   @override
+  @nullable
   final Phone phone;
-  @JsonKey(defaultValue: Phone.DEFAULT)
   @override
+  @nullable
   final Phone guardianPhone;
-  @JsonKey(defaultValue: '')
   @override
+  @nullable
   final String photoURL;
   @override
   @nullable
-  @nullable
   final DateTime createdAt;
   @override
-  @nullable
   @nullable
   final DateTime lastSeenAt;
   @override
@@ -406,53 +404,61 @@ abstract class _Student extends Student {
   const _Student._() : super._();
   const factory _Student(
       {@nullable UniqueId id,
-      @required DisplayName displayName,
-      @required EmailAddress email,
-      EmailAddress guardianEmail,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
-      ImmutableIds courseIds,
-      ImmutableIds projectIds,
-      ImmutableIds awardIds,
-      bool isEmailVerified,
-      Phone phone,
-      Phone guardianPhone,
-      String photoURL,
-      @nullable @nullable DateTime createdAt,
-      @nullable @nullable DateTime lastSeenAt,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt}) = _$_Student;
 
   @override
   @nullable
   UniqueId get id;
   @override
+  @nullable
   DisplayName get displayName;
   @override
+  @nullable
   EmailAddress get email;
   @override
+  @nullable
   EmailAddress get guardianEmail;
   @override
   @nullable
   Gender get gender;
   @override
+  @nullable
   ImmutableIds get courseIds;
   @override
+  @nullable
   ImmutableIds get projectIds;
   @override
+  @nullable
   ImmutableIds get awardIds;
   @override
+  @nullable
   bool get isEmailVerified;
   @override
+  @nullable
   Phone get phone;
   @override
+  @nullable
   Phone get guardianPhone;
   @override
+  @nullable
   String get photoURL;
   @override
   @nullable
-  @nullable
   DateTime get createdAt;
   @override
-  @nullable
   @nullable
   DateTime get lastSeenAt;
   @override

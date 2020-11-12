@@ -54,7 +54,7 @@ class ParentProfileIndex extends StatelessWidget with AutoRouteWrapper {
                   children: [
                     getIt<AuthFacade>().currentUser.fold(
                           () => SizedBox.shrink(),
-                          (a) => AuthenticatedProfileTile(),
+                          (a) => AuthenticatedProfileTile(user: a),
                         ),
                     //
                     Divider(
