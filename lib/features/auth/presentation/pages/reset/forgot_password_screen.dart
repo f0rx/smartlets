@@ -57,9 +57,8 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
             ),
           ),
         ),
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),
@@ -70,7 +69,7 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final bloc = context.bloc<AuthBloc>();
+    final bloc = context.watch<AuthBloc>();
 
     return Scaffold(
       extendBodyBehindAppBar: true,

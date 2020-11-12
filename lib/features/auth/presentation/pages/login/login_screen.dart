@@ -21,9 +21,8 @@ class LoginScreen extends StatelessWidget with AutoRouteWrapper {
       lazy: true,
       create: (_) => getIt<AuthBloc>(),
       child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),

@@ -54,7 +54,7 @@ class ProviderAuthWidget extends StatelessWidget {
               VerticalSpace(height: App.height * 0.01),
               BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, _) => Visibility(
-                  visible: context.bloc<AuthBloc>().state.isLoading,
+                  visible: context.watch<AuthBloc>().state.isLoading,
                   child: LinearProgressIndicator(),
                 ),
               ),
@@ -90,7 +90,7 @@ class ProviderAuthWidget extends StatelessWidget {
               VerticalSpace(height: App.height * 0.01),
               BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, _) => Visibility(
-                  visible: context.bloc<AuthBloc>().state.isLoading,
+                  visible: context.watch<AuthBloc>().state.isLoading,
                   child: LinearProgressIndicator(),
                 ),
               ),
@@ -146,7 +146,7 @@ class _PasswordBuilder extends StatelessWidget {
       ),
       builder: (context, _) {
         // ignore: close_sinks
-        final bloc = context.bloc<AuthBloc>();
+        final bloc = context.watch<AuthBloc>();
 
         return VerticalSpace(
           height: App.height * 0.1,

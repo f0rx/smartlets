@@ -6,7 +6,7 @@ import 'package:flutter_portal/flutter_portal.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
-import 'package:smartlets/features/parent/presentation/widgets/parent_widgets.dart';
+import 'package:smartlets/features/student/presentation/widgets/student_widgets.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
@@ -19,12 +19,10 @@ class StudentProfileIndexPage extends StatelessWidget with AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<AuthBloc>()),
-        BlocProvider(create: (_) => getIt<StudentAuthCubit>()..read),
       ],
       child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),

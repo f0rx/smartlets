@@ -38,9 +38,8 @@ class EmailSentScreen extends StatelessWidget with AutoRouteWrapper {
       lazy: true,
       create: (_) => getIt<AuthBloc>()..add(AuthEvent.emailChanged(email)),
       child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),
@@ -166,7 +165,7 @@ class EmailSentScreen extends StatelessWidget with AutoRouteWrapper {
                         child: Visibility(
                           visible: showResendButton,
                           child: RaisedButton(
-                            onPressed: () => context.bloc<AuthBloc>().add(AuthEvent.emailPasswordReset()),
+                            onPressed: () => context.watch<AuthBloc>().add(AuthEvent.emailPasswordReset()),
                             child: HorizontalSpace(
                               child: Center(
                                 child: Padding(

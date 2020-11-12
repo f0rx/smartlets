@@ -107,7 +107,7 @@ class PaymentIndexPage extends StatelessWidget with AutoRouteWrapper {
             right: 0,
             child: BlocBuilder<FaqPpCubit, FaqPpState>(
               builder: (context, __) => Visibility(
-                visible: context.bloc<FaqPpCubit>().state.isVisible,
+                visible: context.watch<FaqPpCubit>().state.isVisible,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

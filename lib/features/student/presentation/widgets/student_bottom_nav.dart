@@ -83,7 +83,7 @@ class StudentBottomNav extends StatelessWidget {
             animationDuration: Duration(milliseconds: 500),
             onTap: (index) {
               if (state != index)
-                context.bloc<StudentNavCubit>().indexChanged(index);
+                context.read<StudentNavCubit>().indexChanged(index);
               // If the user is re-selecting the tab, the common
               // behavior is to empty the stack.
               else

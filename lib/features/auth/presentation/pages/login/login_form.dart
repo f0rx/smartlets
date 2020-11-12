@@ -58,7 +58,7 @@ class LoginForm extends StatelessWidget {
       ),
       builder: (context, _) {
         // ignore: close_sinks
-        final bloc = context.bloc<AuthBloc>();
+        final bloc = context.watch<AuthBloc>();
 
         return Form(
           autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
