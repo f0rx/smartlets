@@ -248,7 +248,12 @@ class CourseCardWidget extends StatelessWidget {
                                         clipBehavior: Clip.antiAliasWithSaveLayer,
                                         child: LinearProgressIndicator(
                                           value: progress,
-                                          backgroundColor: Helpers.optionOf(Colors.grey.shade200, Colors.grey.shade700),
+                                          backgroundColor: backgroundColor == Colors.transparent
+                                              ? Helpers.optionOf(
+                                                  Colors.grey.shade300,
+                                                  Colors.grey.shade700,
+                                                )
+                                              : Helpers.computeLuminance(backgroundColor).withOpacity(0.15),
                                         ),
                                       ),
                                     ),
