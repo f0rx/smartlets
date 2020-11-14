@@ -34,7 +34,7 @@ class ProfileTile {
           subtitle: "Details & Password",
           onPressed: (context) => getIt<AuthFacade>().currentUser?.fold(
                 () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
-                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription?.fold(
+                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.role?.fold(
                       parent: () => inner(context).pushUpdateParentProfilePage(
                         user: getIt<AuthFacade>().currentUser.getOrElse(() => null),
                       ),

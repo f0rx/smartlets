@@ -34,7 +34,6 @@ const $StudentAuthState = _$StudentAuthStateTearOff();
 
 /// @nodoc
 mixin _$StudentAuthState {
-// @nullable StreamSubscription<Either<StudentAuthFailure, Student>> readSubscription,
   @nullable
   Student get student;
   KtList<Student> get students;
@@ -155,7 +154,7 @@ class _$_StudentAuthState extends _StudentAuthState {
         assert(isLoading != null),
         super._();
 
-  @override // @nullable StreamSubscription<Either<StudentAuthFailure, Student>> readSubscription,
+  @override
   @nullable
   final Student student;
   @JsonKey(defaultValue: const KtList.empty())
@@ -211,7 +210,7 @@ abstract class _StudentAuthState extends StudentAuthState {
       @nullable Either<StudentAuthFailure, Unit> status,
       bool isLoading}) = _$_StudentAuthState;
 
-  @override // @nullable StreamSubscription<Either<StudentAuthFailure, Student>> readSubscription,
+  @override
   @nullable
   Student get student;
   @override

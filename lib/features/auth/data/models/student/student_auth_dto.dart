@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
+import 'package:smartlets/features/on_boarding/models/roles.dart';
 import 'package:smartlets/features/shared/shared.dart';
 import 'package:smartlets/manager/serializer/serializers.dart';
 import 'package:smartlets/utils/utils.dart';
@@ -14,19 +15,20 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
   const StudentAuthDTO._();
 
   const factory StudentAuthDTO({
-    @JsonKey(ignore: true, includeIfNull: false) @nullable String id,
-    @required @JsonKey(includeIfNull: false) @nullable String displayName,
-    @required @JsonKey(includeIfNull: false) @nullable String email,
-    @required @JsonKey(includeIfNull: false) @nullable String guardianEmail,
-    @required @JsonKey(includeIfNull: false) @nullable String gender,
-    @required @JsonKey(includeIfNull: false) @nullable List<String> courseIds,
-    @required @JsonKey(includeIfNull: false) @nullable List<String> projectIds,
-    @required @JsonKey(includeIfNull: false) @nullable List<String> awardIds,
-    @required @JsonKey(includeIfNull: false) @nullable bool isEmailVerified,
-    @required @JsonKey(includeIfNull: false) @nullable String phone,
+    @JsonKey(ignore: true, includeIfNull: false, defaultValue: '') @nullable String id,
+    @Default(Roles.student) @JsonKey(includeIfNull: false) @nullable @RoleSerializer() Roles role,
+    @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String displayName,
+    @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String email,
+    @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String guardianEmail,
+    @required @JsonKey(includeIfNull: false) @nullable @GenderTypeSerializer() GenderType gender,
+    @required @JsonKey(includeIfNull: false, defaultValue: []) @nullable List<String> courseIds,
+    @required @JsonKey(includeIfNull: false, defaultValue: []) @nullable List<String> projectIds,
+    @required @JsonKey(includeIfNull: false, defaultValue: []) @nullable List<String> awardIds,
+    @required @JsonKey(includeIfNull: false, defaultValue: false) @nullable bool isEmailVerified,
+    @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String phone,
     @required @JsonKey(includeIfNull: false) @nullable @CountrySerializer() Country country,
-    @required @JsonKey(includeIfNull: false) @nullable String guardianPhone,
-    @required @JsonKey(includeIfNull: false) @nullable String photoURL,
+    @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String guardianPhone,
+    @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String photoURL,
     @nullable @JsonKey(includeIfNull: false) @ServerTimestampConverter() Timestamp createdAt,
     @nullable @JsonKey(includeIfNull: false) @ServerTimestampConverter() Timestamp lastSeenAt,
     @nullable @JsonKey(includeIfNull: false) @ServerTimestampConverter() Timestamp updatedAt,
@@ -37,7 +39,7 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
       displayName: student.displayName?.getOrNull,
       email: student.email?.getOrNull,
       guardianEmail: student.guardianEmail?.getOrNull,
-      gender: student.gender?.getOrNull?.name,
+      gender: student.gender?.getOrNull,
       courseIds: student.courseIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
       projectIds: student.projectIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
       awardIds: student.awardIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
@@ -58,7 +60,7 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
       displayName: displayName != null ? DisplayName(displayName) : null,
       email: email != null ? EmailAddress(email) : null,
       guardianEmail: guardianEmail != null ? EmailAddress(guardianEmail) : null,
-      gender: gender != null ? Gender(GenderType.valueOf(gender)) : null,
+      gender: gender != null ? Gender(gender) : null,
       isEmailVerified: isEmailVerified,
       phone: phone != null
           ? Phone(phone, country)
@@ -76,5 +78,5 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
   factory StudentAuthDTO.fromJson(Map<String, dynamic> json) => _$StudentAuthDTOFromJson(json);
 
   factory StudentAuthDTO.fromDocument(DocumentSnapshot snapshot) =>
-      StudentAuthDTO.fromJson(snapshot.data()).copyWith(id: snapshot.id);
+      StudentAuthDTO.fromJson(!snapshot.data().isNull ? snapshot.data() : {}).copyWith(id: snapshot.id);
 }

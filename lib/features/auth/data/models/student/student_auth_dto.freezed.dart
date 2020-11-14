@@ -18,43 +18,48 @@ class _$StudentAuthDTOTearOff {
 
 // ignore: unused_element
   _StudentAuthDTO call(
-      {@JsonKey(ignore: true, includeIfNull: false)
+      {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           String id,
-      @required
       @JsonKey(includeIfNull: false)
+      @nullable
+      @RoleSerializer()
+          Roles role = Roles.student,
+      @required
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String displayName,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
       @required
       @JsonKey(includeIfNull: false)
       @nullable
-          String gender,
+      @GenderTypeSerializer()
+          GenderType gender,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> courseIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> projectIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> awardIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: false)
       @nullable
           bool isEmailVerified,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String phone,
       @required
@@ -63,11 +68,11 @@ class _$StudentAuthDTOTearOff {
       @CountrySerializer()
           Country country,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianPhone,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
       @nullable
@@ -84,6 +89,7 @@ class _$StudentAuthDTOTearOff {
           Timestamp updatedAt}) {
     return _StudentAuthDTO(
       id: id,
+      role: role,
       displayName: displayName,
       email: email,
       guardianEmail: guardianEmail,
@@ -114,44 +120,49 @@ const $StudentAuthDTO = _$StudentAuthDTOTearOff();
 
 /// @nodoc
 mixin _$StudentAuthDTO {
-  @JsonKey(ignore: true, includeIfNull: false)
+  @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
   @nullable
   String get id;
   @JsonKey(includeIfNull: false)
   @nullable
+  @RoleSerializer()
+  Roles get role;
+  @JsonKey(includeIfNull: false, defaultValue: '')
+  @nullable
   String get displayName;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get email;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get guardianEmail;
   @JsonKey(includeIfNull: false)
   @nullable
-  String get gender;
-  @JsonKey(includeIfNull: false)
+  @GenderTypeSerializer()
+  GenderType get gender;
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get courseIds;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get projectIds;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get awardIds;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: false)
   @nullable
   bool get isEmailVerified;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get phone;
   @JsonKey(includeIfNull: false)
   @nullable
   @CountrySerializer()
   Country get country;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get guardianPhone;
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get photoURL;
   @nullable
@@ -177,44 +188,49 @@ abstract class $StudentAuthDTOCopyWith<$Res> {
           StudentAuthDTO value, $Res Function(StudentAuthDTO) then) =
       _$StudentAuthDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(ignore: true, includeIfNull: false)
+      {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           String id,
       @JsonKey(includeIfNull: false)
       @nullable
+      @RoleSerializer()
+          Roles role,
+      @JsonKey(includeIfNull: false, defaultValue: '')
+      @nullable
           String displayName,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
       @JsonKey(includeIfNull: false)
       @nullable
-          String gender,
-      @JsonKey(includeIfNull: false)
+      @GenderTypeSerializer()
+          GenderType gender,
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> courseIds,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> projectIds,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> awardIds,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: false)
       @nullable
           bool isEmailVerified,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String phone,
       @JsonKey(includeIfNull: false)
       @nullable
       @CountrySerializer()
           Country country,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianPhone,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
       @nullable
@@ -245,6 +261,7 @@ class _$StudentAuthDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
     Object guardianEmail = freezed,
@@ -263,13 +280,14 @@ class _$StudentAuthDTOCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
+      role: role == freezed ? _value.role : role as Roles,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as String,
-      gender: gender == freezed ? _value.gender : gender as String,
+      gender: gender == freezed ? _value.gender : gender as GenderType,
       courseIds:
           courseIds == freezed ? _value.courseIds : courseIds as List<String>,
       projectIds: projectIds == freezed
@@ -314,44 +332,49 @@ abstract class _$StudentAuthDTOCopyWith<$Res>
       __$StudentAuthDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(ignore: true, includeIfNull: false)
+      {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           String id,
       @JsonKey(includeIfNull: false)
       @nullable
+      @RoleSerializer()
+          Roles role,
+      @JsonKey(includeIfNull: false, defaultValue: '')
+      @nullable
           String displayName,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
       @JsonKey(includeIfNull: false)
       @nullable
-          String gender,
-      @JsonKey(includeIfNull: false)
+      @GenderTypeSerializer()
+          GenderType gender,
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> courseIds,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> projectIds,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> awardIds,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: false)
       @nullable
           bool isEmailVerified,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String phone,
       @JsonKey(includeIfNull: false)
       @nullable
       @CountrySerializer()
           Country country,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianPhone,
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
       @nullable
@@ -385,6 +408,7 @@ class __$StudentAuthDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
     Object guardianEmail = freezed,
@@ -403,13 +427,14 @@ class __$StudentAuthDTOCopyWithImpl<$Res>
   }) {
     return _then(_StudentAuthDTO(
       id: id == freezed ? _value.id : id as String,
+      role: role == freezed ? _value.role : role as Roles,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as String,
-      gender: gender == freezed ? _value.gender : gender as String,
+      gender: gender == freezed ? _value.gender : gender as GenderType,
       courseIds:
           courseIds == freezed ? _value.courseIds : courseIds as List<String>,
       projectIds: projectIds == freezed
@@ -441,43 +466,48 @@ class __$StudentAuthDTOCopyWithImpl<$Res>
 /// @nodoc
 class _$_StudentAuthDTO extends _StudentAuthDTO {
   const _$_StudentAuthDTO(
-      {@JsonKey(ignore: true, includeIfNull: false)
+      {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           this.id,
-      @required
       @JsonKey(includeIfNull: false)
+      @nullable
+      @RoleSerializer()
+          this.role = Roles.student,
+      @required
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.displayName,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.email,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.guardianEmail,
       @required
       @JsonKey(includeIfNull: false)
       @nullable
+      @GenderTypeSerializer()
           this.gender,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           this.courseIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           this.projectIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           this.awardIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: false)
       @nullable
           this.isEmailVerified,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.phone,
       @required
@@ -486,11 +516,11 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
       @CountrySerializer()
           this.country,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.guardianPhone,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.photoURL,
       @nullable
@@ -511,43 +541,49 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
       _$_$_StudentAuthDTOFromJson(json);
 
   @override
-  @JsonKey(ignore: true, includeIfNull: false)
+  @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
   @nullable
   final String id;
   @override
   @JsonKey(includeIfNull: false)
   @nullable
+  @RoleSerializer()
+  final Roles role;
+  @override
+  @JsonKey(includeIfNull: false, defaultValue: '')
+  @nullable
   final String displayName;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   final String email;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   final String guardianEmail;
   @override
   @JsonKey(includeIfNull: false)
   @nullable
-  final String gender;
+  @GenderTypeSerializer()
+  final GenderType gender;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   final List<String> courseIds;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   final List<String> projectIds;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   final List<String> awardIds;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: false)
   @nullable
   final bool isEmailVerified;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   final String phone;
   @override
@@ -556,11 +592,11 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
   @CountrySerializer()
   final Country country;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   final String guardianPhone;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   final String photoURL;
   @override
@@ -581,7 +617,7 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
 
   @override
   String toString() {
-    return 'StudentAuthDTO(id: $id, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'StudentAuthDTO(id: $id, role: $role, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -590,6 +626,8 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
         (other is _StudentAuthDTO &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.displayName, displayName) ||
                 const DeepCollectionEquality()
                     .equals(other.displayName, displayName)) &&
@@ -638,6 +676,7 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(guardianEmail) ^
@@ -667,43 +706,48 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
 abstract class _StudentAuthDTO extends StudentAuthDTO {
   const _StudentAuthDTO._() : super._();
   const factory _StudentAuthDTO(
-      {@JsonKey(ignore: true, includeIfNull: false)
+      {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           String id,
-      @required
       @JsonKey(includeIfNull: false)
+      @nullable
+      @RoleSerializer()
+          Roles role,
+      @required
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String displayName,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
       @required
       @JsonKey(includeIfNull: false)
       @nullable
-          String gender,
+      @GenderTypeSerializer()
+          GenderType gender,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> courseIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> projectIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> awardIds,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: false)
       @nullable
           bool isEmailVerified,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String phone,
       @required
@@ -712,11 +756,11 @@ abstract class _StudentAuthDTO extends StudentAuthDTO {
       @CountrySerializer()
           Country country,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianPhone,
       @required
-      @JsonKey(includeIfNull: false)
+      @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
       @nullable
@@ -736,43 +780,49 @@ abstract class _StudentAuthDTO extends StudentAuthDTO {
       _$_StudentAuthDTO.fromJson;
 
   @override
-  @JsonKey(ignore: true, includeIfNull: false)
+  @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
   @nullable
   String get id;
   @override
   @JsonKey(includeIfNull: false)
   @nullable
+  @RoleSerializer()
+  Roles get role;
+  @override
+  @JsonKey(includeIfNull: false, defaultValue: '')
+  @nullable
   String get displayName;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get email;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get guardianEmail;
   @override
   @JsonKey(includeIfNull: false)
   @nullable
-  String get gender;
+  @GenderTypeSerializer()
+  GenderType get gender;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get courseIds;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get projectIds;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get awardIds;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: false)
   @nullable
   bool get isEmailVerified;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get phone;
   @override
@@ -781,11 +831,11 @@ abstract class _StudentAuthDTO extends StudentAuthDTO {
   @CountrySerializer()
   Country get country;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get guardianPhone;
   @override
-  @JsonKey(includeIfNull: false)
+  @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get photoURL;
   @override

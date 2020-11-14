@@ -92,7 +92,7 @@ class SignupForm extends StatelessWidget {
                 //
                 VerticalSpace(height: App.height * 0.02),
                 //
-                context.watch<OnBoardingCubit>().state.subscription?.fold(
+                context.watch<OnBoardingCubit>().state.role?.fold(
                       parent: () => SizedBox.shrink(),
                       student: () => Column(
                         children: [

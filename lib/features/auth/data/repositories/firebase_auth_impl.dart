@@ -142,7 +142,10 @@ class FirebaseAuthImpl implements AuthFacade {
   Option<User> get currentUser => optionOf(_firebaseAuth.currentUser?.domain);
 
   @override
-  Stream<Option<User>> get onAuthStateChanged => _firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
+  Stream<Option<User>> get onAuthStateChanged => _firebaseAuth.authStateChanges().map((user) => optionOf(user?.domain));
+
+  @override
+  Stream<Option<User>> get onUserChanges => _firebaseAuth.userChanges().map((user) => optionOf(user?.domain));
 
   @override
   Future<Either<AuthFailure, Unit>> createAccount({@required EmailAddress emailAddress, @required Password password}) async {
@@ -197,7 +200,7 @@ class FirebaseAuthImpl implements AuthFacade {
         },
       );
 
-      if (!photoURL.isNull && photoURL.isNotEmpty) await _firebaseAuth.currentUser?.updateProfile(photoURL: photoURL);
+      if (!photoURL.isNullOrBlank) await _firebaseAuth.currentUser?.updateProfile(photoURL: photoURL);
 
       return right(unit);
     } on AuthFailure catch (e) {

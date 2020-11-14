@@ -1,16 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:smartlets/features/shared/shared.dart';
+import 'package:smartlets/utils/utils.dart';
 
 class CountrySerializer implements JsonConverter<Country, Map<String, dynamic>> {
   const CountrySerializer();
 
   @override
   Country fromJson(Map<String, dynamic> json) => Country(
-        name: CountryName.valueOf(json['name'] as String),
-        codeName: json['codeName'] as String,
-        dialCode: json['dialCode'] as String,
-        language: json['language'] as String,
-      );
+      name: CountryName.valueOf(!json.isNullOrBlank ? json['name'] as String : Country.NG.name.name),
+      codeName: !json.isNullOrBlank ? json['codeName'] as String : '',
+      dialCode: !json.isNullOrBlank ? json['dialCode'] as String : '',
+      language: !json.isNullOrBlank ? json['language'] as String : '',
+    );
 
   @override
   Map<String, dynamic> toJson(Country instance) {

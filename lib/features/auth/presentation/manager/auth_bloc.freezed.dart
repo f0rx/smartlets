@@ -4807,7 +4807,7 @@ class _$AuthStateTearOff {
       @required Gender gender,
       @required Password password,
       @required Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading = false,
       bool validate = false,
       bool passwordHidden = true,
@@ -4842,7 +4842,7 @@ mixin _$AuthState {
   Gender get gender;
   Password get password;
   Password get newPassword;
-  Subscription get subscription;
+  Roles get subscription;
   bool get isLoading;
   bool get validate;
   bool get passwordHidden;
@@ -4863,7 +4863,7 @@ abstract class $AuthStateCopyWith<$Res> {
       Gender gender,
       Password password,
       Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -4908,9 +4908,8 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
       password: password == freezed ? _value.password : password as Password,
       newPassword:
           newPassword == freezed ? _value.newPassword : newPassword as Password,
-      subscription: subscription == freezed
-          ? _value.subscription
-          : subscription as Subscription,
+      subscription:
+          subscription == freezed ? _value.subscription : subscription as Roles,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       validate: validate == freezed ? _value.validate : validate as bool,
       passwordHidden: passwordHidden == freezed
@@ -4939,7 +4938,7 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       Gender gender,
       Password password,
       Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -4985,9 +4984,8 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
       password: password == freezed ? _value.password : password as Password,
       newPassword:
           newPassword == freezed ? _value.newPassword : newPassword as Password,
-      subscription: subscription == freezed
-          ? _value.subscription
-          : subscription as Subscription,
+      subscription:
+          subscription == freezed ? _value.subscription : subscription as Roles,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       validate: validate == freezed ? _value.validate : validate as bool,
       passwordHidden: passwordHidden == freezed
@@ -5043,7 +5041,7 @@ class _$_AuthState implements _AuthState {
   @override
   final Password newPassword;
   @override
-  final Subscription subscription;
+  final Roles subscription;
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
@@ -5135,7 +5133,7 @@ abstract class _AuthState implements AuthState {
       @required Gender gender,
       @required Password password,
       @required Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -5155,7 +5153,7 @@ abstract class _AuthState implements AuthState {
   @override
   Password get newPassword;
   @override
-  Subscription get subscription;
+  Roles get subscription;
   @override
   bool get isLoading;
   @override

@@ -10,6 +10,8 @@ abstract class AuthFacade with FirebaseDepMixin {
 
   Stream<Option<User>> get onAuthStateChanged;
 
+  Stream<Option<User>> get onUserChanges;
+
   Future<Either<AuthFailure, Unit>> login({@required EmailAddress emailAddress, @required Password password});
 
   Future<Either<AuthFailure, Unit>> createAccount({@required EmailAddress emailAddress, @required Password password});

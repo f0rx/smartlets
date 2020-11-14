@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
-import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
@@ -64,30 +63,18 @@ class _SplashScreenState extends State<SplashScreen> {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             return BlocListener<OnBoardingCubit, OnBoardingState>(
-              listenWhen: (p, c) => !c.subscription.isNull,
+              listenWhen: (p, c) => !c.role.isNull,
               listener: (C, _) {
-                getIt<AuthFacade>().onAuthStateChanged?.listen((option) => option?.fold(
-                      () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
-                      // Using this screens' context is wrong cos it will be disposed on navigation; hence the use of App.context
-                      (user) => BlocProvider.of<OnBoardingCubit>(App.context).state?.subscription?.fold(
-                            parent: () => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
-                            student: () {
-                              var plusCreated = user.createdAt.add(Duration(seconds: 20));
-                              var difference = plusCreated.difference(DateTime.now());
-                              if (difference.inSeconds > 0)
-                                getIt<StudentAuthCubit>().update(Student(
-                                  displayName: !user.displayName.isNullOrBlank ? DisplayName(user.displayName) : null,
-                                  gender: Gender.DEFAULT,
-                                  guardianEmail: EmailAddress.DEFAULT,
-                                  guardianPhone: Phone.DEFAULT,
-                                  courseIds: ImmutableIds.EMPTY,
-                                  awardIds: ImmutableIds.EMPTY,
-                                  projectIds: ImmutableIds.EMPTY,
-                                ));
-                              return navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false);
-                            },
-                          ),
-                    ));
+                BlocProvider.of<AuthWatcherCubit>(App.context).listenToAuthChanges(
+                  (option) => option?.fold(
+                    () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
+                    // Using this screens' context is wrong cos it will be disposed on navigation; hence the use of App.context
+                    (user) async => await BlocProvider.of<OnBoardingCubit>(App.context).state?.role?.fold(
+                          parent: () async => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
+                          student: () async => navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false),
+                        ),
+                  ),
+                );
               },
               child: child,
             );

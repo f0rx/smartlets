@@ -14,22 +14,23 @@ class AuthenticatedProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<StudentAuthCubit, StudentAuthState>(
-      listener: (context, state) {
-        state.status?.fold(
-          (failure) => Flushbar(
-            duration: const Duration(seconds: 15),
-            icon: Icon(Icons.error, color: Colors.red),
-            messageText: AutoSizeText(failure.message),
-            borderRadius: 8,
-            dismissDirection: FlushbarDismissDirection.HORIZONTAL,
-            margin: EdgeInsets.all(8),
-            flushbarPosition: FlushbarPosition.TOP,
-            shouldIconPulse: true,
-            backgroundColor: Theme.of(context).primaryColor,
-          ).show(context),
-          (r) => null,
-        );
-      },
+      listener: (context, state) => state.status?.fold(
+        (failure) => Flushbar(
+          duration: const Duration(seconds: 15),
+          icon: failure.map(
+            (_) => Icon(Icons.error, color: AppColors.errorRed),
+            unknown: (_) => Icon(Icons.error, color: Colors.yellow),
+          ),
+          messageText: AutoSizeText(failure.message),
+          borderRadius: 8,
+          dismissDirection: FlushbarDismissDirection.HORIZONTAL,
+          margin: EdgeInsets.all(8),
+          flushbarPosition: FlushbarPosition.TOP,
+          shouldIconPulse: true,
+          backgroundColor: Theme.of(context).primaryColor,
+        ).show(context),
+        (r) => null,
+      ),
       child: Material(
         child: InkWell(
           onTap: () {},
@@ -49,13 +50,13 @@ class AuthenticatedProfileTile extends StatelessWidget {
                             borderOnForeground: false,
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
-                              onTap: () {
-                                // print("Student Data (InkWell.onTAP) ===> ${state.student}");
-                              },
+                              onTap: () {},
                               splashColor: Colors.grey,
                               borderRadius: BorderRadius.circular(100.0),
                               child: ExtendedImage.network(
-                                state.student?.photoURL ?? AppAssets.onlineAnonymous,
+                                state.student?.photoURL != null && !state.student.photoURL.isBlank
+                                    ? state.student?.photoURL
+                                    : AppAssets.onlineAnonymous,
                                 fit: BoxFit.fill,
                                 height: App.height * 0.08,
                                 shape: BoxShape.circle,
