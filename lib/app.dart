@@ -24,7 +24,7 @@ class SmartletsApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (_) => getIt<ThemeCubit>()),
-        BlocProvider<OnBoardingCubit>(create: (_) => getIt<OnBoardingCubit>()..getSubscription()),
+        BlocProvider<OnBoardingCubit>(create: (_) => getIt<OnBoardingCubit>()..getRole()),
         BlocProvider<AuthWatcherCubit>(create: (_) => getIt<AuthWatcherCubit>()),
         BlocProvider<CreditCardCubit>(create: (_) => getIt<CreditCardCubit>()),
       ],

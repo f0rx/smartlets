@@ -47,10 +47,12 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<FirebaseFirestore>(() => modules.firestore);
   gh.lazySingleton<FirebaseFunctions>(() => modules.functions);
   gh.lazySingleton<GoogleSignIn>(() => modules.googleSignIn);
-  gh.factory<OnBoardingCubit>(() => OnBoardingCubit(get<DataConnectionChecker>()));
+  gh.factory<OnBoardingCubit>(
+      () => OnBoardingCubit(get<DataConnectionChecker>()));
   gh.factory<ParentNavCubit>(() => ParentNavCubit());
   gh.factory<PlaybackBloc>(() => PlaybackBloc());
-  gh.lazySingleton<StudentAuthFacade>(() => StudentAuthImpl(get<FirebaseFirestore>()));
+  gh.lazySingleton<StudentAuthFacade>(
+      () => StudentAuthImpl(get<FirebaseFirestore>()));
   gh.factory<StudentNavCubit>(() => StudentNavCubit());
   gh.factory<ThemeCubit>(() => ThemeCubit());
   gh.lazySingleton<AuthFacade>(() => FirebaseAuthImpl.instance(
@@ -60,8 +62,10 @@ Future<GetIt> $initGetIt(
         get<DataConnectionChecker>(),
       ));
   gh.factory<AuthWatcherCubit>(() => AuthWatcherCubit(get<AuthFacade>()));
-  gh.factory<StudentAuthCubit>(() => StudentAuthCubit(get<StudentAuthFacade>()));
-  gh.factory<AuthBloc>(() => AuthBloc(get<AuthFacade>(), get<FirebaseFunctions>()));
+  gh.factory<StudentAuthCubit>(
+      () => StudentAuthCubit(get<StudentAuthFacade>()));
+  gh.factory<AuthBloc>(
+      () => AuthBloc(get<AuthFacade>(), get<FirebaseFunctions>()));
   return get;
 }
 

@@ -23,7 +23,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     emit(state.copyWith(hasStableInternet: conn));
   }
 
-  void subscribeAParent() async {
+  void applyParentRole() async {
     emit(state.copyWith(isLoading: true, shouldListen: false));
     await (await box).put(SUBSCRIPTION_KEY, Roles.parent.name);
     emit(state.copyWith(role: Roles.parent));
@@ -31,7 +31,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     emit(state.copyWith(isLoading: false, shouldListen: true));
   }
 
-  void subscribeAStudent() async {
+  void applyStudentRole() async {
     emit(state.copyWith(isLoading: true, shouldListen: false));
     await (await box).put(SUBSCRIPTION_KEY, Roles.student.name);
     emit(state.copyWith(role: Roles.student));
@@ -39,7 +39,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     emit(state.copyWith(isLoading: false, shouldListen: true));
   }
 
-  void subscribeAdmin() async {
+  void applyAdminRole() async {
     emit(state.copyWith(isLoading: true, shouldListen: false));
     await (await box).put(SUBSCRIPTION_KEY, Roles.admin.name);
     emit(state.copyWith(role: Roles.admin));
@@ -47,7 +47,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     emit(state.copyWith(isLoading: false, shouldListen: true));
   }
 
-  void getSubscription() async {
+  void getRole() async {
     final data = await (await box).get(SUBSCRIPTION_KEY);
     emit(state.copyWith(
       role: data != null ? Roles.valueOf(data) : Roles.student,

@@ -60,7 +60,7 @@ class OnBoardingScreen extends StatelessWidget {
                         CustomListTile<Roles>(
                           title: "I'm a Parent",
                           value: Roles.parent,
-                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).subscribeAParent(),
+                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).applyParentRole(),
                         ),
                         //
                         VerticalSpace(height: App.height * 0.03),
@@ -68,7 +68,7 @@ class OnBoardingScreen extends StatelessWidget {
                         CustomListTile<Roles>(
                           title: "I'm a Student",
                           value: Roles.student,
-                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).subscribeAStudent(),
+                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).applyStudentRole(),
                         ),
                       ],
                     ),

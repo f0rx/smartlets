@@ -4,7 +4,10 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/auth/presentation/manager/student/student_auth_cubit.dart';
+import 'package:smartlets/features/shared/shared.dart';
+import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
@@ -50,7 +53,11 @@ class AuthenticatedProfileTile extends StatelessWidget {
                             borderOnForeground: false,
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                getIt<StudentAuthCubit>().update(Student(
+                                  gender: Gender(GenderType.Male),
+                                ));
+                              },
                               splashColor: Colors.grey,
                               borderRadius: BorderRadius.circular(100.0),
                               child: ExtendedImage.network(
