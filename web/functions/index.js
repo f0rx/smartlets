@@ -1,9 +1,11 @@
 const functions = require("firebase-functions");
 
-const { createUserRecord } = require("./src/auth");
-const { deleteUserRecord } = require("./src/auth");
+const auth = require("./src/auth/triggers");
+const calls = require("./src/callables/callable");
+const background = require("./src/background/triggers");
 
 module.exports = {
-  createUserRecord: functions.auth.user().onCreate(createUserRecord),
-  deleteUserRecord: functions.auth.user().onDelete(deleteUserRecord),
+    auth,
+    calls,
+    background,
 };

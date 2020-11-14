@@ -1,8 +1,9 @@
-const { db, dbRaw, config } = require("../admin");
+const { db, dbRaw, config, functions } = require("../admin");
 
-const COLLECTION = "students";
+const USERS_COLLECTION = "users";
 
-const createUserRecord = (user) => {
+exports.createUserRecord = functions.auth.user().onCreate((user) => {
+
   const uid = user.uid; // The id of the user.
   const email = user.email; // The email of the user.
   const emailVerified = user.emailVerified === null || user.emailVerified === undefined ? false : user.emailVerified; // User verification status
@@ -35,25 +36,11 @@ const createUserRecord = (user) => {
     phone: phoneNumber,
     createdAt: createdAt,
     lastSeenAt: lastSeenAt == null ? lastRefreshTime == null ? createdAt : lastRefreshTime : lastSeenAt,
-    updatedAt: lastSeenAt == null ? lastRefreshTime == null ? createdAt : lastRefreshTime : lastSeenAt,
+    updatedAt: null,
   };
 
   return db
-    .collection(COLLECTION)
+    .collection(USERS_COLLECTION)
     .doc(uid)
     .set(data);
-};
-
-const deleteUserRecord = (user) => {
-  return db
-    .collection(COLLECTION)
-    .doc(user.uid)
-    .delete();
-};
-
-//export as => functions.auth.user().onCreate(#####);
-
-module.exports = {
-  createUserRecord,
-  deleteUserRecord,
-};
+});
