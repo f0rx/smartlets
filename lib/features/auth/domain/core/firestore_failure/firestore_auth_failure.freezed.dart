@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'student_auth_failure.dart';
+part of 'firestore_auth_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,19 +10,20 @@ part of 'student_auth_failure.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$StudentAuthFailureTearOff {
-  const _$StudentAuthFailureTearOff();
+class _$FirestoreAuthFailureTearOff {
+  const _$FirestoreAuthFailureTearOff();
 
 // ignore: unused_element
-  _StudentAuthFailure call(String message) {
-    return _StudentAuthFailure(
+  _FirestoreAuthFailure call(String message) {
+    return _FirestoreAuthFailure(
       message,
     );
   }
 
 // ignore: unused_element
-  _UnknownStudentAuthFailure unknown({@required String message, String code}) {
-    return _UnknownStudentAuthFailure(
+  _UnknownFirestoreAuthFailure unknown(
+      {@required String message, String code}) {
+    return _UnknownFirestoreAuthFailure(
       message: message,
       code: code,
     );
@@ -31,10 +32,10 @@ class _$StudentAuthFailureTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $StudentAuthFailure = _$StudentAuthFailureTearOff();
+const $FirestoreAuthFailure = _$FirestoreAuthFailureTearOff();
 
 /// @nodoc
-mixin _$StudentAuthFailure {
+mixin _$FirestoreAuthFailure {
   String get message;
 
   @optionalTypeArgs
@@ -50,35 +51,35 @@ mixin _$StudentAuthFailure {
   });
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(_StudentAuthFailure value), {
-    @required Result unknown(_UnknownStudentAuthFailure value),
+    Result $default(_FirestoreAuthFailure value), {
+    @required Result unknown(_UnknownFirestoreAuthFailure value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(_StudentAuthFailure value), {
-    Result unknown(_UnknownStudentAuthFailure value),
+    Result $default(_FirestoreAuthFailure value), {
+    Result unknown(_UnknownFirestoreAuthFailure value),
     @required Result orElse(),
   });
 
-  $StudentAuthFailureCopyWith<StudentAuthFailure> get copyWith;
+  $FirestoreAuthFailureCopyWith<FirestoreAuthFailure> get copyWith;
 }
 
 /// @nodoc
-abstract class $StudentAuthFailureCopyWith<$Res> {
-  factory $StudentAuthFailureCopyWith(
-          StudentAuthFailure value, $Res Function(StudentAuthFailure) then) =
-      _$StudentAuthFailureCopyWithImpl<$Res>;
+abstract class $FirestoreAuthFailureCopyWith<$Res> {
+  factory $FirestoreAuthFailureCopyWith(FirestoreAuthFailure value,
+          $Res Function(FirestoreAuthFailure) then) =
+      _$FirestoreAuthFailureCopyWithImpl<$Res>;
   $Res call({String message});
 }
 
 /// @nodoc
-class _$StudentAuthFailureCopyWithImpl<$Res>
-    implements $StudentAuthFailureCopyWith<$Res> {
-  _$StudentAuthFailureCopyWithImpl(this._value, this._then);
+class _$FirestoreAuthFailureCopyWithImpl<$Res>
+    implements $FirestoreAuthFailureCopyWith<$Res> {
+  _$FirestoreAuthFailureCopyWithImpl(this._value, this._then);
 
-  final StudentAuthFailure _value;
+  final FirestoreAuthFailure _value;
   // ignore: unused_field
-  final $Res Function(StudentAuthFailure) _then;
+  final $Res Function(FirestoreAuthFailure) _then;
 
   @override
   $Res call({
@@ -91,39 +92,39 @@ class _$StudentAuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StudentAuthFailureCopyWith<$Res>
-    implements $StudentAuthFailureCopyWith<$Res> {
-  factory _$StudentAuthFailureCopyWith(
-          _StudentAuthFailure value, $Res Function(_StudentAuthFailure) then) =
-      __$StudentAuthFailureCopyWithImpl<$Res>;
+abstract class _$FirestoreAuthFailureCopyWith<$Res>
+    implements $FirestoreAuthFailureCopyWith<$Res> {
+  factory _$FirestoreAuthFailureCopyWith(_FirestoreAuthFailure value,
+          $Res Function(_FirestoreAuthFailure) then) =
+      __$FirestoreAuthFailureCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class __$StudentAuthFailureCopyWithImpl<$Res>
-    extends _$StudentAuthFailureCopyWithImpl<$Res>
-    implements _$StudentAuthFailureCopyWith<$Res> {
-  __$StudentAuthFailureCopyWithImpl(
-      _StudentAuthFailure _value, $Res Function(_StudentAuthFailure) _then)
-      : super(_value, (v) => _then(v as _StudentAuthFailure));
+class __$FirestoreAuthFailureCopyWithImpl<$Res>
+    extends _$FirestoreAuthFailureCopyWithImpl<$Res>
+    implements _$FirestoreAuthFailureCopyWith<$Res> {
+  __$FirestoreAuthFailureCopyWithImpl(
+      _FirestoreAuthFailure _value, $Res Function(_FirestoreAuthFailure) _then)
+      : super(_value, (v) => _then(v as _FirestoreAuthFailure));
 
   @override
-  _StudentAuthFailure get _value => super._value as _StudentAuthFailure;
+  _FirestoreAuthFailure get _value => super._value as _FirestoreAuthFailure;
 
   @override
   $Res call({
     Object message = freezed,
   }) {
-    return _then(_StudentAuthFailure(
+    return _then(_FirestoreAuthFailure(
       message == freezed ? _value.message : message as String,
     ));
   }
 }
 
 /// @nodoc
-class _$_StudentAuthFailure extends _StudentAuthFailure {
-  const _$_StudentAuthFailure(this.message)
+class _$_FirestoreAuthFailure extends _FirestoreAuthFailure {
+  const _$_FirestoreAuthFailure(this.message)
       : assert(message != null),
         super._();
 
@@ -132,13 +133,13 @@ class _$_StudentAuthFailure extends _StudentAuthFailure {
 
   @override
   String toString() {
-    return 'StudentAuthFailure(message: $message)';
+    return 'FirestoreAuthFailure(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _StudentAuthFailure &&
+        (other is _FirestoreAuthFailure &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -148,8 +149,9 @@ class _$_StudentAuthFailure extends _StudentAuthFailure {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
 
   @override
-  _$StudentAuthFailureCopyWith<_StudentAuthFailure> get copyWith =>
-      __$StudentAuthFailureCopyWithImpl<_StudentAuthFailure>(this, _$identity);
+  _$FirestoreAuthFailureCopyWith<_FirestoreAuthFailure> get copyWith =>
+      __$FirestoreAuthFailureCopyWithImpl<_FirestoreAuthFailure>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -179,8 +181,8 @@ class _$_StudentAuthFailure extends _StudentAuthFailure {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(_StudentAuthFailure value), {
-    @required Result unknown(_UnknownStudentAuthFailure value),
+    Result $default(_FirestoreAuthFailure value), {
+    @required Result unknown(_UnknownFirestoreAuthFailure value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -190,8 +192,8 @@ class _$_StudentAuthFailure extends _StudentAuthFailure {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(_StudentAuthFailure value), {
-    Result unknown(_UnknownStudentAuthFailure value),
+    Result $default(_FirestoreAuthFailure value), {
+    Result unknown(_UnknownFirestoreAuthFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -202,44 +204,46 @@ class _$_StudentAuthFailure extends _StudentAuthFailure {
   }
 }
 
-abstract class _StudentAuthFailure extends StudentAuthFailure {
-  const _StudentAuthFailure._() : super._();
-  const factory _StudentAuthFailure(String message) = _$_StudentAuthFailure;
+abstract class _FirestoreAuthFailure extends FirestoreAuthFailure {
+  const _FirestoreAuthFailure._() : super._();
+  const factory _FirestoreAuthFailure(String message) = _$_FirestoreAuthFailure;
 
   @override
   String get message;
   @override
-  _$StudentAuthFailureCopyWith<_StudentAuthFailure> get copyWith;
+  _$FirestoreAuthFailureCopyWith<_FirestoreAuthFailure> get copyWith;
 }
 
 /// @nodoc
-abstract class _$UnknownStudentAuthFailureCopyWith<$Res>
-    implements $StudentAuthFailureCopyWith<$Res> {
-  factory _$UnknownStudentAuthFailureCopyWith(_UnknownStudentAuthFailure value,
-          $Res Function(_UnknownStudentAuthFailure) then) =
-      __$UnknownStudentAuthFailureCopyWithImpl<$Res>;
+abstract class _$UnknownFirestoreAuthFailureCopyWith<$Res>
+    implements $FirestoreAuthFailureCopyWith<$Res> {
+  factory _$UnknownFirestoreAuthFailureCopyWith(
+          _UnknownFirestoreAuthFailure value,
+          $Res Function(_UnknownFirestoreAuthFailure) then) =
+      __$UnknownFirestoreAuthFailureCopyWithImpl<$Res>;
   @override
   $Res call({String message, String code});
 }
 
 /// @nodoc
-class __$UnknownStudentAuthFailureCopyWithImpl<$Res>
-    extends _$StudentAuthFailureCopyWithImpl<$Res>
-    implements _$UnknownStudentAuthFailureCopyWith<$Res> {
-  __$UnknownStudentAuthFailureCopyWithImpl(_UnknownStudentAuthFailure _value,
-      $Res Function(_UnknownStudentAuthFailure) _then)
-      : super(_value, (v) => _then(v as _UnknownStudentAuthFailure));
+class __$UnknownFirestoreAuthFailureCopyWithImpl<$Res>
+    extends _$FirestoreAuthFailureCopyWithImpl<$Res>
+    implements _$UnknownFirestoreAuthFailureCopyWith<$Res> {
+  __$UnknownFirestoreAuthFailureCopyWithImpl(
+      _UnknownFirestoreAuthFailure _value,
+      $Res Function(_UnknownFirestoreAuthFailure) _then)
+      : super(_value, (v) => _then(v as _UnknownFirestoreAuthFailure));
 
   @override
-  _UnknownStudentAuthFailure get _value =>
-      super._value as _UnknownStudentAuthFailure;
+  _UnknownFirestoreAuthFailure get _value =>
+      super._value as _UnknownFirestoreAuthFailure;
 
   @override
   $Res call({
     Object message = freezed,
     Object code = freezed,
   }) {
-    return _then(_UnknownStudentAuthFailure(
+    return _then(_UnknownFirestoreAuthFailure(
       message: message == freezed ? _value.message : message as String,
       code: code == freezed ? _value.code : code as String,
     ));
@@ -247,8 +251,8 @@ class __$UnknownStudentAuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_UnknownStudentAuthFailure extends _UnknownStudentAuthFailure {
-  _$_UnknownStudentAuthFailure({@required this.message, this.code})
+class _$_UnknownFirestoreAuthFailure extends _UnknownFirestoreAuthFailure {
+  _$_UnknownFirestoreAuthFailure({@required this.message, this.code})
       : assert(message != null),
         super._();
 
@@ -259,13 +263,13 @@ class _$_UnknownStudentAuthFailure extends _UnknownStudentAuthFailure {
 
   @override
   String toString() {
-    return 'StudentAuthFailure.unknown(message: $message, code: $code)';
+    return 'FirestoreAuthFailure.unknown(message: $message, code: $code)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UnknownStudentAuthFailure &&
+        (other is _UnknownFirestoreAuthFailure &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality()
                     .equals(other.message, message)) &&
@@ -280,10 +284,9 @@ class _$_UnknownStudentAuthFailure extends _UnknownStudentAuthFailure {
       const DeepCollectionEquality().hash(code);
 
   @override
-  _$UnknownStudentAuthFailureCopyWith<_UnknownStudentAuthFailure>
-      get copyWith =>
-          __$UnknownStudentAuthFailureCopyWithImpl<_UnknownStudentAuthFailure>(
-              this, _$identity);
+  _$UnknownFirestoreAuthFailureCopyWith<_UnknownFirestoreAuthFailure>
+      get copyWith => __$UnknownFirestoreAuthFailureCopyWithImpl<
+          _UnknownFirestoreAuthFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -313,8 +316,8 @@ class _$_UnknownStudentAuthFailure extends _UnknownStudentAuthFailure {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>(
-    Result $default(_StudentAuthFailure value), {
-    @required Result unknown(_UnknownStudentAuthFailure value),
+    Result $default(_FirestoreAuthFailure value), {
+    @required Result unknown(_UnknownFirestoreAuthFailure value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -324,8 +327,8 @@ class _$_UnknownStudentAuthFailure extends _UnknownStudentAuthFailure {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>(
-    Result $default(_StudentAuthFailure value), {
-    Result unknown(_UnknownStudentAuthFailure value),
+    Result $default(_FirestoreAuthFailure value), {
+    Result unknown(_UnknownFirestoreAuthFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -336,14 +339,15 @@ class _$_UnknownStudentAuthFailure extends _UnknownStudentAuthFailure {
   }
 }
 
-abstract class _UnknownStudentAuthFailure extends StudentAuthFailure {
-  _UnknownStudentAuthFailure._() : super._();
-  factory _UnknownStudentAuthFailure({@required String message, String code}) =
-      _$_UnknownStudentAuthFailure;
+abstract class _UnknownFirestoreAuthFailure extends FirestoreAuthFailure {
+  _UnknownFirestoreAuthFailure._() : super._();
+  factory _UnknownFirestoreAuthFailure(
+      {@required String message, String code}) = _$_UnknownFirestoreAuthFailure;
 
   @override
   String get message;
   String get code;
   @override
-  _$UnknownStudentAuthFailureCopyWith<_UnknownStudentAuthFailure> get copyWith;
+  _$UnknownFirestoreAuthFailureCopyWith<_UnknownFirestoreAuthFailure>
+      get copyWith;
 }

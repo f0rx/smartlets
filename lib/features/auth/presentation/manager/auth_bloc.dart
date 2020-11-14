@@ -8,11 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:smartlets/features/auth/data/models/student/student_auth_dto.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/features/on_boarding/models/roles.dart';
+import 'package:smartlets/features/student/data/exports.dart';
 import 'package:smartlets/utils/assets.dart';
 import 'package:smartlets/utils/utils.dart';
 
@@ -147,7 +147,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             try {
               await _functions
                   .httpsCallable('calls-onUserCreated-onUserCreatedCallable')
-                  .call(StudentAuthDTO.fromDomain(Student(
+                  .call(StudentDTO.fromDomain(Student(
                     displayName: DisplayName(user?.displayName ?? ''),
                     gender: Gender.DEFAULT,
                     guardianEmail: EmailAddress.DEFAULT,

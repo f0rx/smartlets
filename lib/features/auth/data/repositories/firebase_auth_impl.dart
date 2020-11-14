@@ -12,7 +12,7 @@ import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/utils/utils.dart';
 
-import 'auth_repo.dart';
+import 'export.dart';
 
 @LazySingleton(as: AuthFacade)
 class FirebaseAuthImpl implements AuthFacade {

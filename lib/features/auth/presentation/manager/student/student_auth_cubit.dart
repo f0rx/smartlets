@@ -15,8 +15,8 @@ part 'student_auth_state.dart';
 @Injectable()
 class StudentAuthCubit extends Cubit<StudentAuthState> {
   final StudentAuthFacade _facade;
-  StreamSubscription<Either<StudentAuthFailure, Student>> _readSubscription;
-  StreamSubscription<Either<StudentAuthFailure, KtList<Student>>> _watchSubscription;
+  StreamSubscription<Either<FirestoreAuthFailure, Student>> _readSubscription;
+  StreamSubscription<Either<FirestoreAuthFailure, KtList<Student>>> _watchSubscription;
 
   StudentAuthCubit(this._facade) : super(StudentAuthState.init());
 
@@ -62,14 +62,14 @@ class StudentAuthCubit extends Cubit<StudentAuthState> {
     emit(state.copyWith(isLoading: false, status: _result));
   }
 
-  void notifyWatchUpdate(KtList<Student> students, Either<StudentAuthFailure, Unit> status) {
+  void notifyWatchUpdate(KtList<Student> students, Either<FirestoreAuthFailure, Unit> status) {
     emit(state.copyWith(
       students: students,
       status: status,
     ));
   }
 
-  void notifyReadUpdate(Student student, Either<StudentAuthFailure, Unit> status) {
+  void notifyReadUpdate(Student student, Either<FirestoreAuthFailure, Unit> status) {
     emit(state.copyWith(
       student: student,
       status: status,

@@ -6,15 +6,15 @@ import 'package:smartlets/features/shared/shared.dart';
 import 'package:smartlets/manager/serializer/serializers.dart';
 import 'package:smartlets/utils/utils.dart';
 
-part 'student_auth_dto.freezed.dart';
-part 'student_auth_dto.g.dart';
+part 'student_dto.freezed.dart';
+part 'student_dto.g.dart';
 
 @freezed
 @immutable
-abstract class StudentAuthDTO implements _$StudentAuthDTO {
-  const StudentAuthDTO._();
+abstract class StudentDTO implements _$StudentDTO {
+  const StudentDTO._();
 
-  const factory StudentAuthDTO({
+  const factory StudentDTO({
     @JsonKey(ignore: true, includeIfNull: false, defaultValue: '') @nullable String id,
     @Default(Roles.student) @JsonKey(includeIfNull: false) @nullable @RoleSerializer() Roles role,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String displayName,
@@ -29,13 +29,13 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
     @required @JsonKey(includeIfNull: false) @nullable @CountrySerializer() Country country,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String guardianPhone,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String photoURL,
-    @nullable @JsonKey(includeIfNull: false) @ServerTimestampConverter() Timestamp createdAt,
-    @nullable @JsonKey(includeIfNull: false) @ServerTimestampConverter() Timestamp lastSeenAt,
-    @nullable @JsonKey(includeIfNull: false) @ServerTimestampConverter() Timestamp updatedAt,
-  }) = _StudentAuthDTO;
+    @required @JsonKey(includeIfNull: false) @nullable @ServerTimestampConverter() Timestamp createdAt,
+    @required @JsonKey(includeIfNull: false) @nullable @ServerTimestampConverter() Timestamp lastSeenAt,
+    @required @JsonKey(includeIfNull: false) @nullable @ServerTimestampConverter() Timestamp updatedAt,
+  }) = _StudentDTO;
 
-  factory StudentAuthDTO.fromDomain(Student student) {
-    return StudentAuthDTO(
+  factory StudentDTO.fromDomain(Student student) {
+    return StudentDTO(
       displayName: student.displayName?.getOrNull,
       email: student.email?.getOrNull,
       guardianEmail: student.guardianEmail?.getOrNull,
@@ -75,8 +75,8 @@ abstract class StudentAuthDTO implements _$StudentAuthDTO {
     );
   }
 
-  factory StudentAuthDTO.fromJson(Map<String, dynamic> json) => _$StudentAuthDTOFromJson(json);
+  factory StudentDTO.fromJson(Map<String, dynamic> json) => _$StudentDTOFromJson(json);
 
-  factory StudentAuthDTO.fromDocument(DocumentSnapshot snapshot) =>
-      StudentAuthDTO.fromJson(!snapshot.data().isNull ? snapshot.data() : {}).copyWith(id: snapshot.id);
+  factory StudentDTO.fromDocument(DocumentSnapshot snapshot) =>
+      StudentDTO.fromJson(!snapshot.data().isNull ? snapshot.data() : {}).copyWith(id: snapshot.id);
 }

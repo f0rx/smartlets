@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'student_auth_dto.dart';
+part of 'student_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StudentAuthDTO _$_$_StudentAuthDTOFromJson(Map<String, dynamic> json) {
-  return _$_StudentAuthDTO(
+_$_StudentDTO _$_$_StudentDTOFromJson(Map<String, dynamic> json) {
+  return _$_StudentDTO(
     role: const RoleSerializer().fromJson(json['role'] as String),
     displayName: json['displayName'] as String ?? '',
     email: json['email'] as String ?? '',
@@ -31,7 +31,7 @@ _$_StudentAuthDTO _$_$_StudentAuthDTOFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_StudentAuthDTOToJson(_$_StudentAuthDTO instance) {
+Map<String, dynamic> _$_$_StudentDTOToJson(_$_StudentDTO instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

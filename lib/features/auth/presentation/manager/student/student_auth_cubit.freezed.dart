@@ -17,7 +17,7 @@ class _$StudentAuthStateTearOff {
   _StudentAuthState call(
       {@nullable Student student,
       KtList<Student> students = const KtList.empty(),
-      @nullable Either<StudentAuthFailure, Unit> status,
+      @nullable Either<FirestoreAuthFailure, Unit> status,
       bool isLoading = false}) {
     return _StudentAuthState(
       student: student,
@@ -38,7 +38,7 @@ mixin _$StudentAuthState {
   Student get student;
   KtList<Student> get students;
   @nullable
-  Either<StudentAuthFailure, Unit> get status;
+  Either<FirestoreAuthFailure, Unit> get status;
   bool get isLoading;
 
   $StudentAuthStateCopyWith<StudentAuthState> get copyWith;
@@ -52,7 +52,7 @@ abstract class $StudentAuthStateCopyWith<$Res> {
   $Res call(
       {@nullable Student student,
       KtList<Student> students,
-      @nullable Either<StudentAuthFailure, Unit> status,
+      @nullable Either<FirestoreAuthFailure, Unit> status,
       bool isLoading});
 
   $StudentCopyWith<$Res> get student;
@@ -80,7 +80,7 @@ class _$StudentAuthStateCopyWithImpl<$Res>
           students == freezed ? _value.students : students as KtList<Student>,
       status: status == freezed
           ? _value.status
-          : status as Either<StudentAuthFailure, Unit>,
+          : status as Either<FirestoreAuthFailure, Unit>,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
@@ -106,7 +106,7 @@ abstract class _$StudentAuthStateCopyWith<$Res>
   $Res call(
       {@nullable Student student,
       KtList<Student> students,
-      @nullable Either<StudentAuthFailure, Unit> status,
+      @nullable Either<FirestoreAuthFailure, Unit> status,
       bool isLoading});
 
   @override
@@ -137,7 +137,7 @@ class __$StudentAuthStateCopyWithImpl<$Res>
           students == freezed ? _value.students : students as KtList<Student>,
       status: status == freezed
           ? _value.status
-          : status as Either<StudentAuthFailure, Unit>,
+          : status as Either<FirestoreAuthFailure, Unit>,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
     ));
   }
@@ -162,7 +162,7 @@ class _$_StudentAuthState extends _StudentAuthState {
   final KtList<Student> students;
   @override
   @nullable
-  final Either<StudentAuthFailure, Unit> status;
+  final Either<FirestoreAuthFailure, Unit> status;
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
@@ -207,7 +207,7 @@ abstract class _StudentAuthState extends StudentAuthState {
   const factory _StudentAuthState(
       {@nullable Student student,
       KtList<Student> students,
-      @nullable Either<StudentAuthFailure, Unit> status,
+      @nullable Either<FirestoreAuthFailure, Unit> status,
       bool isLoading}) = _$_StudentAuthState;
 
   @override
@@ -217,7 +217,7 @@ abstract class _StudentAuthState extends StudentAuthState {
   KtList<Student> get students;
   @override
   @nullable
-  Either<StudentAuthFailure, Unit> get status;
+  Either<FirestoreAuthFailure, Unit> get status;
   @override
   bool get isLoading;
   @override

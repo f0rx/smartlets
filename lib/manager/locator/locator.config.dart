@@ -14,8 +14,8 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../features/auth/data/models/student/student_auth_impl.dart';
 import '../../features/auth/data/repositories/firebase_auth_impl.dart';
+import '../../features/auth/data/repositories/student_auth_impl.dart';
 import '../../features/auth/domain/core/auth.dart';
 import '../../features/auth/presentation/manager/auth_bloc.dart';
 import '../../features/auth/presentation/manager/auth_watcher/auth_watcher_cubit.dart';
@@ -47,12 +47,10 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<FirebaseFirestore>(() => modules.firestore);
   gh.lazySingleton<FirebaseFunctions>(() => modules.functions);
   gh.lazySingleton<GoogleSignIn>(() => modules.googleSignIn);
-  gh.factory<OnBoardingCubit>(
-      () => OnBoardingCubit(get<DataConnectionChecker>()));
+  gh.factory<OnBoardingCubit>(() => OnBoardingCubit(get<DataConnectionChecker>()));
   gh.factory<ParentNavCubit>(() => ParentNavCubit());
   gh.factory<PlaybackBloc>(() => PlaybackBloc());
-  gh.lazySingleton<StudentAuthFacade>(
-      () => StudentAuthImpl(get<FirebaseFirestore>()));
+  gh.lazySingleton<StudentAuthFacade>(() => StudentAuthImpl(get<FirebaseFirestore>()));
   gh.factory<StudentNavCubit>(() => StudentNavCubit());
   gh.factory<ThemeCubit>(() => ThemeCubit());
   gh.lazySingleton<AuthFacade>(() => FirebaseAuthImpl.instance(
@@ -62,10 +60,8 @@ Future<GetIt> $initGetIt(
         get<DataConnectionChecker>(),
       ));
   gh.factory<AuthWatcherCubit>(() => AuthWatcherCubit(get<AuthFacade>()));
-  gh.factory<StudentAuthCubit>(
-      () => StudentAuthCubit(get<StudentAuthFacade>()));
-  gh.factory<AuthBloc>(
-      () => AuthBloc(get<AuthFacade>(), get<FirebaseFunctions>()));
+  gh.factory<StudentAuthCubit>(() => StudentAuthCubit(get<StudentAuthFacade>()));
+  gh.factory<AuthBloc>(() => AuthBloc(get<AuthFacade>(), get<FirebaseFunctions>()));
   return get;
 }
 

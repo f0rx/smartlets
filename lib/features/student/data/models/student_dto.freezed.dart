@@ -1,23 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'student_auth_dto.dart';
+part of 'student_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
-StudentAuthDTO _$StudentAuthDTOFromJson(Map<String, dynamic> json) {
-  return _StudentAuthDTO.fromJson(json);
+StudentDTO _$StudentDTOFromJson(Map<String, dynamic> json) {
+  return _StudentDTO.fromJson(json);
 }
 
 /// @nodoc
-class _$StudentAuthDTOTearOff {
-  const _$StudentAuthDTOTearOff();
+class _$StudentDTOTearOff {
+  const _$StudentDTOTearOff();
 
 // ignore: unused_element
-  _StudentAuthDTO call(
+  _StudentDTO call(
       {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           String id,
@@ -75,19 +75,22 @@ class _$StudentAuthDTOTearOff {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp createdAt,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp lastSeenAt,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp updatedAt}) {
-    return _StudentAuthDTO(
+    return _StudentDTO(
       id: id,
       role: role,
       displayName: displayName,
@@ -109,17 +112,17 @@ class _$StudentAuthDTOTearOff {
   }
 
 // ignore: unused_element
-  StudentAuthDTO fromJson(Map<String, Object> json) {
-    return StudentAuthDTO.fromJson(json);
+  StudentDTO fromJson(Map<String, Object> json) {
+    return StudentDTO.fromJson(json);
   }
 }
 
 /// @nodoc
 // ignore: unused_element
-const $StudentAuthDTO = _$StudentAuthDTOTearOff();
+const $StudentDTO = _$StudentDTOTearOff();
 
 /// @nodoc
-mixin _$StudentAuthDTO {
+mixin _$StudentDTO {
   @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
   @nullable
   String get id;
@@ -165,28 +168,28 @@ mixin _$StudentAuthDTO {
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get photoURL;
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   Timestamp get createdAt;
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   Timestamp get lastSeenAt;
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   Timestamp get updatedAt;
 
   Map<String, dynamic> toJson();
-  $StudentAuthDTOCopyWith<StudentAuthDTO> get copyWith;
+  $StudentDTOCopyWith<StudentDTO> get copyWith;
 }
 
 /// @nodoc
-abstract class $StudentAuthDTOCopyWith<$Res> {
-  factory $StudentAuthDTOCopyWith(
-          StudentAuthDTO value, $Res Function(StudentAuthDTO) then) =
-      _$StudentAuthDTOCopyWithImpl<$Res>;
+abstract class $StudentDTOCopyWith<$Res> {
+  factory $StudentDTOCopyWith(
+          StudentDTO value, $Res Function(StudentDTO) then) =
+      _$StudentDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
@@ -233,16 +236,16 @@ abstract class $StudentAuthDTOCopyWith<$Res> {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
-      @nullable
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp createdAt,
-      @nullable
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp lastSeenAt,
-      @nullable
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp updatedAt});
 
@@ -250,13 +253,12 @@ abstract class $StudentAuthDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StudentAuthDTOCopyWithImpl<$Res>
-    implements $StudentAuthDTOCopyWith<$Res> {
-  _$StudentAuthDTOCopyWithImpl(this._value, this._then);
+class _$StudentDTOCopyWithImpl<$Res> implements $StudentDTOCopyWith<$Res> {
+  _$StudentDTOCopyWithImpl(this._value, this._then);
 
-  final StudentAuthDTO _value;
+  final StudentDTO _value;
   // ignore: unused_field
-  final $Res Function(StudentAuthDTO) _then;
+  final $Res Function(StudentDTO) _then;
 
   @override
   $Res call({
@@ -325,11 +327,10 @@ class _$StudentAuthDTOCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StudentAuthDTOCopyWith<$Res>
-    implements $StudentAuthDTOCopyWith<$Res> {
-  factory _$StudentAuthDTOCopyWith(
-          _StudentAuthDTO value, $Res Function(_StudentAuthDTO) then) =
-      __$StudentAuthDTOCopyWithImpl<$Res>;
+abstract class _$StudentDTOCopyWith<$Res> implements $StudentDTOCopyWith<$Res> {
+  factory _$StudentDTOCopyWith(
+          _StudentDTO value, $Res Function(_StudentDTO) then) =
+      __$StudentDTOCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
@@ -377,16 +378,16 @@ abstract class _$StudentAuthDTOCopyWith<$Res>
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
-      @nullable
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp createdAt,
-      @nullable
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp lastSeenAt,
-      @nullable
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp updatedAt});
 
@@ -395,15 +396,14 @@ abstract class _$StudentAuthDTOCopyWith<$Res>
 }
 
 /// @nodoc
-class __$StudentAuthDTOCopyWithImpl<$Res>
-    extends _$StudentAuthDTOCopyWithImpl<$Res>
-    implements _$StudentAuthDTOCopyWith<$Res> {
-  __$StudentAuthDTOCopyWithImpl(
-      _StudentAuthDTO _value, $Res Function(_StudentAuthDTO) _then)
-      : super(_value, (v) => _then(v as _StudentAuthDTO));
+class __$StudentDTOCopyWithImpl<$Res> extends _$StudentDTOCopyWithImpl<$Res>
+    implements _$StudentDTOCopyWith<$Res> {
+  __$StudentDTOCopyWithImpl(
+      _StudentDTO _value, $Res Function(_StudentDTO) _then)
+      : super(_value, (v) => _then(v as _StudentDTO));
 
   @override
-  _StudentAuthDTO get _value => super._value as _StudentAuthDTO;
+  _StudentDTO get _value => super._value as _StudentDTO;
 
   @override
   $Res call({
@@ -425,7 +425,7 @@ class __$StudentAuthDTOCopyWithImpl<$Res>
     Object lastSeenAt = freezed,
     Object updatedAt = freezed,
   }) {
-    return _then(_StudentAuthDTO(
+    return _then(_StudentDTO(
       id: id == freezed ? _value.id : id as String,
       role: role == freezed ? _value.role : role as Roles,
       displayName:
@@ -464,8 +464,8 @@ class __$StudentAuthDTOCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_StudentAuthDTO extends _StudentAuthDTO {
-  const _$_StudentAuthDTO(
+class _$_StudentDTO extends _StudentDTO {
+  const _$_StudentDTO(
       {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           this.id,
@@ -523,22 +523,25 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.photoURL,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           this.createdAt,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           this.lastSeenAt,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           this.updatedAt})
       : super._();
 
-  factory _$_StudentAuthDTO.fromJson(Map<String, dynamic> json) =>
-      _$_$_StudentAuthDTOFromJson(json);
+  factory _$_StudentDTO.fromJson(Map<String, dynamic> json) =>
+      _$_$_StudentDTOFromJson(json);
 
   @override
   @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
@@ -600,30 +603,30 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
   @nullable
   final String photoURL;
   @override
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   final Timestamp createdAt;
   @override
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   final Timestamp lastSeenAt;
   @override
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   final Timestamp updatedAt;
 
   @override
   String toString() {
-    return 'StudentAuthDTO(id: $id, role: $role, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'StudentDTO(id: $id, role: $role, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _StudentAuthDTO &&
+        (other is _StudentDTO &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.role, role) ||
@@ -694,18 +697,18 @@ class _$_StudentAuthDTO extends _StudentAuthDTO {
       const DeepCollectionEquality().hash(updatedAt);
 
   @override
-  _$StudentAuthDTOCopyWith<_StudentAuthDTO> get copyWith =>
-      __$StudentAuthDTOCopyWithImpl<_StudentAuthDTO>(this, _$identity);
+  _$StudentDTOCopyWith<_StudentDTO> get copyWith =>
+      __$StudentDTOCopyWithImpl<_StudentDTO>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_StudentAuthDTOToJson(this);
+    return _$_$_StudentDTOToJson(this);
   }
 }
 
-abstract class _StudentAuthDTO extends StudentAuthDTO {
-  const _StudentAuthDTO._() : super._();
-  const factory _StudentAuthDTO(
+abstract class _StudentDTO extends StudentDTO {
+  const _StudentDTO._() : super._();
+  const factory _StudentDTO(
       {@JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
       @nullable
           String id,
@@ -763,21 +766,24 @@ abstract class _StudentAuthDTO extends StudentAuthDTO {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String photoURL,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp createdAt,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
           Timestamp lastSeenAt,
-      @nullable
+      @required
       @JsonKey(includeIfNull: false)
+      @nullable
       @ServerTimestampConverter()
-          Timestamp updatedAt}) = _$_StudentAuthDTO;
+          Timestamp updatedAt}) = _$_StudentDTO;
 
-  factory _StudentAuthDTO.fromJson(Map<String, dynamic> json) =
-      _$_StudentAuthDTO.fromJson;
+  factory _StudentDTO.fromJson(Map<String, dynamic> json) =
+      _$_StudentDTO.fromJson;
 
   @override
   @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
@@ -839,20 +845,20 @@ abstract class _StudentAuthDTO extends StudentAuthDTO {
   @nullable
   String get photoURL;
   @override
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   Timestamp get createdAt;
   @override
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   Timestamp get lastSeenAt;
   @override
-  @nullable
   @JsonKey(includeIfNull: false)
+  @nullable
   @ServerTimestampConverter()
   Timestamp get updatedAt;
   @override
-  _$StudentAuthDTOCopyWith<_StudentAuthDTO> get copyWith;
+  _$StudentDTOCopyWith<_StudentDTO> get copyWith;
 }
