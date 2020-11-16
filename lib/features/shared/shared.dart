@@ -5,7 +5,7 @@ export 'domain/entities/fields/phone/export.dart';
 export 'domain/entities/fields/shared_fields.dart';
 export 'domain/entities/immutable_ids.dart';
 export 'domain/entities/instructor/instructor.dart';
-export 'domain/entities/parent/parent.dart';
+export 'domain/entities/parent/guardian.dart';
 export 'domain/entities/student/student.dart';
 export 'domain/entities/unique_id.dart';
 export 'domain/entities/user/user.dart';

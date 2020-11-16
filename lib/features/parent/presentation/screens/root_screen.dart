@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/features/parent/presentation/manager/blocs.dart';
 import 'package:smartlets/features/parent/presentation/widgets/parent_widgets.dart';
@@ -17,6 +18,7 @@ class ParentRootScreen extends StatefulWidget with AutoRouteWrapper {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<ParentNavCubit>()),
+        BlocProvider(create: (_) => getIt<GuardianAuthCubit>()..read),
       ],
       child: this,
     );

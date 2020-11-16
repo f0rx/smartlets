@@ -12,6 +12,7 @@ import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/features/on_boarding/models/roles.dart';
+import 'package:smartlets/features/parent/data/export.dart';
 import 'package:smartlets/features/student/data/exports.dart';
 import 'package:smartlets/utils/assets.dart';
 import 'package:smartlets/utils/utils.dart';
@@ -141,24 +142,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await _auth.updateProfile(name: state.displayName, photoURL: AppAssets.onlineAnonymous);
 
     await BlocProvider.of<OnBoardingCubit>(App.context).state?.role?.fold(
-          parent: () async {},
-          student: () async {
-            final user = _auth.currentUser.getOrElse(() => null);
-            try {
-              await _functions
-                  .httpsCallable('calls-onUserCreated-onUserCreatedCallable')
-                  .call(StudentDTO.fromDomain(Student(
-                    displayName: DisplayName(user?.displayName ?? ''),
-                    gender: Gender.DEFAULT,
-                    guardianEmail: EmailAddress.DEFAULT,
-                    guardianPhone: Phone.DEFAULT,
-                    courseIds: ImmutableIds.EMPTY,
-                    awardIds: ImmutableIds.EMPTY,
-                    projectIds: ImmutableIds.EMPTY,
-                  )).toJson());
-            } catch (_) {}
-          },
-        );
+      parent: () async {
+        final user = _auth.currentUser.getOrElse(() => null);
+        try {
+          await _functions.httpsCallable('calls-onUserCreated-onUserCreatedCallable').call(GuardianDTO.fromDomain(Guardian(
+                displayName: DisplayName(user?.displayName ?? ''),
+                childrenIds: ImmutableIds.EMPTY,
+              )).toJson());
+        } catch (_) {}
+      },
+      student: () async {
+        final user = _auth.currentUser.getOrElse(() => null);
+        try {
+          await _functions.httpsCallable('calls-onUserCreated-onUserCreatedCallable').call(StudentDTO.fromDomain(Student(
+                displayName: DisplayName(user?.displayName ?? ''),
+                gender: Gender.DEFAULT,
+                guardianEmail: EmailAddress.DEFAULT,
+                guardianPhone: Phone.DEFAULT,
+                courseIds: ImmutableIds.EMPTY,
+                awardIds: ImmutableIds.EMPTY,
+                projectIds: ImmutableIds.EMPTY,
+              )).toJson());
+        } catch (_) {}
+      },
+    );
 
     yield state.copyWith(
       validate: true,

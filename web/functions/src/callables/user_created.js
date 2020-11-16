@@ -15,7 +15,7 @@ exports.onUserCreatedCallable = functions.https.onCall(async (data, context) => 
     // GET User doc
     const userDoc = await userRef.get();
 
-    async function updateNodes() {
+    async function createProfile() {
         // Write user data to new ROLE collection
         await ref.set({ ...data, ...userDoc.data(), displayName: data.displayName }, { merge: true });
         // Update user's doc in USERS
@@ -23,7 +23,7 @@ exports.onUserCreatedCallable = functions.https.onCall(async (data, context) => 
     }
 
     while (!(await ref.get()).exists) {
-        if (userDoc.exists) await updateNodes();
+        if (userDoc.exists) await createProfile();
     }
 
     return (await ref.get()).exists;

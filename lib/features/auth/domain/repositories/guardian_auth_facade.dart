@@ -5,16 +5,16 @@ import 'package:kt_dart/kt.dart';
 import 'package:smartlets/features/auth/data/repositories/export.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 
-abstract class StudentAuthFacade {
-  Future<Student> get single;
+abstract class GuardianAuthFacade {
+  Future<Guardian> get single;
 
-  Stream<Either<FirestoreAuthFailure, KtList<Student>>> get watch;
+  Stream<Either<FirestoreAuthFailure, KtList<Guardian>>> get watch;
 
-  Future<Either<FirestoreAuthFailure, Unit>> create(Student student);
+  Future<Either<FirestoreAuthFailure, Unit>> create(Guardian guardian);
 
-  Stream<Either<FirestoreAuthFailure, Student>> get read;
+  Stream<Either<FirestoreAuthFailure, Guardian>> get read;
 
-  Future<Either<FirestoreAuthFailure, Unit>> update(Student student, {Duration timeout = const Duration(seconds: 8)});
+  Future<Either<FirestoreAuthFailure, Unit>> update(Guardian guardian, {Duration timeout = const Duration(seconds: 8)});
 
   Future<Either<FirestoreAuthFailure, Unit>> get delete;
 

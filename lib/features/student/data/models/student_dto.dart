@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/collection.dart' hide nullable;
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/on_boarding/models/roles.dart';
 import 'package:smartlets/features/shared/shared.dart';
@@ -67,6 +68,15 @@ abstract class StudentDTO implements _$StudentDTO {
           : guardianPhone != null
               ? Phone(guardianPhone, country)
               : null,
+      courseIds: courseIds != null
+          ? ImmutableIds(input: courseIds.map<UniqueId>((e) => UniqueId.fromExternal(e)).toImmutableList())
+          : ImmutableIds.EMPTY,
+      awardIds: awardIds != null
+          ? ImmutableIds(input: awardIds.map<UniqueId>((e) => UniqueId.fromExternal(e)).toImmutableList())
+          : ImmutableIds.EMPTY,
+      projectIds: projectIds != null
+          ? ImmutableIds(input: projectIds.map<UniqueId>((e) => UniqueId.fromExternal(e)).toImmutableList())
+          : ImmutableIds.EMPTY,
       guardianPhone: guardianPhone != null ? Phone(guardianPhone, country) : null,
       photoURL: photoURL,
       createdAt: createdAt?.toDate(),

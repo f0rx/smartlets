@@ -10,15 +10,18 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get students {
     return collection(DbConstants.STUDENTS_COLLECTION);
   }
+
+  CollectionReference get parents {
+    return collection(DbConstants.PARENTS_COLLECTION);
+  }
+
+  CollectionReference get admins {
+    return collection(DbConstants.ADMINS_COLLECTION);
+  }
 }
 
 extension CollectionReferenceX on CollectionReference {
   DocumentReference get user {
-    final user = getIt<AuthFacade>().currentUser;
-    return doc(user.getOrElse(() => null)?.id?.value);
-  }
-
-  DocumentReference get student {
     final user = getIt<AuthFacade>().currentUser;
     return doc(user.getOrElse(() => null)?.id?.value);
   }
