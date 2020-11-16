@@ -21,9 +21,8 @@ class ParentProfileIndex extends StatelessWidget with AutoRouteWrapper {
     return BlocProvider(
       create: (_) => getIt<AuthBloc>(),
       child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),
@@ -54,7 +53,7 @@ class ParentProfileIndex extends StatelessWidget with AutoRouteWrapper {
                   children: [
                     getIt<AuthFacade>().currentUser.fold(
                           () => SizedBox.shrink(),
-                          (a) => AuthenticatedProfileTile(user: a),
+                          (a) => AuthenticatedProfileTile(),
                         ),
                     //
                     Divider(

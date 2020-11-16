@@ -10,7 +10,7 @@ abstract class AuthState with _$AuthState {
     @required Gender gender,
     @required Password password,
     @required Password newPassword,
-    Subscription subscription,
+    Roles subscription,
     @Default(false) bool isLoading,
     @Default(false) bool validate,
     @Default(true) bool passwordHidden,

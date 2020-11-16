@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
-import 'package:smartlets/features/on_boarding/models/subscription.dart';
+import 'package:smartlets/features/on_boarding/models/roles.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/custom_list_tile.dart';
 import 'package:smartlets/widgets/vertical_spacer.dart';
@@ -57,18 +57,18 @@ class OnBoardingScreen extends StatelessWidget {
                     },
                     child: Column(
                       children: [
-                        CustomListTile<Subscription>(
+                        CustomListTile<Roles>(
                           title: "I'm a Parent",
-                          value: Subscription.parent,
-                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).subscribeAParent(),
+                          value: Roles.parent,
+                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).applyParentRole(),
                         ),
                         //
                         VerticalSpace(height: App.height * 0.03),
                         //
-                        CustomListTile<Subscription>(
+                        CustomListTile<Roles>(
                           title: "I'm a Student",
-                          value: Subscription.student,
-                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).subscribeAStudent(),
+                          value: Roles.student,
+                          onTap: () => BlocProvider.of<OnBoardingCubit>(context).applyStudentRole(),
                         ),
                       ],
                     ),

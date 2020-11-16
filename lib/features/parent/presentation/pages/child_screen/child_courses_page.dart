@@ -47,7 +47,7 @@ class ChildCoursesPage extends StatelessWidget with AutoRouteWrapper {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         AutoSizeText(
-                          tag,
+                          "Courses",
                           maxLines: 1,
                           style: TextStyle(color: Colors.white),
                         ),

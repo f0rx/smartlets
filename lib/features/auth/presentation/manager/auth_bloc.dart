@@ -1,14 +1,21 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
-import 'package:smartlets/features/on_boarding/models/subscription.dart';
+import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
+import 'package:smartlets/features/on_boarding/models/roles.dart';
+import 'package:smartlets/features/parent/data/export.dart';
+import 'package:smartlets/features/student/data/exports.dart';
+import 'package:smartlets/utils/assets.dart';
+import 'package:smartlets/utils/utils.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -17,8 +24,9 @@ part 'auth_state.dart';
 @Injectable()
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthFacade _auth;
+  final FirebaseFunctions _functions;
 
-  AuthBloc(this._auth) : super(AuthState.init());
+  AuthBloc(this._auth, this._functions) : super(AuthState.init());
 
   @override
   Stream<AuthState> mapEventToState(
@@ -56,7 +64,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       createAccountWithEmailAndPassword: (_) async* {
         yield* _mapCreateAccountWithEmailAndPassword(_);
-        await _auth.updateProfile(name: state.displayName);
+        // await _auth.updateProfile(name: state.displayName, photoURL: AppAssets.onlineAnonymous);
       },
       createInstructorAccount: (_) async* {
         yield* _mapCreateInstructorAccount(_);
@@ -130,6 +138,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         password: password,
       );
     }
+    // Update user profile
+    await _auth.updateProfile(name: state.displayName, photoURL: AppAssets.onlineAnonymous);
+
+    await BlocProvider.of<OnBoardingCubit>(App.context).state?.role?.fold(
+      parent: () async {
+        final user = _auth.currentUser.getOrElse(() => null);
+        try {
+          await _functions.httpsCallable('calls-onUserCreated-onUserCreatedCallable').call(GuardianDTO.fromDomain(Guardian(
+                displayName: DisplayName(user?.displayName ?? ''),
+                childrenIds: ImmutableIds.EMPTY,
+              )).toJson());
+        } catch (_) {}
+      },
+      student: () async {
+        final user = _auth.currentUser.getOrElse(() => null);
+        try {
+          await _functions.httpsCallable('calls-onUserCreated-onUserCreatedCallable').call(StudentDTO.fromDomain(Student(
+                displayName: DisplayName(user?.displayName ?? ''),
+                gender: Gender.DEFAULT,
+                guardianEmail: EmailAddress.DEFAULT,
+                guardianPhone: Phone.DEFAULT,
+                courseIds: ImmutableIds.EMPTY,
+                awardIds: ImmutableIds.EMPTY,
+                projectIds: ImmutableIds.EMPTY,
+              )).toJson());
+        } catch (_) {}
+      },
+    );
 
     yield state.copyWith(
       validate: true,
@@ -205,7 +241,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Password _newPass = state.newPassword;
     Either<AuthFailure, Unit> failureOrUnit;
 
-    if (_oldPass.isValid && _newPass.isValid) failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
+    if (_oldPass.isValid && _newPass.isValid)
+      failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
 
     yield state.copyWith(
       validate: true,

@@ -143,9 +143,10 @@ class __$AuthFailureCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
+class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
   const _$_AuthFailure({this.code, @required this.message})
-      : assert(message != null);
+      : assert(message != null),
+        super._();
 
   @override
   final String code;
@@ -246,7 +247,8 @@ class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
   }
 }
 
-abstract class _AuthFailure implements AuthFailure {
+abstract class _AuthFailure extends AuthFailure {
+  const _AuthFailure._() : super._();
   const factory _AuthFailure({String code, @required String message}) =
       _$_AuthFailure;
 
@@ -289,10 +291,11 @@ class _$UnExpectedFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$UnExpectedFailure
-    with DiagnosticableTreeMixin
-    implements UnExpectedFailure {
-  const _$UnExpectedFailure({@required this.message}) : assert(message != null);
+class _$UnExpectedFailure extends UnExpectedFailure
+    with DiagnosticableTreeMixin {
+  const _$UnExpectedFailure({@required this.message})
+      : assert(message != null),
+        super._();
 
   @override
   final String message;
@@ -386,7 +389,8 @@ class _$UnExpectedFailure
   }
 }
 
-abstract class UnExpectedFailure implements AuthFailure {
+abstract class UnExpectedFailure extends AuthFailure {
+  const UnExpectedFailure._() : super._();
   const factory UnExpectedFailure({@required String message}) =
       _$UnExpectedFailure;
 
@@ -439,9 +443,8 @@ class _$AccountAlreadyExistsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$AccountAlreadyExists
-    with DiagnosticableTreeMixin
-    implements AccountAlreadyExists {
+class _$AccountAlreadyExists extends AccountAlreadyExists
+    with DiagnosticableTreeMixin {
   const _$AccountAlreadyExists(
       {@required this.message,
       @required this.email,
@@ -449,7 +452,8 @@ class _$AccountAlreadyExists
       @required @nullable this.credentials})
       : assert(message != null),
         assert(email != null),
-        assert(provider != null);
+        assert(provider != null),
+        super._();
 
   @override
   final String message;
@@ -567,7 +571,8 @@ class _$AccountAlreadyExists
   }
 }
 
-abstract class AccountAlreadyExists implements AuthFailure {
+abstract class AccountAlreadyExists extends AuthFailure {
+  const AccountAlreadyExists._() : super._();
   const factory AccountAlreadyExists(
       {@required String message,
       @required EmailAddress email,

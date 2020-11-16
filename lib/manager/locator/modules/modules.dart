@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,6 +24,9 @@ abstract class Modules {
   @lazySingleton
   FacebookLogin get facebookLogin => FacebookLogin();
 
-  // @lazySingleton
-  // FirebaseFirestore get firestore => FirebaseFirestore.instance;
+  @lazySingleton
+  FirebaseFirestore get firestore => FirebaseFirestore.instance;
+
+  @lazySingleton
+  FirebaseFunctions get functions => FirebaseFunctions.instance;
 }

@@ -34,7 +34,7 @@ class ProfileTile {
           subtitle: "Details & Password",
           onPressed: (context) => getIt<AuthFacade>().currentUser?.fold(
                 () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
-                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.subscription?.fold(
+                (_) => BlocProvider.of<OnBoardingCubit>(App.context).state.role?.fold(
                       parent: () => inner(context).pushUpdateParentProfilePage(
                         user: getIt<AuthFacade>().currentUser.getOrElse(() => null),
                       ),
@@ -73,18 +73,21 @@ class ProfileTile {
         ProfileTile(
           title: "Dark Mode",
           leading: AppAssets.creditCard,
-          builder: (context) => SwitchListTile.adaptive(
-            secondary: Container(
-              padding: const EdgeInsets.all(6.5),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
-              child: Helpers.optionOf(AppAssets.night, RotatedBox(quarterTurns: 90, child: Icon(Icons.wb_incandescent_rounded))),
+          builder: (context) => BlocBuilder<ThemeCubit, AppTheme>(
+            builder: (context, state) => SwitchListTile.adaptive(
+              secondary: Container(
+                padding: const EdgeInsets.all(6.5),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
+                child:
+                    Helpers.optionOf(AppAssets.night, RotatedBox(quarterTurns: 90, child: Icon(Icons.wb_incandescent_rounded))),
+              ),
+              title: Text("${Helpers.optionOf('Dark mode', 'Light mode')}", style: const TextStyle(fontSize: 16.5)),
+              subtitle: Text("Toggle ${Helpers.optionOf('dark', 'light')} mode", style: const TextStyle(fontSize: 13.0)),
+              dense: true,
+              value: MediaQuery.of(context).platformBrightness != state.themeData().brightness,
+              activeColor: Theme.of(context).accentColor,
+              onChanged: (_) => BlocProvider.of<ThemeCubit>(context).toggleTheme(),
             ),
-            title: Text("${Helpers.optionOf('Dark mode', 'Light mode')}", style: const TextStyle(fontSize: 16.5)),
-            subtitle: Text("Toggle ${Helpers.optionOf('dark', 'light')} mode", style: const TextStyle(fontSize: 13.0)),
-            dense: true,
-            value: BlocProvider.of<ThemeCubit>(context).isDarkMode,
-            activeColor: Theme.of(context).accentColor,
-            onChanged: (_) => BlocProvider.of<ThemeCubit>(context).toggleTheme(),
           ),
         ),
         ProfileTile(
