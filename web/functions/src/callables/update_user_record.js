@@ -21,7 +21,8 @@ exports.callable = functions.https.onCall(async (data, context) => {
         await userRef.update({ displayName: data.displayName, role: data.role });
     }
 
-    if (userDoc.exists) await createProfile();
+    // Only update user record if [USER DOCUMENT] exists && [ROLE DOCUMENT] does not exist
+    if (userDoc.exists && !(await ref.get()).exists) await createProfile();
 
     return (await ref.get()).exists;
 });
