@@ -1,20 +1,29 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
-import 'package:kt_dart/kt.dart';
-import 'package:smartlets/features/auth/data/repositories/export.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:kt_dart/kt.dart' hide nullable;
+import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
+import 'package:smartlets/features/parent/domain/entities/entities.dart';
 
-abstract class GuardianAuthFacade {
-  Future<Guardian> get single;
+mixin FirebaseDepMixin {
+  Future<Either<AuthFailure, Unit>> signInWithCredentials([AuthCredential old, AuthCredential incoming]);
+}
 
-  Stream<Either<FirestoreAuthFailure, KtList<Guardian>>> get watch;
+mixin FirestoreAuthMixin<T> {
+  Future<T> get single;
 
-  Future<Either<FirestoreAuthFailure, Unit>> create(Guardian guardian);
+  Future<bool> fieldExistAndIsNull(String field) async => await Future.value(false);
 
-  Stream<Either<FirestoreAuthFailure, Guardian>> get read;
+  Stream<Either<FirestoreAuthFailure, KtList<T>>> get watch;
 
-  Future<Either<FirestoreAuthFailure, Unit>> update(Guardian guardian, {Duration timeout = const Duration(seconds: 8)});
+  Future<Either<FirestoreAuthFailure, Unit>> create(T value);
+
+  Stream<Either<FirestoreAuthFailure, T>> get read;
+
+  Future<Either<FirestoreAuthFailure, Unit>> update(
+    T value, {
+    Duration timeout = const Duration(seconds: 8),
+  });
 
   Future<Either<FirestoreAuthFailure, Unit>> get delete;
 

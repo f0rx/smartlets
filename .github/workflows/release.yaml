@@ -53,8 +53,9 @@ jobs:
         run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
 
       - name: Set up Flutter Environment
-        uses: subosito/flutter-action@v1.3.2
+        uses: subosito/flutter-action@v1
         with:
+          flutter-version: '1.21.x'
           channel: 'beta'
 
       - run: flutter pub get
