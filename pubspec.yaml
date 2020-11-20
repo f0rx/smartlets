@@ -80,6 +80,8 @@ dependencies:
   flushbar: ^1.10.4
   # Toast Library for Flutter
   fluttertoast: ^7.1.1
+  # Shimmer Skeleton Library.
+  shimmer: ^1.1.2
   # A Flutter package for easy implementation of fluid navigation bar.
   curved_navigation_bar: ^0.3.4
   # A port of Kotlin's Kotlin Standard library for Dart/Flutter projects.
@@ -87,7 +89,7 @@ dependencies:
   # A powerful official extension library of image
   extended_image: ^1.3.0
   # Customizable rating bar for flutter
-  flutter_rating_bar: ^3.2.0
+  flutter_rating_bar: ^3.2.0+1
   # A port of the Rails/ActiveSupport inflector library to Dart.
   inflection2: ^0.4.3
   # Wraps an existing Flutter widget and fires a callback when the widget's visibility changes
