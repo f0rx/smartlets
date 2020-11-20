@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/shared/domain/entities/unique_id.dart';
@@ -11,15 +12,25 @@ abstract class Instructor implements _$Instructor {
   const Instructor._();
 
   const factory Instructor({
-    @required UniqueId id,
-    @required @nullable DisplayName displayName,
-    @required EmailAddress email,
-    @required Biography bio,
-    @required Specialty specialty,
-    @required bool isEmailVerified,
-    @required @nullable String phone,
-    @required @nullable String photoURL,
-    @required DateTime createdAt,
-    @required DateTime lastSeenAt,
+    @nullable Roles role,
+    @nullable UniqueId id,
+    @nullable DisplayName displayName,
+    @nullable EmailAddress email,
+    @nullable Biography bio,
+    @nullable Specialty specialty,
+    @nullable bool isEmailVerified,
+    @nullable Phone phone,
+    @nullable String photoURL,
+    @nullable DateTime createdAt,
+    @nullable DateTime lastSeenAt,
   }) = _Instructor;
+
+  Option<FieldObjectException<dynamic>> get failureOption {
+    return email?.failureOrUnit
+        ?.andThen(displayName?.failureOrUnit)
+        ?.andThen(bio?.failureOrUnit)
+        ?.andThen(specialty?.failureOrUnit)
+        ?.andThen(phone?.failureOrUnit)
+        ?.fold((f) => some(f), (_) => none());
+  }
 }

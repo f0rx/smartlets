@@ -2,13 +2,16 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
-import 'package:smartlets/features/on_boarding/models/subscription.dart';
+import 'package:smartlets/features/on_boarding/models/roles.dart';
+import 'package:smartlets/utils/assets.dart';
+import 'package:smartlets/utils/utils.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -20,11 +23,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc(this._auth) : super(AuthState.init());
 
+  void createUserRecords() => BlocProvider.of<FirebaseFunctionsCubit>(App.context).createUserFirestoreData();
+
   @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
   ) async* {
     yield state.copyWith(isLoading: true, authStatus: none());
+
+    // // Change User
+    // await BlocProvider.of<OnBoardingCubit>(App.context).getRole();
 
     yield* event.map(
       displayNameChanged: (e) async* {
@@ -48,21 +56,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       toggledPasswordVisibility: (e) async* {
         yield state.copyWith(passwordHidden: !state.passwordHidden);
       },
-      toggledSnackBarVisibility: (e) async* {
-        yield state.copyWith(snackbarDismissed: e.value ?? !state.snackbarDismissed);
-      },
       signInWithEmailAndPassword: (_) async* {
         yield* _mapSignInWithEmailAndPassword(_);
       },
       createAccountWithEmailAndPassword: (_) async* {
         yield* _mapCreateAccountWithEmailAndPassword(_);
-        await _auth.updateProfile(name: state.displayName);
-      },
-      createInstructorAccount: (_) async* {
-        yield* _mapCreateInstructorAccount(_);
-      },
-      createStudentAccount: (_) async* {
-        yield* _mapCreateStudentAccount(_);
       },
       updateProfile: (_) async* {
         yield* _mapUpdateProfile(_);
@@ -75,21 +73,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       signInWithGoogle: (e) async* {
         final result = await _auth.googleAuthentication(e.incoming);
-        yield state.copyWith(authStatus: some(result), snackbarDismissed: false);
+        if (_auth.currentUser.isSome()) createUserRecords();
+        yield state.copyWith(authStatus: some(result));
       },
       signInWithFacebook: (e) async* {
         final result = await _auth.facebookAuthentication(e.incoming);
-        yield state.copyWith(authStatus: some(result), snackbarDismissed: false);
+        if (_auth.currentUser.isSome()) createUserRecords();
+        yield state.copyWith(authStatus: some(result));
       },
       signInWithCredentials: (e) async* {
         yield* _mapSignInWithCred(e);
       },
-      signOut: (e) async* {
-        await _auth.signOut();
-      },
       signInWithTwitter: (e) async* {
         final result = await _auth.twitterAuthentication(e.incoming);
-        yield state.copyWith(authStatus: some(result), snackbarDismissed: false);
+        if (_auth.currentUser.isSome()) createUserRecords();
+        yield state.copyWith(authStatus: some(result));
       },
     );
 
@@ -112,7 +110,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(
       validate: true,
       authStatus: optionOf(failureOrUnit),
-      snackbarDismissed: false,
     );
   }
 
@@ -131,10 +128,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     }
 
+    if (_auth.currentUser.isSome()) {
+      // Update user profile
+      await _auth.updateProfile(
+        name: state.displayName,
+        photoURL: AppAssets.onlineAnonymous,
+        inFirestore: false,
+      );
+      // Create Firebase User records
+      createUserRecords();
+    }
+
     yield state.copyWith(
       validate: true,
       authStatus: optionOf(failureOrUnit),
-      snackbarDismissed: false,
     );
   }
 
@@ -149,7 +156,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
 
     if (e.provider != null)
-      failureOrUnit = await AuthProvider.switchCase<FutureOr<Either<AuthFailure, Unit>>>(
+      failureOrUnit = await AuthProviderType.switchCase<FutureOr<Either<AuthFailure, Unit>>>(
         e.provider.name,
         isPassword: (name) async {
           try {
@@ -164,7 +171,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(
       validate: true,
       authStatus: optionOf(failureOrUnit),
-      snackbarDismissed: false,
     );
   }
 
@@ -177,7 +183,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(
       validate: true,
       authStatus: optionOf(failureOrUnit),
-      snackbarDismissed: false,
     );
   }
 
@@ -196,7 +201,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(
       validate: true,
       authStatus: optionOf(failureOrUnit),
-      snackbarDismissed: false,
     );
   }
 
@@ -205,22 +209,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Password _newPass = state.newPassword;
     Either<AuthFailure, Unit> failureOrUnit;
 
-    if (_oldPass.isValid && _newPass.isValid) failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
+    if (_oldPass.isValid && _newPass.isValid)
+      failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
 
     yield state.copyWith(
       validate: true,
       authStatus: optionOf(failureOrUnit),
-      snackbarDismissed: false,
     );
   }
-
-  Stream<AuthState> _mapCreateStudentAccount(_CreateStudentAccount e) async* {
-    yield state.copyWith(
-      validate: true,
-      authStatus: some(right(unit)),
-      snackbarDismissed: false,
-    );
-  }
-
-  Stream<AuthState> _mapCreateInstructorAccount(_CreateInstructorAccount e) async* {}
 }

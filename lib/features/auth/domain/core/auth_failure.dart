@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:smartlets/features/auth/data/repositories/auth_repo.dart';
+import 'package:smartlets/features/auth/data/repositories/export.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 
@@ -8,7 +8,9 @@ part 'auth_failure.freezed.dart';
 
 @freezed
 @immutable
-abstract class AuthFailure with _$AuthFailure {
+abstract class AuthFailure implements _$AuthFailure, Failure<String> {
+  const AuthFailure._();
+
   const factory AuthFailure({String code, @required String message}) = _AuthFailure;
 
   const factory AuthFailure.unExpectedFailure({@required String message}) = UnExpectedFailure;
@@ -16,7 +18,7 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.accountAlreadyExists({
     @required String message,
     @required EmailAddress email,
-    @required AuthProvider provider,
+    @required AuthProviderType provider,
     @nullable @required Object credentials,
   }) = AccountAlreadyExists;
 

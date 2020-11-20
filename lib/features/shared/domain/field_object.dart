@@ -21,9 +21,13 @@ abstract class FieldObject<T> {
   bool get isValid => value.isRight();
 
   T get getOrCrash => value.fold((failure) {
-        log.e("Oops! The program crashed (Field Object Failure: [${value.runtimeType}])");
+        log.e(
+            "Oops! The program crashed (Field Object Failure: [${value.runtimeType}])");
         throw UnExpectedFailure(message: failure.message);
       }, id);
+
+  Either<FieldObjectException<dynamic>, Unit> get failureOrUnit =>
+      value.fold((l) => left(l), (r) => right(unit));
 
   T get getOrNull => value.fold((failure) => null, id);
 
@@ -39,5 +43,6 @@ abstract class FieldObject<T> {
   int get hashCode => value.hashCode;
 
   @override
-  String toString() => "FieldObject<$T>(${value.getOrElse(() => null).toString()})";
+  String toString() =>
+      "FieldObject<$T>(${value.getOrElse(() => null).toString()})";
 }

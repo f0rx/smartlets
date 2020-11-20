@@ -18,12 +18,12 @@ class _$OnBoardingStateTearOff {
       {bool isLoading = false,
       bool shouldListen = false,
       bool hasStableInternet = false,
-      @nullable Subscription subscription}) {
+      @nullable Roles role}) {
     return _OnBoardingState(
       isLoading: isLoading,
       shouldListen: shouldListen,
       hasStableInternet: hasStableInternet,
-      subscription: subscription,
+      role: role,
     );
   }
 }
@@ -38,7 +38,7 @@ mixin _$OnBoardingState {
   bool get shouldListen;
   bool get hasStableInternet;
   @nullable
-  Subscription get subscription;
+  Roles get role;
 
   $OnBoardingStateCopyWith<OnBoardingState> get copyWith;
 }
@@ -52,7 +52,7 @@ abstract class $OnBoardingStateCopyWith<$Res> {
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      @nullable Subscription subscription});
+      @nullable Roles role});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$OnBoardingStateCopyWithImpl<$Res>
     Object isLoading = freezed,
     Object shouldListen = freezed,
     Object hasStableInternet = freezed,
-    Object subscription = freezed,
+    Object role = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
@@ -78,9 +78,7 @@ class _$OnBoardingStateCopyWithImpl<$Res>
       hasStableInternet: hasStableInternet == freezed
           ? _value.hasStableInternet
           : hasStableInternet as bool,
-      subscription: subscription == freezed
-          ? _value.subscription
-          : subscription as Subscription,
+      role: role == freezed ? _value.role : role as Roles,
     ));
   }
 }
@@ -96,7 +94,7 @@ abstract class _$OnBoardingStateCopyWith<$Res>
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      @nullable Subscription subscription});
+      @nullable Roles role});
 }
 
 /// @nodoc
@@ -115,7 +113,7 @@ class __$OnBoardingStateCopyWithImpl<$Res>
     Object isLoading = freezed,
     Object shouldListen = freezed,
     Object hasStableInternet = freezed,
-    Object subscription = freezed,
+    Object role = freezed,
   }) {
     return _then(_OnBoardingState(
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
@@ -124,9 +122,7 @@ class __$OnBoardingStateCopyWithImpl<$Res>
       hasStableInternet: hasStableInternet == freezed
           ? _value.hasStableInternet
           : hasStableInternet as bool,
-      subscription: subscription == freezed
-          ? _value.subscription
-          : subscription as Subscription,
+      role: role == freezed ? _value.role : role as Roles,
     ));
   }
 }
@@ -137,7 +133,7 @@ class _$_OnBoardingState implements _OnBoardingState {
       {this.isLoading = false,
       this.shouldListen = false,
       this.hasStableInternet = false,
-      @nullable this.subscription})
+      @nullable this.role})
       : assert(isLoading != null),
         assert(shouldListen != null),
         assert(hasStableInternet != null);
@@ -153,11 +149,11 @@ class _$_OnBoardingState implements _OnBoardingState {
   final bool hasStableInternet;
   @override
   @nullable
-  final Subscription subscription;
+  final Roles role;
 
   @override
   String toString() {
-    return 'OnBoardingState(isLoading: $isLoading, shouldListen: $shouldListen, hasStableInternet: $hasStableInternet, subscription: $subscription)';
+    return 'OnBoardingState(isLoading: $isLoading, shouldListen: $shouldListen, hasStableInternet: $hasStableInternet, role: $role)';
   }
 
   @override
@@ -173,9 +169,8 @@ class _$_OnBoardingState implements _OnBoardingState {
             (identical(other.hasStableInternet, hasStableInternet) ||
                 const DeepCollectionEquality()
                     .equals(other.hasStableInternet, hasStableInternet)) &&
-            (identical(other.subscription, subscription) ||
-                const DeepCollectionEquality()
-                    .equals(other.subscription, subscription)));
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)));
   }
 
   @override
@@ -184,7 +179,7 @@ class _$_OnBoardingState implements _OnBoardingState {
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(shouldListen) ^
       const DeepCollectionEquality().hash(hasStableInternet) ^
-      const DeepCollectionEquality().hash(subscription);
+      const DeepCollectionEquality().hash(role);
 
   @override
   _$OnBoardingStateCopyWith<_OnBoardingState> get copyWith =>
@@ -196,7 +191,7 @@ abstract class _OnBoardingState implements OnBoardingState {
       {bool isLoading,
       bool shouldListen,
       bool hasStableInternet,
-      @nullable Subscription subscription}) = _$_OnBoardingState;
+      @nullable Roles role}) = _$_OnBoardingState;
 
   @override
   bool get isLoading;
@@ -206,7 +201,7 @@ abstract class _OnBoardingState implements OnBoardingState {
   bool get hasStableInternet;
   @override
   @nullable
-  Subscription get subscription;
+  Roles get role;
   @override
   _$OnBoardingStateCopyWith<_OnBoardingState> get copyWith;
 }

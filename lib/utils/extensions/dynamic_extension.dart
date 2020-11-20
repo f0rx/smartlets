@@ -9,10 +9,7 @@ extension DynamicX on dynamic {
   /// `nil` taken from ObjC just to have a shorter sintax.
   dynamic get nil => this == null ? null : this;
 
-  /// Checks if data is null or blank (empty or only contains whitespace).
-  bool get isNullOrBlank {
-    if (isNull) return true;
-
+  bool get isBlank {
     switch (this.runtimeType) {
       case String:
       case List:
@@ -23,5 +20,12 @@ extension DynamicX on dynamic {
       default:
         return this.toString() == 'null' || this.toString().trim().isEmpty;
     }
+  }
+
+  /// Checks if data is null or blank (empty or only contains whitespace).
+  bool get isNullOrBlank {
+    if (isNull) return true;
+
+    return isBlank;
   }
 }

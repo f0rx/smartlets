@@ -17,16 +17,9 @@ abstract class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.toggledPasswordVisibility() = _ToggledPasswordVisibility;
 
-  const factory AuthEvent.toggledSnackBarVisibility([bool value]) = _ToggledSnackBarVisibility;
-
   const factory AuthEvent.signInWithEmailAndPassword() = _SignInWithEmailAndPassword;
 
-  // Used to create Parent Account
   const factory AuthEvent.createAccountWithEmailAndPassword() = _CreateAccountWithEmailAndPassword;
-  // Used to create Instructor's Account with privileges
-  const factory AuthEvent.createInstructorAccount() = _CreateInstructorAccount;
-  // Used to create Student's Account
-  const factory AuthEvent.createStudentAccount() = _CreateStudentAccount;
 
   const factory AuthEvent.updateProfile() = _UpdateProfile;
 
@@ -42,9 +35,7 @@ abstract class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.signInWithCredentials({
     @nullable Object credential,
-    @nullable AuthProvider provider,
+    @nullable AuthProviderType provider,
     @nullable Object incoming,
   }) = _SignInWithCredentials;
-
-  const factory AuthEvent.signOut() = _SignOut;
 }

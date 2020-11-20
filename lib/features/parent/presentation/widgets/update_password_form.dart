@@ -43,9 +43,9 @@ class ChangePasswordForm extends StatelessWidget {
         buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, state) {
           return PortalEntry(
-            visible: context.bloc<AuthBloc>().state.isLoading,
+            visible: context.watch<AuthBloc>().state.isLoading,
             portal: App.circularLoadingOverlay,
-            child: _FormWidget(bloc: context.bloc<AuthBloc>(), key: key),
+            child: _FormWidget(bloc: context.watch<AuthBloc>(), key: key),
           );
         },
       ),

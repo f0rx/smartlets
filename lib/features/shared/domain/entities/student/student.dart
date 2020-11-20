@@ -1,5 +1,5 @@
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/kt.dart' hide nullable;
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
 import 'package:smartlets/features/shared/shared.dart';
 
@@ -11,19 +11,35 @@ abstract class Student implements _$Student {
   const Student._();
 
   const factory Student({
-    @required UniqueId id,
-    @required @nullable DisplayName displayName,
-    @required EmailAddress email,
-    @required @nullable EmailAddress guardianEmail,
-    @required Gender gender,
-    @Default(KtList.empty()) KtList<UniqueId> courseIds,
-    @Default(KtList.empty()) KtList<UniqueId> projectIds,
-    @Default(KtList.empty()) KtList<UniqueId> awardIds,
-    @required bool isEmailVerified,
-    @required @nullable String phone,
-    @required @nullable String guardianPhone,
-    @required @nullable String photoURL,
-    @required DateTime createdAt,
-    @required DateTime lastSeenAt,
+    @nullable Roles role,
+    @nullable UniqueId id,
+    @nullable DisplayName displayName,
+    @nullable EmailAddress email,
+    @nullable AuthProviders providers,
+    @nullable EmailAddress guardianEmail,
+    @nullable Gender gender,
+    @nullable ImmutableIds courseIds,
+    @nullable ImmutableIds projectIds,
+    @nullable ImmutableIds awardIds,
+    @nullable bool isEmailVerified,
+    @nullable Phone phone,
+    @nullable Phone guardianPhone,
+    @nullable String photoURL,
+    @nullable DateTime createdAt,
+    @nullable DateTime lastSeenAt,
+    @nullable DateTime updatedAt,
   }) = _Student;
+
+  Option<FieldObjectException<dynamic>> get failureOption {
+    return email?.failureOrUnit
+        ?.andThen(displayName?.failureOrUnit)
+        ?.andThen(guardianEmail?.failureOrUnit)
+        ?.andThen(gender?.failureOrUnit)
+        ?.andThen(courseIds?.failureOrUnit)
+        ?.andThen(projectIds?.failureOrUnit)
+        ?.andThen(awardIds?.failureOrUnit)
+        ?.andThen(phone?.failureOrUnit)
+        ?.andThen(guardianPhone?.failureOrUnit)
+        ?.fold((f) => some(f), (_) => none());
+  }
 }

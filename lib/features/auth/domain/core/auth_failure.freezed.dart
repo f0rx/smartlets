@@ -32,7 +32,7 @@ class _$AuthFailureTearOff {
   AccountAlreadyExists accountAlreadyExists(
       {@required String message,
       @required EmailAddress email,
-      @required AuthProvider provider,
+      @required AuthProviderType provider,
       @required @nullable Object credentials}) {
     return AccountAlreadyExists(
       message: message,
@@ -57,14 +57,14 @@ mixin _$AuthFailure {
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -143,9 +143,10 @@ class __$AuthFailureCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
+class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
   const _$_AuthFailure({this.code, @required this.message})
-      : assert(message != null);
+      : assert(message != null),
+        super._();
 
   @override
   final String code;
@@ -193,7 +194,7 @@ class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -207,7 +208,7 @@ class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -246,7 +247,8 @@ class _$_AuthFailure with DiagnosticableTreeMixin implements _AuthFailure {
   }
 }
 
-abstract class _AuthFailure implements AuthFailure {
+abstract class _AuthFailure extends AuthFailure {
+  const _AuthFailure._() : super._();
   const factory _AuthFailure({String code, @required String message}) =
       _$_AuthFailure;
 
@@ -289,10 +291,11 @@ class _$UnExpectedFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$UnExpectedFailure
-    with DiagnosticableTreeMixin
-    implements UnExpectedFailure {
-  const _$UnExpectedFailure({@required this.message}) : assert(message != null);
+class _$UnExpectedFailure extends UnExpectedFailure
+    with DiagnosticableTreeMixin {
+  const _$UnExpectedFailure({@required this.message})
+      : assert(message != null),
+        super._();
 
   @override
   final String message;
@@ -333,7 +336,7 @@ class _$UnExpectedFailure
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -347,7 +350,7 @@ class _$UnExpectedFailure
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -386,7 +389,8 @@ class _$UnExpectedFailure
   }
 }
 
-abstract class UnExpectedFailure implements AuthFailure {
+abstract class UnExpectedFailure extends AuthFailure {
+  const UnExpectedFailure._() : super._();
   const factory UnExpectedFailure({@required String message}) =
       _$UnExpectedFailure;
 
@@ -406,7 +410,7 @@ abstract class $AccountAlreadyExistsCopyWith<$Res>
   $Res call(
       {String message,
       EmailAddress email,
-      AuthProvider provider,
+      AuthProviderType provider,
       @nullable Object credentials});
 }
 
@@ -432,16 +436,15 @@ class _$AccountAlreadyExistsCopyWithImpl<$Res>
       message: message == freezed ? _value.message : message as String,
       email: email == freezed ? _value.email : email as EmailAddress,
       provider:
-          provider == freezed ? _value.provider : provider as AuthProvider,
+          provider == freezed ? _value.provider : provider as AuthProviderType,
       credentials: credentials == freezed ? _value.credentials : credentials,
     ));
   }
 }
 
 /// @nodoc
-class _$AccountAlreadyExists
-    with DiagnosticableTreeMixin
-    implements AccountAlreadyExists {
+class _$AccountAlreadyExists extends AccountAlreadyExists
+    with DiagnosticableTreeMixin {
   const _$AccountAlreadyExists(
       {@required this.message,
       @required this.email,
@@ -449,14 +452,15 @@ class _$AccountAlreadyExists
       @required @nullable this.credentials})
       : assert(message != null),
         assert(email != null),
-        assert(provider != null);
+        assert(provider != null),
+        super._();
 
   @override
   final String message;
   @override
   final EmailAddress email;
   @override
-  final AuthProvider provider;
+  final AuthProviderType provider;
   @override
   @nullable
   final Object credentials;
@@ -514,7 +518,7 @@ class _$AccountAlreadyExists
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -528,7 +532,7 @@ class _$AccountAlreadyExists
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -567,17 +571,18 @@ class _$AccountAlreadyExists
   }
 }
 
-abstract class AccountAlreadyExists implements AuthFailure {
+abstract class AccountAlreadyExists extends AuthFailure {
+  const AccountAlreadyExists._() : super._();
   const factory AccountAlreadyExists(
       {@required String message,
       @required EmailAddress email,
-      @required AuthProvider provider,
+      @required AuthProviderType provider,
       @required @nullable Object credentials}) = _$AccountAlreadyExists;
 
   @override
   String get message;
   EmailAddress get email;
-  AuthProvider get provider;
+  AuthProviderType get provider;
   @nullable
   Object get credentials;
   @override

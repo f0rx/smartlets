@@ -17,14 +17,13 @@ class ShowChildPage extends StatelessWidget with AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    final Student student = getIt<AuthFacade>().currentUser.getOrElse(() => null).sampleStudent;
+    final Student student = getIt<AuthFacade>().currentUser.getOrElse(() => null).asStudent();
 
     return Scaffold(
       body: Hero(
         tag: "3",
         child: CustomScrollView(
           shrinkWrap: true,
-          clipBehavior: Clip.antiAlias,
           physics: Helpers.physics,
           slivers: [
             SliverAppBar(
@@ -58,7 +57,7 @@ class ShowChildPage extends StatelessWidget with AutoRouteWrapper {
                         VerticalSpace(height: 6.0),
                         //
                         ExtendedImage.network(
-                          student?.photoURL,
+                          student?.photoURL ?? AppAssets.onlineAnonymous,
                           fit: BoxFit.fill,
                           height: App.height * 0.04,
                           shape: BoxShape.circle,
@@ -107,21 +106,21 @@ class ShowChildPage extends StatelessWidget with AutoRouteWrapper {
                     color: AppColors.fromHex("#5FA2FF"),
                     title: "Courses",
                     icon: Smartlets.book_filled,
-                    onTap: () => inner(context).pushChildCoursesPage(),
+                    onTap: () => inner(context).pushChildCoursesPage(tag: "3"),
                   ),
                   cardBuilder(
                     context,
                     color: AppColors.fromHex("#FF5994"),
                     title: "Projects",
                     icon: Smartlets.project_idea,
-                    onTap: () => inner(context).pushChildProjectsPage(),
+                    onTap: () => inner(context).pushChildProjectsPage(tag: "3"),
                   ),
                   cardBuilder(
                     context,
                     color: AppColors.fromHex("#FECD00, 100%"),
                     title: "Rewards",
                     icon: Smartlets.star_award,
-                    onTap: () => inner(context).pushChildAwardsPage(),
+                    onTap: () => inner(context).pushChildAwardsPage(tag: "3"),
                   ),
                 ]),
               ),

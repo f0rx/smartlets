@@ -80,7 +80,7 @@ class ParentBottomNav extends StatelessWidget {
           animationDuration: Duration(milliseconds: 500),
           onTap: (index) {
             if (state != index)
-              context.bloc<ParentNavCubit>().indexChanged(index);
+              context.read<ParentNavCubit>().indexChanged(index);
             // If the user is re-selecting the tab, the common
             // behavior is to empty the stack.
             else
