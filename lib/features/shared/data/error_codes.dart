@@ -62,3 +62,64 @@ const String CRED_ALREADY_IN_USE = "credential-already-in-use";
 ///
 /// This error is thrown even if this is not the same provider's account that is currently linked to the user.
 const String PROVIDER_ALREADY_LINKED = "provider-already-linked";
+
+////////////////// FirebaseFirestoreException.Code//////////////////////////
+///The operation was aborted, typically due to a concurrency issue like transaction aborts, etc.
+const String ABORTED = "aborted";
+
+///Some document that we attempted to create already exists.
+const String ALREADY_EXISTS = "already-exists";
+
+///The operation was cancelled (typically by the caller).
+const String CANCELLED = "cancelled";
+
+///Unrecoverable data loss or corruption.
+const String DATA_LOSS = "data-loss";
+
+///Deadline expired before operation could complete.
+///For operations that change the state of the system, this error may be returned even
+///if the operation has completed successfully. For example, a successful response from
+///a server could have been delayed long enough for the deadline to expire.
+const String DEADLINE_EXCEEDED = "deadline-exceeded";
+
+///Operation was rejected because the system is not in a state required for the operation's execution.
+const String FAILED_PRECONDITION = "failed-precondition";
+
+///Internal errors. Means some invariants expected by underlying system has been broken.
+///If you see one of these errors, something is very broken.
+const String INTERNAL = "internal";
+
+///Client specified an invalid argument.
+///Note that this differs from FAILED_PRECONDITION.
+///INVALID_ARGUMENT indicates arguments that are problematic
+///regardless of the state of the system (e.g., an invalid field name).
+const String INVALID_ARGUMENT = "invalid-argument";
+
+///Some requested document was not found.
+const String NOT_FOUND = "not-found";
+
+///The operation completed successfully. FirebaseFirestoreException will never have a status of OK.
+const String OK = "ok";
+
+///Operation was attempted past the valid range.
+const String OUT_OF_RANGE = "out-of-range";
+
+///The caller does not have permission to execute the specified operation.
+const String PERMISSION_DENIED = "permission-denied";
+
+///Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space.
+const String RESOURCE_EXHAUSTED = "resource-exhausted";
+
+///The request does not have valid authentication credentials for the operation.
+const String UNAUTHENTICATED = "unauthenticated";
+
+///The service is currently unavailable.
+///This is a most likely a transient condition and
+///may be corrected by retrying with a backoff.
+const String UNAVAILABLE = "unavailable";
+
+///Operation is not implemented or not supported/enabled.
+const String UNIMPLEMENTED = "unimplemented";
+
+///Unknown error or an error from a different error domain.
+const String UNKNOWN = "unknown";

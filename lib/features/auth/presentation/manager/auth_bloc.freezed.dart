@@ -81,16 +81,6 @@ class _$AuthEventTearOff {
   }
 
 // ignore: unused_element
-  _CreateInstructorAccount createInstructorAccount() {
-    return const _CreateInstructorAccount();
-  }
-
-// ignore: unused_element
-  _CreateStudentAccount createStudentAccount() {
-    return const _CreateStudentAccount();
-  }
-
-// ignore: unused_element
   _UpdateProfile updateProfile() {
     return const _UpdateProfile();
   }
@@ -129,7 +119,7 @@ class _$AuthEventTearOff {
 // ignore: unused_element
   _SignInWithCredentials signInWithCredentials(
       {@nullable Object credential,
-      @nullable AuthProvider provider,
+      @nullable AuthProviderType provider,
       @nullable Object incoming}) {
     return _SignInWithCredentials(
       credential: credential,
@@ -163,8 +153,6 @@ mixin _$AuthEvent {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -173,7 +161,7 @@ mixin _$AuthEvent {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   });
   @optionalTypeArgs
@@ -188,8 +176,6 @@ mixin _$AuthEvent {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -197,7 +183,7 @@ mixin _$AuthEvent {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   });
@@ -218,8 +204,6 @@ mixin _$AuthEvent {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -242,8 +226,6 @@ mixin _$AuthEvent {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -342,8 +324,6 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -352,7 +332,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -365,8 +345,6 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -391,8 +369,6 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -400,7 +376,7 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -429,8 +405,6 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -450,8 +424,6 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -477,8 +449,6 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -574,8 +544,6 @@ class _$_EmailChanged implements _EmailChanged {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -584,7 +552,7 @@ class _$_EmailChanged implements _EmailChanged {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -597,8 +565,6 @@ class _$_EmailChanged implements _EmailChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -623,8 +589,6 @@ class _$_EmailChanged implements _EmailChanged {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -632,7 +596,7 @@ class _$_EmailChanged implements _EmailChanged {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -661,8 +625,6 @@ class _$_EmailChanged implements _EmailChanged {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -682,8 +644,6 @@ class _$_EmailChanged implements _EmailChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -709,8 +669,6 @@ class _$_EmailChanged implements _EmailChanged {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -808,8 +766,6 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -818,7 +774,7 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -831,8 +787,6 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -857,8 +811,6 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -866,7 +818,7 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -895,8 +847,6 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -916,8 +866,6 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -943,8 +891,6 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -1040,8 +986,6 @@ class _$_GenderChanged implements _GenderChanged {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -1050,7 +994,7 @@ class _$_GenderChanged implements _GenderChanged {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -1063,8 +1007,6 @@ class _$_GenderChanged implements _GenderChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1089,8 +1031,6 @@ class _$_GenderChanged implements _GenderChanged {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -1098,7 +1038,7 @@ class _$_GenderChanged implements _GenderChanged {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -1127,8 +1067,6 @@ class _$_GenderChanged implements _GenderChanged {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -1148,8 +1086,6 @@ class _$_GenderChanged implements _GenderChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1175,8 +1111,6 @@ class _$_GenderChanged implements _GenderChanged {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -1282,8 +1216,6 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -1292,7 +1224,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -1305,8 +1237,6 @@ class _$_PasswordChanged implements _PasswordChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1331,8 +1261,6 @@ class _$_PasswordChanged implements _PasswordChanged {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -1340,7 +1268,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -1369,8 +1297,6 @@ class _$_PasswordChanged implements _PasswordChanged {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -1390,8 +1316,6 @@ class _$_PasswordChanged implements _PasswordChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1417,8 +1341,6 @@ class _$_PasswordChanged implements _PasswordChanged {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -1527,8 +1449,6 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -1537,7 +1457,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -1550,8 +1470,6 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1576,8 +1494,6 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -1585,7 +1501,7 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -1614,8 +1530,6 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -1635,8 +1549,6 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1662,8 +1574,6 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -1742,8 +1652,6 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -1752,7 +1660,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -1765,8 +1673,6 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1791,8 +1697,6 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -1800,7 +1704,7 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -1829,8 +1733,6 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -1850,8 +1752,6 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -1877,8 +1777,6 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -1975,8 +1873,6 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -1985,7 +1881,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -1998,8 +1894,6 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -2024,8 +1918,6 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -2033,7 +1925,7 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -2062,8 +1954,6 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -2083,8 +1973,6 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -2110,8 +1998,6 @@ class _$_ToggledSnackBarVisibility implements _ToggledSnackBarVisibility {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -2190,8 +2076,6 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -2200,7 +2084,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -2213,8 +2097,6 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -2239,8 +2121,6 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -2248,7 +2128,7 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -2277,8 +2157,6 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -2298,8 +2176,6 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -2325,8 +2201,6 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -2404,8 +2278,6 @@ class _$_CreateAccountWithEmailAndPassword
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -2414,7 +2286,7 @@ class _$_CreateAccountWithEmailAndPassword
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -2427,8 +2299,6 @@ class _$_CreateAccountWithEmailAndPassword
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -2453,8 +2323,6 @@ class _$_CreateAccountWithEmailAndPassword
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -2462,7 +2330,7 @@ class _$_CreateAccountWithEmailAndPassword
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -2491,8 +2359,6 @@ class _$_CreateAccountWithEmailAndPassword
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -2512,8 +2378,6 @@ class _$_CreateAccountWithEmailAndPassword
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -2539,8 +2403,6 @@ class _$_CreateAccountWithEmailAndPassword
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -2562,425 +2424,6 @@ class _$_CreateAccountWithEmailAndPassword
 abstract class _CreateAccountWithEmailAndPassword implements AuthEvent {
   const factory _CreateAccountWithEmailAndPassword() =
       _$_CreateAccountWithEmailAndPassword;
-}
-
-/// @nodoc
-abstract class _$CreateInstructorAccountCopyWith<$Res> {
-  factory _$CreateInstructorAccountCopyWith(_CreateInstructorAccount value,
-          $Res Function(_CreateInstructorAccount) then) =
-      __$CreateInstructorAccountCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$CreateInstructorAccountCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements _$CreateInstructorAccountCopyWith<$Res> {
-  __$CreateInstructorAccountCopyWithImpl(_CreateInstructorAccount _value,
-      $Res Function(_CreateInstructorAccount) _then)
-      : super(_value, (v) => _then(v as _CreateInstructorAccount));
-
-  @override
-  _CreateInstructorAccount get _value =>
-      super._value as _CreateInstructorAccount;
-}
-
-/// @nodoc
-class _$_CreateInstructorAccount implements _CreateInstructorAccount {
-  const _$_CreateInstructorAccount();
-
-  @override
-  String toString() {
-    return 'AuthEvent.createInstructorAccount()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _CreateInstructorAccount);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
-    @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result toggledSnackBarVisibility(bool value),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
-    @required
-        Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
-    @required Result signOut(),
-  }) {
-    assert(displayNameChanged != null);
-    assert(emailChanged != null);
-    assert(guardianEmailChanged != null);
-    assert(genderChanged != null);
-    assert(passwordChanged != null);
-    assert(newPasswordChanged != null);
-    assert(toggledPasswordVisibility != null);
-    assert(toggledSnackBarVisibility != null);
-    assert(signInWithEmailAndPassword != null);
-    assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
-    assert(updateProfile != null);
-    assert(emailPasswordReset != null);
-    assert(updatePassword != null);
-    assert(signInWithGoogle != null);
-    assert(signInWithFacebook != null);
-    assert(signInWithTwitter != null);
-    assert(signInWithCredentials != null);
-    assert(signOut != null);
-    return createInstructorAccount();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result toggledSnackBarVisibility(bool value),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
-    Result signOut(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (createInstructorAccount != null) {
-      return createInstructorAccount();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
-    @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    @required
-        Result toggledSnackBarVisibility(_ToggledSnackBarVisibility value),
-    @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    @required
-        Result createAccountWithEmailAndPassword(
-            _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result signOut(_SignOut value),
-  }) {
-    assert(displayNameChanged != null);
-    assert(emailChanged != null);
-    assert(guardianEmailChanged != null);
-    assert(genderChanged != null);
-    assert(passwordChanged != null);
-    assert(newPasswordChanged != null);
-    assert(toggledPasswordVisibility != null);
-    assert(toggledSnackBarVisibility != null);
-    assert(signInWithEmailAndPassword != null);
-    assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
-    assert(updateProfile != null);
-    assert(emailPasswordReset != null);
-    assert(updatePassword != null);
-    assert(signInWithGoogle != null);
-    assert(signInWithFacebook != null);
-    assert(signInWithTwitter != null);
-    assert(signInWithCredentials != null);
-    assert(signOut != null);
-    return createInstructorAccount(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result toggledSnackBarVisibility(_ToggledSnackBarVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
-        _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    Result signOut(_SignOut value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (createInstructorAccount != null) {
-      return createInstructorAccount(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CreateInstructorAccount implements AuthEvent {
-  const factory _CreateInstructorAccount() = _$_CreateInstructorAccount;
-}
-
-/// @nodoc
-abstract class _$CreateStudentAccountCopyWith<$Res> {
-  factory _$CreateStudentAccountCopyWith(_CreateStudentAccount value,
-          $Res Function(_CreateStudentAccount) then) =
-      __$CreateStudentAccountCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$CreateStudentAccountCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements _$CreateStudentAccountCopyWith<$Res> {
-  __$CreateStudentAccountCopyWithImpl(
-      _CreateStudentAccount _value, $Res Function(_CreateStudentAccount) _then)
-      : super(_value, (v) => _then(v as _CreateStudentAccount));
-
-  @override
-  _CreateStudentAccount get _value => super._value as _CreateStudentAccount;
-}
-
-/// @nodoc
-class _$_CreateStudentAccount implements _CreateStudentAccount {
-  const _$_CreateStudentAccount();
-
-  @override
-  String toString() {
-    return 'AuthEvent.createStudentAccount()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _CreateStudentAccount);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
-    @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result toggledSnackBarVisibility(bool value),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
-    @required
-        Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
-    @required Result signOut(),
-  }) {
-    assert(displayNameChanged != null);
-    assert(emailChanged != null);
-    assert(guardianEmailChanged != null);
-    assert(genderChanged != null);
-    assert(passwordChanged != null);
-    assert(newPasswordChanged != null);
-    assert(toggledPasswordVisibility != null);
-    assert(toggledSnackBarVisibility != null);
-    assert(signInWithEmailAndPassword != null);
-    assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
-    assert(updateProfile != null);
-    assert(emailPasswordReset != null);
-    assert(updatePassword != null);
-    assert(signInWithGoogle != null);
-    assert(signInWithFacebook != null);
-    assert(signInWithTwitter != null);
-    assert(signInWithCredentials != null);
-    assert(signOut != null);
-    return createStudentAccount();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result toggledSnackBarVisibility(bool value),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
-    Result signOut(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (createStudentAccount != null) {
-      return createStudentAccount();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
-    @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    @required
-        Result toggledSnackBarVisibility(_ToggledSnackBarVisibility value),
-    @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    @required
-        Result createAccountWithEmailAndPassword(
-            _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result signOut(_SignOut value),
-  }) {
-    assert(displayNameChanged != null);
-    assert(emailChanged != null);
-    assert(guardianEmailChanged != null);
-    assert(genderChanged != null);
-    assert(passwordChanged != null);
-    assert(newPasswordChanged != null);
-    assert(toggledPasswordVisibility != null);
-    assert(toggledSnackBarVisibility != null);
-    assert(signInWithEmailAndPassword != null);
-    assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
-    assert(updateProfile != null);
-    assert(emailPasswordReset != null);
-    assert(updatePassword != null);
-    assert(signInWithGoogle != null);
-    assert(signInWithFacebook != null);
-    assert(signInWithTwitter != null);
-    assert(signInWithCredentials != null);
-    assert(signOut != null);
-    return createStudentAccount(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result toggledSnackBarVisibility(_ToggledSnackBarVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
-        _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    Result signOut(_SignOut value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (createStudentAccount != null) {
-      return createStudentAccount(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CreateStudentAccount implements AuthEvent {
-  const factory _CreateStudentAccount() = _$_CreateStudentAccount;
 }
 
 /// @nodoc
@@ -3032,8 +2475,6 @@ class _$_UpdateProfile implements _UpdateProfile {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -3042,7 +2483,7 @@ class _$_UpdateProfile implements _UpdateProfile {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -3055,8 +2496,6 @@ class _$_UpdateProfile implements _UpdateProfile {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3081,8 +2520,6 @@ class _$_UpdateProfile implements _UpdateProfile {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -3090,7 +2527,7 @@ class _$_UpdateProfile implements _UpdateProfile {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -3119,8 +2556,6 @@ class _$_UpdateProfile implements _UpdateProfile {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -3140,8 +2575,6 @@ class _$_UpdateProfile implements _UpdateProfile {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3167,8 +2600,6 @@ class _$_UpdateProfile implements _UpdateProfile {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -3241,8 +2672,6 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -3251,7 +2680,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -3264,8 +2693,6 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3290,8 +2717,6 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -3299,7 +2724,7 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -3328,8 +2753,6 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -3349,8 +2772,6 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3376,8 +2797,6 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -3449,8 +2868,6 @@ class _$_UpdatePassword implements _UpdatePassword {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -3459,7 +2876,7 @@ class _$_UpdatePassword implements _UpdatePassword {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -3472,8 +2889,6 @@ class _$_UpdatePassword implements _UpdatePassword {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3498,8 +2913,6 @@ class _$_UpdatePassword implements _UpdatePassword {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -3507,7 +2920,7 @@ class _$_UpdatePassword implements _UpdatePassword {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -3536,8 +2949,6 @@ class _$_UpdatePassword implements _UpdatePassword {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -3557,8 +2968,6 @@ class _$_UpdatePassword implements _UpdatePassword {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3584,8 +2993,6 @@ class _$_UpdatePassword implements _UpdatePassword {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -3681,8 +3088,6 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -3691,7 +3096,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -3704,8 +3109,6 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3730,8 +3133,6 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -3739,7 +3140,7 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -3768,8 +3169,6 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -3789,8 +3188,6 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3816,8 +3213,6 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -3918,8 +3313,6 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -3928,7 +3321,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -3941,8 +3334,6 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -3967,8 +3358,6 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -3976,7 +3365,7 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -4005,8 +3394,6 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -4026,8 +3413,6 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4053,8 +3438,6 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -4155,8 +3538,6 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -4165,7 +3546,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -4178,8 +3559,6 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4204,8 +3583,6 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -4213,7 +3590,7 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -4242,8 +3619,6 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -4263,8 +3638,6 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4290,8 +3663,6 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -4326,7 +3697,7 @@ abstract class _$SignInWithCredentialsCopyWith<$Res> {
       __$SignInWithCredentialsCopyWithImpl<$Res>;
   $Res call(
       {@nullable Object credential,
-      @nullable AuthProvider provider,
+      @nullable AuthProviderType provider,
       @nullable Object incoming});
 }
 
@@ -4350,7 +3721,7 @@ class __$SignInWithCredentialsCopyWithImpl<$Res>
     return _then(_SignInWithCredentials(
       credential: credential == freezed ? _value.credential : credential,
       provider:
-          provider == freezed ? _value.provider : provider as AuthProvider,
+          provider == freezed ? _value.provider : provider as AuthProviderType,
       incoming: incoming == freezed ? _value.incoming : incoming,
     ));
   }
@@ -4368,7 +3739,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
   final Object credential;
   @override
   @nullable
-  final AuthProvider provider;
+  final AuthProviderType provider;
   @override
   @nullable
   final Object incoming;
@@ -4419,8 +3790,6 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -4429,7 +3798,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -4442,8 +3811,6 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4468,8 +3835,6 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -4477,7 +3842,7 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -4506,8 +3871,6 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -4527,8 +3890,6 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4554,8 +3915,6 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -4577,13 +3936,13 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
 abstract class _SignInWithCredentials implements AuthEvent {
   const factory _SignInWithCredentials(
       {@nullable Object credential,
-      @nullable AuthProvider provider,
+      @nullable AuthProviderType provider,
       @nullable Object incoming}) = _$_SignInWithCredentials;
 
   @nullable
   Object get credential;
   @nullable
-  AuthProvider get provider;
+  AuthProviderType get provider;
   @nullable
   Object get incoming;
   _$SignInWithCredentialsCopyWith<_SignInWithCredentials> get copyWith;
@@ -4636,8 +3995,6 @@ class _$_SignOut implements _SignOut {
     @required Result toggledSnackBarVisibility(bool value),
     @required Result signInWithEmailAndPassword(),
     @required Result createAccountWithEmailAndPassword(),
-    @required Result createInstructorAccount(),
-    @required Result createStudentAccount(),
     @required Result updateProfile(),
     @required Result emailPasswordReset(),
     @required Result updatePassword(),
@@ -4646,7 +4003,7 @@ class _$_SignOut implements _SignOut {
     @required Result signInWithTwitter(@nullable Object incoming),
     @required
         Result signInWithCredentials(@nullable Object credential,
-            @nullable AuthProvider provider, @nullable Object incoming),
+            @nullable AuthProviderType provider, @nullable Object incoming),
     @required Result signOut(),
   }) {
     assert(displayNameChanged != null);
@@ -4659,8 +4016,6 @@ class _$_SignOut implements _SignOut {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4685,8 +4040,6 @@ class _$_SignOut implements _SignOut {
     Result toggledSnackBarVisibility(bool value),
     Result signInWithEmailAndPassword(),
     Result createAccountWithEmailAndPassword(),
-    Result createInstructorAccount(),
-    Result createStudentAccount(),
     Result updateProfile(),
     Result emailPasswordReset(),
     Result updatePassword(),
@@ -4694,7 +4047,7 @@ class _$_SignOut implements _SignOut {
     Result signInWithFacebook(@nullable Object incoming),
     Result signInWithTwitter(@nullable Object incoming),
     Result signInWithCredentials(@nullable Object credential,
-        @nullable AuthProvider provider, @nullable Object incoming),
+        @nullable AuthProviderType provider, @nullable Object incoming),
     Result signOut(),
     @required Result orElse(),
   }) {
@@ -4723,8 +4076,6 @@ class _$_SignOut implements _SignOut {
     @required
         Result createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result createInstructorAccount(_CreateInstructorAccount value),
-    @required Result createStudentAccount(_CreateStudentAccount value),
     @required Result updateProfile(_UpdateProfile value),
     @required Result emailPasswordReset(_EmailPasswordReset value),
     @required Result updatePassword(_UpdatePassword value),
@@ -4744,8 +4095,6 @@ class _$_SignOut implements _SignOut {
     assert(toggledSnackBarVisibility != null);
     assert(signInWithEmailAndPassword != null);
     assert(createAccountWithEmailAndPassword != null);
-    assert(createInstructorAccount != null);
-    assert(createStudentAccount != null);
     assert(updateProfile != null);
     assert(emailPasswordReset != null);
     assert(updatePassword != null);
@@ -4771,8 +4120,6 @@ class _$_SignOut implements _SignOut {
     Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     Result createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result createInstructorAccount(_CreateInstructorAccount value),
-    Result createStudentAccount(_CreateStudentAccount value),
     Result updateProfile(_UpdateProfile value),
     Result emailPasswordReset(_EmailPasswordReset value),
     Result updatePassword(_UpdatePassword value),
@@ -4807,7 +4154,7 @@ class _$AuthStateTearOff {
       @required Gender gender,
       @required Password password,
       @required Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading = false,
       bool validate = false,
       bool passwordHidden = true,
@@ -4842,7 +4189,7 @@ mixin _$AuthState {
   Gender get gender;
   Password get password;
   Password get newPassword;
-  Subscription get subscription;
+  Roles get subscription;
   bool get isLoading;
   bool get validate;
   bool get passwordHidden;
@@ -4863,7 +4210,7 @@ abstract class $AuthStateCopyWith<$Res> {
       Gender gender,
       Password password,
       Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -4908,9 +4255,8 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
       password: password == freezed ? _value.password : password as Password,
       newPassword:
           newPassword == freezed ? _value.newPassword : newPassword as Password,
-      subscription: subscription == freezed
-          ? _value.subscription
-          : subscription as Subscription,
+      subscription:
+          subscription == freezed ? _value.subscription : subscription as Roles,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       validate: validate == freezed ? _value.validate : validate as bool,
       passwordHidden: passwordHidden == freezed
@@ -4939,7 +4285,7 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       Gender gender,
       Password password,
       Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -4985,9 +4331,8 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
       password: password == freezed ? _value.password : password as Password,
       newPassword:
           newPassword == freezed ? _value.newPassword : newPassword as Password,
-      subscription: subscription == freezed
-          ? _value.subscription
-          : subscription as Subscription,
+      subscription:
+          subscription == freezed ? _value.subscription : subscription as Roles,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
       validate: validate == freezed ? _value.validate : validate as bool,
       passwordHidden: passwordHidden == freezed
@@ -5043,7 +4388,7 @@ class _$_AuthState implements _AuthState {
   @override
   final Password newPassword;
   @override
-  final Subscription subscription;
+  final Roles subscription;
   @JsonKey(defaultValue: false)
   @override
   final bool isLoading;
@@ -5135,7 +4480,7 @@ abstract class _AuthState implements AuthState {
       @required Gender gender,
       @required Password password,
       @required Password newPassword,
-      Subscription subscription,
+      Roles subscription,
       bool isLoading,
       bool validate,
       bool passwordHidden,
@@ -5155,7 +4500,7 @@ abstract class _AuthState implements AuthState {
   @override
   Password get newPassword;
   @override
-  Subscription get subscription;
+  Roles get subscription;
   @override
   bool get isLoading;
   @override

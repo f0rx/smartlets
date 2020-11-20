@@ -51,9 +51,9 @@ class PaymentMethodPage extends StatelessWidget with AutoRouteWrapper {
                     shrinkWrap: true,
                     controller: ScrollController(),
                     scrollDirection: Axis.vertical,
-                    itemCount: context.bloc<CreditCardCubit>().state.cards.length,
+                    itemCount: context.watch<CreditCardCubit>().state.cards.length,
                     itemBuilder: (_, i) => CustomCreditCard(
-                      card: context.bloc<CreditCardCubit>().state.cards?.get(i),
+                      card: context.read<CreditCardCubit>().state.cards?.get(i),
                       cardType: "Master Card",
                     ),
                   );

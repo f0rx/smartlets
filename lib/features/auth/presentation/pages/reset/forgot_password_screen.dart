@@ -31,12 +31,34 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
               shouldIconPulse: true,
               backgroundColor: Theme.of(context).primaryColor,
             ).show(context),
-            (_) => null,
+            // Navigate to Email Sent screen
+            (_) => navigator.pushEmailSentScreen(
+              title: "Password Reset Email Sent!",
+              visual: AppAssets.unlockPassword,
+              email: state.emailAddress.getOrEmpty,
+              buttonText: "Check Email",
+              showResendButton: true,
+              content: AutoSizeText.rich(
+                TextSpan(children: [
+                  TextSpan(text: "An email has been sent to your email address "),
+                  TextSpan(
+                    text: state.emailAddress.getOrEmpty.replaceRandom(),
+                    style: TextStyle(color: AppColors.accentColor, fontSize: 16.0),
+                  ),
+                  TextSpan(text: ". Follow the instructions in the email to reset your password."),
+                ]),
+                style: TextStyle(fontSize: 16.0),
+                minFontSize: 15.0,
+                softWrap: true,
+              ),
+              onTap: () {
+                print("ACTION_VIEW Launch Email provider");
+              },
+            ),
           ),
         ),
-        buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, _) => PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),
@@ -47,7 +69,7 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final bloc = context.bloc<AuthBloc>();
+    final bloc = context.watch<AuthBloc>();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -77,8 +99,8 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
                     children: [
                       AutoSizeText(
                         "Forgot Password?",
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                        minFontSize: 20,
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                        minFontSize: 16,
                       ),
                       //
                       VerticalSpace(height: App.height * 0.02),
@@ -93,25 +115,25 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
                       BlocBuilder<AuthBloc, AuthState>(
                         builder: (context, _) => Form(
                           autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
-                          child: TextFormField(
-                            maxLines: 1,
-                            enableSuggestions: true,
-                            autocorrect: false,
-                            cursorColor: App.theme.accentColor,
-                            enableInteractiveSelection: true,
-                            keyboardType: TextInputType.emailAddress,
-                            textCapitalization: TextCapitalization.none,
-                            textInputAction: TextInputAction.done,
-                            decoration: InputDecoration(
-                              labelText: "Email address",
-                              hintText: "name@email.com",
+                          child: AutofillGroup(
+                            child: TextFormField(
+                              maxLines: 1,
+                              enableSuggestions: true,
+                              autocorrect: false,
+                              cursorColor: App.theme.accentColor,
+                              enableInteractiveSelection: true,
+                              keyboardType: TextInputType.emailAddress,
+                              textCapitalization: TextCapitalization.none,
+                              textInputAction: TextInputAction.done,
+                              decoration: InputDecoration(
+                                labelText: "Email address",
+                                hintText: "janedoe@email.com",
+                              ),
+                              autofillHints: [AutofillHints.email],
+                              onChanged: (value) => bloc.add(AuthEvent.emailChanged(value)),
+                              validator: (value) => bloc.state.emailAddress.value.fold((error) => error.message, (r) => null),
+                              onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
                             ),
-                            autofillHints: [
-                              AutofillHints.email,
-                            ],
-                            onChanged: (value) => bloc.add(AuthEvent.emailChanged(value)),
-                            validator: (value) => bloc.state.emailAddress.value.fold((error) => error.message, (r) => null),
-                            onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
                           ),
                         ),
                       ),
@@ -120,19 +142,6 @@ class ForgotPasswordScreen extends StatelessWidget with AutoRouteWrapper {
                       //
                       RaisedButton(
                         onPressed: () => bloc.add(AuthEvent.emailPasswordReset()),
-                        // onPressed: () => navigator.pushEmailSentScreen(
-                        //   title: "Password Reset Email Sent",
-                        //   visual: AppAssets.unlockPassword,
-                        //   buttonText: "Check Email",
-                        //   content: AutoSizeText.rich(TextSpan(children: [
-                        //     TextSpan(text: "An email has been sent to your email address "),
-                        //     TextSpan(text: "ch.....@g....com", style: TextStyle(color: AppColors.accentColor)),
-                        //     TextSpan(text: ". Follow the instruction in the email to reset your password."),
-                        //   ])),
-                        //   onTap: () {
-                        //     print("Hello reset guy");
-                        //   },
-                        // ),
                         child: HorizontalSpace(
                           child: Center(
                             child: Padding(

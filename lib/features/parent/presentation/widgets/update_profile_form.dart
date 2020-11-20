@@ -20,7 +20,9 @@ class UpdateProfileForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<AuthBloc>()..add(AuthEvent.displayNameChanged(user?.displayName))..add(AuthEvent.emailChanged(user?.email)),
+      create: (_) => getIt<AuthBloc>()
+        ..add(AuthEvent.displayNameChanged(user?.displayName?.getOrEmpty))
+        ..add(AuthEvent.emailChanged(user?.email?.getOrEmpty)),
       child: BlocConsumer<AuthBloc, AuthState>(
         listenWhen: (prev, current) => prev.authStatus.isSome() && current.authStatus.isSome(),
         listener: (context, state) => state.authStatus.fold(
@@ -43,9 +45,9 @@ class UpdateProfileForm extends StatelessWidget {
         buildWhen: (prev, current) => prev.isLoading != current.isLoading,
         builder: (context, state) {
           return PortalEntry(
-            visible: context.bloc<AuthBloc>().state.isLoading,
+            visible: context.watch<AuthBloc>().state.isLoading,
             portal: App.circularLoadingOverlay,
-            child: __FormWidget(bloc: context.bloc<AuthBloc>(), user: user, key: key),
+            child: __FormWidget(bloc: context.watch<AuthBloc>(), user: user, key: key),
           );
         },
       ),

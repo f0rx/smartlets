@@ -50,10 +50,10 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
       buildWhen: (prev, current) => prev.isLoading != current.isLoading,
       builder: (context, snapshot) {
         // ignore: close_sinks
-        final _bloc = context.bloc<AuthBloc>();
+        final _bloc = context.watch<AuthBloc>();
 
         return PortalEntry(
-          visible: context.bloc<AuthBloc>().state.isLoading,
+          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: Scaffold(
             appBar: Toolbar(
@@ -63,7 +63,6 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
             body: CustomScrollView(
               shrinkWrap: true,
               physics: Helpers.physics,
-              clipBehavior: Clip.antiAlias,
               slivers: [
                 SliverList(
                   delegate: SliverChildListDelegate(
@@ -111,7 +110,8 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
                                   autovalidateMode: _bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
                                   decoration: const InputDecoration(hintText: "janedoe@email.com"),
                                   onChanged: (value) => _bloc.add(AuthEvent.guardianEmailChanged(value)),
-                                  validator: (value) => _bloc.state.guardianEmailAddress.value.fold((error) => error.message, (r) => null),
+                                  validator: (value) =>
+                                      _bloc.state.guardianEmailAddress.value.fold((error) => error.message, (r) => null),
                                   onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_childNameFieldFocus),
                                 ),
                                 //
@@ -172,7 +172,8 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
                                   focusNode: _childEmailFieldFocus,
                                   decoration: InputDecoration(hintText: "jnr@email.com ( same as guardian's if empty )"),
                                   onChanged: (value) => _bloc.add(AuthEvent.emailChanged(value)),
-                                  validator: (value) => _bloc.state.emailAddress.value.fold((error) => error.message, (r) => null),
+                                  validator: (value) =>
+                                      _bloc.state.emailAddress.value.fold((error) => error.message, (r) => null),
                                   onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(_passwordFieldFocus),
                                 ),
                                 //
@@ -199,14 +200,16 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
                                       textCapitalization: TextCapitalization.none,
                                       textInputAction: TextInputAction.done,
                                       focusNode: _passwordFieldFocus,
-                                      autovalidateMode: _bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
+                                      autovalidateMode:
+                                          _bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
                                       autofillHints: [AutofillHints.newPassword],
                                       decoration: InputDecoration(
                                         hintText: "secret",
                                         contentPadding: const EdgeInsets.only(left: 12.0, right: 45.0).copyWith(bottom: 30.0),
                                       ),
                                       onChanged: (value) => _bloc.add(AuthEvent.newPasswordChanged(value)),
-                                      validator: (value) => _bloc.state.newPassword.value.fold((error) => error.message, (r) => null),
+                                      validator: (value) =>
+                                          _bloc.state.newPassword.value.fold((error) => error.message, (r) => null),
                                       onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
                                     ),
                                     //
@@ -218,7 +221,8 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
                                         shape: CircleBorder(),
                                         clipBehavior: Clip.hardEdge,
                                         child: IconButton(
-                                          icon: Icon(_bloc.state.passwordHidden ? AppIcons.eyelash_closed : AppIcons.eyelash_open),
+                                          icon:
+                                              Icon(_bloc.state.passwordHidden ? AppIcons.eyelash_closed : AppIcons.eyelash_open),
                                           onPressed: () => _bloc.add(AuthEvent.toggledPasswordVisibility()),
                                         ),
                                       ),
@@ -275,7 +279,7 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
                                   text: "Add",
                                   minFontSize: 17.0,
                                   style: const TextStyle(fontWeight: FontWeight.w700),
-                                  onPressed: () => _bloc.add(const AuthEvent.createStudentAccount()),
+                                  onPressed: () {},
                                 ),
                                 //
                                 VerticalSpace(height: App.height * 0.015),

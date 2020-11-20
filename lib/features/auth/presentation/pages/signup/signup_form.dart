@@ -36,7 +36,7 @@ class SignupForm extends StatelessWidget {
             ),
             onTap: (info) => failure.maybeMap(
               (_) => null,
-              accountAlreadyExists: (e) => AuthProvider.switchCase(
+              accountAlreadyExists: (e) => AuthProviderType.switchCase(
                 e.provider.name,
                 isGoogle: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithGoogle(e.credentials)),
                 isFacebook: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithFacebook(e.credentials)),
@@ -58,7 +58,7 @@ class SignupForm extends StatelessWidget {
       ),
       builder: (context, _) {
         // ignore: close_sinks
-        final bloc = context.bloc<AuthBloc>();
+        final bloc = context.watch<AuthBloc>();
 
         return Form(
           autovalidateMode: bloc.state.validate ? AutovalidateMode.always : AutovalidateMode.disabled,
@@ -92,7 +92,7 @@ class SignupForm extends StatelessWidget {
                 //
                 VerticalSpace(height: App.height * 0.02),
                 //
-                context.bloc<OnBoardingCubit>().state.subscription?.fold(
+                context.watch<OnBoardingCubit>().state.role?.fold(
                       parent: () => SizedBox.shrink(),
                       student: () => Column(
                         children: [

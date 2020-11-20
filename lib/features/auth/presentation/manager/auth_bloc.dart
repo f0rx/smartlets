@@ -1,29 +1,89 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide User;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
-import 'package:smartlets/features/on_boarding/models/subscription.dart';
+import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
+import 'package:smartlets/features/on_boarding/models/roles.dart';
+import 'package:smartlets/features/parent/data/export.dart';
+import 'package:smartlets/features/student/data/exports.dart';
+import 'package:smartlets/utils/assets.dart';
+import 'package:smartlets/utils/utils.dart';
 
 part 'auth_bloc.freezed.dart';
+
 part 'auth_event.dart';
+
 part 'auth_state.dart';
 
 @Injectable()
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthFacade _auth;
+  final FirebaseFunctions _functions;
 
-  AuthBloc(this._auth) : super(AuthState.init());
+  AuthBloc(this._auth, this._functions) : super(AuthState.init());
+
+  Future<void> createUserRecords() async {
+    final User user = _auth.currentUser.getOrElse(() => null);
+
+    var _result = false;
+
+    try {
+      _result = (await _functions
+          .httpsCallable(FirebaseFnConstants.CREATE_USER_RECORD_CALLABLE)
+          .call(UserDTO.fromDomain(user).copyWith(updatedAt: null).toJson()
+        ..addAll({"lastSeenAt": user.createdAt?.millisecondsSinceEpoch})))
+          .data;
+    } catch (_) {
+      log.e("Exception caught in AUTH BLOC [${FirebaseFnConstants.CREATE_USER_RECORD_CALLABLE}] ==> $_");
+    }
+
+    await BlocProvider
+        .of<OnBoardingCubit>(App.context)
+        .state
+        ?.role
+        ?.fold(
+      parent: () async {
+        try {
+          if (_result) {
+            await _functions.httpsCallable(FirebaseFnConstants.UPDATE_USER_RECORD_CALLABLE).call(GuardianDTO.fromDomain(Guardian(
+              displayName: user.displayName,
+              childrenIds: ImmutableIds.EMPTY,
+            )).copyWith(updatedAt: null).toJson());
+          }
+        } catch (_) {
+          log.e("Exception caught in AUTH BLOC [${FirebaseFnConstants.UPDATE_USER_RECORD_CALLABLE}] ==> $_");
+        }
+      },
+      student: () async {
+        try {
+          if (_result) {
+            await _functions.httpsCallable(FirebaseFnConstants.UPDATE_USER_RECORD_CALLABLE).call(StudentDTO.fromDomain(Student(
+              displayName: user.displayName,
+              gender: Gender.DEFAULT,
+              guardianEmail: EmailAddress.DEFAULT,
+              guardianPhone: Phone.DEFAULT,
+              courseIds: ImmutableIds.EMPTY,
+              awardIds: ImmutableIds.EMPTY,
+              projectIds: ImmutableIds.EMPTY,
+            )).copyWith(updatedAt: null).toJson());
+          }
+        } catch (_) {
+          log.e("Exception caught in AUTH BLOC [${FirebaseFnConstants.UPDATE_USER_RECORD_CALLABLE}] ==> $_");
+        }
+      },
+    );
+  }
 
   @override
-  Stream<AuthState> mapEventToState(
-    AuthEvent event,
-  ) async* {
+  Stream<AuthState> mapEventToState(AuthEvent event,) async* {
     yield state.copyWith(isLoading: true, authStatus: none());
 
     yield* event.map(
@@ -56,13 +116,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       createAccountWithEmailAndPassword: (_) async* {
         yield* _mapCreateAccountWithEmailAndPassword(_);
-        await _auth.updateProfile(name: state.displayName);
-      },
-      createInstructorAccount: (_) async* {
-        yield* _mapCreateInstructorAccount(_);
-      },
-      createStudentAccount: (_) async* {
-        yield* _mapCreateStudentAccount(_);
       },
       updateProfile: (_) async* {
         yield* _mapUpdateProfile(_);
@@ -75,10 +128,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       signInWithGoogle: (e) async* {
         final result = await _auth.googleAuthentication(e.incoming);
+        if (_auth.currentUser.isSome()) await createUserRecords();
         yield state.copyWith(authStatus: some(result), snackbarDismissed: false);
       },
       signInWithFacebook: (e) async* {
         final result = await _auth.facebookAuthentication(e.incoming);
+        if (_auth.currentUser.isSome()) await createUserRecords();
         yield state.copyWith(authStatus: some(result), snackbarDismissed: false);
       },
       signInWithCredentials: (e) async* {
@@ -89,6 +144,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
       signInWithTwitter: (e) async* {
         final result = await _auth.twitterAuthentication(e.incoming);
+        if (_auth.currentUser.isSome()) await createUserRecords();
         yield state.copyWith(authStatus: some(result), snackbarDismissed: false);
       },
     );
@@ -96,9 +152,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield state.copyWith(isLoading: false);
   }
 
-  Stream<AuthState> _mapSignInWithEmailAndPassword(
-    _SignInWithEmailAndPassword e,
-  ) async* {
+  Stream<AuthState> _mapSignInWithEmailAndPassword(_SignInWithEmailAndPassword e,) async* {
     EmailAddress email = state.emailAddress;
     Password password = state.password;
     Either<AuthFailure, Unit> failureOrUnit;
@@ -116,9 +170,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Stream<AuthState> _mapCreateAccountWithEmailAndPassword(
-    _CreateAccountWithEmailAndPassword e,
-  ) async* {
+  Stream<AuthState> _mapCreateAccountWithEmailAndPassword(_CreateAccountWithEmailAndPassword e,) async* {
     DisplayName name = state.displayName;
     EmailAddress email = state.emailAddress;
     Password password = state.password;
@@ -129,6 +181,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emailAddress: email,
         password: password,
       );
+    }
+
+    if (_auth.currentUser.isSome()) {
+      // Update user profile
+      await _auth.updateProfile(
+        name: state.displayName,
+        photoURL: AppAssets.onlineAnonymous,
+        inFirestore: false,
+      );
+      await createUserRecords();
     }
 
     yield state.copyWith(
@@ -149,7 +211,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
 
     if (e.provider != null)
-      failureOrUnit = await AuthProvider.switchCase<FutureOr<Either<AuthFailure, Unit>>>(
+      failureOrUnit = await AuthProviderType.switchCase<FutureOr<Either<AuthFailure, Unit>>>(
         e.provider.name,
         isPassword: (name) async {
           try {
@@ -205,7 +267,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Password _newPass = state.newPassword;
     Either<AuthFailure, Unit> failureOrUnit;
 
-    if (_oldPass.isValid && _newPass.isValid) failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
+    if (_oldPass.isValid && _newPass.isValid)
+      failureOrUnit = await _auth.changePassword(oldPassword: _oldPass, newPassword: _newPass);
 
     yield state.copyWith(
       validate: true,
@@ -213,14 +276,4 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       snackbarDismissed: false,
     );
   }
-
-  Stream<AuthState> _mapCreateStudentAccount(_CreateStudentAccount e) async* {
-    yield state.copyWith(
-      validate: true,
-      authStatus: some(right(unit)),
-      snackbarDismissed: false,
-    );
-  }
-
-  Stream<AuthState> _mapCreateInstructorAccount(_CreateInstructorAccount e) async* {}
 }
