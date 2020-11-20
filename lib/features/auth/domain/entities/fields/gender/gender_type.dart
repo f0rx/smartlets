@@ -6,7 +6,7 @@ part 'gender_type.g.dart';
 class GenderType extends EnumClass {
   static const GenderType Male = _$male;
   static const GenderType Female = _$female;
-  static const GenderType Other = _$other;
+  static const GenderType Unspecified = _$unspecified;
 
   const GenderType._(String name) : super(name);
 

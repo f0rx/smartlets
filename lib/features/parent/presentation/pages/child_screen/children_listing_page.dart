@@ -14,7 +14,6 @@ class ChildrenListingPage extends StatelessWidget {
       body: CustomScrollView(
         shrinkWrap: true,
         physics: Helpers.physics,
-        clipBehavior: Clip.antiAlias,
         slivers: [
           SliverList(
             delegate: SliverChildListDelegate(

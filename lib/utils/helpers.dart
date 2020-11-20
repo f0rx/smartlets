@@ -43,7 +43,10 @@ class Helpers {
   static double appPadding = App.width * 0.04;
   static ScrollPhysics physics = const BouncingScrollPhysics();
   static Duration willPopTimeout = const Duration(seconds: 3);
-  static Logger logger = Logger();
+  static Logger logger = Logger(
+    filter: env.flavor == BuildFlavor.dev ? DevelopmentFilter() : ProductionFilter(),
+    printer: HybridPrinter(PrettyPrinter()),
+  );
 
   static String writeNotNull(String other) {
     if (other.trim() != null || other.trim().isNotEmpty) {

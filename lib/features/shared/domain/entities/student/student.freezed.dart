@@ -15,24 +15,29 @@ class _$StudentTearOff {
 
 // ignore: unused_element
   _Student call(
-      {@required UniqueId id,
-      @required @nullable DisplayName displayName,
-      @required EmailAddress email,
-      @required @nullable EmailAddress guardianEmail,
-      @required Gender gender,
-      KtList<UniqueId> courseIds = const KtList.empty(),
-      KtList<UniqueId> projectIds = const KtList.empty(),
-      KtList<UniqueId> awardIds = const KtList.empty(),
-      @required bool isEmailVerified,
-      @required @nullable String phone,
-      @required @nullable String guardianPhone,
-      @required @nullable String photoURL,
-      @required DateTime createdAt,
-      @required DateTime lastSeenAt}) {
+      {@nullable Roles role,
+      @nullable UniqueId id,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable AuthProviders providers,
+      @nullable EmailAddress guardianEmail,
+      @nullable Gender gender,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
+      @nullable DateTime updatedAt}) {
     return _Student(
+      role: role,
       id: id,
       displayName: displayName,
       email: email,
+      providers: providers,
       guardianEmail: guardianEmail,
       gender: gender,
       courseIds: courseIds,
@@ -44,6 +49,7 @@ class _$StudentTearOff {
       photoURL: photoURL,
       createdAt: createdAt,
       lastSeenAt: lastSeenAt,
+      updatedAt: updatedAt,
     );
   }
 }
@@ -54,25 +60,40 @@ const $Student = _$StudentTearOff();
 
 /// @nodoc
 mixin _$Student {
+  @nullable
+  Roles get role;
+  @nullable
   UniqueId get id;
   @nullable
   DisplayName get displayName;
+  @nullable
   EmailAddress get email;
   @nullable
+  AuthProviders get providers;
+  @nullable
   EmailAddress get guardianEmail;
+  @nullable
   Gender get gender;
-  KtList<UniqueId> get courseIds;
-  KtList<UniqueId> get projectIds;
-  KtList<UniqueId> get awardIds;
+  @nullable
+  ImmutableIds get courseIds;
+  @nullable
+  ImmutableIds get projectIds;
+  @nullable
+  ImmutableIds get awardIds;
+  @nullable
   bool get isEmailVerified;
   @nullable
-  String get phone;
+  Phone get phone;
   @nullable
-  String get guardianPhone;
+  Phone get guardianPhone;
   @nullable
   String get photoURL;
+  @nullable
   DateTime get createdAt;
+  @nullable
   DateTime get lastSeenAt;
+  @nullable
+  DateTime get updatedAt;
 
   $StudentCopyWith<Student> get copyWith;
 }
@@ -82,20 +103,23 @@ abstract class $StudentCopyWith<$Res> {
   factory $StudentCopyWith(Student value, $Res Function(Student) then) =
       _$StudentCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
-      EmailAddress email,
+      @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable EmailAddress guardianEmail,
-      Gender gender,
-      KtList<UniqueId> courseIds,
-      KtList<UniqueId> projectIds,
-      KtList<UniqueId> awardIds,
-      bool isEmailVerified,
-      @nullable String phone,
-      @nullable String guardianPhone,
+      @nullable Gender gender,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
       @nullable String photoURL,
-      DateTime createdAt,
-      DateTime lastSeenAt});
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
+      @nullable DateTime updatedAt});
 }
 
 /// @nodoc
@@ -108,9 +132,11 @@ class _$StudentCopyWithImpl<$Res> implements $StudentCopyWith<$Res> {
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object guardianEmail = freezed,
     Object gender = freezed,
     Object courseIds = freezed,
@@ -122,37 +148,42 @@ class _$StudentCopyWithImpl<$Res> implements $StudentCopyWith<$Res> {
     Object photoURL = freezed,
     Object createdAt = freezed,
     Object lastSeenAt = freezed,
+    Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName as DisplayName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      providers:
+          providers == freezed ? _value.providers : providers as AuthProviders,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as EmailAddress,
       gender: gender == freezed ? _value.gender : gender as Gender,
-      courseIds: courseIds == freezed
-          ? _value.courseIds
-          : courseIds as KtList<UniqueId>,
+      courseIds:
+          courseIds == freezed ? _value.courseIds : courseIds as ImmutableIds,
       projectIds: projectIds == freezed
           ? _value.projectIds
-          : projectIds as KtList<UniqueId>,
+          : projectIds as ImmutableIds,
       awardIds:
-          awardIds == freezed ? _value.awardIds : awardIds as KtList<UniqueId>,
+          awardIds == freezed ? _value.awardIds : awardIds as ImmutableIds,
       isEmailVerified: isEmailVerified == freezed
           ? _value.isEmailVerified
           : isEmailVerified as bool,
-      phone: phone == freezed ? _value.phone : phone as String,
+      phone: phone == freezed ? _value.phone : phone as Phone,
       guardianPhone: guardianPhone == freezed
           ? _value.guardianPhone
-          : guardianPhone as String,
+          : guardianPhone as Phone,
       photoURL: photoURL == freezed ? _value.photoURL : photoURL as String,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
       lastSeenAt:
           lastSeenAt == freezed ? _value.lastSeenAt : lastSeenAt as DateTime,
+      updatedAt:
+          updatedAt == freezed ? _value.updatedAt : updatedAt as DateTime,
     ));
   }
 }
@@ -163,20 +194,23 @@ abstract class _$StudentCopyWith<$Res> implements $StudentCopyWith<$Res> {
       __$StudentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
-      EmailAddress email,
+      @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable EmailAddress guardianEmail,
-      Gender gender,
-      KtList<UniqueId> courseIds,
-      KtList<UniqueId> projectIds,
-      KtList<UniqueId> awardIds,
-      bool isEmailVerified,
-      @nullable String phone,
-      @nullable String guardianPhone,
+      @nullable Gender gender,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
       @nullable String photoURL,
-      DateTime createdAt,
-      DateTime lastSeenAt});
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
+      @nullable DateTime updatedAt});
 }
 
 /// @nodoc
@@ -190,9 +224,11 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object guardianEmail = freezed,
     Object gender = freezed,
     Object courseIds = freezed,
@@ -204,37 +240,42 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
     Object photoURL = freezed,
     Object createdAt = freezed,
     Object lastSeenAt = freezed,
+    Object updatedAt = freezed,
   }) {
     return _then(_Student(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName as DisplayName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      providers:
+          providers == freezed ? _value.providers : providers as AuthProviders,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as EmailAddress,
       gender: gender == freezed ? _value.gender : gender as Gender,
-      courseIds: courseIds == freezed
-          ? _value.courseIds
-          : courseIds as KtList<UniqueId>,
+      courseIds:
+          courseIds == freezed ? _value.courseIds : courseIds as ImmutableIds,
       projectIds: projectIds == freezed
           ? _value.projectIds
-          : projectIds as KtList<UniqueId>,
+          : projectIds as ImmutableIds,
       awardIds:
-          awardIds == freezed ? _value.awardIds : awardIds as KtList<UniqueId>,
+          awardIds == freezed ? _value.awardIds : awardIds as ImmutableIds,
       isEmailVerified: isEmailVerified == freezed
           ? _value.isEmailVerified
           : isEmailVerified as bool,
-      phone: phone == freezed ? _value.phone : phone as String,
+      phone: phone == freezed ? _value.phone : phone as Phone,
       guardianPhone: guardianPhone == freezed
           ? _value.guardianPhone
-          : guardianPhone as String,
+          : guardianPhone as Phone,
       photoURL: photoURL == freezed ? _value.photoURL : photoURL as String,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
       lastSeenAt:
           lastSeenAt == freezed ? _value.lastSeenAt : lastSeenAt as DateTime,
+      updatedAt:
+          updatedAt == freezed ? _value.updatedAt : updatedAt as DateTime,
     ));
   }
 }
@@ -242,77 +283,88 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
 /// @nodoc
 class _$_Student extends _Student {
   const _$_Student(
-      {@required this.id,
-      @required @nullable this.displayName,
-      @required this.email,
-      @required @nullable this.guardianEmail,
-      @required this.gender,
-      this.courseIds = const KtList.empty(),
-      this.projectIds = const KtList.empty(),
-      this.awardIds = const KtList.empty(),
-      @required this.isEmailVerified,
-      @required @nullable this.phone,
-      @required @nullable this.guardianPhone,
-      @required @nullable this.photoURL,
-      @required this.createdAt,
-      @required this.lastSeenAt})
-      : assert(id != null),
-        assert(email != null),
-        assert(gender != null),
-        assert(courseIds != null),
-        assert(projectIds != null),
-        assert(awardIds != null),
-        assert(isEmailVerified != null),
-        assert(createdAt != null),
-        assert(lastSeenAt != null),
-        super._();
+      {@nullable this.role,
+      @nullable this.id,
+      @nullable this.displayName,
+      @nullable this.email,
+      @nullable this.providers,
+      @nullable this.guardianEmail,
+      @nullable this.gender,
+      @nullable this.courseIds,
+      @nullable this.projectIds,
+      @nullable this.awardIds,
+      @nullable this.isEmailVerified,
+      @nullable this.phone,
+      @nullable this.guardianPhone,
+      @nullable this.photoURL,
+      @nullable this.createdAt,
+      @nullable this.lastSeenAt,
+      @nullable this.updatedAt})
+      : super._();
 
   @override
+  @nullable
+  final Roles role;
+  @override
+  @nullable
   final UniqueId id;
   @override
   @nullable
   final DisplayName displayName;
   @override
+  @nullable
   final EmailAddress email;
+  @override
+  @nullable
+  final AuthProviders providers;
   @override
   @nullable
   final EmailAddress guardianEmail;
   @override
+  @nullable
   final Gender gender;
-  @JsonKey(defaultValue: const KtList.empty())
   @override
-  final KtList<UniqueId> courseIds;
-  @JsonKey(defaultValue: const KtList.empty())
+  @nullable
+  final ImmutableIds courseIds;
   @override
-  final KtList<UniqueId> projectIds;
-  @JsonKey(defaultValue: const KtList.empty())
+  @nullable
+  final ImmutableIds projectIds;
   @override
-  final KtList<UniqueId> awardIds;
+  @nullable
+  final ImmutableIds awardIds;
   @override
+  @nullable
   final bool isEmailVerified;
   @override
   @nullable
-  final String phone;
+  final Phone phone;
   @override
   @nullable
-  final String guardianPhone;
+  final Phone guardianPhone;
   @override
   @nullable
   final String photoURL;
   @override
+  @nullable
   final DateTime createdAt;
   @override
+  @nullable
   final DateTime lastSeenAt;
+  @override
+  @nullable
+  final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'Student(id: $id, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt)';
+    return 'Student(role: $role, id: $id, displayName: $displayName, email: $email, providers: $providers, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Student &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.displayName, displayName) ||
@@ -320,6 +372,9 @@ class _$_Student extends _Student {
                     .equals(other.displayName, displayName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.providers, providers) ||
+                const DeepCollectionEquality()
+                    .equals(other.providers, providers)) &&
             (identical(other.guardianEmail, guardianEmail) ||
                 const DeepCollectionEquality()
                     .equals(other.guardianEmail, guardianEmail)) &&
@@ -350,15 +405,20 @@ class _$_Student extends _Student {
                     .equals(other.createdAt, createdAt)) &&
             (identical(other.lastSeenAt, lastSeenAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.lastSeenAt, lastSeenAt)));
+                    .equals(other.lastSeenAt, lastSeenAt)) &&
+            (identical(other.updatedAt, updatedAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedAt, updatedAt)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(providers) ^
       const DeepCollectionEquality().hash(guardianEmail) ^
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(courseIds) ^
@@ -369,7 +429,8 @@ class _$_Student extends _Student {
       const DeepCollectionEquality().hash(guardianPhone) ^
       const DeepCollectionEquality().hash(photoURL) ^
       const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(lastSeenAt);
+      const DeepCollectionEquality().hash(lastSeenAt) ^
+      const DeepCollectionEquality().hash(updatedAt);
 
   @override
   _$StudentCopyWith<_Student> get copyWith =>
@@ -379,54 +440,75 @@ class _$_Student extends _Student {
 abstract class _Student extends Student {
   const _Student._() : super._();
   const factory _Student(
-      {@required UniqueId id,
-      @required @nullable DisplayName displayName,
-      @required EmailAddress email,
-      @required @nullable EmailAddress guardianEmail,
-      @required Gender gender,
-      KtList<UniqueId> courseIds,
-      KtList<UniqueId> projectIds,
-      KtList<UniqueId> awardIds,
-      @required bool isEmailVerified,
-      @required @nullable String phone,
-      @required @nullable String guardianPhone,
-      @required @nullable String photoURL,
-      @required DateTime createdAt,
-      @required DateTime lastSeenAt}) = _$_Student;
+      {@nullable Roles role,
+      @nullable UniqueId id,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable AuthProviders providers,
+      @nullable EmailAddress guardianEmail,
+      @nullable Gender gender,
+      @nullable ImmutableIds courseIds,
+      @nullable ImmutableIds projectIds,
+      @nullable ImmutableIds awardIds,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable Phone guardianPhone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt,
+      @nullable DateTime updatedAt}) = _$_Student;
 
   @override
+  @nullable
+  Roles get role;
+  @override
+  @nullable
   UniqueId get id;
   @override
   @nullable
   DisplayName get displayName;
   @override
+  @nullable
   EmailAddress get email;
+  @override
+  @nullable
+  AuthProviders get providers;
   @override
   @nullable
   EmailAddress get guardianEmail;
   @override
+  @nullable
   Gender get gender;
   @override
-  KtList<UniqueId> get courseIds;
+  @nullable
+  ImmutableIds get courseIds;
   @override
-  KtList<UniqueId> get projectIds;
+  @nullable
+  ImmutableIds get projectIds;
   @override
-  KtList<UniqueId> get awardIds;
+  @nullable
+  ImmutableIds get awardIds;
   @override
+  @nullable
   bool get isEmailVerified;
   @override
   @nullable
-  String get phone;
+  Phone get phone;
   @override
   @nullable
-  String get guardianPhone;
+  Phone get guardianPhone;
   @override
   @nullable
   String get photoURL;
   @override
+  @nullable
   DateTime get createdAt;
   @override
+  @nullable
   DateTime get lastSeenAt;
+  @override
+  @nullable
+  DateTime get updatedAt;
   @override
   _$StudentCopyWith<_Student> get copyWith;
 }

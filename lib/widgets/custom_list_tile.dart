@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
-import 'package:smartlets/features/on_boarding/models/subscription.dart';
+import 'package:smartlets/features/on_boarding/models/roles.dart';
 import 'package:smartlets/utils/utils.dart';
 
 class CustomListTile<T> extends StatelessWidget {
@@ -29,8 +29,8 @@ class CustomListTile<T> extends StatelessWidget {
       builder: (context, state) => Container(
         decoration: BoxDecoration(
           color: Colors.transparent,
-          border: !context.bloc<OnBoardingCubit>().state.subscription.isNull &&
-                  (context.bloc<OnBoardingCubit>().state.subscription.name == (_value as Subscription).name)
+          border: !context.watch<OnBoardingCubit>().state.role.isNull &&
+                  (context.watch<OnBoardingCubit>().state.role.name == (_value as Roles).name)
               ? Border.all(color: Theme.of(context).accentColor, width: 1.6)
               : Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(8.0),
@@ -66,7 +66,7 @@ class CustomListTile<T> extends StatelessWidget {
             contentPadding: EdgeInsets.symmetric(horizontal: App.width * 0.03, vertical: App.width * 0.015),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
             dense: false,
-            selected: context.bloc<OnBoardingCubit>().state.subscription == _value,
+            selected: context.watch<OnBoardingCubit>().state.role == _value,
           ),
         ),
       ),

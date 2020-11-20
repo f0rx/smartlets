@@ -1,0 +1,22 @@
+{
+  "name": "smartlets",
+  "version": "1.0.0",
+  "description": "A smartlets web application",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f0rx/smartlets.git"
+  },
+  "keywords": [
+    "smartlets"
+  ],
+  "author": "Brendan Ejike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f0rx/smartlets/issues"
+  },
+  "homepage": "https://github.com/f0rx/smartlets#readme"
+}

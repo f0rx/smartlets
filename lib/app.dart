@@ -4,13 +4,14 @@ import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:navigation_history_observer/navigation_history_observer.dart';
+import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
+import 'package:smartlets/features/parent/presentation/manager/blocs.dart';
+import 'package:smartlets/features/shared/shared.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/router/export.dart';
 import 'package:smartlets/manager/theme/theme.dart';
 import 'package:smartlets/utils/utils.dart';
-
-import 'features/parent/presentation/manager/blocs.dart';
 
 class SmartletsApp extends StatelessWidget {
   /// This is the entry point for Smartlets App
@@ -24,7 +25,9 @@ class SmartletsApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (_) => getIt<ThemeCubit>()),
-        BlocProvider<OnBoardingCubit>(create: (_) => getIt<OnBoardingCubit>()..getSubscription()),
+        BlocProvider<OnBoardingCubit>(create: (_) => getIt<OnBoardingCubit>()..getRole()),
+        BlocProvider<AuthWatcherCubit>(create: (_) => getIt<AuthWatcherCubit>()),
+        BlocProvider<FirebaseFunctionsCubit>(create: (_) => getIt<FirebaseFunctionsCubit>()),
         BlocProvider<CreditCardCubit>(create: (_) => getIt<CreditCardCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, AppTheme>(

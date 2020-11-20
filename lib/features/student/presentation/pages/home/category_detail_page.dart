@@ -20,7 +20,6 @@ class CategoryDetailPage extends StatelessWidget {
         tag: category.id.value,
         child: CustomScrollView(
           shrinkWrap: true,
-          clipBehavior: Clip.antiAlias,
           slivers: <Widget>[
             SliverAppBar(
               pinned: false,

@@ -66,8 +66,8 @@ class _InstructorTile extends StatelessWidget {
                     VerticalSpace(height: App.height * 0.005),
                     //
                     Visibility(
-                      visible: user?.displayName != null && user.displayName.isNotEmpty,
-                      child: AutoSizeText("${user?.displayName}", style: TextStyle(fontSize: 16.0)),
+                      visible: !user.displayName.getOrNull.isNullOrBlank,
+                      child: AutoSizeText("${user?.displayName?.getOrEmpty}", style: TextStyle(fontSize: 16.0)),
                     ),
                   ],
                 ),

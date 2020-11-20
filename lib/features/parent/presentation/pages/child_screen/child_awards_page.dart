@@ -45,7 +45,7 @@ class ChildAwardsPage extends StatelessWidget with AutoRouteWrapper {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         AutoSizeText(
-                          tag,
+                          "Rewards",
                           maxLines: 1,
                           style: TextStyle(color: Colors.white),
                         ),
