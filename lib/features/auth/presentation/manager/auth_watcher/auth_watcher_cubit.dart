@@ -10,6 +10,7 @@ import 'package:injectable/injectable.dart';
 import 'package:smartlets/features/auth/data/repositories/user_auth_impl.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/shared/shared.dart';
+import 'package:smartlets/utils/utils.dart';
 
 part 'auth_watcher_cubit.freezed.dart';
 part 'auth_watcher_state.dart';
@@ -60,10 +61,21 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> {
 
   void get signOut async {
     emit(state.copyWith(isLoading: true));
-    // Update user data before signout
-    await _userFacade.update(User(lastSeenAt: DateTime.now()));
-    // Signout the Authenticated User
-    await _facade.signOut();
+
+    try {
+      // Update user data before signout
+      await _userFacade.update(User(lastSeenAt: DateTime.now()));
+    } catch (_) {
+      log.e("Exception caught in AUTH WATCHER CUBIT [signOut & Update LastSeenAt] ==> $_");
+    }
+
+    try {
+      // Signout the Authenticated User
+      await _facade.signOut();
+    } catch (_) {
+      log.e("Exception caught in AUTH WATCHER CUBIT [signOut] ==> $_");
+    }
+
     emit(state.copyWith(
       isLoading: false,
       isAuthenticated: _facade.currentUser.isSome(),

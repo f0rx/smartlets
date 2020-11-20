@@ -15,7 +15,8 @@ class _$GuardianTearOff {
 
 // ignore: unused_element
   _Guardian call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -27,6 +28,7 @@ class _$GuardianTearOff {
       @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt}) {
     return _Guardian(
+      role: role,
       id: id,
       displayName: displayName,
       email: email,
@@ -48,6 +50,8 @@ const $Guardian = _$GuardianTearOff();
 
 /// @nodoc
 mixin _$Guardian {
+  @nullable
+  Roles get role;
   @nullable
   UniqueId get id;
   @nullable
@@ -79,7 +83,8 @@ abstract class $GuardianCopyWith<$Res> {
   factory $GuardianCopyWith(Guardian value, $Res Function(Guardian) then) =
       _$GuardianCopyWithImpl<$Res>;
   $Res call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -102,6 +107,7 @@ class _$GuardianCopyWithImpl<$Res> implements $GuardianCopyWith<$Res> {
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
@@ -115,6 +121,7 @@ class _$GuardianCopyWithImpl<$Res> implements $GuardianCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
@@ -146,7 +153,8 @@ abstract class _$GuardianCopyWith<$Res> implements $GuardianCopyWith<$Res> {
       __$GuardianCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -170,6 +178,7 @@ class __$GuardianCopyWithImpl<$Res> extends _$GuardianCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
@@ -183,6 +192,7 @@ class __$GuardianCopyWithImpl<$Res> extends _$GuardianCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_Guardian(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
@@ -211,7 +221,8 @@ class __$GuardianCopyWithImpl<$Res> extends _$GuardianCopyWithImpl<$Res>
 /// @nodoc
 class _$_Guardian extends _Guardian {
   const _$_Guardian(
-      {@nullable this.id,
+      {@nullable this.role,
+      @nullable this.id,
       @nullable this.displayName,
       @nullable this.email,
       @nullable this.providers,
@@ -224,6 +235,9 @@ class _$_Guardian extends _Guardian {
       @nullable this.updatedAt})
       : super._();
 
+  @override
+  @nullable
+  final Roles role;
   @override
   @nullable
   final UniqueId id;
@@ -260,13 +274,15 @@ class _$_Guardian extends _Guardian {
 
   @override
   String toString() {
-    return 'Guardian(id: $id, displayName: $displayName, email: $email, providers: $providers, isEmailVerified: $isEmailVerified, childrenIds: $childrenIds, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'Guardian(role: $role, id: $id, displayName: $displayName, email: $email, providers: $providers, isEmailVerified: $isEmailVerified, childrenIds: $childrenIds, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Guardian &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.displayName, displayName) ||
@@ -302,6 +318,7 @@ class _$_Guardian extends _Guardian {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
@@ -322,7 +339,8 @@ class _$_Guardian extends _Guardian {
 abstract class _Guardian extends Guardian {
   const _Guardian._() : super._();
   const factory _Guardian(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -334,6 +352,9 @@ abstract class _Guardian extends Guardian {
       @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt}) = _$_Guardian;
 
+  @override
+  @nullable
+  Roles get role;
   @override
   @nullable
   UniqueId get id;

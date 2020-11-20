@@ -38,6 +38,7 @@ abstract class StudentDTO implements _$StudentDTO {
 
   factory StudentDTO.fromDomain(Student instance) {
     return StudentDTO(
+      role: instance.role,
       displayName: instance.displayName?.getOrNull,
       email: instance.email?.getOrNull,
       providers: instance.providers?.getOrNull?.asList(),
@@ -60,6 +61,7 @@ abstract class StudentDTO implements _$StudentDTO {
   Student get domain {
     return Student(
       id: UniqueId.fromExternal(id),
+      role: role,
       displayName: displayName != null ? DisplayName(displayName) : null,
       email: email != null ? EmailAddress(email) : null,
       providers: providers != null ? AuthProviders(providers.toImmutableList()) : AuthProviders.EMPTY,

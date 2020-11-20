@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/auth/presentation/manager/student/student_auth_cubit.dart';
+import 'package:smartlets/features/shared/shared.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
@@ -51,7 +52,9 @@ class AuthenticatedProfileTile extends StatelessWidget {
                             borderOnForeground: false,
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                //
+                              },
                               borderRadius: BorderRadius.circular(100.0),
                               child: ExtendedImage.network(
                                 state.student?.photoURL != null && !state.student.photoURL.isBlank
@@ -128,32 +131,40 @@ class AuthenticatedProfileTile extends StatelessWidget {
                 //
                 Expanded(
                   flex: 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BlocBuilder<StudentAuthCubit, StudentAuthState>(
-                        builder: (context, state) => holder(
-                          AutoSizeText(
-                            "${state.student?.displayName?.getOrEmpty}",
-                            style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600),
-                          ),
-                          condition:
-                              state.student?.displayName?.getOrNull != null && state.student.displayName.getOrEmpty.isNotEmpty,
-                        ),
+                  child: BlocBuilder<FirebaseFunctionsCubit, FirebaseFunctionsState>(
+                    builder: (context, state) => Visibility(
+                      visible: !context.watch<FirebaseFunctionsCubit>().state.isLoading,
+                      replacement: Center(
+                        child: LinearProgressIndicator(backgroundColor: Theme.of(context).primaryColor),
                       ),
-                      //
-                      VerticalSpace(height: App.height * 0.005),
-                      //
-                      BlocBuilder<StudentAuthCubit, StudentAuthState>(
-                        builder: (context, state) => holder(
-                          AutoSizeText(
-                            "${state.student?.email?.getOrEmpty}",
-                            style: TextStyle(fontSize: 17.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BlocBuilder<StudentAuthCubit, StudentAuthState>(
+                            builder: (context, state) => holder(
+                              AutoSizeText(
+                                "${state.student?.displayName?.getOrEmpty}",
+                                style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600),
+                              ),
+                              condition: state.student?.displayName?.getOrNull != null &&
+                                  state.student.displayName.getOrEmpty.isNotEmpty,
+                            ),
                           ),
-                          condition: state.student?.email?.getOrNull != null && state.student.email.getOrEmpty.isNotEmpty,
-                        ),
+                          //
+                          VerticalSpace(height: App.height * 0.005),
+                          //
+                          BlocBuilder<StudentAuthCubit, StudentAuthState>(
+                            builder: (context, state) => holder(
+                              AutoSizeText(
+                                "${state.student?.email?.getOrEmpty}",
+                                style: TextStyle(fontSize: 17.0),
+                              ),
+                              condition: state.student?.email?.getOrNull != null && state.student.email.getOrEmpty.isNotEmpty,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ],

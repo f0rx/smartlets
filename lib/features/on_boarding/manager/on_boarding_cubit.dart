@@ -4,6 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:smartlets/features/auth/data/repositories/user_auth_impl.dart';
+import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/on_boarding/models/roles.dart';
 import 'package:smartlets/features/shared/shared.dart';
 
@@ -14,12 +16,14 @@ part 'on_boarding_state.dart';
 class OnBoardingCubit extends Cubit<OnBoardingState> {
   static const String SUBSCRIPTION_KEY = "subscription-type";
   final box = Hive.openLazyBox(USER_SETTINGS_KEY__HIVE);
-  final DataConnectionChecker connectionChecker;
+  final DataConnectionChecker _connectionChecker;
+  final AuthFacade _auth;
+  final UserAuthImpl _userFacade;
 
-  OnBoardingCubit(this.connectionChecker) : super(OnBoardingState());
+  OnBoardingCubit(this._connectionChecker, this._auth, this._userFacade) : super(OnBoardingState());
 
   void checkInternetConnection() async {
-    final conn = await connectionChecker.hasConnection;
+    final conn = await _connectionChecker.hasConnection;
     emit(state.copyWith(hasStableInternet: conn));
   }
 
@@ -47,10 +51,21 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     emit(state.copyWith(isLoading: false, shouldListen: true));
   }
 
-  void getRole() async {
-    final data = await (await box).get(SUBSCRIPTION_KEY);
+  Future<void> getRole() async {
+    emit(state.copyWith(isLoading: true, shouldListen: false));
+
+    final local = await (await box).get(SUBSCRIPTION_KEY);
+
+    User firestoreUser;
+
+    if (_auth.currentUser.isSome()) {
+      firestoreUser = await _userFacade.single;
+      await (await box).put(SUBSCRIPTION_KEY, firestoreUser.role?.name ?? local);
+    }
+
     emit(state.copyWith(
-      role: data != null ? Roles.valueOf(data) : Roles.student,
+      role: firestoreUser?.role != null ? firestoreUser.role : local != null ? Roles.valueOf(local) : Roles.student,
+      isLoading: false,
     ));
   }
 }

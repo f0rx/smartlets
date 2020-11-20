@@ -21,6 +21,7 @@ abstract class User implements _$User {
 
   const factory User({
     @nullable UniqueId id,
+    @nullable Roles role,
     @nullable DisplayName displayName,
     @nullable EmailAddress email,
     @nullable bool isEmailVerified,

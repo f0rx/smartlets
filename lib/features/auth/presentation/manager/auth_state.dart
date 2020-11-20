@@ -15,14 +15,13 @@ abstract class AuthState with _$AuthState {
     @Default(false) bool validate,
     @Default(true) bool passwordHidden,
     @Default(const None()) Option<Either<AuthFailure, Unit>> authStatus,
-    @Default(true) bool snackbarDismissed,
   }) = _AuthState;
 
   factory AuthState.init() => AuthState(
         displayName: DisplayName(""),
         emailAddress: EmailAddress(""),
         guardianEmailAddress: EmailAddress(""),
-        gender: Gender(GenderType.Male),
+        gender: Gender(GenderType.Unspecified),
         password: Password(""),
         newPassword: Password(""),
       );

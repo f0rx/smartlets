@@ -21,6 +21,10 @@ class _$UserDTOTearOff {
       {@nullable
       @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
           String id,
+      @nullable
+      @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+      @RoleSerializer()
+          Roles role,
       @required
       @nullable
       @JsonKey(includeIfNull: false, defaultValue: '')
@@ -67,6 +71,7 @@ class _$UserDTOTearOff {
           Timestamp updatedAt}) {
     return _UserDTO(
       id: id,
+      role: role,
       displayName: displayName,
       email: email,
       isEmailVerified: isEmailVerified,
@@ -95,6 +100,10 @@ mixin _$UserDTO {
   @nullable
   @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
   String get id;
+  @nullable
+  @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+  @RoleSerializer()
+  Roles get role;
   @nullable
   @JsonKey(includeIfNull: false, defaultValue: '')
   String get displayName;
@@ -143,6 +152,10 @@ abstract class $UserDTOCopyWith<$Res> {
       {@nullable
       @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
           String id,
+      @nullable
+      @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+      @RoleSerializer()
+          Roles role,
       @nullable
       @JsonKey(includeIfNull: false, defaultValue: '')
           String displayName,
@@ -193,6 +206,7 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
+    Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
     Object isEmailVerified = freezed,
@@ -206,6 +220,7 @@ class _$UserDTOCopyWithImpl<$Res> implements $UserDTOCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
+      role: role == freezed ? _value.role : role as Roles,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
@@ -247,6 +262,10 @@ abstract class _$UserDTOCopyWith<$Res> implements $UserDTOCopyWith<$Res> {
       {@nullable
       @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
           String id,
+      @nullable
+      @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+      @RoleSerializer()
+          Roles role,
       @nullable
       @JsonKey(includeIfNull: false, defaultValue: '')
           String displayName,
@@ -299,6 +318,7 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
     Object isEmailVerified = freezed,
@@ -312,6 +332,7 @@ class __$UserDTOCopyWithImpl<$Res> extends _$UserDTOCopyWithImpl<$Res>
   }) {
     return _then(_UserDTO(
       id: id == freezed ? _value.id : id as String,
+      role: role == freezed ? _value.role : role as Roles,
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
@@ -342,6 +363,10 @@ class _$_UserDTO extends _UserDTO {
       {@nullable
       @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
           this.id,
+      @nullable
+      @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+      @RoleSerializer()
+          this.role,
       @required
       @nullable
       @JsonKey(includeIfNull: false, defaultValue: '')
@@ -397,6 +422,11 @@ class _$_UserDTO extends _UserDTO {
   final String id;
   @override
   @nullable
+  @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+  @RoleSerializer()
+  final Roles role;
+  @override
+  @nullable
   @JsonKey(includeIfNull: false, defaultValue: '')
   final String displayName;
   @override
@@ -443,7 +473,7 @@ class _$_UserDTO extends _UserDTO {
 
   @override
   String toString() {
-    return 'UserDTO(id: $id, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, providers: $providers, phone: $phone, country: $country, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'UserDTO(id: $id, role: $role, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, providers: $providers, phone: $phone, country: $country, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -452,6 +482,8 @@ class _$_UserDTO extends _UserDTO {
         (other is _UserDTO &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.displayName, displayName) ||
                 const DeepCollectionEquality()
                     .equals(other.displayName, displayName)) &&
@@ -486,6 +518,7 @@ class _$_UserDTO extends _UserDTO {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(isEmailVerified) ^
@@ -513,6 +546,10 @@ abstract class _UserDTO extends UserDTO {
       {@nullable
       @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
           String id,
+      @nullable
+      @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+      @RoleSerializer()
+          Roles role,
       @required
       @nullable
       @JsonKey(includeIfNull: false, defaultValue: '')
@@ -564,6 +601,11 @@ abstract class _UserDTO extends UserDTO {
   @nullable
   @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
   String get id;
+  @override
+  @nullable
+  @JsonKey(ignore: true, includeIfNull: false, defaultValue: '')
+  @RoleSerializer()
+  Roles get role;
   @override
   @nullable
   @JsonKey(includeIfNull: false, defaultValue: '')

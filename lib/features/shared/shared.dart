@@ -1,3 +1,5 @@
+export 'package:smartlets/features/on_boarding/models/roles.dart';
+
 export 'data/data.dart';
 export 'domain/entities/country/country.dart';
 export 'domain/entities/country/country_name.dart';
@@ -16,4 +18,5 @@ export 'domain/field_object.dart';
 export 'domain/query_data.dart';
 export 'domain/validator/field_object_exception.dart';
 export 'domain/validator/validator.dart';
+export 'manager/firebase/functions_cubit/firebase_functions_cubit.dart';
 export 'shared_consts.dart';

@@ -12,7 +12,9 @@ mixin FirebaseDepMixin {
 mixin FirestoreAuthMixin<T> {
   Future<T> get single;
 
-  Future<bool> fieldExistAndIsNull(String field) async => await Future.value(false);
+  Future<bool> get docExists;
+
+  Future<bool> isFieldNull(String field);
 
   Stream<Either<FirestoreAuthFailure, KtList<T>>> get watch;
 

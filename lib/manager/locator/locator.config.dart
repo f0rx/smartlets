@@ -27,6 +27,7 @@ import '../../features/auth/presentation/manager/user/user_auth_cubit.dart';
 import '../../features/on_boarding/manager/on_boarding_cubit.dart';
 import '../../features/parent/presentation/manager/credit_card/credit_card_cubit.dart';
 import '../../features/parent/presentation/manager/parent_nav_cubit.dart';
+import '../../features/shared/manager/firebase/functions_cubit/firebase_functions_cubit.dart';
 import '../../features/student/presentation/manager/playback/playback_bloc.dart';
 import '../../features/student/presentation/manager/student_nav_cubit.dart';
 import '../theme/manager/theme_cubit.dart';
@@ -52,7 +53,7 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<FirebaseFunctions>(() => modules.functions);
   gh.lazySingleton<GoogleSignIn>(() => modules.googleSignIn);
   gh.lazySingleton<GuardianAuthImpl>(() => GuardianAuthImpl(get<FirebaseFirestore>(), get<DataConnectionChecker>()));
-  gh.factory<OnBoardingCubit>(() => OnBoardingCubit(get<DataConnectionChecker>()));
+  gh.factory<OnBoardingCubit>(() => OnBoardingCubit(get<DataConnectionChecker>(), get<AuthFacade>(), get<UserAuthImpl>()));
   gh.factory<ParentNavCubit>(() => ParentNavCubit());
   gh.factory<PlaybackBloc>(() => PlaybackBloc());
   gh.lazySingleton<StudentAuthImpl>(() => StudentAuthImpl(get<FirebaseFirestore>(), get<DataConnectionChecker>()));
@@ -75,7 +76,10 @@ Future<GetIt> $initGetIt(
   gh.factory<GuardianAuthCubit>(() => GuardianAuthCubit(get<GuardianAuthImpl>()));
   gh.factory<StudentAuthCubit>(() => StudentAuthCubit(get<StudentAuthImpl>()));
   gh.factory<UserAuthCubit>(() => UserAuthCubit(get<UserAuthImpl>()));
-  gh.factory<AuthBloc>(() => AuthBloc(get<AuthFacade>(), get<FirebaseFunctions>()));
+  gh.factory<AuthBloc>(() => AuthBloc(get<AuthFacade>()));
+
+  // Eager singletons must be registered in the right order
+  gh.singleton<FirebaseFunctionsCubit>(FirebaseFunctionsCubit(get<AuthFacade>(), get<FirebaseFunctions>(), get<UserAuthImpl>()));
   return get;
 }
 

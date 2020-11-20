@@ -23,6 +23,7 @@ class UserAuthImpl with FirestoreAuthMixin<User> {
   final StudentAuthImpl _studentAuthImpl;
   final GuardianAuthImpl _guardianAuthImpl;
   GetOptions options = GetOptions(source: Source.serverAndCache);
+  DocumentSnapshot _temp;
 
   UserAuthImpl(this._firestore, this._connectionChecker, this._studentAuthImpl, this._guardianAuthImpl);
 
@@ -43,11 +44,14 @@ class UserAuthImpl with FirestoreAuthMixin<User> {
   }
 
   @override
-  Future<bool> fieldExistAndIsNull(String field) async {
+  Future<bool> get docExists async {
     await checkHasInternet;
-    final doc = await _firestore.users.user.get(options);
-    return (doc).exists && doc.data()[field] == null;
+    _temp = await _firestore.users.user.get(options);
+    return _temp != null && _temp.exists;
   }
+
+  @override
+  Future<bool> isFieldNull(String field) async => await docExists && _temp.data()[field] == null;
 
   @override
   Future<Either<FirestoreAuthFailure, Unit>> create(User user) async {

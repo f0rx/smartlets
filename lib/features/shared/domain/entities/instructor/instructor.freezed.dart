@@ -15,7 +15,8 @@ class _$InstructorTearOff {
 
 // ignore: unused_element
   _Instructor call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable Biography bio,
@@ -26,6 +27,7 @@ class _$InstructorTearOff {
       @nullable DateTime createdAt,
       @nullable DateTime lastSeenAt}) {
     return _Instructor(
+      role: role,
       id: id,
       displayName: displayName,
       email: email,
@@ -46,6 +48,8 @@ const $Instructor = _$InstructorTearOff();
 
 /// @nodoc
 mixin _$Instructor {
+  @nullable
+  Roles get role;
   @nullable
   UniqueId get id;
   @nullable
@@ -76,7 +80,8 @@ abstract class $InstructorCopyWith<$Res> {
           Instructor value, $Res Function(Instructor) then) =
       _$InstructorCopyWithImpl<$Res>;
   $Res call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable Biography bio,
@@ -98,6 +103,7 @@ class _$InstructorCopyWithImpl<$Res> implements $InstructorCopyWith<$Res> {
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
@@ -110,6 +116,7 @@ class _$InstructorCopyWithImpl<$Res> implements $InstructorCopyWith<$Res> {
     Object lastSeenAt = freezed,
   }) {
     return _then(_value.copyWith(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
@@ -138,7 +145,8 @@ abstract class _$InstructorCopyWith<$Res> implements $InstructorCopyWith<$Res> {
       __$InstructorCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable Biography bio,
@@ -162,6 +170,7 @@ class __$InstructorCopyWithImpl<$Res> extends _$InstructorCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
@@ -174,6 +183,7 @@ class __$InstructorCopyWithImpl<$Res> extends _$InstructorCopyWithImpl<$Res>
     Object lastSeenAt = freezed,
   }) {
     return _then(_Instructor(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
@@ -198,7 +208,8 @@ class __$InstructorCopyWithImpl<$Res> extends _$InstructorCopyWithImpl<$Res>
 /// @nodoc
 class _$_Instructor extends _Instructor {
   const _$_Instructor(
-      {@nullable this.id,
+      {@nullable this.role,
+      @nullable this.id,
       @nullable this.displayName,
       @nullable this.email,
       @nullable this.bio,
@@ -210,6 +221,9 @@ class _$_Instructor extends _Instructor {
       @nullable this.lastSeenAt})
       : super._();
 
+  @override
+  @nullable
+  final Roles role;
   @override
   @nullable
   final UniqueId id;
@@ -243,13 +257,15 @@ class _$_Instructor extends _Instructor {
 
   @override
   String toString() {
-    return 'Instructor(id: $id, displayName: $displayName, email: $email, bio: $bio, specialty: $specialty, isEmailVerified: $isEmailVerified, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt)';
+    return 'Instructor(role: $role, id: $id, displayName: $displayName, email: $email, bio: $bio, specialty: $specialty, isEmailVerified: $isEmailVerified, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Instructor &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.displayName, displayName) ||
@@ -281,6 +297,7 @@ class _$_Instructor extends _Instructor {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
@@ -300,7 +317,8 @@ class _$_Instructor extends _Instructor {
 abstract class _Instructor extends Instructor {
   const _Instructor._() : super._();
   const factory _Instructor(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable Biography bio,
@@ -311,6 +329,9 @@ abstract class _Instructor extends Instructor {
       @nullable DateTime createdAt,
       @nullable DateTime lastSeenAt}) = _$_Instructor;
 
+  @override
+  @nullable
+  Roles get role;
   @override
   @nullable
   UniqueId get id;

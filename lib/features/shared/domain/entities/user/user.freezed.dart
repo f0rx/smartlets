@@ -16,6 +16,7 @@ class _$UserTearOff {
 // ignore: unused_element
   _User call(
       {@nullable UniqueId id,
+      @nullable Roles role,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable bool isEmailVerified,
@@ -27,6 +28,7 @@ class _$UserTearOff {
       @nullable DateTime updatedAt}) {
     return _User(
       id: id,
+      role: role,
       displayName: displayName,
       email: email,
       isEmailVerified: isEmailVerified,
@@ -48,6 +50,8 @@ const $User = _$UserTearOff();
 mixin _$User {
   @nullable
   UniqueId get id;
+  @nullable
+  Roles get role;
   @nullable
   DisplayName get displayName;
   @nullable
@@ -76,6 +80,7 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {@nullable UniqueId id,
+      @nullable Roles role,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable bool isEmailVerified,
@@ -98,6 +103,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
+    Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
     Object isEmailVerified = freezed,
@@ -110,6 +116,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
+      role: role == freezed ? _value.role : role as Roles,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName as DisplayName,
@@ -138,6 +145,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {@nullable UniqueId id,
+      @nullable Roles role,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable bool isEmailVerified,
@@ -161,6 +169,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
+    Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
     Object isEmailVerified = freezed,
@@ -173,6 +182,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   }) {
     return _then(_User(
       id: id == freezed ? _value.id : id as UniqueId,
+      role: role == freezed ? _value.role : role as Roles,
       displayName: displayName == freezed
           ? _value.displayName
           : displayName as DisplayName,
@@ -198,6 +208,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User extends _User with DiagnosticableTreeMixin {
   const _$_User(
       {@nullable this.id,
+      @nullable this.role,
       @nullable this.displayName,
       @nullable this.email,
       @nullable this.isEmailVerified,
@@ -212,6 +223,9 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   @override
   @nullable
   final UniqueId id;
+  @override
+  @nullable
+  final Roles role;
   @override
   @nullable
   final DisplayName displayName;
@@ -242,7 +256,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, providers: $providers, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'User(id: $id, role: $role, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, providers: $providers, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -251,6 +265,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'User'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('role', role))
       ..add(DiagnosticsProperty('displayName', displayName))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('isEmailVerified', isEmailVerified))
@@ -268,6 +283,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
         (other is _User &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.displayName, displayName) ||
                 const DeepCollectionEquality()
                     .equals(other.displayName, displayName)) &&
@@ -299,6 +316,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(isEmailVerified) ^
@@ -318,6 +336,7 @@ abstract class _User extends User {
   const _User._() : super._();
   const factory _User(
       {@nullable UniqueId id,
+      @nullable Roles role,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable bool isEmailVerified,
@@ -331,6 +350,9 @@ abstract class _User extends User {
   @override
   @nullable
   UniqueId get id;
+  @override
+  @nullable
+  Roles get role;
   @override
   @nullable
   DisplayName get displayName;

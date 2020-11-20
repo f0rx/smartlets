@@ -15,7 +15,8 @@ class _$StudentTearOff {
 
 // ignore: unused_element
   _Student call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -32,6 +33,7 @@ class _$StudentTearOff {
       @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt}) {
     return _Student(
+      role: role,
       id: id,
       displayName: displayName,
       email: email,
@@ -58,6 +60,8 @@ const $Student = _$StudentTearOff();
 
 /// @nodoc
 mixin _$Student {
+  @nullable
+  Roles get role;
   @nullable
   UniqueId get id;
   @nullable
@@ -99,7 +103,8 @@ abstract class $StudentCopyWith<$Res> {
   factory $StudentCopyWith(Student value, $Res Function(Student) then) =
       _$StudentCopyWithImpl<$Res>;
   $Res call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -127,6 +132,7 @@ class _$StudentCopyWithImpl<$Res> implements $StudentCopyWith<$Res> {
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
@@ -145,6 +151,7 @@ class _$StudentCopyWithImpl<$Res> implements $StudentCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
@@ -187,7 +194,8 @@ abstract class _$StudentCopyWith<$Res> implements $StudentCopyWith<$Res> {
       __$StudentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -216,6 +224,7 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object role = freezed,
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
@@ -234,6 +243,7 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_Student(
+      role: role == freezed ? _value.role : role as Roles,
       id: id == freezed ? _value.id : id as UniqueId,
       displayName: displayName == freezed
           ? _value.displayName
@@ -273,7 +283,8 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
 /// @nodoc
 class _$_Student extends _Student {
   const _$_Student(
-      {@nullable this.id,
+      {@nullable this.role,
+      @nullable this.id,
       @nullable this.displayName,
       @nullable this.email,
       @nullable this.providers,
@@ -291,6 +302,9 @@ class _$_Student extends _Student {
       @nullable this.updatedAt})
       : super._();
 
+  @override
+  @nullable
+  final Roles role;
   @override
   @nullable
   final UniqueId id;
@@ -342,13 +356,15 @@ class _$_Student extends _Student {
 
   @override
   String toString() {
-    return 'Student(id: $id, displayName: $displayName, email: $email, providers: $providers, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'Student(role: $role, id: $id, displayName: $displayName, email: $email, providers: $providers, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Student &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.displayName, displayName) ||
@@ -398,6 +414,7 @@ class _$_Student extends _Student {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
@@ -423,7 +440,8 @@ class _$_Student extends _Student {
 abstract class _Student extends Student {
   const _Student._() : super._();
   const factory _Student(
-      {@nullable UniqueId id,
+      {@nullable Roles role,
+      @nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
       @nullable AuthProviders providers,
@@ -440,6 +458,9 @@ abstract class _Student extends Student {
       @nullable DateTime lastSeenAt,
       @nullable DateTime updatedAt}) = _$_Student;
 
+  @override
+  @nullable
+  Roles get role;
   @override
   @nullable
   UniqueId get id;

@@ -17,8 +17,6 @@ abstract class AuthEvent with _$AuthEvent {
 
   const factory AuthEvent.toggledPasswordVisibility() = _ToggledPasswordVisibility;
 
-  const factory AuthEvent.toggledSnackBarVisibility([bool value]) = _ToggledSnackBarVisibility;
-
   const factory AuthEvent.signInWithEmailAndPassword() = _SignInWithEmailAndPassword;
 
   const factory AuthEvent.createAccountWithEmailAndPassword() = _CreateAccountWithEmailAndPassword;
@@ -40,6 +38,4 @@ abstract class AuthEvent with _$AuthEvent {
     @nullable AuthProviderType provider,
     @nullable Object incoming,
   }) = _SignInWithCredentials;
-
-  const factory AuthEvent.signOut() = _SignOut;
 }

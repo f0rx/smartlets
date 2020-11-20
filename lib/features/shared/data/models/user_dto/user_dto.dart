@@ -16,6 +16,7 @@ abstract class UserDTO implements _$UserDTO {
 
   const factory UserDTO({
     @nullable @JsonKey(ignore: true, includeIfNull: false, defaultValue: '') String id,
+    @nullable @JsonKey(ignore: true, includeIfNull: false, defaultValue: '') @RoleSerializer() Roles role,
     @required @nullable @JsonKey(includeIfNull: false, defaultValue: '') String displayName,
     @required @nullable @JsonKey(includeIfNull: false, defaultValue: '') String email,
     @required @nullable @JsonKey(includeIfNull: false, defaultValue: false) bool isEmailVerified,
@@ -54,6 +55,7 @@ abstract class UserDTO implements _$UserDTO {
   User get domain {
     return User(
       id: UniqueId.fromExternal(id),
+      role: role,
       displayName: displayName != null ? DisplayName(displayName) : null,
       email: email != null ? EmailAddress(email) : null,
       isEmailVerified: isEmailVerified,
@@ -66,5 +68,12 @@ abstract class UserDTO implements _$UserDTO {
   }
 
   factory UserDTO.fromDocument(DocumentSnapshot snapshot) =>
-      UserDTO.fromJson(!snapshot.data().isNull ? snapshot.data() : {}).copyWith(id: snapshot.id);
+      UserDTO.fromJson(!snapshot.data().isNull ? snapshot.data() : {}).copyWith(
+        id: snapshot.id,
+        role: !snapshot.data().isNull && snapshot.data().containsKey('role')
+            ? Roles.valueOf(
+                snapshot.data()['role'],
+              )
+            : null,
+      );
 }

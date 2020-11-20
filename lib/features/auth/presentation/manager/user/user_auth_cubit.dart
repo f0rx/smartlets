@@ -15,7 +15,7 @@ import 'package:smartlets/features/shared/shared.dart';
 part 'user_auth_cubit.freezed.dart';
 part 'user_auth_state.dart';
 
-@Injectable()
+@Singleton()
 class UserAuthCubit extends Cubit<UserAuthState> {
   final UserAuthImpl _facade;
   StreamSubscription<Either<FirestoreAuthFailure, User>> _readSubscription;

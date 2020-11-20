@@ -11,6 +11,7 @@ abstract class Student implements _$Student {
   const Student._();
 
   const factory Student({
+    @nullable Roles role,
     @nullable UniqueId id,
     @nullable DisplayName displayName,
     @nullable EmailAddress email,

@@ -12,6 +12,7 @@ abstract class Instructor implements _$Instructor {
   const Instructor._();
 
   const factory Instructor({
+    @nullable Roles role,
     @nullable UniqueId id,
     @nullable DisplayName displayName,
     @nullable EmailAddress email,

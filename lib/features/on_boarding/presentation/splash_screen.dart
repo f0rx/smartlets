@@ -69,10 +69,16 @@ class _SplashScreenState extends State<SplashScreen> {
                   (option) => option?.fold(
                     () => navigator.pushAndRemoveUntil(Routes.onBoardingScreen, (route) => false),
                     // Using this screens' context is wrong cos it will be disposed on navigation; hence the use of App.context
-                    (user) async => await BlocProvider.of<OnBoardingCubit>(App.context).state?.role?.fold(
-                          parent: () async => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
-                          student: () async => navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false),
-                        ),
+                    (user) async {
+                      final _bloc = BlocProvider.of<OnBoardingCubit>(App.context);
+
+                      await _bloc.getRole();
+
+                      await _bloc.state?.role?.fold(
+                        parent: () async => navigator.pushAndRemoveUntil(Routes.parentRootScreen, (route) => false),
+                        student: () async => navigator.pushAndRemoveUntil(Routes.studentRootScreen, (route) => false),
+                      );
+                    },
                   ),
                 );
               },

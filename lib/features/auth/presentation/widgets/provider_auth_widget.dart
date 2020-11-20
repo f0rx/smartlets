@@ -55,7 +55,7 @@ class ProviderAuthWidget extends StatelessWidget {
               BlocBuilder<AuthBloc, AuthState>(
                 builder: (context, _) => Visibility(
                   visible: context.watch<AuthBloc>().state.isLoading,
-                  child: LinearProgressIndicator(),
+                  child: LinearProgressIndicator(backgroundColor: Theme.of(context).primaryColor),
                 ),
               ),
             ],

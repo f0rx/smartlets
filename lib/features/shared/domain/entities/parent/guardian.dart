@@ -11,6 +11,7 @@ abstract class Guardian implements _$Guardian {
   const Guardian._();
 
   const factory Guardian({
+    @nullable Roles role,
     @nullable UniqueId id,
     @nullable DisplayName displayName,
     @nullable EmailAddress email,

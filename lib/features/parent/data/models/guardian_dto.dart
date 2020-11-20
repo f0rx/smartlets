@@ -35,6 +35,7 @@ abstract class GuardianDTO implements _$GuardianDTO {
 
   factory GuardianDTO.fromDomain(Guardian instance) {
     return GuardianDTO(
+      role: instance.role,
       displayName: instance.displayName?.getOrNull,
       email: instance.email?.getOrNull,
       providers: instance.providers?.getOrNull?.asList(),
@@ -52,6 +53,7 @@ abstract class GuardianDTO implements _$GuardianDTO {
   Guardian get domain {
     return Guardian(
       id: UniqueId.fromExternal(id),
+      role: role,
       displayName: displayName != null ? DisplayName(displayName) : null,
       email: email != null ? EmailAddress(email) : null,
       providers: providers != null ? AuthProviders(providers.toImmutableList()) : AuthProviders.EMPTY,
