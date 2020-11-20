@@ -1,11 +1,9 @@
 const functions = require("firebase-functions");
 
-const onUserCreated = require("./user_created");
-const onUserUpdated = require("./user_updated");
-const onUserDeleted = require("./user_deleted");
+const createUserRecord = require("./create_user_record");
+const updateUserRecord = require("./update_user_record");
 
 module.exports = {
-  onUserCreated,
-  onUserUpdated,
-  onUserDeleted,
+  createUserRecord,
+  updateUserRecord,
 };

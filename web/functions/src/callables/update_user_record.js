@@ -1,12 +1,11 @@
 const { db, functions } = require("../admin");
-var pluralize = require('pluralize');
+const pluralize = require('pluralize');
 
 const USERS_COLLECTION = "users";
 
-exports.onUserCreatedCallable = functions.https.onCall(async (data, context) => {
+exports.callable = functions.https.onCall(async (data, context) => {
     // Get updated display name if available
     const uid = context.auth.uid;
-//    const displayName = context.auth.token.name === null || context.auth.token.name === undefined ? '' : context.auth.token.name;
 
     // User's doc reference
     const userRef = db.collection(USERS_COLLECTION).doc(uid);
@@ -19,12 +18,10 @@ exports.onUserCreatedCallable = functions.https.onCall(async (data, context) => 
         // Write user data to new ROLE collection
         await ref.set({ ...data, ...userDoc.data(), displayName: data.displayName }, { merge: true });
         // Update user's doc in USERS
-        await userRef.update({ displayName: data.displayName });
+        await userRef.update({ displayName: data.displayName, role: data.role });
     }
 
-    while (!(await ref.get()).exists) {
-        if (userDoc.exists) await createProfile();
-    }
+    if (userDoc.exists) await createProfile();
 
     return (await ref.get()).exists;
 });

@@ -3,13 +3,13 @@ const pluralize = require('pluralize');
 
 const USERS_COLLECTION = "users";
 
-exports.AssocUser = functions.firestore.document(`${USERS_COLLECTION}/{userId}`)
-  .onDelete(async (snapshot, context) => {
-    // The previous snapshot before this update
-    const previousValue = snapshot.data();
+exports.usersCollection = functions.firestore.document(`${USERS_COLLECTION}/{userId}`)
+  .onUpdate(async (change, context) => {
+    // The current snapshot of document after update
+    const newValue = change.after.data();
 
     // Assign role var
-    const role = previousValue.role;
+    const role = newValue.role;
 
     // Get refs
     const adminRef = db.collection(pluralize.plural(role)).doc(context.params.userId);
@@ -17,14 +17,14 @@ exports.AssocUser = functions.firestore.document(`${USERS_COLLECTION}/{userId}`)
     const studentRef = db.collection(pluralize.plural(role)).doc(context.params.userId);
 
     if ((await adminRef.get()).exists) {
-        await adminRef.delete();
+        await adminRef.update({ ...newValue });
     }
 
     if ((await parentRef.get()).exists) {
-        await parentRef.delete();
+        await parentRef.update({ ...newValue });
     }
 
     if ((await studentRef.get()).exists) {
-        await studentRef.delete();
+        await studentRef.update({ ...newValue });
     }
 });
