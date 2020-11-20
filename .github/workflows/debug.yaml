@@ -1,0 +1,75 @@
+name: Release Debug apk
+
+on:
+  push:
+    branches:
+      - master
+#      - dev
+  pull_request:
+    branches:
+      - master
+#      - dev
+
+jobs:
+  build:
+    name: Build & Deploy Debug APK (Flavor => Prod)
+    runs-on: ubuntu-latest
+    env:
+      RUN_NUMBER: ${{ github.run_number }}
+      TAG_PREFIX: "debug"
+    steps:
+      - name: Fetch HEAD
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java Environment
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Prepare NDK dir for caching
+        run: |
+          sudo mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo chmod -R 777 /usr/local/lib/android/sdk/ndk
+          sudo chown -R $USER:$USER /usr/local/lib/android/sdk/ndk
+
+      - name: NDK Cache
+        id: ndk_cache
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/lib/android/sdk/ndk
+          key: ${{ runner.os }}-ndk_cache-21.0.6113669
+
+      - name: Install NDK
+        if: steps.ndk_cache.outputs.cache-hit != 'true'
+        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
+
+      - name: Set up Flutter Environment
+        uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: 'beta'
+
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk -t lib/main_dev.dart --debug --build-number=${GITHUB_RUN_NUMBER} --target-platform android-arm --split-per-abi --flavor=prod
+
+      - name: Bump version and push tag
+        id: bump_tag
+        uses: mathieudutour/github-tag-action@v4.5
+        with:
+          release_branches: .*
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print Tag / Release Parameters
+        run: |
+          echo "Got tag name ${{ steps.bump_tag.outputs.new_tag }}"
+
+      - name: Push APK to Release Tags
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/apk/prod/debug/*.apk,build/app/outputs/apk/debug/*.apk,build/app/outputs/apk/*"
+          tag: ${{ steps.bump_tag.outputs.new_tag }}
+          token: ${{ secrets.ACCESS_TOKEN }}
+          allowUpdates: true
+          prerelease: true
