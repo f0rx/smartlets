@@ -11,6 +11,11 @@ _$_GuardianDTO _$_$_GuardianDTOFromJson(Map<String, dynamic> json) {
     role: const RoleSerializer().fromJson(json['role'] as String),
     displayName: json['displayName'] as String ?? '',
     email: json['email'] as String ?? '',
+    providers: (json['providers'] as List)
+            ?.map((e) => const AuthProviderSerializer()
+                .fromJson(e as Map<String, dynamic>))
+            ?.toList() ??
+        [],
     childrenIds:
         (json['childrenIds'] as List)?.map((e) => e as String)?.toList() ?? [],
     isEmailVerified: json['isEmailVerified'] as bool ?? false,
@@ -36,6 +41,8 @@ Map<String, dynamic> _$_$_GuardianDTOToJson(_$_GuardianDTO instance) {
   writeNotNull('role', const RoleSerializer().toJson(instance.role));
   writeNotNull('displayName', instance.displayName);
   writeNotNull('email', instance.email);
+  writeNotNull('providers',
+      instance.providers?.map(const AuthProviderSerializer().toJson)?.toList());
   writeNotNull('childrenIds', instance.childrenIds);
   writeNotNull('isEmailVerified', instance.isEmailVerified);
   writeNotNull('phone', instance.phone);

@@ -14,6 +14,7 @@ abstract class Guardian implements _$Guardian {
     @nullable UniqueId id,
     @nullable DisplayName displayName,
     @nullable EmailAddress email,
+    @nullable AuthProviders providers,
     @nullable bool isEmailVerified,
     @nullable ImmutableIds childrenIds,
     @nullable Phone phone,

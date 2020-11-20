@@ -12,8 +12,8 @@ import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/student/data/exports.dart';
 import 'package:smartlets/utils/utils.dart';
 
-@LazySingleton(as: StudentAuthFacade)
-class StudentAuthImpl extends StudentAuthFacade {
+@LazySingleton()
+class StudentAuthImpl with FirestoreAuthMixin<Student> {
   final FirebaseFirestore _firestore;
   final DataConnectionChecker _connectionChecker;
   GetOptions options = GetOptions(source: Source.serverAndCache);
@@ -63,7 +63,10 @@ class StudentAuthImpl extends StudentAuthFacade {
   }
 
   @override
-  Future<Either<FirestoreAuthFailure, Unit>> update(Student student, {Duration timeout = const Duration(seconds: 8)}) async {
+  Future<Either<FirestoreAuthFailure, Unit>> update(
+    Student student, {
+    Duration timeout = const Duration(seconds: 8),
+  }) async {
     try {
       final _studentDoc = _firestore.students.user;
       await _studentDoc.update(StudentDTO.fromDomain(student).toJson());

@@ -17,7 +17,6 @@ class StudentHomeIndexPage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         scrollDirection: Axis.vertical,
-        clipBehavior: Clip.antiAlias,
         controller: ScrollController(),
         physics: Helpers.physics,
         shrinkWrap: true,

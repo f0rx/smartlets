@@ -9,24 +9,24 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class Modules {
-  @lazySingleton
+  @LazySingleton()
   DataConnectionChecker get connectionChecker => DataConnectionChecker();
 
   @preResolve
   Future<FirebaseApp> get firebaseApp => Firebase.initializeApp();
 
-  @lazySingleton
+  @LazySingleton()
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
 
-  @lazySingleton
+  @LazySingleton()
   GoogleSignIn get googleSignIn => GoogleSignIn();
 
-  @lazySingleton
+  @LazySingleton()
   FacebookLogin get facebookLogin => FacebookLogin();
 
-  @lazySingleton
+  @LazySingleton()
   FirebaseFirestore get firestore => FirebaseFirestore.instance;
 
-  @lazySingleton
+  @LazySingleton()
   FirebaseFunctions get functions => FirebaseFunctions.instance;
 }

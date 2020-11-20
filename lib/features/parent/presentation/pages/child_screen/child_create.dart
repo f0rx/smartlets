@@ -63,7 +63,6 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
             body: CustomScrollView(
               shrinkWrap: true,
               physics: Helpers.physics,
-              clipBehavior: Clip.antiAlias,
               slivers: [
                 SliverList(
                   delegate: SliverChildListDelegate(
@@ -280,7 +279,7 @@ class CreateChildAccountPage extends StatelessWidget with AutoRouteWrapper {
                                   text: "Add",
                                   minFontSize: 17.0,
                                   style: const TextStyle(fontWeight: FontWeight.w700),
-                                  onPressed: () => _bloc.add(const AuthEvent.createStudentAccount()),
+                                  onPressed: () {},
                                 ),
                                 //
                                 VerticalSpace(height: App.height * 0.015),

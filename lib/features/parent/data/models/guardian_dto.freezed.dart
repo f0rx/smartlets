@@ -24,7 +24,7 @@ class _$GuardianDTOTearOff {
       @JsonKey(includeIfNull: false)
       @nullable
       @RoleSerializer()
-          Roles role = Roles.student,
+          Roles role = Roles.parent,
       @required
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
@@ -33,6 +33,11 @@ class _$GuardianDTOTearOff {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @required
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @required
       @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
@@ -74,6 +79,7 @@ class _$GuardianDTOTearOff {
       role: role,
       displayName: displayName,
       email: email,
+      providers: providers,
       childrenIds: childrenIds,
       isEmailVerified: isEmailVerified,
       phone: phone,
@@ -110,6 +116,10 @@ mixin _$GuardianDTO {
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get email;
+  @nullable
+  @JsonKey(includeIfNull: false, defaultValue: [])
+  @AuthProviderSerializer()
+  List<AuthProvider> get providers;
   @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   List<String> get childrenIds;
@@ -162,6 +172,10 @@ abstract class $GuardianDTOCopyWith<$Res> {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> childrenIds,
@@ -208,6 +222,7 @@ class _$GuardianDTOCopyWithImpl<$Res> implements $GuardianDTOCopyWith<$Res> {
     Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object childrenIds = freezed,
     Object isEmailVerified = freezed,
     Object phone = freezed,
@@ -223,6 +238,9 @@ class _$GuardianDTOCopyWithImpl<$Res> implements $GuardianDTOCopyWith<$Res> {
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
+      providers: providers == freezed
+          ? _value.providers
+          : providers as List<AuthProvider>,
       childrenIds: childrenIds == freezed
           ? _value.childrenIds
           : childrenIds as List<String>,
@@ -273,6 +291,10 @@ abstract class _$GuardianDTOCopyWith<$Res>
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
           List<String> childrenIds,
@@ -322,6 +344,7 @@ class __$GuardianDTOCopyWithImpl<$Res> extends _$GuardianDTOCopyWithImpl<$Res>
     Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object childrenIds = freezed,
     Object isEmailVerified = freezed,
     Object phone = freezed,
@@ -337,6 +360,9 @@ class __$GuardianDTOCopyWithImpl<$Res> extends _$GuardianDTOCopyWithImpl<$Res>
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
+      providers: providers == freezed
+          ? _value.providers
+          : providers as List<AuthProvider>,
       childrenIds: childrenIds == freezed
           ? _value.childrenIds
           : childrenIds as List<String>,
@@ -367,7 +393,7 @@ class _$_GuardianDTO extends _GuardianDTO {
       @JsonKey(includeIfNull: false)
       @nullable
       @RoleSerializer()
-          this.role = Roles.student,
+          this.role = Roles.parent,
       @required
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
@@ -376,6 +402,11 @@ class _$_GuardianDTO extends _GuardianDTO {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.email,
+      @required
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          this.providers,
       @required
       @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
@@ -435,6 +466,11 @@ class _$_GuardianDTO extends _GuardianDTO {
   @nullable
   final String email;
   @override
+  @nullable
+  @JsonKey(includeIfNull: false, defaultValue: [])
+  @AuthProviderSerializer()
+  final List<AuthProvider> providers;
+  @override
   @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable
   final List<String> childrenIds;
@@ -473,7 +509,7 @@ class _$_GuardianDTO extends _GuardianDTO {
 
   @override
   String toString() {
-    return 'GuardianDTO(id: $id, role: $role, displayName: $displayName, email: $email, childrenIds: $childrenIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'GuardianDTO(id: $id, role: $role, displayName: $displayName, email: $email, providers: $providers, childrenIds: $childrenIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -489,6 +525,9 @@ class _$_GuardianDTO extends _GuardianDTO {
                     .equals(other.displayName, displayName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.providers, providers) ||
+                const DeepCollectionEquality()
+                    .equals(other.providers, providers)) &&
             (identical(other.childrenIds, childrenIds) ||
                 const DeepCollectionEquality()
                     .equals(other.childrenIds, childrenIds)) &&
@@ -521,6 +560,7 @@ class _$_GuardianDTO extends _GuardianDTO {
       const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(providers) ^
       const DeepCollectionEquality().hash(childrenIds) ^
       const DeepCollectionEquality().hash(isEmailVerified) ^
       const DeepCollectionEquality().hash(phone) ^
@@ -558,6 +598,11 @@ abstract class _GuardianDTO extends GuardianDTO {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @required
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @required
       @JsonKey(includeIfNull: false, defaultValue: [])
       @nullable
@@ -615,6 +660,11 @@ abstract class _GuardianDTO extends GuardianDTO {
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get email;
+  @override
+  @nullable
+  @JsonKey(includeIfNull: false, defaultValue: [])
+  @AuthProviderSerializer()
+  List<AuthProvider> get providers;
   @override
   @JsonKey(includeIfNull: false, defaultValue: [])
   @nullable

@@ -20,6 +20,7 @@ abstract class StudentDTO implements _$StudentDTO {
     @Default(Roles.student) @JsonKey(includeIfNull: false) @nullable @RoleSerializer() Roles role,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String displayName,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String email,
+    @required @nullable @JsonKey(includeIfNull: false, defaultValue: []) @AuthProviderSerializer() List<AuthProvider> providers,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String guardianEmail,
     @required @JsonKey(includeIfNull: false) @nullable @GenderTypeSerializer() GenderType gender,
     @required @JsonKey(includeIfNull: false, defaultValue: []) @nullable List<String> courseIds,
@@ -35,23 +36,24 @@ abstract class StudentDTO implements _$StudentDTO {
     @required @JsonKey(includeIfNull: false) @nullable @ServerTimestampConverter() Timestamp updatedAt,
   }) = _StudentDTO;
 
-  factory StudentDTO.fromDomain(Student student) {
+  factory StudentDTO.fromDomain(Student instance) {
     return StudentDTO(
-      displayName: student.displayName?.getOrNull,
-      email: student.email?.getOrNull,
-      guardianEmail: student.guardianEmail?.getOrNull,
-      gender: student.gender?.getOrNull,
-      courseIds: student.courseIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
-      projectIds: student.projectIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
-      awardIds: student.awardIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
-      isEmailVerified: student?.isEmailVerified,
-      phone: student.phone?.getOrNull,
-      country: student.phone?.country ?? student.guardianPhone?.country,
-      guardianPhone: student.guardianPhone?.getOrNull ?? student.phone?.getOrNull,
-      photoURL: student?.photoURL,
-      createdAt: !student.createdAt.isNull ? Timestamp.fromDate(student?.createdAt) : null,
-      lastSeenAt: !student.lastSeenAt.isNull ? Timestamp.fromDate(student?.lastSeenAt) : null,
-      updatedAt: !student.updatedAt.isNull ? Timestamp.fromDate(student?.updatedAt) : null,
+      displayName: instance.displayName?.getOrNull,
+      email: instance.email?.getOrNull,
+      providers: instance.providers?.getOrNull?.asList(),
+      guardianEmail: instance.guardianEmail?.getOrNull,
+      gender: instance.gender?.getOrNull,
+      courseIds: instance.courseIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
+      projectIds: instance.projectIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
+      awardIds: instance.awardIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
+      isEmailVerified: instance?.isEmailVerified,
+      phone: instance.phone?.getOrNull,
+      country: instance.phone?.country ?? instance.guardianPhone?.country,
+      guardianPhone: instance.guardianPhone?.getOrNull ?? instance.phone?.getOrNull,
+      photoURL: instance?.photoURL,
+      createdAt: !instance.createdAt.isNull ? Timestamp.fromDate(instance?.createdAt) : null,
+      lastSeenAt: !instance.lastSeenAt.isNull ? Timestamp.fromDate(instance?.lastSeenAt) : null,
+      updatedAt: !instance.updatedAt.isNull ? Timestamp.fromDate(instance?.updatedAt) : Timestamp.fromDate(DateTime.now()),
     );
   }
 
@@ -60,14 +62,11 @@ abstract class StudentDTO implements _$StudentDTO {
       id: UniqueId.fromExternal(id),
       displayName: displayName != null ? DisplayName(displayName) : null,
       email: email != null ? EmailAddress(email) : null,
+      providers: providers != null ? AuthProviders(providers.toImmutableList()) : AuthProviders.EMPTY,
       guardianEmail: guardianEmail != null ? EmailAddress(guardianEmail) : null,
       gender: gender != null ? Gender(gender) : null,
       isEmailVerified: isEmailVerified,
-      phone: phone != null
-          ? Phone(phone, country)
-          : guardianPhone != null
-              ? Phone(guardianPhone, country)
-              : null,
+      phone: phone != null ? Phone(phone, country) : guardianPhone != null ? Phone(guardianPhone, country) : null,
       courseIds: courseIds != null
           ? ImmutableIds(input: courseIds.map<UniqueId>((e) => UniqueId.fromExternal(e)).toImmutableList())
           : ImmutableIds.EMPTY,

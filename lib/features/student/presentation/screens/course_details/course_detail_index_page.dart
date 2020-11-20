@@ -48,7 +48,6 @@ class _CourseDetailIndexPageState extends State<CourseDetailIndexPage> with Auto
         bottom: false,
         child: CustomScrollView(
           shrinkWrap: true,
-          clipBehavior: Clip.antiAlias,
           slivers: [
             SliverList(
               delegate: SliverChildListDelegate(

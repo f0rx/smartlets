@@ -20,7 +20,9 @@ class UpdateProfileForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<AuthBloc>()..add(AuthEvent.displayNameChanged(user?.displayName))..add(AuthEvent.emailChanged(user?.email)),
+      create: (_) => getIt<AuthBloc>()
+        ..add(AuthEvent.displayNameChanged(user?.displayName?.getOrEmpty))
+        ..add(AuthEvent.emailChanged(user?.email?.getOrEmpty)),
       child: BlocConsumer<AuthBloc, AuthState>(
         listenWhen: (prev, current) => prev.authStatus.isSome() && current.authStatus.isSome(),
         listener: (context, state) => state.authStatus.fold(

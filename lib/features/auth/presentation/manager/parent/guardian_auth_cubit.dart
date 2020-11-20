@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart' hide nullable;
 import 'package:meta/meta.dart';
+import 'package:smartlets/features/auth/data/repositories/guardian_auth_impl.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 
 part 'guardian_auth_cubit.freezed.dart';
@@ -13,7 +14,7 @@ part 'guardian_auth_state.dart';
 
 @Injectable()
 class GuardianAuthCubit extends Cubit<GuardianAuthState> {
-  final GuardianAuthFacade _facade;
+  final GuardianAuthImpl _facade;
   StreamSubscription<Either<FirestoreAuthFailure, Guardian>> _readSubscription;
   StreamSubscription<Either<FirestoreAuthFailure, KtList<Guardian>>> _watchSubscription;
 

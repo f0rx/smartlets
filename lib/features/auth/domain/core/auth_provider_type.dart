@@ -2,30 +2,30 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 enum FIELD_VALIDATION { NONE, BASIC, DEEP }
 
-class AuthProvider {
+class AuthProviderType {
   // ignore: non_constant_identifier_names
-  static AuthProvider Google = AuthProvider._(GoogleAuthProvider.PROVIDER_ID);
+  static AuthProviderType Google = AuthProviderType._(GoogleAuthProvider.PROVIDER_ID);
 
   // ignore: non_constant_identifier_names
-  static AuthProvider Facebook = AuthProvider._(FacebookAuthProvider.PROVIDER_ID);
+  static AuthProviderType Facebook = AuthProviderType._(FacebookAuthProvider.PROVIDER_ID);
 
   // ignore: non_constant_identifier_names
-  static AuthProvider Twitter = AuthProvider._(TwitterAuthProvider.PROVIDER_ID);
+  static AuthProviderType Twitter = AuthProviderType._(TwitterAuthProvider.PROVIDER_ID);
 
   // ignore: non_constant_identifier_names
-  static AuthProvider Password = AuthProvider._(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD);
+  static AuthProviderType Password = AuthProviderType._(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD);
 
   // ignore: non_constant_identifier_names
-  static AuthProvider EmailLink = AuthProvider._(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD);
+  static AuthProviderType EmailLink = AuthProviderType._(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD);
 
   // ignore: non_constant_identifier_names
-  static AuthProvider Phone = AuthProvider._(PhoneAuthProvider.PHONE_SIGN_IN_METHOD);
+  static AuthProviderType Phone = AuthProviderType._(PhoneAuthProvider.PHONE_SIGN_IN_METHOD);
 
   final String name;
 
-  const AuthProvider._(this.name);
+  const AuthProviderType._(this.name);
 
-  static List<AuthProvider> get values => [
+  static List<AuthProviderType> get values => [
         Google,
         Facebook,
         Twitter,
@@ -34,7 +34,7 @@ class AuthProvider {
         Phone,
       ];
 
-  static AuthProvider valueOf(String name) => switchCase<AuthProvider>(
+  static AuthProviderType valueOf(String name) => switchCase<AuthProviderType>(
         name,
         isGoogle: (name) => Google,
         isFacebook: (name) => Facebook,

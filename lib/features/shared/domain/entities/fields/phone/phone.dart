@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:smartlets/features/auth/domain/core/auth_const.dart';
+import 'package:smartlets/features/auth/domain/core/auth_provider_type.dart';
 import 'package:smartlets/features/shared/shared.dart';
 
 class Phone extends FieldObject<String> {

@@ -34,6 +34,11 @@ class _$StudentDTOTearOff {
       @nullable
           String email,
       @required
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
+      @required
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
@@ -95,6 +100,7 @@ class _$StudentDTOTearOff {
       role: role,
       displayName: displayName,
       email: email,
+      providers: providers,
       guardianEmail: guardianEmail,
       gender: gender,
       courseIds: courseIds,
@@ -136,6 +142,10 @@ mixin _$StudentDTO {
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get email;
+  @nullable
+  @JsonKey(includeIfNull: false, defaultValue: [])
+  @AuthProviderSerializer()
+  List<AuthProvider> get providers;
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get guardianEmail;
@@ -204,6 +214,10 @@ abstract class $StudentDTOCopyWith<$Res> {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
@@ -266,6 +280,7 @@ class _$StudentDTOCopyWithImpl<$Res> implements $StudentDTOCopyWith<$Res> {
     Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object guardianEmail = freezed,
     Object gender = freezed,
     Object courseIds = freezed,
@@ -286,6 +301,9 @@ class _$StudentDTOCopyWithImpl<$Res> implements $StudentDTOCopyWith<$Res> {
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
+      providers: providers == freezed
+          ? _value.providers
+          : providers as List<AuthProvider>,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as String,
@@ -346,6 +364,10 @@ abstract class _$StudentDTOCopyWith<$Res> implements $StudentDTOCopyWith<$Res> {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String guardianEmail,
@@ -411,6 +433,7 @@ class __$StudentDTOCopyWithImpl<$Res> extends _$StudentDTOCopyWithImpl<$Res>
     Object role = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object guardianEmail = freezed,
     Object gender = freezed,
     Object courseIds = freezed,
@@ -431,6 +454,9 @@ class __$StudentDTOCopyWithImpl<$Res> extends _$StudentDTOCopyWithImpl<$Res>
       displayName:
           displayName == freezed ? _value.displayName : displayName as String,
       email: email == freezed ? _value.email : email as String,
+      providers: providers == freezed
+          ? _value.providers
+          : providers as List<AuthProvider>,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as String,
@@ -481,6 +507,11 @@ class _$_StudentDTO extends _StudentDTO {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           this.email,
+      @required
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          this.providers,
       @required
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
@@ -561,6 +592,11 @@ class _$_StudentDTO extends _StudentDTO {
   @nullable
   final String email;
   @override
+  @nullable
+  @JsonKey(includeIfNull: false, defaultValue: [])
+  @AuthProviderSerializer()
+  final List<AuthProvider> providers;
+  @override
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   final String guardianEmail;
@@ -620,7 +656,7 @@ class _$_StudentDTO extends _StudentDTO {
 
   @override
   String toString() {
-    return 'StudentDTO(id: $id, role: $role, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'StudentDTO(id: $id, role: $role, displayName: $displayName, email: $email, providers: $providers, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, country: $country, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -636,6 +672,9 @@ class _$_StudentDTO extends _StudentDTO {
                     .equals(other.displayName, displayName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.providers, providers) ||
+                const DeepCollectionEquality()
+                    .equals(other.providers, providers)) &&
             (identical(other.guardianEmail, guardianEmail) ||
                 const DeepCollectionEquality()
                     .equals(other.guardianEmail, guardianEmail)) &&
@@ -682,6 +721,7 @@ class _$_StudentDTO extends _StudentDTO {
       const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(providers) ^
       const DeepCollectionEquality().hash(guardianEmail) ^
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(courseIds) ^
@@ -724,6 +764,11 @@ abstract class _StudentDTO extends StudentDTO {
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
           String email,
+      @required
+      @nullable
+      @JsonKey(includeIfNull: false, defaultValue: [])
+      @AuthProviderSerializer()
+          List<AuthProvider> providers,
       @required
       @JsonKey(includeIfNull: false, defaultValue: '')
       @nullable
@@ -802,6 +847,11 @@ abstract class _StudentDTO extends StudentDTO {
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable
   String get email;
+  @override
+  @nullable
+  @JsonKey(includeIfNull: false, defaultValue: [])
+  @AuthProviderSerializer()
+  List<AuthProvider> get providers;
   @override
   @JsonKey(includeIfNull: false, defaultValue: '')
   @nullable

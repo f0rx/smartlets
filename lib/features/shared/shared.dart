@@ -8,6 +8,8 @@ export 'domain/entities/instructor/instructor.dart';
 export 'domain/entities/parent/guardian.dart';
 export 'domain/entities/student/student.dart';
 export 'domain/entities/unique_id.dart';
+export 'domain/entities/user/auth_provider.dart';
+export 'domain/entities/user/auth_providers.dart';
 export 'domain/entities/user/user.dart';
 export 'domain/failure.dart';
 export 'domain/field_object.dart';

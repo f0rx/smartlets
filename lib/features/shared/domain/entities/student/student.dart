@@ -14,6 +14,7 @@ abstract class Student implements _$Student {
     @nullable UniqueId id,
     @nullable DisplayName displayName,
     @nullable EmailAddress email,
+    @nullable AuthProviders providers,
     @nullable EmailAddress guardianEmail,
     @nullable Gender gender,
     @nullable ImmutableIds courseIds,

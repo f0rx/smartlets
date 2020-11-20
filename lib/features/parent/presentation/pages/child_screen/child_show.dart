@@ -24,7 +24,6 @@ class ShowChildPage extends StatelessWidget with AutoRouteWrapper {
         tag: "3",
         child: CustomScrollView(
           shrinkWrap: true,
-          clipBehavior: Clip.antiAlias,
           physics: Helpers.physics,
           slivers: [
             SliverAppBar(

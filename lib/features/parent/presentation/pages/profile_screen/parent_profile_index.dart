@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
+import 'package:smartlets/features/auth/presentation/manager/auth_watcher/auth_watcher_cubit.dart';
 import 'package:smartlets/features/parent/domain/entities/entities.dart';
 import 'package:smartlets/features/parent/presentation/widgets/parent_widgets.dart';
 import 'package:smartlets/manager/locator/locator.dart';
@@ -20,9 +21,9 @@ class ParentProfileIndex extends StatelessWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
       create: (_) => getIt<AuthBloc>(),
-      child: BlocBuilder<AuthBloc, AuthState>(
+      child: BlocBuilder<AuthWatcherCubit, AuthWatcherState>(
         builder: (context, _) => PortalEntry(
-          visible: context.select<AuthBloc, bool>((value) => value.state.isLoading),
+          visible: context.select<AuthWatcherCubit, bool>((value) => value.state.isLoading),
           portal: App.circularLoadingOverlay,
           child: this,
         ),

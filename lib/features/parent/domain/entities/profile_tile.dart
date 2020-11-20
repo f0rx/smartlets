@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
-import 'package:smartlets/features/auth/presentation/manager/auth_bloc.dart';
+import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
 import 'package:smartlets/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/manager/theme/theme.dart';
@@ -102,7 +102,7 @@ class ProfileTile {
           leading: AppAssets.exit,
           subtitle: "Signout from ${AppStrings.appName.toLowerCase()} platform",
           color: AppColors.fromHex("#5FA2FF"),
-          onPressed: (_) => BlocProvider.of<AuthBloc>(_).add(AuthEvent.signOut()),
+          onPressed: (_) => BlocProvider.of<AuthWatcherCubit>(_).signOut,
         ),
       ];
 }

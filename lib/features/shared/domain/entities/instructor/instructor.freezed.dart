@@ -15,16 +15,16 @@ class _$InstructorTearOff {
 
 // ignore: unused_element
   _Instructor call(
-      {@required UniqueId id,
-      @required @nullable DisplayName displayName,
-      @required EmailAddress email,
-      @required Biography bio,
-      @required Specialty specialty,
-      @required bool isEmailVerified,
-      @required @nullable String phone,
-      @required @nullable String photoURL,
-      @required DateTime createdAt,
-      @required DateTime lastSeenAt}) {
+      {@nullable UniqueId id,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable Biography bio,
+      @nullable Specialty specialty,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt}) {
     return _Instructor(
       id: id,
       displayName: displayName,
@@ -46,18 +46,25 @@ const $Instructor = _$InstructorTearOff();
 
 /// @nodoc
 mixin _$Instructor {
+  @nullable
   UniqueId get id;
   @nullable
   DisplayName get displayName;
+  @nullable
   EmailAddress get email;
+  @nullable
   Biography get bio;
+  @nullable
   Specialty get specialty;
+  @nullable
   bool get isEmailVerified;
   @nullable
-  String get phone;
+  Phone get phone;
   @nullable
   String get photoURL;
+  @nullable
   DateTime get createdAt;
+  @nullable
   DateTime get lastSeenAt;
 
   $InstructorCopyWith<Instructor> get copyWith;
@@ -69,16 +76,16 @@ abstract class $InstructorCopyWith<$Res> {
           Instructor value, $Res Function(Instructor) then) =
       _$InstructorCopyWithImpl<$Res>;
   $Res call(
-      {UniqueId id,
+      {@nullable UniqueId id,
       @nullable DisplayName displayName,
-      EmailAddress email,
-      Biography bio,
-      Specialty specialty,
-      bool isEmailVerified,
-      @nullable String phone,
+      @nullable EmailAddress email,
+      @nullable Biography bio,
+      @nullable Specialty specialty,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
       @nullable String photoURL,
-      DateTime createdAt,
-      DateTime lastSeenAt});
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt});
 }
 
 /// @nodoc
@@ -114,7 +121,7 @@ class _$InstructorCopyWithImpl<$Res> implements $InstructorCopyWith<$Res> {
       isEmailVerified: isEmailVerified == freezed
           ? _value.isEmailVerified
           : isEmailVerified as bool,
-      phone: phone == freezed ? _value.phone : phone as String,
+      phone: phone == freezed ? _value.phone : phone as Phone,
       photoURL: photoURL == freezed ? _value.photoURL : photoURL as String,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
@@ -131,16 +138,16 @@ abstract class _$InstructorCopyWith<$Res> implements $InstructorCopyWith<$Res> {
       __$InstructorCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueId id,
+      {@nullable UniqueId id,
       @nullable DisplayName displayName,
-      EmailAddress email,
-      Biography bio,
-      Specialty specialty,
-      bool isEmailVerified,
-      @nullable String phone,
+      @nullable EmailAddress email,
+      @nullable Biography bio,
+      @nullable Specialty specialty,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
       @nullable String photoURL,
-      DateTime createdAt,
-      DateTime lastSeenAt});
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt});
 }
 
 /// @nodoc
@@ -178,7 +185,7 @@ class __$InstructorCopyWithImpl<$Res> extends _$InstructorCopyWithImpl<$Res>
       isEmailVerified: isEmailVerified == freezed
           ? _value.isEmailVerified
           : isEmailVerified as bool,
-      phone: phone == freezed ? _value.phone : phone as String,
+      phone: phone == freezed ? _value.phone : phone as Phone,
       photoURL: photoURL == freezed ? _value.photoURL : photoURL as String,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
@@ -191,47 +198,47 @@ class __$InstructorCopyWithImpl<$Res> extends _$InstructorCopyWithImpl<$Res>
 /// @nodoc
 class _$_Instructor extends _Instructor {
   const _$_Instructor(
-      {@required this.id,
-      @required @nullable this.displayName,
-      @required this.email,
-      @required this.bio,
-      @required this.specialty,
-      @required this.isEmailVerified,
-      @required @nullable this.phone,
-      @required @nullable this.photoURL,
-      @required this.createdAt,
-      @required this.lastSeenAt})
-      : assert(id != null),
-        assert(email != null),
-        assert(bio != null),
-        assert(specialty != null),
-        assert(isEmailVerified != null),
-        assert(createdAt != null),
-        assert(lastSeenAt != null),
-        super._();
+      {@nullable this.id,
+      @nullable this.displayName,
+      @nullable this.email,
+      @nullable this.bio,
+      @nullable this.specialty,
+      @nullable this.isEmailVerified,
+      @nullable this.phone,
+      @nullable this.photoURL,
+      @nullable this.createdAt,
+      @nullable this.lastSeenAt})
+      : super._();
 
   @override
+  @nullable
   final UniqueId id;
   @override
   @nullable
   final DisplayName displayName;
   @override
+  @nullable
   final EmailAddress email;
   @override
+  @nullable
   final Biography bio;
   @override
+  @nullable
   final Specialty specialty;
   @override
+  @nullable
   final bool isEmailVerified;
   @override
   @nullable
-  final String phone;
+  final Phone phone;
   @override
   @nullable
   final String photoURL;
   @override
+  @nullable
   final DateTime createdAt;
   @override
+  @nullable
   final DateTime lastSeenAt;
 
   @override
@@ -293,39 +300,46 @@ class _$_Instructor extends _Instructor {
 abstract class _Instructor extends Instructor {
   const _Instructor._() : super._();
   const factory _Instructor(
-      {@required UniqueId id,
-      @required @nullable DisplayName displayName,
-      @required EmailAddress email,
-      @required Biography bio,
-      @required Specialty specialty,
-      @required bool isEmailVerified,
-      @required @nullable String phone,
-      @required @nullable String photoURL,
-      @required DateTime createdAt,
-      @required DateTime lastSeenAt}) = _$_Instructor;
+      {@nullable UniqueId id,
+      @nullable DisplayName displayName,
+      @nullable EmailAddress email,
+      @nullable Biography bio,
+      @nullable Specialty specialty,
+      @nullable bool isEmailVerified,
+      @nullable Phone phone,
+      @nullable String photoURL,
+      @nullable DateTime createdAt,
+      @nullable DateTime lastSeenAt}) = _$_Instructor;
 
   @override
+  @nullable
   UniqueId get id;
   @override
   @nullable
   DisplayName get displayName;
   @override
+  @nullable
   EmailAddress get email;
   @override
+  @nullable
   Biography get bio;
   @override
+  @nullable
   Specialty get specialty;
   @override
+  @nullable
   bool get isEmailVerified;
   @override
   @nullable
-  String get phone;
+  Phone get phone;
   @override
   @nullable
   String get photoURL;
   @override
+  @nullable
   DateTime get createdAt;
   @override
+  @nullable
   DateTime get lastSeenAt;
   @override
   _$InstructorCopyWith<_Instructor> get copyWith;

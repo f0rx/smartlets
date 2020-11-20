@@ -32,7 +32,7 @@ class _$AuthFailureTearOff {
   AccountAlreadyExists accountAlreadyExists(
       {@required String message,
       @required EmailAddress email,
-      @required AuthProvider provider,
+      @required AuthProviderType provider,
       @required @nullable Object credentials}) {
     return AccountAlreadyExists(
       message: message,
@@ -57,14 +57,14 @@ mixin _$AuthFailure {
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>(
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -194,7 +194,7 @@ class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -208,7 +208,7 @@ class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -336,7 +336,7 @@ class _$UnExpectedFailure extends UnExpectedFailure
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -350,7 +350,7 @@ class _$UnExpectedFailure extends UnExpectedFailure
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -410,7 +410,7 @@ abstract class $AccountAlreadyExistsCopyWith<$Res>
   $Res call(
       {String message,
       EmailAddress email,
-      AuthProvider provider,
+      AuthProviderType provider,
       @nullable Object credentials});
 }
 
@@ -436,7 +436,7 @@ class _$AccountAlreadyExistsCopyWithImpl<$Res>
       message: message == freezed ? _value.message : message as String,
       email: email == freezed ? _value.email : email as EmailAddress,
       provider:
-          provider == freezed ? _value.provider : provider as AuthProvider,
+          provider == freezed ? _value.provider : provider as AuthProviderType,
       credentials: credentials == freezed ? _value.credentials : credentials,
     ));
   }
@@ -460,7 +460,7 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
   @override
   final EmailAddress email;
   @override
-  final AuthProvider provider;
+  final AuthProviderType provider;
   @override
   @nullable
   final Object credentials;
@@ -518,7 +518,7 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
     @required Result unExpectedFailure(String message),
     @required
         Result accountAlreadyExists(String message, EmailAddress email,
-            AuthProvider provider, @nullable Object credentials),
+            AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -532,7 +532,7 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
     Result $default(String code, String message), {
     Result unExpectedFailure(String message),
     Result accountAlreadyExists(String message, EmailAddress email,
-        AuthProvider provider, @nullable Object credentials),
+        AuthProviderType provider, @nullable Object credentials),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -576,13 +576,13 @@ abstract class AccountAlreadyExists extends AuthFailure {
   const factory AccountAlreadyExists(
       {@required String message,
       @required EmailAddress email,
-      @required AuthProvider provider,
+      @required AuthProviderType provider,
       @required @nullable Object credentials}) = _$AccountAlreadyExists;
 
   @override
   String get message;
   EmailAddress get email;
-  AuthProvider get provider;
+  AuthProviderType get provider;
   @nullable
   Object get credentials;
   @override

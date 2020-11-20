@@ -18,6 +18,7 @@ class _$GuardianTearOff {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable bool isEmailVerified,
       @nullable ImmutableIds childrenIds,
       @nullable Phone phone,
@@ -29,6 +30,7 @@ class _$GuardianTearOff {
       id: id,
       displayName: displayName,
       email: email,
+      providers: providers,
       isEmailVerified: isEmailVerified,
       childrenIds: childrenIds,
       phone: phone,
@@ -52,6 +54,8 @@ mixin _$Guardian {
   DisplayName get displayName;
   @nullable
   EmailAddress get email;
+  @nullable
+  AuthProviders get providers;
   @nullable
   bool get isEmailVerified;
   @nullable
@@ -78,6 +82,7 @@ abstract class $GuardianCopyWith<$Res> {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable bool isEmailVerified,
       @nullable ImmutableIds childrenIds,
       @nullable Phone phone,
@@ -100,6 +105,7 @@ class _$GuardianCopyWithImpl<$Res> implements $GuardianCopyWith<$Res> {
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object isEmailVerified = freezed,
     Object childrenIds = freezed,
     Object phone = freezed,
@@ -114,6 +120,8 @@ class _$GuardianCopyWithImpl<$Res> implements $GuardianCopyWith<$Res> {
           ? _value.displayName
           : displayName as DisplayName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      providers:
+          providers == freezed ? _value.providers : providers as AuthProviders,
       isEmailVerified: isEmailVerified == freezed
           ? _value.isEmailVerified
           : isEmailVerified as bool,
@@ -141,6 +149,7 @@ abstract class _$GuardianCopyWith<$Res> implements $GuardianCopyWith<$Res> {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable bool isEmailVerified,
       @nullable ImmutableIds childrenIds,
       @nullable Phone phone,
@@ -164,6 +173,7 @@ class __$GuardianCopyWithImpl<$Res> extends _$GuardianCopyWithImpl<$Res>
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object isEmailVerified = freezed,
     Object childrenIds = freezed,
     Object phone = freezed,
@@ -178,6 +188,8 @@ class __$GuardianCopyWithImpl<$Res> extends _$GuardianCopyWithImpl<$Res>
           ? _value.displayName
           : displayName as DisplayName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      providers:
+          providers == freezed ? _value.providers : providers as AuthProviders,
       isEmailVerified: isEmailVerified == freezed
           ? _value.isEmailVerified
           : isEmailVerified as bool,
@@ -202,6 +214,7 @@ class _$_Guardian extends _Guardian {
       {@nullable this.id,
       @nullable this.displayName,
       @nullable this.email,
+      @nullable this.providers,
       @nullable this.isEmailVerified,
       @nullable this.childrenIds,
       @nullable this.phone,
@@ -220,6 +233,9 @@ class _$_Guardian extends _Guardian {
   @override
   @nullable
   final EmailAddress email;
+  @override
+  @nullable
+  final AuthProviders providers;
   @override
   @nullable
   final bool isEmailVerified;
@@ -244,7 +260,7 @@ class _$_Guardian extends _Guardian {
 
   @override
   String toString() {
-    return 'Guardian(id: $id, displayName: $displayName, email: $email, isEmailVerified: $isEmailVerified, childrenIds: $childrenIds, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'Guardian(id: $id, displayName: $displayName, email: $email, providers: $providers, isEmailVerified: $isEmailVerified, childrenIds: $childrenIds, phone: $phone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -258,6 +274,9 @@ class _$_Guardian extends _Guardian {
                     .equals(other.displayName, displayName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.providers, providers) ||
+                const DeepCollectionEquality()
+                    .equals(other.providers, providers)) &&
             (identical(other.isEmailVerified, isEmailVerified) ||
                 const DeepCollectionEquality()
                     .equals(other.isEmailVerified, isEmailVerified)) &&
@@ -286,6 +305,7 @@ class _$_Guardian extends _Guardian {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(providers) ^
       const DeepCollectionEquality().hash(isEmailVerified) ^
       const DeepCollectionEquality().hash(childrenIds) ^
       const DeepCollectionEquality().hash(phone) ^
@@ -305,6 +325,7 @@ abstract class _Guardian extends Guardian {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable bool isEmailVerified,
       @nullable ImmutableIds childrenIds,
       @nullable Phone phone,
@@ -322,6 +343,9 @@ abstract class _Guardian extends Guardian {
   @override
   @nullable
   EmailAddress get email;
+  @override
+  @nullable
+  AuthProviders get providers;
   @override
   @nullable
   bool get isEmailVerified;

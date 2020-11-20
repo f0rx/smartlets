@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:meta/meta.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/auth/domain/entities/fields/exports.dart';
@@ -20,6 +19,7 @@ abstract class AuthFacade with FirebaseDepMixin {
     DisplayName name,
     EmailAddress email,
     String photoURL,
+    bool inFirestore = true,
   });
 
   Future<Either<AuthFailure, Unit>> changePassword({
@@ -38,8 +38,4 @@ abstract class AuthFacade with FirebaseDepMixin {
   Future<Either<AuthFailure, Unit>> confirmPasswordReset({String code, Password newPassword});
 
   Future<void> signOut();
-}
-
-mixin FirebaseDepMixin {
-  Future<Either<AuthFailure, Unit>> signInWithCredentials([AuthCredential old, AuthCredential incoming]);
 }

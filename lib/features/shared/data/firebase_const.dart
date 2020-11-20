@@ -9,3 +9,8 @@ mixin DbConstants {
 
   static const String ORDER_BY = "createdAt";
 }
+
+mixin FirebaseFnConstants {
+  static const String CREATE_USER_RECORD_CALLABLE = "calls-createUserRecord-callable";
+  static const String UPDATE_USER_RECORD_CALLABLE = "calls-updateUserRecord-callable";
+}

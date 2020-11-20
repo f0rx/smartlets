@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart' hide nullable;
 import 'package:meta/meta.dart';
+import 'package:smartlets/features/auth/data/repositories/student_auth_impl.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/shared/shared.dart';
 
@@ -14,7 +15,7 @@ part 'student_auth_state.dart';
 
 @Injectable()
 class StudentAuthCubit extends Cubit<StudentAuthState> {
-  final StudentAuthFacade _facade;
+  final StudentAuthImpl _facade;
   StreamSubscription<Either<FirestoreAuthFailure, Student>> _readSubscription;
   StreamSubscription<Either<FirestoreAuthFailure, KtList<Student>>> _watchSubscription;
 

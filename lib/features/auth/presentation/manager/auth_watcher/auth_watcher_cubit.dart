@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:smartlets/features/auth/data/repositories/user_auth_impl.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/shared/shared.dart';
 
@@ -18,10 +19,11 @@ typedef Tasks = void Function(Option<User> option);
 @Injectable()
 class AuthWatcherCubit extends Cubit<AuthWatcherState> {
   final AuthFacade _facade;
+  final UserAuthImpl _userFacade;
   StreamSubscription<Option<User>> _authStateChanges;
   StreamSubscription<Option<User>> _userChanges;
 
-  AuthWatcherCubit(this._facade) : super(AuthWatcherState.init());
+  AuthWatcherCubit(this._facade, this._userFacade) : super(AuthWatcherState.init());
 
   // This will always return the current user data
   User get currentUser => _facade.currentUser.getOrElse(() => null);
@@ -58,6 +60,8 @@ class AuthWatcherCubit extends Cubit<AuthWatcherState> {
 
   void get signOut async {
     emit(state.copyWith(isLoading: true));
+    // Update user data before signout
+    await _userFacade.update(User(lastSeenAt: DateTime.now()));
     // Signout the Authenticated User
     await _facade.signOut();
     emit(state.copyWith(

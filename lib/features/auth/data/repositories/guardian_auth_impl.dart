@@ -12,8 +12,8 @@ import 'package:smartlets/features/auth/domain/core/auth.dart';
 import 'package:smartlets/features/parent/data/export.dart';
 import 'package:smartlets/utils/utils.dart';
 
-@LazySingleton(as: GuardianAuthFacade)
-class GuardianAuthImpl extends GuardianAuthFacade {
+@LazySingleton()
+class GuardianAuthImpl with FirestoreAuthMixin<Guardian> {
   final FirebaseFirestore _firestore;
   final DataConnectionChecker _connectionChecker;
   GetOptions options = GetOptions(source: Source.serverAndCache);
@@ -41,7 +41,7 @@ class GuardianAuthImpl extends GuardianAuthFacade {
     try {
       await checkHasInternet;
       final _parentDoc = _firestore.parents.user;
-      // If Guardian data doesn't exist
+      // If Guardian doc doesn't exist
       if (!(await _parentDoc.get(options)).exists)
         await _parentDoc.set(
           GuardianDTO.fromDomain(guardian).toJson(),
@@ -63,7 +63,10 @@ class GuardianAuthImpl extends GuardianAuthFacade {
   }
 
   @override
-  Future<Either<FirestoreAuthFailure, Unit>> update(Guardian guardian, {Duration timeout = const Duration(seconds: 8)}) async {
+  Future<Either<FirestoreAuthFailure, Unit>> update(
+    Guardian guardian, {
+    Duration timeout = const Duration(seconds: 8),
+  }) async {
     try {
       final _guardianRef = _firestore.parents.user;
       await _guardianRef.update(GuardianDTO.fromDomain(guardian).toJson());

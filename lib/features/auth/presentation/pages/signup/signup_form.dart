@@ -36,7 +36,7 @@ class SignupForm extends StatelessWidget {
             ),
             onTap: (info) => failure.maybeMap(
               (_) => null,
-              accountAlreadyExists: (e) => AuthProvider.switchCase(
+              accountAlreadyExists: (e) => AuthProviderType.switchCase(
                 e.provider.name,
                 isGoogle: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithGoogle(e.credentials)),
                 isFacebook: (name) => BlocProvider.of<AuthBloc>(context)..add(AuthEvent.signInWithFacebook(e.credentials)),

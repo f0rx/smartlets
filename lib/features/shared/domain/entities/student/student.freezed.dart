@@ -18,6 +18,7 @@ class _$StudentTearOff {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
       @nullable ImmutableIds courseIds,
@@ -34,6 +35,7 @@ class _$StudentTearOff {
       id: id,
       displayName: displayName,
       email: email,
+      providers: providers,
       guardianEmail: guardianEmail,
       gender: gender,
       courseIds: courseIds,
@@ -62,6 +64,8 @@ mixin _$Student {
   DisplayName get displayName;
   @nullable
   EmailAddress get email;
+  @nullable
+  AuthProviders get providers;
   @nullable
   EmailAddress get guardianEmail;
   @nullable
@@ -98,6 +102,7 @@ abstract class $StudentCopyWith<$Res> {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
       @nullable ImmutableIds courseIds,
@@ -125,6 +130,7 @@ class _$StudentCopyWithImpl<$Res> implements $StudentCopyWith<$Res> {
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object guardianEmail = freezed,
     Object gender = freezed,
     Object courseIds = freezed,
@@ -144,6 +150,8 @@ class _$StudentCopyWithImpl<$Res> implements $StudentCopyWith<$Res> {
           ? _value.displayName
           : displayName as DisplayName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      providers:
+          providers == freezed ? _value.providers : providers as AuthProviders,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as EmailAddress,
@@ -182,6 +190,7 @@ abstract class _$StudentCopyWith<$Res> implements $StudentCopyWith<$Res> {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
       @nullable ImmutableIds courseIds,
@@ -210,6 +219,7 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
     Object id = freezed,
     Object displayName = freezed,
     Object email = freezed,
+    Object providers = freezed,
     Object guardianEmail = freezed,
     Object gender = freezed,
     Object courseIds = freezed,
@@ -229,6 +239,8 @@ class __$StudentCopyWithImpl<$Res> extends _$StudentCopyWithImpl<$Res>
           ? _value.displayName
           : displayName as DisplayName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      providers:
+          providers == freezed ? _value.providers : providers as AuthProviders,
       guardianEmail: guardianEmail == freezed
           ? _value.guardianEmail
           : guardianEmail as EmailAddress,
@@ -264,6 +276,7 @@ class _$_Student extends _Student {
       {@nullable this.id,
       @nullable this.displayName,
       @nullable this.email,
+      @nullable this.providers,
       @nullable this.guardianEmail,
       @nullable this.gender,
       @nullable this.courseIds,
@@ -287,6 +300,9 @@ class _$_Student extends _Student {
   @override
   @nullable
   final EmailAddress email;
+  @override
+  @nullable
+  final AuthProviders providers;
   @override
   @nullable
   final EmailAddress guardianEmail;
@@ -326,7 +342,7 @@ class _$_Student extends _Student {
 
   @override
   String toString() {
-    return 'Student(id: $id, displayName: $displayName, email: $email, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
+    return 'Student(id: $id, displayName: $displayName, email: $email, providers: $providers, guardianEmail: $guardianEmail, gender: $gender, courseIds: $courseIds, projectIds: $projectIds, awardIds: $awardIds, isEmailVerified: $isEmailVerified, phone: $phone, guardianPhone: $guardianPhone, photoURL: $photoURL, createdAt: $createdAt, lastSeenAt: $lastSeenAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -340,6 +356,9 @@ class _$_Student extends _Student {
                     .equals(other.displayName, displayName)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.providers, providers) ||
+                const DeepCollectionEquality()
+                    .equals(other.providers, providers)) &&
             (identical(other.guardianEmail, guardianEmail) ||
                 const DeepCollectionEquality()
                     .equals(other.guardianEmail, guardianEmail)) &&
@@ -382,6 +401,7 @@ class _$_Student extends _Student {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(displayName) ^
       const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(providers) ^
       const DeepCollectionEquality().hash(guardianEmail) ^
       const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(courseIds) ^
@@ -406,6 +426,7 @@ abstract class _Student extends Student {
       {@nullable UniqueId id,
       @nullable DisplayName displayName,
       @nullable EmailAddress email,
+      @nullable AuthProviders providers,
       @nullable EmailAddress guardianEmail,
       @nullable Gender gender,
       @nullable ImmutableIds courseIds,
@@ -428,6 +449,9 @@ abstract class _Student extends Student {
   @override
   @nullable
   EmailAddress get email;
+  @override
+  @nullable
+  AuthProviders get providers;
   @override
   @nullable
   EmailAddress get guardianEmail;

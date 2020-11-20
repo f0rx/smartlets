@@ -20,6 +20,7 @@ abstract class GuardianDTO implements _$GuardianDTO {
     @Default(Roles.parent) @JsonKey(includeIfNull: false) @nullable @RoleSerializer() Roles role,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String displayName,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String email,
+    @required @nullable @JsonKey(includeIfNull: false, defaultValue: []) @AuthProviderSerializer() List<AuthProvider> providers,
     @required @JsonKey(includeIfNull: false, defaultValue: []) @nullable List<String> childrenIds,
     @required @JsonKey(includeIfNull: false, defaultValue: false) @nullable bool isEmailVerified,
     @required @JsonKey(includeIfNull: false, defaultValue: '') @nullable String phone,
@@ -32,19 +33,19 @@ abstract class GuardianDTO implements _$GuardianDTO {
 
   factory GuardianDTO.fromJson(Map<String, dynamic> json) => _$GuardianDTOFromJson(json);
 
-  factory GuardianDTO.fromDomain(Guardian guardian) {
+  factory GuardianDTO.fromDomain(Guardian instance) {
     return GuardianDTO(
-      role: Roles.parent, // TODO: Debug this
-      displayName: guardian.displayName?.getOrNull,
-      email: guardian.email?.getOrNull,
-      isEmailVerified: guardian?.isEmailVerified,
-      childrenIds: guardian?.childrenIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
-      phone: guardian.phone?.getOrNull,
-      country: guardian.phone?.country,
-      photoURL: guardian?.photoURL,
-      createdAt: !guardian.createdAt.isNull ? Timestamp.fromDate(guardian?.createdAt) : null,
-      lastSeenAt: !guardian.lastSeenAt.isNull ? Timestamp.fromDate(guardian?.lastSeenAt) : null,
-      updatedAt: !guardian.updatedAt.isNull ? Timestamp.fromDate(guardian?.updatedAt) : null,
+      displayName: instance.displayName?.getOrNull,
+      email: instance.email?.getOrNull,
+      providers: instance.providers?.getOrNull?.asList(),
+      isEmailVerified: instance?.isEmailVerified,
+      childrenIds: instance?.childrenIds?.getOrNull?.iter?.map((e) => e.value)?.toList(),
+      phone: instance.phone?.getOrNull,
+      country: instance.phone?.country,
+      photoURL: instance?.photoURL,
+      createdAt: !instance.createdAt.isNull ? Timestamp.fromDate(instance?.createdAt) : null,
+      lastSeenAt: !instance.lastSeenAt.isNull ? Timestamp.fromDate(instance?.lastSeenAt) : null,
+      updatedAt: !instance.updatedAt.isNull ? Timestamp.fromDate(instance?.updatedAt) : Timestamp.fromDate(DateTime.now()),
     );
   }
 
@@ -53,6 +54,7 @@ abstract class GuardianDTO implements _$GuardianDTO {
       id: UniqueId.fromExternal(id),
       displayName: displayName != null ? DisplayName(displayName) : null,
       email: email != null ? EmailAddress(email) : null,
+      providers: providers != null ? AuthProviders(providers.toImmutableList()) : AuthProviders.EMPTY,
       isEmailVerified: isEmailVerified,
       childrenIds: childrenIds != null
           ? ImmutableIds(input: childrenIds.map<UniqueId>((e) => UniqueId.fromExternal(e)).toImmutableList())

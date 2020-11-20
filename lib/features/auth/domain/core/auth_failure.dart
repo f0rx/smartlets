@@ -18,7 +18,7 @@ abstract class AuthFailure implements _$AuthFailure, Failure<String> {
   const factory AuthFailure.accountAlreadyExists({
     @required String message,
     @required EmailAddress email,
-    @required AuthProvider provider,
+    @required AuthProviderType provider,
     @nullable @required Object credentials,
   }) = AccountAlreadyExists;
 

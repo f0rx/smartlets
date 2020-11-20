@@ -36,6 +36,10 @@ abstract class FirestoreAuthFailure implements _$FirestoreAuthFailure, Failure<S
 
   factory FirestoreAuthFailure.unImplemented(String message) => FirestoreAuthFailure(message);
 
+  factory FirestoreAuthFailure.poorInternet({String message}) => FirestoreAuthFailure(
+        message ?? "Poor internet!",
+      );
+
   factory FirestoreAuthFailure.unknown({
     @required String message,
     String code,

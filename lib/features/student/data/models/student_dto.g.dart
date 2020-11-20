@@ -11,6 +11,11 @@ _$_StudentDTO _$_$_StudentDTOFromJson(Map<String, dynamic> json) {
     role: const RoleSerializer().fromJson(json['role'] as String),
     displayName: json['displayName'] as String ?? '',
     email: json['email'] as String ?? '',
+    providers: (json['providers'] as List)
+            ?.map((e) => const AuthProviderSerializer()
+                .fromJson(e as Map<String, dynamic>))
+            ?.toList() ??
+        [],
     guardianEmail: json['guardianEmail'] as String ?? '',
     gender: const GenderTypeSerializer().fromJson(json['gender'] as String),
     courseIds:
@@ -43,6 +48,8 @@ Map<String, dynamic> _$_$_StudentDTOToJson(_$_StudentDTO instance) {
   writeNotNull('role', const RoleSerializer().toJson(instance.role));
   writeNotNull('displayName', instance.displayName);
   writeNotNull('email', instance.email);
+  writeNotNull('providers',
+      instance.providers?.map(const AuthProviderSerializer().toJson)?.toList());
   writeNotNull('guardianEmail', instance.guardianEmail);
   writeNotNull('gender', const GenderTypeSerializer().toJson(instance.gender));
   writeNotNull('courseIds', instance.courseIds);

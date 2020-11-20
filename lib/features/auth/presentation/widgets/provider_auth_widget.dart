@@ -16,7 +16,7 @@ import 'package:smartlets/widgets/widgets.dart';
 class ProviderAuthWidget extends StatelessWidget {
   final String error;
   final EmailAddress email;
-  final AuthProvider provider;
+  final AuthProviderType provider;
   final Object incoming;
 
   const ProviderAuthWidget({
@@ -37,7 +37,7 @@ class ProviderAuthWidget extends StatelessWidget {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           elevation: 2.0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-          contentPadding: AuthProvider.switchCase(
+          contentPadding: AuthProviderType.switchCase(
             provider.name,
             isPassword: (_) => EdgeInsets.only(left: 20.0, right: 20.0, top: 12.0),
             orElse: (_) => EdgeInsets.zero,
@@ -45,7 +45,7 @@ class ProviderAuthWidget extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AuthProvider.switchCase<Widget>(
+              AuthProviderType.switchCase<Widget>(
                 provider.name,
                 isPassword: (_) => _PasswordBuilder(),
                 isGoogle: (_) => _GoogleBuilder(incoming: incoming),
@@ -60,7 +60,7 @@ class ProviderAuthWidget extends StatelessWidget {
               ),
             ],
           ),
-          actions: AuthProvider.switchCase<List<Widget>>(
+          actions: AuthProviderType.switchCase<List<Widget>>(
             provider.name,
             isPassword: (_) => <Widget>[
               FlatButton(onPressed: () => navigator.pop(context), child: Text('Cancel')),
@@ -81,7 +81,7 @@ class ProviderAuthWidget extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AuthProvider.switchCase<Widget>(
+              AuthProviderType.switchCase<Widget>(
                 provider.name,
                 isPassword: (_) => _PasswordBuilder(),
                 isGoogle: (_) => _GoogleBuilder(incoming: incoming),
@@ -96,7 +96,7 @@ class ProviderAuthWidget extends StatelessWidget {
               ),
             ],
           ),
-          actions: AuthProvider.switchCase<List<Widget>>(
+          actions: AuthProviderType.switchCase<List<Widget>>(
             provider.name,
             isPassword: (_) => <Widget>[
               FlatButton(onPressed: () => navigator.pop(context), child: Text('Cancel')),
