@@ -12,5 +12,5 @@ final GetIt getIt = GetIt.I;
 /// Use: flutter pub run build_runner build [--delete-conflicting-outputs]
 ///
 /// Example: getIt<FirebaseAuth>()
-@injectableInit
-Future<void> locator(String env) async => await $initGetIt(getIt, environment: env);
+@InjectableInit(preferRelativeImports: false, asExtension: true)
+Future<void> locator(String env) async => await getIt.$initGetIt(environment: env);

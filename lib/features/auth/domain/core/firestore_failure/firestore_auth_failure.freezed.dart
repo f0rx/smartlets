@@ -39,26 +39,26 @@ mixin _$FirestoreAuthFailure {
   String get message;
 
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String message), {
-    @required Result unknown(String message, String code),
+  TResult when<TResult extends Object>(
+    TResult $default(String message), {
+    @required TResult unknown(String message, String code),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String message), {
-    Result unknown(String message, String code),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String message), {
+    TResult unknown(String message, String code),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_FirestoreAuthFailure value), {
-    @required Result unknown(_UnknownFirestoreAuthFailure value),
+  TResult map<TResult extends Object>(
+    TResult $default(_FirestoreAuthFailure value), {
+    @required TResult unknown(_UnknownFirestoreAuthFailure value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_FirestoreAuthFailure value), {
-    Result unknown(_UnknownFirestoreAuthFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_FirestoreAuthFailure value), {
+    TResult unknown(_UnknownFirestoreAuthFailure value),
+    @required TResult orElse(),
   });
 
   $FirestoreAuthFailureCopyWith<FirestoreAuthFailure> get copyWith;
@@ -155,9 +155,9 @@ class _$_FirestoreAuthFailure extends _FirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String message), {
-    @required Result unknown(String message, String code),
+  TResult when<TResult extends Object>(
+    TResult $default(String message), {
+    @required TResult unknown(String message, String code),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -166,10 +166,10 @@ class _$_FirestoreAuthFailure extends _FirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String message), {
-    Result unknown(String message, String code),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String message), {
+    TResult unknown(String message, String code),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -180,9 +180,9 @@ class _$_FirestoreAuthFailure extends _FirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_FirestoreAuthFailure value), {
-    @required Result unknown(_UnknownFirestoreAuthFailure value),
+  TResult map<TResult extends Object>(
+    TResult $default(_FirestoreAuthFailure value), {
+    @required TResult unknown(_UnknownFirestoreAuthFailure value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -191,10 +191,10 @@ class _$_FirestoreAuthFailure extends _FirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_FirestoreAuthFailure value), {
-    Result unknown(_UnknownFirestoreAuthFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_FirestoreAuthFailure value), {
+    TResult unknown(_UnknownFirestoreAuthFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -290,9 +290,9 @@ class _$_UnknownFirestoreAuthFailure extends _UnknownFirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String message), {
-    @required Result unknown(String message, String code),
+  TResult when<TResult extends Object>(
+    TResult $default(String message), {
+    @required TResult unknown(String message, String code),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -301,10 +301,10 @@ class _$_UnknownFirestoreAuthFailure extends _UnknownFirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String message), {
-    Result unknown(String message, String code),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String message), {
+    TResult unknown(String message, String code),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unknown != null) {
@@ -315,9 +315,9 @@ class _$_UnknownFirestoreAuthFailure extends _UnknownFirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_FirestoreAuthFailure value), {
-    @required Result unknown(_UnknownFirestoreAuthFailure value),
+  TResult map<TResult extends Object>(
+    TResult $default(_FirestoreAuthFailure value), {
+    @required TResult unknown(_UnknownFirestoreAuthFailure value),
   }) {
     assert($default != null);
     assert(unknown != null);
@@ -326,10 +326,10 @@ class _$_UnknownFirestoreAuthFailure extends _UnknownFirestoreAuthFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_FirestoreAuthFailure value), {
-    Result unknown(_UnknownFirestoreAuthFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_FirestoreAuthFailure value), {
+    TResult unknown(_UnknownFirestoreAuthFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unknown != null) {

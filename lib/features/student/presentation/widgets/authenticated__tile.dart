@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:extended_image/extended_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -52,47 +52,65 @@ class AuthenticatedProfileTile extends StatelessWidget {
                             borderOnForeground: false,
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
-                              onTap: () {
-                                //
-                              },
+                              onTap: () {},
                               borderRadius: BorderRadius.circular(100.0),
-                              child: ExtendedImage.network(
-                                state.student?.photoURL != null && !state.student.photoURL.isBlank
+                              child: CachedNetworkImage(
+                                imageUrl: state.student?.photoURL != null && !state.student.photoURL.isBlank
                                     ? state.student?.photoURL
                                     : AppAssets.onlineAnonymous,
+                                imageBuilder: (context, provider) => CircleAvatar(
+                                  backgroundImage: provider,
+                                ),
                                 fit: BoxFit.fill,
-                                height: App.height * 0.08,
-                                shape: BoxShape.circle,
-                                borderRadius: BorderRadius.circular(100.0),
-                                clipBehavior: Clip.antiAlias,
-                                handleLoadingProgress: true,
-                                retries: 999899,
-                                isAntiAlias: true,
-                                loadStateChanged: (state) {
-                                  switch (state.extendedImageLoadState) {
-                                    case LoadState.loading:
-                                      return ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          maxWidth: App.width * 0.1,
-                                          maxHeight: App.width * 0.1,
-                                        ),
-                                        child: Center(
-                                          child: CircularProgressBar.adaptive(
-                                            width: App.width * 0.07,
-                                            height: App.width * 0.07,
-                                            strokeWidth: 2.5,
-                                          ),
-                                        ),
-                                      );
-                                    case LoadState.completed:
-                                      return state.completedWidget;
-                                    case LoadState.failed:
-                                      return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                                    default:
-                                      return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                                  }
-                                },
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressBar.adaptive(
+                                    width: App.width * 0.07,
+                                    height: App.width * 0.07,
+                                    strokeWidth: 2.5,
+                                  ),
+                                ),
+                                placeholderFadeInDuration: Duration(milliseconds: 300),
+                                errorWidget: (context, url, error) => CircleAvatar(
+                                  backgroundImage: AssetImage(AppAssets.anonymous),
+                                ),
                               ),
+                              // child: ExtendedImage.network(
+                              //   state.student?.photoURL != null && !state.student.photoURL.isBlank
+                              //       ? state.student?.photoURL
+                              //       : AppAssets.onlineAnonymous,
+                              //   fit: BoxFit.fill,
+                              //   height: App.height * 0.08,
+                              //   shape: BoxShape.circle,
+                              //   borderRadius: BorderRadius.circular(100.0),
+                              //   clipBehavior: Clip.antiAlias,
+                              //   handleLoadingProgress: true,
+                              //   retries: 999899,
+                              //   isAntiAlias: true,
+                              //   loadStateChanged: (state) {
+                              //     switch (state.extendedImageLoadState) {
+                              //       case LoadState.loading:
+                              //         return ConstrainedBox(
+                              //           constraints: BoxConstraints(
+                              //             maxWidth: App.width * 0.1,
+                              //             maxHeight: App.width * 0.1,
+                              //           ),
+                              //           child: Center(
+                              //             child: CircularProgressBar.adaptive(
+                              //               width: App.width * 0.07,
+                              //               height: App.width * 0.07,
+                              //               strokeWidth: 2.5,
+                              //             ),
+                              //           ),
+                              //         );
+                              //       case LoadState.completed:
+                              //         return state.completedWidget;
+                              //       case LoadState.failed:
+                              //         return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
+                              //       default:
+                              //         return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
+                              //     }
+                              //   },
+                              // ),
                             ),
                           ),
                         ),
