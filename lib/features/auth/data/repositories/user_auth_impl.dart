@@ -22,7 +22,8 @@ class UserAuthImpl with FirestoreAuthMixin<User> {
   final DataConnectionChecker _connectionChecker;
   final StudentAuthImpl _studentAuthImpl;
   final GuardianAuthImpl _guardianAuthImpl;
-  GetOptions options = GetOptions(source: Source.serverAndCache);
+  // Temporary document snapshot (Used to check if fieldIsNull)
+  GetOptions _options = GetOptions(source: Source.serverAndCache);
   DocumentSnapshot _temp;
 
   UserAuthImpl(this._firestore, this._connectionChecker, this._studentAuthImpl, this._guardianAuthImpl);
@@ -30,23 +31,23 @@ class UserAuthImpl with FirestoreAuthMixin<User> {
   Future<bool> get checkHasInternet async {
     var conn = await _connectionChecker.hasConnection;
     if (conn)
-      options = GetOptions(source: Source.server);
+      _options = GetOptions(source: Source.server);
     else
-      options = GetOptions(source: Source.cache);
+      _options = GetOptions(source: Source.cache);
     return conn;
   }
 
   @override
   Future<User> get single async {
     await checkHasInternet;
-    final DocumentSnapshot doc = await _firestore.users.user.get(options);
+    final DocumentSnapshot doc = await _firestore.users.user.get(_options);
     return UserDTO.fromDocument(doc).domain;
   }
 
   @override
   Future<bool> get docExists async {
     await checkHasInternet;
-    _temp = await _firestore.users.user.get(options);
+    _temp = await _firestore.users.user.get(_options);
     return _temp != null && _temp.exists;
   }
 
@@ -59,7 +60,7 @@ class UserAuthImpl with FirestoreAuthMixin<User> {
       await checkHasInternet;
       final _userDoc = _firestore.users.user;
       // If User doc doesn't exist
-      if (!(await _userDoc.get(options)).exists)
+      if (!(await _userDoc.get(_options)).exists)
         await _userDoc.set(
           UserDTO.fromDomain(user).toJson(),
           SetOptions(merge: true),

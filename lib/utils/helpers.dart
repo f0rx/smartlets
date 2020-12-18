@@ -45,7 +45,14 @@ class Helpers {
   static Duration willPopTimeout = const Duration(seconds: 3);
   static Logger logger = Logger(
     filter: env.flavor == BuildFlavor.dev ? DevelopmentFilter() : ProductionFilter(),
-    printer: HybridPrinter(PrettyPrinter()),
+    printer: HybridPrinter(PrettyPrinter(
+      methodCount: 3, // number of method calls to be displayed
+      errorMethodCount: 10, // number of method calls if stacktrace is provided
+      lineLength: 100, // width of the output
+      colors: true, // Colorful log messages
+      printEmojis: true,
+      printTime: false,
+    )),
   );
 
   static String writeNotNull(String other) {

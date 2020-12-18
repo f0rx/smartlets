@@ -16,7 +16,8 @@ import 'package:smartlets/utils/utils.dart';
 class GuardianAuthImpl with FirestoreAuthMixin<Guardian> {
   final FirebaseFirestore _firestore;
   final DataConnectionChecker _connectionChecker;
-  GetOptions options = GetOptions(source: Source.serverAndCache);
+  // Temporary document snapshot (Used to check if fieldIsNull)
+  GetOptions _options = GetOptions(source: Source.serverAndCache);
   DocumentSnapshot _temp;
 
   GuardianAuthImpl(this._firestore, this._connectionChecker);
@@ -24,23 +25,23 @@ class GuardianAuthImpl with FirestoreAuthMixin<Guardian> {
   Future<bool> get checkHasInternet async {
     var conn = await _connectionChecker.hasConnection;
     if (conn)
-      options = GetOptions(source: Source.server);
+      _options = GetOptions(source: Source.server);
     else
-      options = GetOptions(source: Source.cache);
+      _options = GetOptions(source: Source.cache);
     return conn;
   }
 
   @override
   Future<Guardian> get single async {
     await checkHasInternet;
-    DocumentSnapshot doc = await _firestore.parents.user.get(options);
+    DocumentSnapshot doc = await _firestore.parents.user.get(_options);
     return GuardianDTO.fromDocument(doc).domain;
   }
 
   @override
   Future<bool> get docExists async {
     await checkHasInternet;
-    _temp = await _firestore.users.user.get(options);
+    _temp = await _firestore.users.user.get(_options);
     return _temp != null && _temp.exists;
   }
 
@@ -53,7 +54,7 @@ class GuardianAuthImpl with FirestoreAuthMixin<Guardian> {
       await checkHasInternet;
       final _parentDoc = _firestore.parents.user;
       // If Guardian doc doesn't exist
-      if (!(await _parentDoc.get(options)).exists)
+      if (!(await _parentDoc.get(_options)).exists)
         await _parentDoc.set(
           GuardianDTO.fromDomain(guardian).toJson(),
           SetOptions(merge: true),

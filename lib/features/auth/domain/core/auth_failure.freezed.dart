@@ -52,33 +52,33 @@ mixin _$AuthFailure {
   String get message;
 
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String code, String message), {
-    @required Result unExpectedFailure(String message),
+  TResult when<TResult extends Object>(
+    TResult $default(String code, String message), {
+    @required TResult unExpectedFailure(String message),
     @required
-        Result accountAlreadyExists(String message, EmailAddress email,
+        TResult accountAlreadyExists(String message, EmailAddress email,
             AuthProviderType provider, @nullable Object credentials),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String code, String message), {
-    Result unExpectedFailure(String message),
-    Result accountAlreadyExists(String message, EmailAddress email,
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String code, String message), {
+    TResult unExpectedFailure(String message),
+    TResult accountAlreadyExists(String message, EmailAddress email,
         AuthProviderType provider, @nullable Object credentials),
-    @required Result orElse(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    @required Result unExpectedFailure(UnExpectedFailure value),
-    @required Result accountAlreadyExists(AccountAlreadyExists value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    @required TResult unExpectedFailure(UnExpectedFailure value),
+    @required TResult accountAlreadyExists(AccountAlreadyExists value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    Result unExpectedFailure(UnExpectedFailure value),
-    Result accountAlreadyExists(AccountAlreadyExists value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    TResult unExpectedFailure(UnExpectedFailure value),
+    TResult accountAlreadyExists(AccountAlreadyExists value),
+    @required TResult orElse(),
   });
 
   $AuthFailureCopyWith<AuthFailure> get copyWith;
@@ -189,11 +189,11 @@ class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String code, String message), {
-    @required Result unExpectedFailure(String message),
+  TResult when<TResult extends Object>(
+    TResult $default(String code, String message), {
+    @required TResult unExpectedFailure(String message),
     @required
-        Result accountAlreadyExists(String message, EmailAddress email,
+        TResult accountAlreadyExists(String message, EmailAddress email,
             AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
@@ -204,12 +204,12 @@ class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String code, String message), {
-    Result unExpectedFailure(String message),
-    Result accountAlreadyExists(String message, EmailAddress email,
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String code, String message), {
+    TResult unExpectedFailure(String message),
+    TResult accountAlreadyExists(String message, EmailAddress email,
         AuthProviderType provider, @nullable Object credentials),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -220,10 +220,10 @@ class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    @required Result unExpectedFailure(UnExpectedFailure value),
-    @required Result accountAlreadyExists(AccountAlreadyExists value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    @required TResult unExpectedFailure(UnExpectedFailure value),
+    @required TResult accountAlreadyExists(AccountAlreadyExists value),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -233,11 +233,11 @@ class _$_AuthFailure extends _AuthFailure with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    Result unExpectedFailure(UnExpectedFailure value),
-    Result accountAlreadyExists(AccountAlreadyExists value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    TResult unExpectedFailure(UnExpectedFailure value),
+    TResult accountAlreadyExists(AccountAlreadyExists value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -331,11 +331,11 @@ class _$UnExpectedFailure extends UnExpectedFailure
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String code, String message), {
-    @required Result unExpectedFailure(String message),
+  TResult when<TResult extends Object>(
+    TResult $default(String code, String message), {
+    @required TResult unExpectedFailure(String message),
     @required
-        Result accountAlreadyExists(String message, EmailAddress email,
+        TResult accountAlreadyExists(String message, EmailAddress email,
             AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
@@ -346,12 +346,12 @@ class _$UnExpectedFailure extends UnExpectedFailure
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String code, String message), {
-    Result unExpectedFailure(String message),
-    Result accountAlreadyExists(String message, EmailAddress email,
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String code, String message), {
+    TResult unExpectedFailure(String message),
+    TResult accountAlreadyExists(String message, EmailAddress email,
         AuthProviderType provider, @nullable Object credentials),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unExpectedFailure != null) {
@@ -362,10 +362,10 @@ class _$UnExpectedFailure extends UnExpectedFailure
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    @required Result unExpectedFailure(UnExpectedFailure value),
-    @required Result accountAlreadyExists(AccountAlreadyExists value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    @required TResult unExpectedFailure(UnExpectedFailure value),
+    @required TResult accountAlreadyExists(AccountAlreadyExists value),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -375,11 +375,11 @@ class _$UnExpectedFailure extends UnExpectedFailure
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    Result unExpectedFailure(UnExpectedFailure value),
-    Result accountAlreadyExists(AccountAlreadyExists value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    TResult unExpectedFailure(UnExpectedFailure value),
+    TResult accountAlreadyExists(AccountAlreadyExists value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unExpectedFailure != null) {
@@ -513,11 +513,11 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(String code, String message), {
-    @required Result unExpectedFailure(String message),
+  TResult when<TResult extends Object>(
+    TResult $default(String code, String message), {
+    @required TResult unExpectedFailure(String message),
     @required
-        Result accountAlreadyExists(String message, EmailAddress email,
+        TResult accountAlreadyExists(String message, EmailAddress email,
             AuthProviderType provider, @nullable Object credentials),
   }) {
     assert($default != null);
@@ -528,12 +528,12 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(String code, String message), {
-    Result unExpectedFailure(String message),
-    Result accountAlreadyExists(String message, EmailAddress email,
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(String code, String message), {
+    TResult unExpectedFailure(String message),
+    TResult accountAlreadyExists(String message, EmailAddress email,
         AuthProviderType provider, @nullable Object credentials),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (accountAlreadyExists != null) {
@@ -544,10 +544,10 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    @required Result unExpectedFailure(UnExpectedFailure value),
-    @required Result accountAlreadyExists(AccountAlreadyExists value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    @required TResult unExpectedFailure(UnExpectedFailure value),
+    @required TResult accountAlreadyExists(AccountAlreadyExists value),
   }) {
     assert($default != null);
     assert(unExpectedFailure != null);
@@ -557,11 +557,11 @@ class _$AccountAlreadyExists extends AccountAlreadyExists
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AuthFailure value), {
-    Result unExpectedFailure(UnExpectedFailure value),
-    Result accountAlreadyExists(AccountAlreadyExists value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AuthFailure value), {
+    TResult unExpectedFailure(UnExpectedFailure value),
+    TResult accountAlreadyExists(AccountAlreadyExists value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (accountAlreadyExists != null) {
