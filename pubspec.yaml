@@ -86,8 +86,6 @@ dependencies:
   curved_navigation_bar: ^0.3.4
   # A port of Kotlin's Kotlin Standard library for Dart/Flutter projects.
   kt_dart: ^0.8.0
-  # A powerful official extension library of image
-  extended_image: ^1.5.0
   # Customizable rating bar for flutter
   flutter_rating_bar: ^3.2.0+1
   # A port of the Rails/ActiveSupport inflector library to Dart.
@@ -114,6 +112,14 @@ dependencies:
   flutter_mentions: ^1.0.11
   # A flutter library to show images from the internet and keep them in the cache directory.
   cached_network_image: ^2.4.1
+  # A Flutter plugin for iOS and Android for picking images from the image library,
+  # and taking new pictures with the camera.
+  image_picker: ^0.6.7+17
+  # A Dart library providing the ability to load,
+  # save and manipulate images in a variety of different file formats.
+  image: ^2.1.19
+  # This library is an animation library for Flutter
+  animator: ^2.0.2
 
 dependency_overrides:
   analyzer: ^0.41.1

@@ -1,13 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:extended_image/extended_image.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kt_dart/collection.dart';
 import 'package:smartlets/features/auth/presentation/manager/blocs.dart';
-import 'package:smartlets/features/shared/shared.dart';
-import 'package:smartlets/manager/locator/locator.dart';
 import 'package:smartlets/utils/utils.dart';
 import 'package:smartlets/widgets/widgets.dart';
 
@@ -34,147 +30,9 @@ class AuthenticatedProfileTile extends StatelessWidget {
         ).show(context),
         (r) => null,
       ),
-      child: Material(
-        child: InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: App.height * 0.008, horizontal: App.width * 0.05),
-            child: Row(
-              children: [
-                Flexible(
-                  child: BlocBuilder<GuardianAuthCubit, GuardianAuthState>(
-                    builder: (context, state) => Stack(
-                      children: [
-                        Positioned(
-                          child: Material(
-                            color: Colors.transparent,
-                            type: MaterialType.card,
-                            shape: RoundedRectangleBorder(),
-                            borderOnForeground: false,
-                            clipBehavior: Clip.antiAlias,
-                            child: InkWell(
-                              onTap: () {
-                                getIt<GuardianAuthCubit>().update(Guardian(
-                                  childrenIds: ImmutableIds(input: KtList.from([UniqueId.v4()])),
-                                ));
-                              },
-                              splashColor: Colors.grey,
-                              borderRadius: BorderRadius.circular(100.0),
-                              child: ExtendedImage.network(
-                                state.guardian?.photoURL != null && !state.guardian.photoURL.isBlank
-                                    ? state.guardian?.photoURL
-                                    : AppAssets.onlineAnonymous,
-                                fit: BoxFit.fill,
-                                height: App.height * 0.08,
-                                shape: BoxShape.circle,
-                                borderRadius: BorderRadius.circular(100.0),
-                                clipBehavior: Clip.antiAlias,
-                                handleLoadingProgress: true,
-                                retries: 999899,
-                                isAntiAlias: true,
-                                loadStateChanged: (state) {
-                                  switch (state.extendedImageLoadState) {
-                                    case LoadState.loading:
-                                      return ConstrainedBox(
-                                        constraints: BoxConstraints(
-                                          maxWidth: App.width * 0.1,
-                                          maxHeight: App.width * 0.1,
-                                        ),
-                                        child: Center(
-                                          child: CircularProgressBar.adaptive(
-                                            width: App.width * 0.07,
-                                            height: App.width * 0.07,
-                                            strokeWidth: 2.5,
-                                          ),
-                                        ),
-                                      );
-                                    case LoadState.completed:
-                                      return state.completedWidget;
-                                    case LoadState.failed:
-                                      return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                                    default:
-                                      return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          right: 0,
-                          bottom: 0,
-                          child: Visibility(
-                            visible: state.guardian?.photoURL != null && !state.guardian.isNullOrBlank,
-                            child: Material(
-                              color: Theme.of(context).accentColor,
-                              type: MaterialType.circle,
-                              clipBehavior: Clip.antiAlias,
-                              child: InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: App.width * 0.015,
-                                    vertical: App.width * 0.015,
-                                  ),
-                                  child: Icon(
-                                    Icons.photo_camera,
-                                    color: Colors.white,
-                                    size: 16.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                //
-                HorizontalSpace(width: App.height * 0.02),
-                //
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BlocBuilder<GuardianAuthCubit, GuardianAuthState>(
-                        builder: (context, state) => holder(
-                          AutoSizeText(
-                            "${state.guardian?.displayName?.getOrEmpty}",
-                            style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600),
-                          ),
-                          condition:
-                              state.guardian?.displayName?.getOrNull != null && state.guardian.displayName.getOrEmpty.isNotEmpty,
-                        ),
-                      ),
-                      //
-                      VerticalSpace(height: App.height * 0.005),
-                      //
-                      BlocBuilder<GuardianAuthCubit, GuardianAuthState>(
-                        builder: (context, state) => holder(
-                          AutoSizeText(
-                            "${state.guardian?.email?.getOrEmpty}",
-                            style: TextStyle(fontSize: 17.0),
-                          ),
-                          condition: state.guardian?.email?.getOrNull != null && state.guardian.email.getOrEmpty.isNotEmpty,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+      child: BlocBuilder<GuardianAuthCubit, GuardianAuthState>(
+        builder: (context, state) => MyProfileListTile(domain: state.guardian),
       ),
-    );
-  }
-
-  Widget holder(Widget area, {bool condition = true}) {
-    return Visibility(
-      visible: condition,
-      child: area,
     );
   }
 }

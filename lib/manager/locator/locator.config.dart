@@ -51,10 +51,12 @@ extension GetItInjectableX on GetIt {
     gh.lazySingleton<FirebaseFirestore>(() => modules.firestore);
     gh.lazySingleton<FirebaseFunctions>(() => modules.functions);
     gh.lazySingleton<GoogleSignIn>(() => modules.googleSignIn);
-    gh.lazySingleton<GuardianAuthImpl>(() => GuardianAuthImpl(get<FirebaseFirestore>(), get<DataConnectionChecker>()));
+    gh.lazySingleton<GuardianAuthImpl>(() => GuardianAuthImpl(
+        get<FirebaseFirestore>(), get<DataConnectionChecker>()));
     gh.factory<ParentNavCubit>(() => ParentNavCubit());
     gh.factory<PlaybackBloc>(() => PlaybackBloc());
-    gh.lazySingleton<StudentAuthImpl>(() => StudentAuthImpl(get<FirebaseFirestore>(), get<DataConnectionChecker>()));
+    gh.lazySingleton<StudentAuthImpl>(() => StudentAuthImpl(
+        get<FirebaseFirestore>(), get<DataConnectionChecker>()));
     gh.factory<StudentNavCubit>(() => StudentNavCubit());
     gh.factory<ThemeCubit>(() => ThemeCubit());
     gh.lazySingleton<UserAuthImpl>(() => UserAuthImpl(
@@ -70,14 +72,17 @@ extension GetItInjectableX on GetIt {
           get<UserAuthImpl>(),
           get<DataConnectionChecker>(),
         ));
-    gh.factory<AuthWatcherCubit>(() => AuthWatcherCubit(get<AuthFacade>(), get<UserAuthImpl>()));
-    gh.factory<GuardianAuthCubit>(() => GuardianAuthCubit(get<GuardianAuthImpl>()));
+    gh.factory<AuthWatcherCubit>(
+        () => AuthWatcherCubit(get<AuthFacade>(), get<UserAuthImpl>()));
+    gh.factory<GuardianAuthCubit>(
+        () => GuardianAuthCubit(get<GuardianAuthImpl>()));
     gh.factory<OnBoardingCubit>(() => OnBoardingCubit(
           get<DataConnectionChecker>(),
           get<AuthFacade>(),
           get<UserAuthImpl>(),
         ));
-    gh.factory<StudentAuthCubit>(() => StudentAuthCubit(get<StudentAuthImpl>()));
+    gh.factory<StudentAuthCubit>(
+        () => StudentAuthCubit(get<StudentAuthImpl>()));
     gh.factory<AuthBloc>(() => AuthBloc(get<AuthFacade>()));
 
     // Eager singletons must be registered in the right order
