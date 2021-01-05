@@ -60,7 +60,7 @@ jobs:
 
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk -t lib/main.dart --release --target-platform android-arm,android-arm64 --split-per-abi --flavor=dev
+      - run: flutter build apk -t lib/main.dart --target-platform android-arm,android-arm64 --split-per-abi --flavor dev
 
       - name: Bump version and push tag
         id: bump_tag
