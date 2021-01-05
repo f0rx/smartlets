@@ -117,79 +117,79 @@ const $PlaybackEvent = _$PlaybackEventTearOff();
 /// @nodoc
 mixin _$PlaybackEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   });
 }
 
@@ -294,23 +294,23 @@ class _$_SetupVideoController
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -332,23 +332,23 @@ class _$_SetupVideoController
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (setupVideoPlayer != null) {
@@ -359,22 +359,22 @@ class _$_SetupVideoController
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -396,23 +396,23 @@ class _$_SetupVideoController
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (setupVideoPlayer != null) {
@@ -498,23 +498,23 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -536,23 +536,23 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (play != null) {
@@ -563,22 +563,22 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -600,23 +600,23 @@ class _$_PlayVideo with DiagnosticableTreeMixin implements _PlayVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (play != null) {
@@ -676,23 +676,23 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -714,23 +714,23 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (pause != null) {
@@ -741,22 +741,22 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -778,23 +778,23 @@ class _$_PauseVideo with DiagnosticableTreeMixin implements _PauseVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (pause != null) {
@@ -874,23 +874,23 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -912,23 +912,23 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (changePath != null) {
@@ -939,22 +939,22 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -976,23 +976,23 @@ class _$_ChangePath with DiagnosticableTreeMixin implements _ChangePath {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (changePath != null) {
@@ -1074,23 +1074,23 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1112,23 +1112,23 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (changeVolume != null) {
@@ -1139,22 +1139,22 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1176,23 +1176,23 @@ class _$_SetVolume with DiagnosticableTreeMixin implements _SetVolume {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (changeVolume != null) {
@@ -1251,23 +1251,23 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1289,23 +1289,23 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (mute != null) {
@@ -1316,22 +1316,22 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1353,23 +1353,23 @@ class _$_MuteVideo with DiagnosticableTreeMixin implements _MuteVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (mute != null) {
@@ -1426,23 +1426,23 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1464,23 +1464,23 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unMute != null) {
@@ -1491,22 +1491,22 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1528,23 +1528,23 @@ class _$_UnMuteVideo with DiagnosticableTreeMixin implements _UnMuteVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unMute != null) {
@@ -1605,23 +1605,23 @@ class _$_EnterFullScreen
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1643,23 +1643,23 @@ class _$_EnterFullScreen
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (enterFullScreen != null) {
@@ -1670,22 +1670,22 @@ class _$_EnterFullScreen
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1707,23 +1707,23 @@ class _$_EnterFullScreen
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (enterFullScreen != null) {
@@ -1784,23 +1784,23 @@ class _$_ExitFullScreen
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1822,23 +1822,23 @@ class _$_ExitFullScreen
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (exitFullScreen != null) {
@@ -1849,22 +1849,22 @@ class _$_ExitFullScreen
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -1886,23 +1886,23 @@ class _$_ExitFullScreen
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (exitFullScreen != null) {
@@ -1988,23 +1988,23 @@ class _$_ChangeSliderComponentSize
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2026,23 +2026,23 @@ class _$_ChangeSliderComponentSize
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (changeSliderSize != null) {
@@ -2053,22 +2053,22 @@ class _$_ChangeSliderComponentSize
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2090,23 +2090,23 @@ class _$_ChangeSliderComponentSize
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (changeSliderSize != null) {
@@ -2171,23 +2171,23 @@ class _$_ToggleFullScreen
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2209,23 +2209,23 @@ class _$_ToggleFullScreen
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleFullScreen != null) {
@@ -2236,22 +2236,22 @@ class _$_ToggleFullScreen
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2273,23 +2273,23 @@ class _$_ToggleFullScreen
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleFullScreen != null) {
@@ -2384,23 +2384,23 @@ class _$_RefreshVideoPlayer
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2422,23 +2422,23 @@ class _$_RefreshVideoPlayer
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (refreshPlayer != null) {
@@ -2449,22 +2449,22 @@ class _$_RefreshVideoPlayer
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2486,23 +2486,23 @@ class _$_RefreshVideoPlayer
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (refreshPlayer != null) {
@@ -2591,23 +2591,23 @@ class _$_FastForwardVideo
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2629,23 +2629,23 @@ class _$_FastForwardVideo
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (fastForward != null) {
@@ -2656,22 +2656,22 @@ class _$_FastForwardVideo
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2693,23 +2693,23 @@ class _$_FastForwardVideo
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (fastForward != null) {
@@ -2793,23 +2793,23 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2831,23 +2831,23 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (seek != null) {
@@ -2858,22 +2858,22 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -2895,23 +2895,23 @@ class _$_Seek with DiagnosticableTreeMixin implements _Seek {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (seek != null) {
@@ -2996,23 +2996,23 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
+  TResult when<TResult extends Object>({
     @required
-        Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    @required Result play(bool firstTouch),
-    @required Result pause(),
-    @required Result changePath(String value),
-    @required Result changeVolume(double volume),
-    @required Result mute(),
-    @required Result unMute(),
-    @required Result enterFullScreen(),
-    @required Result exitFullScreen(),
-    @required Result changeSliderSize(SliderConfiguration config),
-    @required Result toggleFullScreen(),
-    @required Result refreshPlayer(PlaybackState state),
-    @required Result fastForward(Duration moment),
-    @required Result seek(Duration progress),
-    @required Result rewind(Duration moment),
+        TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    @required TResult play(bool firstTouch),
+    @required TResult pause(),
+    @required TResult changePath(String value),
+    @required TResult changeVolume(double volume),
+    @required TResult mute(),
+    @required TResult unMute(),
+    @required TResult enterFullScreen(),
+    @required TResult exitFullScreen(),
+    @required TResult changeSliderSize(SliderConfiguration config),
+    @required TResult toggleFullScreen(),
+    @required TResult refreshPlayer(PlaybackState state),
+    @required TResult fastForward(Duration moment),
+    @required TResult seek(Duration progress),
+    @required TResult rewind(Duration moment),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -3034,23 +3034,23 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result setupVideoPlayer(String url, @nullable FlickManager controller),
-    Result play(bool firstTouch),
-    Result pause(),
-    Result changePath(String value),
-    Result changeVolume(double volume),
-    Result mute(),
-    Result unMute(),
-    Result enterFullScreen(),
-    Result exitFullScreen(),
-    Result changeSliderSize(SliderConfiguration config),
-    Result toggleFullScreen(),
-    Result refreshPlayer(PlaybackState state),
-    Result fastForward(Duration moment),
-    Result seek(Duration progress),
-    Result rewind(Duration moment),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult setupVideoPlayer(String url, @nullable FlickManager controller),
+    TResult play(bool firstTouch),
+    TResult pause(),
+    TResult changePath(String value),
+    TResult changeVolume(double volume),
+    TResult mute(),
+    TResult unMute(),
+    TResult enterFullScreen(),
+    TResult exitFullScreen(),
+    TResult changeSliderSize(SliderConfiguration config),
+    TResult toggleFullScreen(),
+    TResult refreshPlayer(PlaybackState state),
+    TResult fastForward(Duration moment),
+    TResult seek(Duration progress),
+    TResult rewind(Duration moment),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (rewind != null) {
@@ -3061,22 +3061,22 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result setupVideoPlayer(_SetupVideoController value),
-    @required Result play(_PlayVideo value),
-    @required Result pause(_PauseVideo value),
-    @required Result changePath(_ChangePath value),
-    @required Result changeVolume(_SetVolume value),
-    @required Result mute(_MuteVideo value),
-    @required Result unMute(_UnMuteVideo value),
-    @required Result enterFullScreen(_EnterFullScreen value),
-    @required Result exitFullScreen(_ExitFullScreen value),
-    @required Result changeSliderSize(_ChangeSliderComponentSize value),
-    @required Result toggleFullScreen(_ToggleFullScreen value),
-    @required Result refreshPlayer(_RefreshVideoPlayer value),
-    @required Result fastForward(_FastForwardVideo value),
-    @required Result seek(_Seek value),
-    @required Result rewind(_RewindVideo value),
+  TResult map<TResult extends Object>({
+    @required TResult setupVideoPlayer(_SetupVideoController value),
+    @required TResult play(_PlayVideo value),
+    @required TResult pause(_PauseVideo value),
+    @required TResult changePath(_ChangePath value),
+    @required TResult changeVolume(_SetVolume value),
+    @required TResult mute(_MuteVideo value),
+    @required TResult unMute(_UnMuteVideo value),
+    @required TResult enterFullScreen(_EnterFullScreen value),
+    @required TResult exitFullScreen(_ExitFullScreen value),
+    @required TResult changeSliderSize(_ChangeSliderComponentSize value),
+    @required TResult toggleFullScreen(_ToggleFullScreen value),
+    @required TResult refreshPlayer(_RefreshVideoPlayer value),
+    @required TResult fastForward(_FastForwardVideo value),
+    @required TResult seek(_Seek value),
+    @required TResult rewind(_RewindVideo value),
   }) {
     assert(setupVideoPlayer != null);
     assert(play != null);
@@ -3098,23 +3098,23 @@ class _$_RewindVideo with DiagnosticableTreeMixin implements _RewindVideo {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result setupVideoPlayer(_SetupVideoController value),
-    Result play(_PlayVideo value),
-    Result pause(_PauseVideo value),
-    Result changePath(_ChangePath value),
-    Result changeVolume(_SetVolume value),
-    Result mute(_MuteVideo value),
-    Result unMute(_UnMuteVideo value),
-    Result enterFullScreen(_EnterFullScreen value),
-    Result exitFullScreen(_ExitFullScreen value),
-    Result changeSliderSize(_ChangeSliderComponentSize value),
-    Result toggleFullScreen(_ToggleFullScreen value),
-    Result refreshPlayer(_RefreshVideoPlayer value),
-    Result fastForward(_FastForwardVideo value),
-    Result seek(_Seek value),
-    Result rewind(_RewindVideo value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult setupVideoPlayer(_SetupVideoController value),
+    TResult play(_PlayVideo value),
+    TResult pause(_PauseVideo value),
+    TResult changePath(_ChangePath value),
+    TResult changeVolume(_SetVolume value),
+    TResult mute(_MuteVideo value),
+    TResult unMute(_UnMuteVideo value),
+    TResult enterFullScreen(_EnterFullScreen value),
+    TResult exitFullScreen(_ExitFullScreen value),
+    TResult changeSliderSize(_ChangeSliderComponentSize value),
+    TResult toggleFullScreen(_ToggleFullScreen value),
+    TResult refreshPlayer(_RefreshVideoPlayer value),
+    TResult fastForward(_FastForwardVideo value),
+    TResult seek(_Seek value),
+    TResult rewind(_RewindVideo value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (rewind != null) {

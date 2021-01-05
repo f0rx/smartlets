@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:extended_image/extended_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smartlets/features/auth/domain/core/auth.dart';
@@ -56,34 +56,27 @@ class ShowChildPage extends StatelessWidget with AutoRouteWrapper {
                         //
                         VerticalSpace(height: 6.0),
                         //
-                        ExtendedImage.network(
-                          student?.photoURL ?? AppAssets.onlineAnonymous,
+                        CachedNetworkImage(
+                          imageUrl: student?.photoURL ?? AppAssets.onlineAnonymous,
+                          imageBuilder: (context, provider) => CircleAvatar(
+                            backgroundImage: provider,
+                            backgroundColor: Theme.of(context).accentColor,
+                            radius: 16.0,
+                          ),
                           fit: BoxFit.fill,
-                          height: App.height * 0.04,
-                          shape: BoxShape.circle,
-                          borderRadius: BorderRadius.circular(100.0),
-                          clipBehavior: Clip.antiAlias,
-                          clearMemoryCacheIfFailed: false,
-                          handleLoadingProgress: true,
-                          retries: 999899,
-                          isAntiAlias: true,
-                          loadStateChanged: (state) {
-                            switch (state.extendedImageLoadState) {
-                              case LoadState.loading:
-                                return CircularProgressBar.adaptive(
-                                  width: App.width * 0.06,
-                                  height: App.width * 0.06,
-                                  strokeWidth: 3,
-                                  radius: 12,
-                                );
-                              case LoadState.completed:
-                                return state.completedWidget;
-                              case LoadState.failed:
-                                return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                              default:
-                                return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                            }
-                          },
+                          placeholder: (context, url) => Center(
+                            child: CircularProgressBar.adaptive(
+                              width: App.width * 0.07,
+                              height: App.width * 0.07,
+                              strokeWidth: 2.8,
+                            ),
+                          ),
+                          placeholderFadeInDuration: Duration(milliseconds: 300),
+                          errorWidget: (context, url, error) => CircleAvatar(
+                            backgroundImage: AssetImage(AppAssets.anonymous),
+                            backgroundColor: Theme.of(context).accentColor,
+                            radius: 16.0,
+                          ),
                         ),
                       ],
                     ),

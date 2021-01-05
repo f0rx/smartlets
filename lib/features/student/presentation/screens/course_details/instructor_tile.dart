@@ -17,34 +17,27 @@ class _InstructorTile extends StatelessWidget {
           child: Row(
             children: [
               Flexible(
-                child: ExtendedImage.network(
-                  user?.photoURL,
+                child: CachedNetworkImage(
+                  imageUrl: user?.photoURL,
+                  imageBuilder: (context, provider) => CircleAvatar(
+                    backgroundImage: provider,
+                    backgroundColor: Theme.of(context).accentColor,
+                    radius: 16.0,
+                  ),
                   fit: BoxFit.fill,
-                  height: App.height * 0.06,
-                  shape: BoxShape.circle,
-                  borderRadius: BorderRadius.circular(100.0),
-                  clipBehavior: Clip.antiAlias,
-                  clearMemoryCacheIfFailed: false,
-                  handleLoadingProgress: true,
-                  retries: 999899,
-                  isAntiAlias: true,
-                  loadStateChanged: (state) {
-                    switch (state.extendedImageLoadState) {
-                      case LoadState.loading:
-                        return CircularProgressBar.adaptive(
-                          width: App.width * 0.06,
-                          height: App.width * 0.06,
-                          strokeWidth: 3,
-                          radius: 12,
-                        );
-                      case LoadState.completed:
-                        return state.completedWidget;
-                      case LoadState.failed:
-                        return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                      default:
-                        return Center(child: Icon(Icons.error, color: Theme.of(context).accentColor));
-                    }
-                  },
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressBar.adaptive(
+                      width: App.width * 0.07,
+                      height: App.width * 0.07,
+                      strokeWidth: 2.8,
+                    ),
+                  ),
+                  placeholderFadeInDuration: Duration(milliseconds: 300),
+                  errorWidget: (context, url, error) => CircleAvatar(
+                    backgroundImage: AssetImage(AppAssets.anonymous),
+                    backgroundColor: Theme.of(context).accentColor,
+                    radius: 16.0,
+                  ),
                 ),
               ),
               //

@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/f0rx/smartlets/issues"
   },
-  "homepage": "https://github.com/f0rx/smartlets#readme"
+  "homepage": "https://github.com/f0rx/smartlets#readme",
+  "dependencies": {
+    "firebase-tools": "^8.16.2"
+  }
 }

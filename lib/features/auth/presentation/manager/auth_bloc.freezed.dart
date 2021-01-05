@@ -129,91 +129,91 @@ const $AuthEvent = _$AuthEventTearOff();
 /// @nodoc
 mixin _$AuthEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   });
 }
 
@@ -291,25 +291,25 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -333,25 +333,25 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (displayNameChanged != null) {
@@ -362,27 +362,27 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -405,25 +405,25 @@ class _$_DisplayNameChanged implements _DisplayNameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (displayNameChanged != null) {
@@ -498,25 +498,25 @@ class _$_EmailChanged implements _EmailChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -540,25 +540,25 @@ class _$_EmailChanged implements _EmailChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailChanged != null) {
@@ -569,27 +569,27 @@ class _$_EmailChanged implements _EmailChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -612,25 +612,25 @@ class _$_EmailChanged implements _EmailChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailChanged != null) {
@@ -707,25 +707,25 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -749,25 +749,25 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (guardianEmailChanged != null) {
@@ -778,27 +778,27 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -821,25 +821,25 @@ class _$_GuardianEmailChanged implements _GuardianEmailChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (guardianEmailChanged != null) {
@@ -914,25 +914,25 @@ class _$_GenderChanged implements _GenderChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -956,25 +956,25 @@ class _$_GenderChanged implements _GenderChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (genderChanged != null) {
@@ -985,27 +985,27 @@ class _$_GenderChanged implements _GenderChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -1028,25 +1028,25 @@ class _$_GenderChanged implements _GenderChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (genderChanged != null) {
@@ -1131,25 +1131,25 @@ class _$_PasswordChanged implements _PasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -1173,25 +1173,25 @@ class _$_PasswordChanged implements _PasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (passwordChanged != null) {
@@ -1202,27 +1202,27 @@ class _$_PasswordChanged implements _PasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -1245,25 +1245,25 @@ class _$_PasswordChanged implements _PasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (passwordChanged != null) {
@@ -1351,25 +1351,25 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -1393,25 +1393,25 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (newPasswordChanged != null) {
@@ -1422,27 +1422,27 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -1465,25 +1465,25 @@ class _$_NewPasswordChanged implements _NewPasswordChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (newPasswordChanged != null) {
@@ -1541,25 +1541,25 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -1583,25 +1583,25 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggledPasswordVisibility != null) {
@@ -1612,27 +1612,27 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -1655,25 +1655,25 @@ class _$_ToggledPasswordVisibility implements _ToggledPasswordVisibility {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggledPasswordVisibility != null) {
@@ -1727,25 +1727,25 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -1769,25 +1769,25 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithEmailAndPassword != null) {
@@ -1798,27 +1798,27 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -1841,25 +1841,25 @@ class _$_SignInWithEmailAndPassword implements _SignInWithEmailAndPassword {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithEmailAndPassword != null) {
@@ -1916,25 +1916,25 @@ class _$_CreateAccountWithEmailAndPassword
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -1958,25 +1958,25 @@ class _$_CreateAccountWithEmailAndPassword
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (createAccountWithEmailAndPassword != null) {
@@ -1987,27 +1987,27 @@ class _$_CreateAccountWithEmailAndPassword
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -2030,25 +2030,25 @@ class _$_CreateAccountWithEmailAndPassword
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (createAccountWithEmailAndPassword != null) {
@@ -2100,25 +2100,25 @@ class _$_UpdateProfile implements _UpdateProfile {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -2142,25 +2142,25 @@ class _$_UpdateProfile implements _UpdateProfile {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateProfile != null) {
@@ -2171,27 +2171,27 @@ class _$_UpdateProfile implements _UpdateProfile {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -2214,25 +2214,25 @@ class _$_UpdateProfile implements _UpdateProfile {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateProfile != null) {
@@ -2284,25 +2284,25 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -2326,25 +2326,25 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailPasswordReset != null) {
@@ -2355,27 +2355,27 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -2398,25 +2398,25 @@ class _$_EmailPasswordReset implements _EmailPasswordReset {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (emailPasswordReset != null) {
@@ -2467,25 +2467,25 @@ class _$_UpdatePassword implements _UpdatePassword {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -2509,25 +2509,25 @@ class _$_UpdatePassword implements _UpdatePassword {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updatePassword != null) {
@@ -2538,27 +2538,27 @@ class _$_UpdatePassword implements _UpdatePassword {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -2581,25 +2581,25 @@ class _$_UpdatePassword implements _UpdatePassword {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updatePassword != null) {
@@ -2674,25 +2674,25 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -2716,25 +2716,25 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithGoogle != null) {
@@ -2745,27 +2745,27 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -2788,25 +2788,25 @@ class _$_SignInWithGoogle implements _SignInWithGoogle {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithGoogle != null) {
@@ -2886,25 +2886,25 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -2928,25 +2928,25 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithFacebook != null) {
@@ -2957,27 +2957,27 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -3000,25 +3000,25 @@ class _$_SignInWithFacebook implements _SignInWithFacebook {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithFacebook != null) {
@@ -3098,25 +3098,25 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -3140,25 +3140,25 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithTwitter != null) {
@@ -3169,27 +3169,27 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -3212,25 +3212,25 @@ class _$_SignInWithTwitter implements _SignInWithTwitter {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithTwitter != null) {
@@ -3337,25 +3337,25 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result displayNameChanged(String input),
-    @required Result emailChanged(String email),
-    @required Result guardianEmailChanged(String email),
-    @required Result genderChanged(GenderType gender),
-    @required Result passwordChanged(String password, FIELD_VALIDATION mode),
+  TResult when<TResult extends Object>({
+    @required TResult displayNameChanged(String input),
+    @required TResult emailChanged(String email),
+    @required TResult guardianEmailChanged(String email),
+    @required TResult genderChanged(GenderType gender),
+    @required TResult passwordChanged(String password, FIELD_VALIDATION mode),
     @required
-        Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    @required Result toggledPasswordVisibility(),
-    @required Result signInWithEmailAndPassword(),
-    @required Result createAccountWithEmailAndPassword(),
-    @required Result updateProfile(),
-    @required Result emailPasswordReset(),
-    @required Result updatePassword(),
-    @required Result signInWithGoogle(@nullable Object incoming),
-    @required Result signInWithFacebook(@nullable Object incoming),
-    @required Result signInWithTwitter(@nullable Object incoming),
+        TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    @required TResult toggledPasswordVisibility(),
+    @required TResult signInWithEmailAndPassword(),
+    @required TResult createAccountWithEmailAndPassword(),
+    @required TResult updateProfile(),
+    @required TResult emailPasswordReset(),
+    @required TResult updatePassword(),
+    @required TResult signInWithGoogle(@nullable Object incoming),
+    @required TResult signInWithFacebook(@nullable Object incoming),
+    @required TResult signInWithTwitter(@nullable Object incoming),
     @required
-        Result signInWithCredentials(@nullable Object credential,
+        TResult signInWithCredentials(@nullable Object credential,
             @nullable AuthProviderType provider, @nullable Object incoming),
   }) {
     assert(displayNameChanged != null);
@@ -3379,25 +3379,25 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result displayNameChanged(String input),
-    Result emailChanged(String email),
-    Result guardianEmailChanged(String email),
-    Result genderChanged(GenderType gender),
-    Result passwordChanged(String password, FIELD_VALIDATION mode),
-    Result newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
-    Result toggledPasswordVisibility(),
-    Result signInWithEmailAndPassword(),
-    Result createAccountWithEmailAndPassword(),
-    Result updateProfile(),
-    Result emailPasswordReset(),
-    Result updatePassword(),
-    Result signInWithGoogle(@nullable Object incoming),
-    Result signInWithFacebook(@nullable Object incoming),
-    Result signInWithTwitter(@nullable Object incoming),
-    Result signInWithCredentials(@nullable Object credential,
+  TResult maybeWhen<TResult extends Object>({
+    TResult displayNameChanged(String input),
+    TResult emailChanged(String email),
+    TResult guardianEmailChanged(String email),
+    TResult genderChanged(GenderType gender),
+    TResult passwordChanged(String password, FIELD_VALIDATION mode),
+    TResult newPasswordChanged(String newPassword, FIELD_VALIDATION mode),
+    TResult toggledPasswordVisibility(),
+    TResult signInWithEmailAndPassword(),
+    TResult createAccountWithEmailAndPassword(),
+    TResult updateProfile(),
+    TResult emailPasswordReset(),
+    TResult updatePassword(),
+    TResult signInWithGoogle(@nullable Object incoming),
+    TResult signInWithFacebook(@nullable Object incoming),
+    TResult signInWithTwitter(@nullable Object incoming),
+    TResult signInWithCredentials(@nullable Object credential,
         @nullable AuthProviderType provider, @nullable Object incoming),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithCredentials != null) {
@@ -3408,27 +3408,27 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result displayNameChanged(_DisplayNameChanged value),
-    @required Result emailChanged(_EmailChanged value),
-    @required Result guardianEmailChanged(_GuardianEmailChanged value),
-    @required Result genderChanged(_GenderChanged value),
-    @required Result passwordChanged(_PasswordChanged value),
-    @required Result newPasswordChanged(_NewPasswordChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult displayNameChanged(_DisplayNameChanged value),
+    @required TResult emailChanged(_EmailChanged value),
+    @required TResult guardianEmailChanged(_GuardianEmailChanged value),
+    @required TResult genderChanged(_GenderChanged value),
+    @required TResult passwordChanged(_PasswordChanged value),
+    @required TResult newPasswordChanged(_NewPasswordChanged value),
     @required
-        Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
+        TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
     @required
-        Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+        TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
     @required
-        Result createAccountWithEmailAndPassword(
+        TResult createAccountWithEmailAndPassword(
             _CreateAccountWithEmailAndPassword value),
-    @required Result updateProfile(_UpdateProfile value),
-    @required Result emailPasswordReset(_EmailPasswordReset value),
-    @required Result updatePassword(_UpdatePassword value),
-    @required Result signInWithGoogle(_SignInWithGoogle value),
-    @required Result signInWithFacebook(_SignInWithFacebook value),
-    @required Result signInWithTwitter(_SignInWithTwitter value),
-    @required Result signInWithCredentials(_SignInWithCredentials value),
+    @required TResult updateProfile(_UpdateProfile value),
+    @required TResult emailPasswordReset(_EmailPasswordReset value),
+    @required TResult updatePassword(_UpdatePassword value),
+    @required TResult signInWithGoogle(_SignInWithGoogle value),
+    @required TResult signInWithFacebook(_SignInWithFacebook value),
+    @required TResult signInWithTwitter(_SignInWithTwitter value),
+    @required TResult signInWithCredentials(_SignInWithCredentials value),
   }) {
     assert(displayNameChanged != null);
     assert(emailChanged != null);
@@ -3451,25 +3451,25 @@ class _$_SignInWithCredentials implements _SignInWithCredentials {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result displayNameChanged(_DisplayNameChanged value),
-    Result emailChanged(_EmailChanged value),
-    Result guardianEmailChanged(_GuardianEmailChanged value),
-    Result genderChanged(_GenderChanged value),
-    Result passwordChanged(_PasswordChanged value),
-    Result newPasswordChanged(_NewPasswordChanged value),
-    Result toggledPasswordVisibility(_ToggledPasswordVisibility value),
-    Result signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
-    Result createAccountWithEmailAndPassword(
+  TResult maybeMap<TResult extends Object>({
+    TResult displayNameChanged(_DisplayNameChanged value),
+    TResult emailChanged(_EmailChanged value),
+    TResult guardianEmailChanged(_GuardianEmailChanged value),
+    TResult genderChanged(_GenderChanged value),
+    TResult passwordChanged(_PasswordChanged value),
+    TResult newPasswordChanged(_NewPasswordChanged value),
+    TResult toggledPasswordVisibility(_ToggledPasswordVisibility value),
+    TResult signInWithEmailAndPassword(_SignInWithEmailAndPassword value),
+    TResult createAccountWithEmailAndPassword(
         _CreateAccountWithEmailAndPassword value),
-    Result updateProfile(_UpdateProfile value),
-    Result emailPasswordReset(_EmailPasswordReset value),
-    Result updatePassword(_UpdatePassword value),
-    Result signInWithGoogle(_SignInWithGoogle value),
-    Result signInWithFacebook(_SignInWithFacebook value),
-    Result signInWithTwitter(_SignInWithTwitter value),
-    Result signInWithCredentials(_SignInWithCredentials value),
-    @required Result orElse(),
+    TResult updateProfile(_UpdateProfile value),
+    TResult emailPasswordReset(_EmailPasswordReset value),
+    TResult updatePassword(_UpdatePassword value),
+    TResult signInWithGoogle(_SignInWithGoogle value),
+    TResult signInWithFacebook(_SignInWithFacebook value),
+    TResult signInWithTwitter(_SignInWithTwitter value),
+    TResult signInWithCredentials(_SignInWithCredentials value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (signInWithCredentials != null) {

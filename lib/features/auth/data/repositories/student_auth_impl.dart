@@ -16,7 +16,8 @@ import 'package:smartlets/utils/utils.dart';
 class StudentAuthImpl with FirestoreAuthMixin<Student> {
   final FirebaseFirestore _firestore;
   final DataConnectionChecker _connectionChecker;
-  GetOptions options = GetOptions(source: Source.serverAndCache);
+  GetOptions _options = GetOptions(source: Source.serverAndCache);
+  // Temporary document snapshot (Used to check if fieldIsNull)
   DocumentSnapshot _temp;
 
   StudentAuthImpl(this._firestore, this._connectionChecker);
@@ -24,23 +25,26 @@ class StudentAuthImpl with FirestoreAuthMixin<Student> {
   Future<bool> get checkHasInternet async {
     var conn = await _connectionChecker.hasConnection;
     if (conn)
-      options = GetOptions(source: Source.server);
+      _options = GetOptions(source: Source.server);
     else
-      options = GetOptions(source: Source.cache);
+      _options = GetOptions(source: Source.cache);
     return conn;
   }
 
   @override
   Future<Student> get single async {
     await checkHasInternet;
-    DocumentSnapshot doc = await _firestore.students.user.get(options);
-    return StudentDTO.fromDocument(doc).domain;
+    DocumentSnapshot doc = await _firestore.students.user.get(_options);
+    if (doc.exists) {
+      return StudentDTO.fromDocument(doc).domain;
+    } else
+      return null;
   }
 
   @override
   Future<bool> get docExists async {
     await checkHasInternet;
-    _temp = await _firestore.users.user.get(options);
+    _temp = await _firestore.users.user.get(_options);
     return _temp != null && _temp.exists;
   }
 
@@ -53,7 +57,7 @@ class StudentAuthImpl with FirestoreAuthMixin<Student> {
       await checkHasInternet;
       final _studentDoc = _firestore.students.user;
       // If User data doesn't exist
-      if (!(await _studentDoc.get(options)).exists)
+      if (!(await _studentDoc.get(_options)).exists)
         await _studentDoc.set(
           StudentDTO.fromDomain(student).toJson(),
           SetOptions(merge: true),
@@ -110,6 +114,8 @@ class StudentAuthImpl with FirestoreAuthMixin<Student> {
     final _collection = _firestore.students;
     yield* _collection
         .orderBy(DbConstants.ORDER_BY, descending: true)
+        // .limit(10)
+        // .startAfter(values)
         .snapshots(includeMetadataChanges: true)
         .map<Either<FirestoreAuthFailure, KtList<Student>>>((snapshot) => right(
               snapshot.docs.map((doc) => StudentDTO.fromDocument(doc).domain).toImmutableList(),
