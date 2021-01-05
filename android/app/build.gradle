@@ -93,7 +93,7 @@ android {
         }
         prod {
             dimension "app"
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
         }
     }
 }
