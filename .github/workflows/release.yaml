@@ -20,7 +20,7 @@ jobs:
       APP_NAME: "Smartlets"
       GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       RELEASE_TYPE: patch
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       bump_tag: ${{ steps.bump_tag.outputs.new_tag }}
       bump_tag_version: ${{ steps.bump_tag.outputs.new_version }}
@@ -95,4 +95,4 @@ jobs:
           SLACK_MESSAGE: Version ${{ needs.build.outputs.bump_tag_version }} of ${{ env.APP_NAME }} mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_MSG_AUTHOR: f0rx
-          SLACK_FOOTER: Powered by f0rx
+          SLACK_FOOTER: Powered by Smartlets Bot
