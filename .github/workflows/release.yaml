@@ -19,6 +19,7 @@ jobs:
     env:
       APP_NAME: "Smartlets"
       GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      RELEASE_NAME: "patch"
       RELEASE_TYPE: patch
     runs-on: ubuntu-latest
     outputs:
@@ -73,7 +74,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/*.apk,build/app/outputs/apk/prod/release/*.apk,build/app/outputs/apk/release/*.apk"
-          name: ${{ env.APP_NAME }}-${{ steps.bump_tag.outputs.new_version }}
+          name: ${{ env.APP_NAME }} v${{ steps.bump_tag.outputs.new_version }}
           tag: ${{ steps.bump_tag.outputs.new_tag }}
           token: ${{ env.GITHUB_TOKEN }}
           allowUpdates: true
@@ -91,7 +92,7 @@ jobs:
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_COLOR: '#FF8845'
-          SLACK_TITLE: ${{ env.APP_NAME }} ${{ env.RELEASE_TYPE }} release version ${{ needs.build.outputs.bump_tag_version }}
+          SLACK_TITLE: ${{ env.APP_NAME }} ${{ env.RELEASE_NAME }} release version ${{ needs.build.outputs.bump_tag_version }}
           SLACK_MESSAGE: Version ${{ needs.build.outputs.bump_tag_version }} of ${{ env.APP_NAME }} mobile app is available for download at https://github.com/f0rx/smartlets/releases/tag/${{ needs.build.outputs.bump_tag }}
           SLACK_WEBHOOK: ${{ env.SLACK_WEBHOOK }}
           SLACK_MSG_AUTHOR: f0rx
