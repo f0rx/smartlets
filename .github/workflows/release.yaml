@@ -56,7 +56,7 @@ jobs:
       - name: Set up Flutter Environment
         uses: subosito/flutter-action@v1
         with:
-          # flutter-version: '1.21.x'
+          flutter-version: '1.25.x'
           channel: 'beta'
 
       - run: flutter pub get

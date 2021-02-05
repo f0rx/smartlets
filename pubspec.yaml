@@ -139,8 +139,8 @@ dev_dependencies:
   logger: ^0.9.4
   flutter_launcher_icons: any
   # Code Generators
-  build_runner: ^1.10.11
-  freezed: ^0.12.6
+  build_runner: ^1.11.1
+  freezed: ^0.12.7
   injectable_generator: ^1.0.7
   built_value_generator: ^7.1.0
   auto_route_generator: ^0.6.10
