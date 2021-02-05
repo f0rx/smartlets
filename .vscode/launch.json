@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "smartlets debug",
+            "name": "debug",
             "request": "launch",
             "args": [
                 "--flavor",
@@ -16,7 +16,7 @@
         },
 
         {
-            "name": "smartlets release",
+            "name": "release",
             "request": "launch",
             "args": [
                 "--flavor",
